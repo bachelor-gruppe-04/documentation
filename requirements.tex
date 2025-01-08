@@ -1,2 +1,21 @@
-\section*{Project Requirements}
-\textbf{Project Title} Live Digitalization of Chess Games
+\chapter*{Project Requirements}
+\textbf{Project Title} Live Digitalization of Chess Games\\\\
+\textbf{Problem Statement} Digitalization of chess games based on camera input.
+
+\section*{Project Description}
+The goal of the project is to develop a solution where chess games played on a standard chessboard can be automatically digitized into PGN files. These files should be made available either as an API or as events in a queue. The solution requires:
+\begin{itemize}
+    \item Image recognition of the chessboard and pieces.
+    \item Live validation against chess rules to ensure correct moves are registered.
+    \item Local installation on hardware, using a typical mix of USB-connected webcams and a local machine (Windows or Ubuntu) for all processing. No cloud processing is allowed.
+\end{itemize}
+
+Existing digital chessboards perform similar tasks but are expensive and require significant setup time. This project aims to automate this process more cost-effectively.
+
+\section*{Additional Comments}
+\begin{itemize}
+    \item The software must be installable on local hardware and function independently without cloud processing.
+    \item Open-source software is preferred for all components.
+    \item Development can take place at the club premises where necessary hardware (computers, cameras, chess equipment) is available.
+    \item The software created must be published in a public Git repository without restrictions for future use or modifications.
+\end{itemize}
