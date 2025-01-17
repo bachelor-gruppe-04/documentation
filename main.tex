@@ -1,22 +1,60 @@
-\documentclass{report}
+\documentclass[a4paper, 12pt, openany]{book} %chose the paper size and font size. Openany ensures that all all chapters and similar may begin at any page, not only odd pages. For the introductory pages and appendices we want openany, but for chapter pages in the main content we want chapters to begin only on odd pages (right hand side). The book class ensures that the margins are automatically adjusted such that left hand pages are slightly moved to the left and vice versa at the right, which makes the thesis very readable and good looking when printed in bound book format.
 
 \include{preamble}
 
-\title{Documentation}
-\author{Group 04}
-\date{Spring 2025}
-
 \begin{document}
 
-\maketitle
+\include{chapters/00-titlepage}
 
-\section{Introduction}
+\pagenumbering{roman}
+
+\include{chapters/01-abstract}
+
+\include{chapters/02-preface}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% TOC %%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\addcontentsline{toc}{chapter}{Contents}
+
+\tableofcontents
+\newpage
+
+\newpage
+\setglossarystyle{list}
+\listoffigures
+
+\newpage
+\listoftables
+
+\printglossary[type=\acronymtype]
+
+\printglossary
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{arabic}
+
+\include{chapters/03-introduction}
+
+\include{chapters/04-theory}
+
+\include{chapters/05-method}
+
+\include{chapters/06-results}
+
+\include{chapters/07-discussion}
+
+\include{chapters/08-conclusion}
+
+\printbibliography[heading=bibintoc, title={References}]
+
+\include{chapters/09-appendix}
+
 \include{requirements}
 \include{meeting minutes/meeting-minutes}
 \include{templates/work-contract}
 \include{requirements/soft-requirements}
-
-\printbibliography[heading=bibintoc]
-
 
 \end{document}

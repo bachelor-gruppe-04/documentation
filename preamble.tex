@@ -1,15 +1,68 @@
-\usepackage[
-a4paper,
-top=2cm,
-bottom=2cm,
-left=3cm,
-right=3cm,
-marginparwidth=1.75cm
-]{geometry}
-\usepackage[
-backend=biber,
-style=ieee,
-sorting=ynt
-]{biblatex}
+\usepackage{tocloft} % For customizing the TOC
+\usepackage{hyperref} % For clickable links in the TOC
+\usepackage[a4paper, lmargin=1.5in, rmargin=1in, tmargin=1in, bmargin=1in]{geometry
 
+% Adjusting TOC settings for alignment
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftdotsep}{2}
+
+
+% Packages from NTNU Template
+\usepackage[utf8]{inputenc} %to manage special characters
+\usepackage[T1]{fontenc} %to manage special characters
+\usepackage[Bjarne]{fncychap} %fancy chapter style (many more available, like Sonny or Lenny etc.)
+\usepackage{fancyhdr} %to customize the headers
+\usepackage[lmargin=1.5in, rmargin=1in, tmargin=1in, bmargin=1in]{geometry} %sets the margins for the pages
+\setcounter{tocdepth}{2} %table of contents number depth for subsections (2 = x.x.x)
+\setcounter{secnumdepth}{4} %numbering depth for headers for subsections in the text(4 = x.x.x.x)
+\usepackage{url} %to include urls
+\usepackage{listings} %include this if you want to include code in the thesis
+\usepackage{amsmath,amssymb} %mathematical package
+\usepackage{siunitx} %includes SI-units
+\usepackage[bf]{caption} %makes float captions bold
+\usepackage{array, booktabs} %to make better tables
+\usepackage{graphicx} %to include graphics
+\usepackage{float} %to include floats
+\usepackage[export]{adjustbox} %to adjust floats
+\usepackage{subfig} %to include subfigures
+\usepackage{chngcntr} %will make it possible to change the counter for tables, figures etc. such as below
+\counterwithin{figure}{section} %change counter for figures within sections (also possible to choose for each chapter
+\counterwithin{table}{section} %change counter for tables within sections
+\usepackage{color, xcolor} %edit e.g. text colors
+
+\usepackage[backend = biber,
+            style = ieee,
+            date = long,     % Long: 24th Mar. 1997 | Short: 24/03/1997
+            sorting = none,
+            maxcitenames = 3,   % max names to include before et. al.
+            ]{biblatex} %customize the look of your citations and bibliography
 \bibliography{references}
+
+\usepackage{comment} %to be able to comment out sections in the .tex files
+\usepackage{afterpage} %to customize page commands such as below
+\newcommand\myemptypage{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage
+    } %sets new page command to insert an empty page without adding to the page counter or having a page number
+
+
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage[toc, acronyms]{glossaries}
+\usepackage{comment}
+\usepackage[nottoc]{tocbibind}
+\usepackage{subfig}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+
+\makeglossaries
+
+\newglossaryentry{git}{
+    name={git},
+    description={Et versjonskontrollsystem som sporer versjoner av filer}
+}
+
+\newacronym{ntnu}{NTNU}{Norwegian University of Science and Technology}
