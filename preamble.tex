@@ -1,11 +1,14 @@
-\usepackage{tocloft} % For customizing the TOC
 \usepackage{hyperref} % For clickable links in the TOC
 \usepackage[a4paper, lmargin=1.5in, rmargin=1in, tmargin=1in, bmargin=1in]{geometry
 
-% Adjusting TOC settings for alignment
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\cftdotsep}{2}
-
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{comment}
+\usepackage[nottoc]{tocbibind}
+\usepackage{subfig}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
 
 % Packages from NTNU Template
 \usepackage[utf8]{inputenc} %to manage special characters
@@ -47,16 +50,7 @@
     \newpage
     } %sets new page command to insert an empty page without adding to the page counter or having a page number
 
-
-\usepackage[english]{babel}
-\usepackage{float}
-\usepackage{graphicx}
-\usepackage{titlesec}
 \usepackage[toc, acronyms]{glossaries}
-\usepackage{comment}
-\usepackage[nottoc]{tocbibind}
-\usepackage{subfig}
-\usepackage[colorlinks=true, allcolors=black]{hyperref}
 
 \makeglossaries
 
