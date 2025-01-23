@@ -52,11 +52,54 @@
 
 \usepackage[toc, acronyms]{glossaries}
 
+%%%%%%%%%%%%%%%%%%%%%%%%% GLS %%%%%%%%%%%%%%%%%%%%%%%%%
+
 \makeglossaries
+
+\newglossaryentry{check}{
+    name={check},
+    description={This is also an attack on the king, but unlike checkmate, this is one that your opponent \textit{can} escape.\cite{unimelb:terms}}
+}
+
+\newglossaryentry{checkmate}{
+    name={checkmate},
+    description={Checkmate is an attack on the King that your opponent can’t escape.\cite{unimelb:terms}}
+}
+
+\newglossaryentry{stalemate}{
+    name={stalemate},
+    description={The player to move isn’t in check, but they can’t move any of their pieces. It’s a draw.\cite{unimelb:terms}}
+}
+
+\newglossaryentry{capture}{
+    name={capture},
+    description={Capture refers to taking a piece from the board, so your opponent is a piece down.\cite{unimelb:terms}}
+}
+
+\newglossaryentry{castling}{
+    name={castling},
+    description={Castling involves the king and the rook swapping positions. The king moves two spaces from the starting position to the left or right, and the rook moves to next to it on the other side.\cite{unimelb:terms}}
+}
+
+\newglossaryentry{en-passant}{
+    name={en passant},
+    description={A pawn that moves two squares forward can be taken by an opposing pawn that’s directly next to it on the following move.\cite{unimelb:terms}}
+}
+
+\newglossaryentry{promotion}{
+    name={promotion},
+    description={A pawn that reaches the end of the board can become any piece you want (just not the king or another pawn).\cite{unimelb:terms}}
+}
 
 \newglossaryentry{git}{
     name={git},
     description={Et versjonskontrollsystem som sporer versjoner av filer}
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%% ACR %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newacronym{pgn}{PGN}{Portable Game Notation}
+
+\newacronym{fen}{FEN}{Forsyth-Edwards Notation}
 
 \newacronym{ntnu}{NTNU}{Norwegian University of Science and Technology}
