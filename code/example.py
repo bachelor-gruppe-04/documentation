@@ -1,4 +1,4 @@
-def greeting(name: str):
+def greeting(name: str) -> None:
 """
 Some greeting documentation.
 """
