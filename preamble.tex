@@ -21,6 +21,7 @@
 \usepackage[backend = biber,
             style = ieee,
             date = long,
+            urldate = iso8601,
             sorting = none,
             maxcitenames = 3,
             giveninits=false % Does NOT include initials
@@ -30,6 +31,14 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%% CONFIG %%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \renewbibmacro*{urldate}{
+%     (Accessed:  \printfield{urlday}.\printfield{urlmonth}.\printfield{urlyear})
+% }
+
+\DeclareFieldFormat{urldate}{(Accessed: \thefield{urlday}.\addspace
+  \mkbibmonth{\thefield{urlmonth}}\addspace
+  \thefield{urlyear}\isdot)}
 
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{4}
@@ -148,13 +157,19 @@
     description={A cloud-based platform where one can store, share and work together with others to write code}
 }
 
+\newglossaryentry{repository}{
+    name={repository},
+    plural={repositories},
+    description={Some description}
+}
+
 \newglossaryentry{agile}{
     name={agile}, 
     description={Focus on delivering functionality quickly, responding to changing product specifications, and minimizing development overheads}
 }
 
 \newglossaryentry{python}{
-    name={python}, 
+    name={Python}, 
     description={A programming language that lets you work quickly and integrate systems more effectively}
 }
 
@@ -172,7 +187,7 @@
 
 \newacronym{usb}{USB}{Universal Serial Bus}
 
-\newacronym{nfc}{NFC}{Near Field Communication}
+\newacronym{rfid}{RFID}{Radio-frequency Identification}
 
 \newacronym{ai}{AI}{Artificial Intelligence}
 
