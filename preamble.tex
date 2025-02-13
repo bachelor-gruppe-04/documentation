@@ -7,6 +7,8 @@
 \usepackage{url}
 \usepackage{listings}
 \usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{multirow}
 \usepackage{siunitx}
 \usepackage[bf]{caption}
 \usepackage{array, booktabs}
@@ -47,6 +49,14 @@
 % \counterwithin{table}{section}
 
 \bibliography{references}
+
+\newcommand\MyBox[2]{
+  \fbox{\lower0.75cm
+    \vbox to 1.7cm{\vfil
+      \hbox to 1.7cm{\hfil\parbox{1.4cm}{#1\\#2}\hfil}
+      \vfil}%
+  }%
+}
 
 \newcommand\myemptypage{
     \null
@@ -160,12 +170,17 @@
 \newglossaryentry{repository}{
     name={repository},
     plural={repositories},
-    description={Some description}
+    description={A place where one can store code, files, and each file's revision history}
 }
 
 \newglossaryentry{agile}{
     name={agile}, 
     description={Focus on delivering functionality quickly, responding to changing product specifications, and minimizing development overheads}
+}
+
+\newglossaryentry{latex}{
+    name={LaTeX},
+    description={A document preparation system for high-quality typesetting}
 }
 
 \newglossaryentry{python}{
@@ -175,20 +190,25 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%% ACR %%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newacronym{pgn}{PGN}{Portable Game Notation}
-
-\newacronym{fen}{FEN}{Forsyth-Edwards Notation}
-
-\newacronym{ntnu}{NTNU}{Norwegian University of Science and Technology}
-
-\newacronym{cnn}{CNN}{Convolutional Neural Network}
+\newacronym{ai}{AI}{Artificial Intelligence}
 
 \newacronym{api}{API}{Application Programming Interface}
 
-\newacronym{usb}{USB}{Universal Serial Bus}
+\newacronym{cnn}{CNN}{Convolutional Neural Network}
+
+\newacronym{fen}{FEN}{Forsyth-Edwards Notation}
+
+\newacronym{leyolo}{LeYOLO}{Lightweight and Efficient You Only Look Once}
+
+\newacronym{ntnu}{NTNU}{Norwegian University of Science and Technology}
+
+\newacronym{pgn}{PGN}{Portable Game Notation}
 
 \newacronym{rfid}{RFID}{Radio-frequency Identification}
 
-\newacronym{ai}{AI}{Artificial Intelligence}
+\newacronym{usb}{USB}{Universal Serial Bus}
 
-\newacronym{leyolo}{LeYOLO}{Lightweight and Efficient You Only Look Once}
+
+
+
+
