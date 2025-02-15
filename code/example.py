@@ -1,5 +1,5 @@
-def greeting(name: str) -> None:
-"""
-Some greeting documentation.
-"""
-    printf("Hello {name}!")
+def goodbye(name: str) -> None:
+  """
+  Some greeting documentation.
+  """
+  print("Farewell {name}!")
