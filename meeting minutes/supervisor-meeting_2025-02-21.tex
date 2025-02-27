@@ -22,9 +22,34 @@ Camera connected to the internet (IB camera). Using IP adress. then the website 
 
 On display application have video, a digital board and the PGN to show previous moves. Kanny detector?
 
+Camera is not as clear if it is a side view, but better if a higher view. It is more important to detect the centers of a chessboard, rather than the corners (What is on the square). Top-Down view all squares are pretty much the same size, but from the side, the squares are not equal, and need more math to figure it out.
+
+No need for outer-edges? 
+
+Want to locate detected pieces on the board. Each piece of the 32 pieces has IDs. Locate which place on the board the pieces are. Create an algorithm. Detect everything from the corners. 
+
+Don't care about the size/form of the cell/square. 
+
+Find an algorithm to connect piece detection and location. Find it online?
+
+Do not want to know the distance between two edges, but rather the corners (?). 
+
+Distance between whole board corners. Find a ratio, (divide by 8 on each side to find sizes of cells?).
+
+Board is fixed. It has to stay in the same place during the duration of the game.
+
+This problem (corner detection and mapping) will take time. It is important, but will take time. This has to be done!
+
+Don't need the camera calibration. 
+
+Do we need to explain the math behind the implementation? short answer yes. We need references to where we found it. We do not need to know everything, but rather generally. 
+
+Page-number upper limit is 100 pages. Try for around 60 pages.
+
 \subsection{Actions}
 \begin{itemize}
     \item 
 \end{itemize}
 
 \subsection{Other}
+
