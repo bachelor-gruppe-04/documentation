@@ -2,7 +2,7 @@
 
 \section{Background}
 
-Established in 1913, \aas has maintained a longstanding passion for the noble game of chess \cite{schaklag:63}. Over the years, the organization has sought innovative ways to enhance the experience of its members while preserving the integrity and tradition of the game. One of their key objectives is to digitize the process of playing and documenting chess games. Specifically, they aim to develop a cost-effective and user-friendly solution that allows players to engage in continuous gameplay on a traditional chessboard while automatically digitizing the moves into \gls{pgn} files. \cite{ntnuopen:21} This digitization process would enable efficient documentation of games and facilitate advanced analysis using tools such as \gls{stockfish}. By automating the conversion of physical gameplay into digital formats, the organization hopes to eliminate the need for expensive digital chessboards, which often require complex setup procedures. 
+Established in 1913, \aas has maintained a longstanding passion for the noble game of chess \cite{schaklag:63}. Over the years, the organization has sought innovative ways to enhance the experience of its members while preserving the integrity and tradition of the game. One of their key objectives is to digitize the process of playing and documenting chess games. Specifically, they aim to develop a cost-effective and user-friendly solution that allows players to engage in continuous gameplay on a traditional chessboard while automatically digitizing the moves into \gls{pgn} files. \cite{ntnuopen:21} This digitization process would enable efficient documentation of games and facilitate advanced analysis using tools such as \gls{stockfish}. By automating the conversion of physical gameplay into digital formats, the organization hopes to eliminate the need for expensive digital chessboards, which often require complex setup procedures.
 
 \section{Project Goal}
 
@@ -23,11 +23,11 @@ The primary objective of this project is to develop a desktop application capabl
 The product requirements, as defined by the product owner, outline the essential features and constraints for the proposed solution:
 
 \begin{itemize}
-    \item \textbf{Desktop Application:} The solution must be implemented as a desktop application, ensuring compatibility with local machines running either Windows or Ubuntu operating systems.
+    \item \textbf{Application:} The solution must be implemented as a local application, ensuring compatibility with local machines running either Windows or Ubuntu operating systems.
 
     \item \textbf{Webcam-Based Detection:} The application must utilize a standard webcam to detect the chessboard, pieces, and moves in real-time.
 
-    \item \textbf{Local Processing:} All data processing, including image recognition and move validation, must be performed locally on the user's machine. Cloud-based or web-based solutions are explicitly excluded.
+    \item \textbf{Local Processing:} All data processing, including image recognition and move validation, must be performed locally on the user's machine. Cloud-based solutions are explicitly excluded.
 
     \item \textbf{Output Formats:} The application must generate \gls{pgn} files for game documentation and \gls{fen} strings to enable integration with the \gls{stockfish} \gls{api} for move analysis.
 \end{itemize}

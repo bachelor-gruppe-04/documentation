@@ -16,38 +16,94 @@ Furthermore, advancements in \gls{ai} have led to the development of application
 
 The use of \gls{git} as a version control system enables collaborative development by allowing multiple developers to work on the same codebase simultaneously. \gls{git} facilitates the maintenance of the code and provides a comprehensive history of all modifications made to the project. These changes are tracked within project containers known as \glspl{repository}, ensuring transparency and accountability throughout the development process. \cite{alphaefficiency:git}
 
-\subsection{Computer Vision}
-
-Computer vision, a subfield of \gls{ai}, focuses on enabling machines to interpret, analyze, and extract meaningful information from visual data such as digital images, videos, and other visual inputs. \cite{google:vision} Similar to other domains within \gls{ai}, computer vision aims to automate tasks that traditionally require human intelligence. Specifically, it seeks to replicate the human ability to perceive visual information and derive understanding from it. \cite{microsoft:vision}
-
 \subsection{Machine Learning}
 
-\gls{cnn}
+\gls{cnn} is a specialized deep learning architecture widely used in computer vision tasks. As a subfield of \gls{ai}, computer vision focuses on enabling machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive and understand visual information, automating tasks that traditionally require human intelligence. \cite{google:vision, microsoft:vision} \\
+
+Artificial Neural Networks (ANNs) are a cornerstone of modern machine learning, excelling in processing diverse datasets, including images, audio, and text. Different types of neural networks are tailored for specific tasks. For instance, Recurrent Neural Networks (RNNs), particularly Long Short-Term Memory (LSTM) networks, are effective for sequential data like text or time series. In contrast, \glspl{cnn} are specifically designed for image-related tasks, such as image classification, object detection, and segmentation. Their unique architecture, which includes convolutional layers, enables them to automatically and efficiently extract spatial features from visual data. \cite{geeksforgeeks:cnn} \\
+
+The versatility and effectiveness of \glspl{cnn} make them a fundamental tool in computer vision applications, ranging from medical imaging to autonomous vehicles. By leveraging their ability to learn hierarchical representations of visual data, \glspl{cnn} have become a driving force behind many advancements in \gls{ai} and machine learning.
 
 \subsection{Web Application}
 
 \section{Design}
-\subsection{Wireframes}
-% \subsection{UX Design}
+
+\subsection{Wireframe}
+
+\subsection{UX}
+
+\subsection{UI}
 
 \section{Code Quality}
 
 \subsection{Code Review}
 
-A pull request is a proposal to merge a set of changes from one branch into another. In a pull request, collaborators can review and discuss the proposed set of changes before they integrate the changes into the main codebase. Pull requests display the differences between the content in the source branch and the content in the target branch. \cite{github:pr} 
+Code review is a critical step in the software development process, where a developer's implementation is examined by one or more peers before it is merged into an upstream branch, such as a feature branch or the main branch. This process provides a second opinion on the solution, helping to identify bugs, logic errors, uncovered edge cases, and other potential issues that may have been overlooked during development. \cite{gitlab:code-review} \\
+
+A well-defined code review process is essential for maintaining high code quality and preventing unstable or faulty code from reaching production. By incorporating code reviews into the team's workflow, software development teams can foster continuous improvement, ensure that all code is reviewed by multiple perspectives, and reduce the risk of introducing defects into the codebase. \cite{gitlab:code-review} \\
+
+Pull requests are a widely used mechanism to facilitate code reviews in modern version control systems. A pull request is a formal proposal to merge a set of changes from one branch into another. It provides a platform for collaborators to review, discuss, and approve changes before they are integrated into the main codebase. Pull requests also display the differences between the source and target branches, making it easier for reviewers to understand the proposed changes and provide constructive feedback. \cite{github:pr}
 
 \subsection{Cohesion and Coupling}
 
-Coupling refers to the degree of interdependence between software modules. High coupling means that modules are closely connected and changes in one module may affect other modules. Low coupling means that modules are independent, and changes in one module have little impact on other modules. \cite{geeksforgeeks:c&c} \\
+% Coupling refers to the degree of interdependence between software modules. High coupling means that modules are closely connected and changes in one module may affect other modules. Low coupling means that modules are independent, and changes in one module have little impact on other modules. \cite{geeksforgeeks:c&c} \\
 
-Cohesion refers to the degree to which elements within a module work together to fulfill a single, well-defined purpose. High cohesion means that elements are closely related and focused on a single purpose, while low cohesion means that elements are loosely related and serve multiple purposes. \cite{geeksforgeeks:c&c} \\
+% Cohesion refers to the degree to which elements within a module work together to fulfill a single, well-defined purpose. High cohesion means that elements are closely related and focused on a single purpose, while low cohesion means that elements are loosely related and serve multiple purposes. \cite{geeksforgeeks:c&c} \\
 
-Both coupling and cohesion are important factors in determining the maintainability, scalability, and reliability of a software system. High coupling and low cohesion can make a system difficult to change and test, while low coupling and high cohesion make a system easier to maintain and improve. \cite{geeksforgeeks:c&c} 
+% Both coupling and cohesion are important factors in determining the maintainability, scalability, and reliability of a software system. High coupling and low cohesion can make a system difficult to change and test, while low coupling and high cohesion make a system easier to maintain and improve. \cite{geeksforgeeks:c&c} 
+
+Coupling and cohesion are two fundamental concepts in software design that significantly impact the quality and maintainability of a system. \\
+
+% Coupling refers to the degree of interdependence between software modules. In a highly coupled system, modules are tightly connected, meaning that changes in one module may require modifications in others. This can lead to increased complexity and reduced flexibility. On the other hand, low coupling indicates that modules are more independent, with minimal dependencies between them. This promotes modularity, making the system easier to understand, modify, and maintain. \cite{geeksforgeeks:c&c} \\
+
+% Cohesion, in contrast, refers to the degree to which the elements within a module are related and work together to achieve a single, well-defined purpose. High cohesion means that the elements within a module are closely aligned and focused on a specific task, which enhances readability and reusability. Low cohesion, however, implies that the elements within a module are loosely related and may serve multiple purposes, leading to code that is harder to understand and maintain. \cite{geeksforgeeks:c&c} \\
+
+\begin{center}
+\textit{"\textbf{Coupling} refers to the degree of interdependence between software modules. \textbf{Tight coupling} means that modules are closely connected and changes in one module may affect other modules. \textbf{Loose coupling} means that modules are independent, and changes in one module have little impact on other modules."} \cite{geeksforgeeks:c&c} \\
+\end{center}
+
+\begin{center}
+\textit{"\textbf{Cohesion} refers to the degree to which elements within a module work together to fulfill a single, well-defined purpose. \textbf{High cohesion} means that elements are closely related and focused on a single purpose, while \textbf{low cohesion} means that elements are loosely related and serve multiple purposes."} \cite{geeksforgeeks:c&c} \\
+\end{center}
+
+Both coupling and cohesion are important factors in determining the maintainability, scalability, and reliability of a software system. Tight coupling and low cohesion often result in systems that are difficult to change, test, and debug. Conversely, loose coupling and high cohesion contribute to systems that are modular, flexible, and easier to improve over time. \cite{geeksforgeeks:c&c}
 
 \subsection{Documentation}
 
-Documentation is a written piece of text that is often accompanied by a software program. This makes the life of all the members associated with the project easier. It may contain anything from API documentation, build notes or just help content. It is a very critical process in software development. It’s primarily an integral part of any computer code development method. \cite{geeksforgeeks:doc} \\
+% Documentation is a written piece of text that is often accompanied by a software program. This makes the life of all the members associated with the project easier. It may contain anything from \gls{api} documentation, build notes or just help content. It is a very critical process in software development. It’s primarily an integral part of any computer code development method. \cite{geeksforgeeks:doc}
+
+Documentation is a critical component of software development, consisting of written materials that accompany a software program. It serves as a comprehensive reference for all stakeholders involved in the project, including developers, testers, and end-users. Documentation can take various forms, such as \gls{api} documentation, build instructions, user manuals, or internal design specifications. Its purpose is to provide clarity, facilitate understanding, and ensure the effective use and maintenance of the software. \cite{geeksforgeeks:doc} \\
+
+High-quality documentation is essential for the success of any software project. It simplifies onboarding for new team members, aids in troubleshooting and debugging, and ensures that the software can be maintained and extended over time. Moreover, well-documented code and systems reduce the risk of knowledge loss when team members change or when revisiting older parts of the codebase. \cite{geeksforgeeks:doc} \\
+
+In modern software development, documentation is not merely an afterthought but an integral part of the development process. It should be created and maintained alongside the code, ensuring that it remains accurate, up-to-date, and accessible to all relevant parties.
 
 \subsection{Testing}
+
+\subsubsection*{Unit Testing}
+
+% Unit Testing is a software testing technique in which individual units or components of a software application are tested in isolation. These units are the smallest pieces of code, typically functions or methods, ensuring they perform as expected. \cite{geeksforgeeks:unit-test} \\
+
+% Unit testing helps in identifying bugs early in the development cycle, enhancing code quality, and reducing the cost of fixing issues later. It is an essential part of \gls{tdd}, promoting reliable code. \cite{geeksforgeeks:unit-test}
+
+Unit testing is a fundamental software testing technique in which individual units or components of a software application are tested in isolation. A unit typically refers to the smallest testable part of a program, such as a function, method, or class. The goal of unit testing is to validate that each unit performs as expected under various conditions, ensuring its correctness and reliability. \cite{geeksforgeeks:unit-test} \\
+
+By identifying and addressing bugs early in the development cycle, unit testing significantly enhances code quality and reduces the cost of fixing issues later in the process. It is a core practice in \gls{tdd}, where tests are written before the actual code, promoting a disciplined approach to development and ensuring that the code meets its requirements from the outset. \cite{geeksforgeeks:unit-test} \\
+
+Unit testing also contributes to the maintainability and scalability of a software system. Well-tested units are easier to refactor, extend, and integrate into larger systems, as their behavior is clearly defined and verified. Additionally, unit tests serve as living documentation, providing insights into how individual components are intended to function.
+
+\subsubsection*{Usability Testing}
+
+% Usability Testing in software testing is a type of testing, that is done from an end user’s perspective to determine if the system is easily usable. Usability testing is generally the practice of testing how easy a design is to use on a group of representative users. Several tests are performed on a product before deploying it. You need to collect qualitative and quantitative data and satisfy customers’ needs with the product. A proper final report is made mentioning the changes required in the product (software). \cite{geeksforgeeks:user-test} \\
+
+% Usability testing involves evaluating the functionality of a website, app, or digital product by observing real users as they navigate through it. Typically conducted by researchers, either in-person or remotely, the aim is to identify any areas of confusion or difficulty users encounter while completing tasks. \cite{geeksforgeeks:user-test} \\
+
+% The ultimate goal of usability testing is to uncover pain points in the user experience, revealing opportunities for improvement. By assessing how efficiently users achieve their goals within the product, usability testing helps in enhancing its overall functionality and user satisfaction. \cite{geeksforgeeks:user-test}
+
+Usability testing is a critical aspect of software testing that focuses on evaluating a system from the perspective of an end user. Its primary goal is to determine how easily and effectively users can interact with the system to achieve their objectives. This type of testing involves observing representative users as they navigate through the product, identifying areas of confusion, difficulty, or inefficiency in the user experience. \cite{geeksforgeeks:user-test} \\
+
+During usability testing, both qualitative and quantitative data are collected to assess the product's functionality and user satisfaction. Qualitative data, such as user feedback and observations, provides insights into user behavior and preferences. Quantitative data, such as task completion rates and time-on-task, offers measurable metrics to evaluate performance. Based on the findings, a detailed report is generated, outlining necessary improvements to enhance the product's usability. \cite{geeksforgeeks:user-test} \\
+
+The ultimate goal of usability testing is to identify pain points in the user experience and uncover opportunities for improvement. By understanding how users interact with the product and where they encounter challenges, developers can make informed decisions to refine the design, improve functionality, and increase overall user satisfaction. \cite{geeksforgeeks:user-test}
 
 \subsection{Type Safety}
