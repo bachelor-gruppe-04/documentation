@@ -1,16 +1,17 @@
 \chapter{Theory}
 
+\textbf{*Brief description of what one might expect to read in the \textit{Theory} section*}
+
 \section{Literature Review}
 
-The game of chess originated in India during the Gupta dynasty in the 6th century. Over 1500 years later, chess has become a globally recognized game, played competitively in 172 countries worldwide \cite{artsnculture}. \\
-
-With the advancement of technology, various digital applications and solutions have emerged to enhance the experience of playing and analyzing chess. Prominent online platforms such as \textit{chess.com} and \textit{lichess.org} allow players to compete across the globe, offering features such as online matchmaking, tutorials, and game analysis. 
-
+With the advancement of technology, various digital applications and solutions have emerged to enhance the experience of playing and analyzing chess. Prominent online platforms such as \textit{chess.com} and \textit{lichess.org} allow players to compete across the globe, offering features such as online matchmaking, tutorials, and game analysis. \\
 Additionally, physical chessboards have been modernized through the integration of digital technologies, such as \gls{rfid} tags, which enable the digitization of physical chess games. \cite{quora:shah} \\
 
 Furthermore, advancements in \gls{ai} have led to the development of applications capable of automating tasks such as piece recognition and game digitization. One notable example is \textit{ChessCam}, a web- and mobile-based application designed for quick and efficient live chess digitization. ChessCam allows users to either upload pre-recorded videos of chess games or stream live games using a mobile phone or webcam. The application processes the video input, recognizes the moves, and generates \gls{pgn} files, which can be used for further analysis or archival purposes.
 
 \section{Tools and Technologies}
+
+\textbf{*Brief description of what one might expect to read in the \textit{Tools and Technologies} section*}
 
 \subsection{Version Control}
 
@@ -18,17 +19,79 @@ The use of \gls{git} as a version control system enables collaborative developme
 
 \subsection{Machine Learning}
 
-\gls{cnn} is a specialized deep learning architecture widely used in computer vision tasks. As a subfield of \gls{ai}, computer vision focuses on enabling machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive and understand visual information, automating tasks that traditionally require human intelligence. \cite{google:vision, microsoft:vision} \\
+\textbf{*Brief description of what one might expect to read in the \textit{Machine Learning} section*}
+
+\subsubsection*{Computer Vision}
+
+% \textbf{*Brief description of what one might expect to read in the \textit{Computer Vision} section*}
+
+As a subfield of \gls{ai}, computer vision focuses on enabling machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive and understand visual information, automating tasks that traditionally require human intelligence. \cite{google:vision, microsoft:vision}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures//theory/computer-vision.png}
+    \caption{Computer Vision \& Human Vision}
+    \label{fig:computer-vision}
+\end{figure}
+
+\subsubsection*{Artificial Neural Network}
 
 Artificial Neural Networks (ANNs) are a cornerstone of modern machine learning, excelling in processing diverse datasets, including images, audio, and text. Different types of neural networks are tailored for specific tasks. For instance, Recurrent Neural Networks (RNNs), particularly Long Short-Term Memory (LSTM) networks, are effective for sequential data like text or time series. In contrast, \glspl{cnn} are specifically designed for image-related tasks, such as image classification, object detection, and segmentation. Their unique architecture, which includes convolutional layers, enables them to automatically and efficiently extract spatial features from visual data. \cite{geeksforgeeks:cnn} \\
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures//theory/artificial-neural-network.png}
+    \caption{Artificial Neural Network Layers}
+    \label{fig:artificial-neural-network}
+\end{figure}
+
 The versatility and effectiveness of \glspl{cnn} make them a fundamental tool in computer vision applications, ranging from medical imaging to autonomous vehicles. By leveraging their ability to learn hierarchical representations of visual data, \glspl{cnn} have become a driving force behind many advancements in \gls{ai} and machine learning.
 
+% \gls{cnn} is a specialized deep learning architecture widely used in computer vision tasks. \
+
+\subsubsection*{Supervised Learning}
+
+Supervised machine learning is a fundamental approach for machine learning and \gls{ai}. It involves training a model using labeled data, where each input comes with a corresponding correct output. The process is like a teacher guiding a student—hence the term “supervised” learning. \cite{geeksforgeeks:supervised-learning} \\
+
+The data used in supervised learning is labeled — meaning that it contains examples of both inputs (called features) and correct outputs (labels). The algorithms analyze a large dataset of these training pairs to infer what a desired output value would be when asked to make a prediction on new data. \cite{google:supervised-learning} \\
+
+For instance, pretend you want to teach a model to identify shapes. You provide a labeled dataset that contains many different examples of shapes and the names of each shape. You let the algorithm try to define what set of characteristics belongs to each shape based on the labeled outputs. You can then test the model by showing it a shape and asking it to guess what shape it is. If the model provides an incorrect answer, you can continue training it and adjusting its parameters with more examples to improve its accuracy and minimize errors. \cite{google:supervised-learning} \\ 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/theory/supervised-learning.png}
+    \caption{Supervised Learning Process}
+    \label{fig:supervised-learning}
+\end{figure}
+
+Once the model has been trained and tested, you can use it to make predictions on unknown data based on the previous knowledge it has learned. \cite{google:supervised-learning}
+
+\subsubsection*{Classification}
+
+Classification algorithms are used to group data by predicting a categorical label or output variable based on the input data. Classification is used when output variables are categorical, meaning there are two or more classes. \cite{google:supervised-learning} \\
+
+One of the most common examples of classification algorithms in use is the spam filter in your email inbox. Here, a supervised learning model is trained to predict whether an email is spam or not with a dataset that contains labeled examples of both spam and legitimate emails. The algorithm extracts information about each email, including the sender, the subject line, body copy, and more. It then uses these features and corresponding output labels to learn patterns and assign a score that indicates whether an email is real or spam. \cite{google:supervised-learning}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/theory/classification.jpg}
+    \caption{Spam Classification}
+    \label{fig:classification}
+\end{figure}
+
 \subsection{Web Application}
+
+\textbf{*Brief description of what one might expect to read in the \textit{Web Application} section*}
+
+\subsubsection*{Cross-Platform}
+
+\textbf{*Brief description of what one might expect to read in the \textit{Cross-Platform} section*}
 
 \section{Design}
 
 \subsection{Wireframe}
+
+\subsection{Mockup}
 
 \subsection{UX}
 
@@ -52,19 +115,27 @@ Pull requests are a widely used mechanism to facilitate code reviews in modern v
 
 % Both coupling and cohesion are important factors in determining the maintainability, scalability, and reliability of a software system. High coupling and low cohesion can make a system difficult to change and test, while low coupling and high cohesion make a system easier to maintain and improve. \cite{geeksforgeeks:c&c} 
 
-Coupling and cohesion are two fundamental concepts in software design that significantly impact the quality and maintainability of a system. \\
+Cohesion and coupling are two fundamental concepts in software design that significantly impact the quality and maintainability of a system. \\
 
 % Coupling refers to the degree of interdependence between software modules. In a highly coupled system, modules are tightly connected, meaning that changes in one module may require modifications in others. This can lead to increased complexity and reduced flexibility. On the other hand, low coupling indicates that modules are more independent, with minimal dependencies between them. This promotes modularity, making the system easier to understand, modify, and maintain. \cite{geeksforgeeks:c&c} \\
 
 % Cohesion, in contrast, refers to the degree to which the elements within a module are related and work together to achieve a single, well-defined purpose. High cohesion means that the elements within a module are closely aligned and focused on a specific task, which enhances readability and reusability. Low cohesion, however, implies that the elements within a module are loosely related and may serve multiple purposes, leading to code that is harder to understand and maintain. \cite{geeksforgeeks:c&c} \\
 
 \begin{center}
-\textit{"\textbf{Coupling} refers to the degree of interdependence between software modules. \textbf{Tight coupling} means that modules are closely connected and changes in one module may affect other modules. \textbf{Loose coupling} means that modules are independent, and changes in one module have little impact on other modules."} \cite{geeksforgeeks:c&c} \\
+\textit{"\textbf{Cohesion} refers to the degree to which elements within a module work together to fulfill a single, well-defined purpose. \textbf{High cohesion} means that elements are closely related and focused on a single purpose, while \textbf{low cohesion} means that elements are loosely related and serve multiple purposes."} \cite{geeksforgeeks:c&c} \\
 \end{center}
 
 \begin{center}
-\textit{"\textbf{Cohesion} refers to the degree to which elements within a module work together to fulfill a single, well-defined purpose. \textbf{High cohesion} means that elements are closely related and focused on a single purpose, while \textbf{low cohesion} means that elements are loosely related and serve multiple purposes."} \cite{geeksforgeeks:c&c} \\
+\textit{"\textbf{Coupling} refers to the degree of interdependence between software modules. \textbf{Tight coupling} means that modules are closely connected and changes in one module may affect other modules. \textbf{Loose coupling} means that modules are independent, and changes in one module have little impact on other modules."} \cite{geeksforgeeks:c&c} \\
 \end{center}
+
+\begin{figure}[h!]
+    \subfloat[\centering Cohesion]{{\includegraphics[width=0.5\linewidth]{figures/theory/cohesion.png}}}
+    \subfloat[\centering Coupling]{{\includegraphics[width=0.5\linewidth]{figures/theory/coupling.png}}}
+    
+    \caption{Cohesion \& Coupling}
+    \label{fig:cohesion-coupling}
+\end{figure}
 
 Both coupling and cohesion are important factors in determining the maintainability, scalability, and reliability of a software system. Tight coupling and low cohesion often result in systems that are difficult to change, test, and debug. Conversely, loose coupling and high cohesion contribute to systems that are modular, flexible, and easier to improve over time. \cite{geeksforgeeks:c&c}
 
@@ -107,3 +178,18 @@ During usability testing, both qualitative and quantitative data are collected t
 The ultimate goal of usability testing is to identify pain points in the user experience and uncover opportunities for improvement. By understanding how users interact with the product and where they encounter challenges, developers can make informed decisions to refine the design, improve functionality, and increase overall user satisfaction. \cite{geeksforgeeks:user-test}
 
 \subsection{Type Safety}
+
+Type safety is a fundamental concept in software development that ensures the correctness of a codebase by detecting type-related errors during the development process. In dynamically typed languages, such as JavaScript, variables can be assigned values of any type, which often leads to subtle and hard-to-detect bugs. These bugs can be time-consuming to diagnose and resolve, particularly in large or complex codebases. Type safety addresses this issue by enforcing strict type constraints, thereby reducing the likelihood of runtime errors and improving overall code reliability. \cite{dev:type-safety}
+
+\subsubsection*{Key Pillars of Type Safety}
+
+\begin{itemize}
+    \item \textbf{Reliability:} Type safety acts as a protective mechanism, preventing runtime errors caused by type mismatches. By ensuring that variables and functions adhere to predefined types, it enhances the stability and reliability of applications. \cite{dev:type-safety}
+
+    \item \textbf{Collaboration:} Explicit type declarations improve code readability and make it easier for developers to understand and work with each other's code. This fosters seamless collaboration, especially in team environments where multiple developers contribute to the same codebase. \cite{dev:type-safety}
+
+    \item \textbf{Efficient Debugging:} Type safety enables early detection of type-related discrepancies, reducing the time and effort required for debugging. By catching errors at compile time (or during development in statically typed languages), it minimizes the risk of runtime failures and simplifies the debugging process. \cite{dev:type-safety}
+\end{itemize}
+
+In summary, type safety is a critical aspect of code quality, offering significant benefits in terms of reliability, collaboration, and debugging efficiency. Its implementation, whether through statically typed languages or tools like TypeScript, plays a vital role in modern software development practices. \cite{dev:type-safety}
+
