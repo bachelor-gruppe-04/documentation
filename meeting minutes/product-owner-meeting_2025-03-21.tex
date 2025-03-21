@@ -1,0 +1,40 @@
+\section{Meeting with product owner - March 21th}
+\begin{tabular}{ll}
+    \textbf{Date:} & Friday, March 21th 2025 \\
+    \textbf{Time:} & 09.00 - 09.30\\
+    \textbf{Location:} & A434 Ankeret, NTNU Ålesund \\
+    \textbf{Participants:} & Birgitte Thoresen, Chris Sivert Sylte, Vegard Mytting and Arne Unneland\\
+\end{tabular}
+
+\vspace{0.5cm}
+
+\subsection{Agenda}
+
+\begin{itemize}
+    \item Localhost vs online
+    \item Tillate illegal moves? Evt mulighet å enable/disable
+\end{itemize}
+
+hvis feil trekk, så er man stuck. man får ikke brukt. Kommer feil, slutte å registrere trekk. SOftware skal registrere brettet. Korrigere feil, spiller opp igjen resten av hendelsene - sjekker om de er rett. Blir feks på trekk 13. Hjelpe på å spille partiet riktig.
+
+Hvis uloledig - bibloteket stopper - stuck. Stopper men sir ikke fra. Modus? Tilate alle typer trekk elelr bare legal moves. FEN forteller hva som er hvor. Lager FEN notasjon - bare et bilde. Hvordan brettet ser ut nå. chess library, si hva neste trekk hvvis ugyldig. PGN for å spille gjennom partiet - legge inn alle trekkk - vil feile. 
+
+Mer PGN. Innebære gyldige trekk. feil er ubetydellige. digitalt feil, ugyldigetrekk stopper. mer sikkerhet, jo tryggere. lynsjakk ugyldig - nå må gjøre et trekk som gjør at man blir gyldig. aldri tilbake. i langsjakk, gå tilbake og parten som gjorde ugylig må gjøre gyldig. 
+
+for en sluttbruker, skal ikke få beskjed om feks samme situasjon 5 ganger. spillere må gi beskjed selv. samme person trekk og samme posisjn på brikkene for samme situasjojn. FEN vil ha denne informasjonene. Kan være kult for turneringsleder å få beskjed, slik de kan bli feridg med partiet. 
+
+Lokalt eller web. en pc med kamera som tar bilder. Fysisk maskin. Hvordan man viser det frem kommer an på arkitektur.  skytjeneste. sende trekket. ikke avhendige av denne maskinen til ¨å se partiet. api tilgjengelig på nettet, som sender til nettet. prioritere deteksjon fremfor visning. visning kan arbeides videre på. opp til oss. praktisk bruk, hjelp for turneringsleder, infromasjonsystem på skjermer i lokalet eller vise på nettet. 
+
+Lagre tidligere partier. lichess puller en PGN fil. spør en nettside konstant om trekk. tilby en pgn fil  typisk for denne runden. hver sekvens i PGn. lagre pgn etter hva som skjer. bach 1 og bach 2 etc. få med klokkeslett og hvilket bord. andre turnerings programvarer som kan gi resten av informasjonen. Hvilke som spiller .xml fil. arkiv på applikasjonen eller lastes ned? ny pgn når ny parti. 
+
+feil notasjon, representasjon av hva man har funnet. kamera som detekterer, fore all informasjon fra kamera til et datasett og generert partiet. Ta opp et parti og ta vare på dette og genere PGN fil fra denne videoen. 
+
+hoppe over feil i trekk til man kan detekterer et helt parti. kan bli komplekst. forkus på happy case og alt går bra. detekterer feil trekk, enkel måte å endre trekk. lage et lite verktøy som kan endre. kan finnes mange komplekse problemer. mye til å feil trekk. Endre på pgn underveis. vikitgere å detektere rikitg trekk. Demo, styre den til en happy case. 
+
+Spillere. vitigere med bord og tid. konfigurasjonsfil. kan vidresende lese fra xml. bruke noe som kan lese. gammel widows app, legger inn alle. xml total representasjon over denne turnering. poeng, rating, deltaker, motstander, resultat. endring, oppdateres. 
+
+lett å sette opp docker container med pakket inn stockfish. kan lage en pil når trekket kommer. som NRK. vise pil på hvem osm leder partiet. hvorfro docker? distibusjon på mange måter. analyse må innsatllere stockfish. alle på gjøre det på sin pc for å funker. ved docker kan du lage docker, og de andre kjøre dette. så funker det. realtivt lite arbeid. evaluering av neste trekk. gjorde spilleren bra leler dårlgi. 
+
+
+\subsection{Other}
+blir borte en stund. tilgjengelig på mail og melding.
