@@ -10,31 +10,26 @@
 
 \subsection{Agenda}
 
-\begin{itemize}
-    \item Localhost vs online
-    \item Tillate illegal moves? Evt mulighet å enable/disable
+\begin{itemize} 
+    \item Run the application on localhost or on a website 
+    \item How should the application handle illegal moves 
+    \item Should previous games be saved 
+    \item Feedback from product owner 
 \end{itemize}
 
-hvis feil trekk, så er man stuck. man får ikke brukt. Kommer feil, slutte å registrere trekk. SOftware skal registrere brettet. Korrigere feil, spiller opp igjen resten av hendelsene - sjekker om de er rett. Blir feks på trekk 13. Hjelpe på å spille partiet riktig.
+The application is intended for use during chess tournaments. The primary users are the spectators of the tournament. The camera is local and must be connected to a machine within the arena. The display should be visible onsite, but viewers should also be able to follow the game remotely from their own devices. Therefore, the application cannot be limited to running on localhost; it must be accessible as a website. This can be achieved via an API that sends the game data to the web interface. Since the viewers are the main users of the application, an admin view is not a high priority.
 
-Hvis uloledig - bibloteket stopper - stuck. Stopper men sir ikke fra. Modus? Tilate alle typer trekk elelr bare legal moves. FEN forteller hva som er hvor. Lager FEN notasjon - bare et bilde. Hvordan brettet ser ut nå. chess library, si hva neste trekk hvvis ugyldig. PGN for å spille gjennom partiet - legge inn alle trekkk - vil feile. 
+In manual chess games, where PGN notation is recorded by hand, illegal moves can occasionally occur. This might happen if a player is in check without anyone noticing or if a piece is moved illegally. If such moves go unnoticed, the game continues. When an illegal move is identified, there are various methods for handling it. In classical chess, players must trace back to the point of error using the PGN notation, usually with the help of a tournament judge. In Blitz games, this is more difficult, as PGN notation is typically not used and players may not remember previous moves. If an illegal move is discovered, the players must correct it—for example, if the white king is in check, the player must resolve the check by moving the king or blocking the attack.
 
-Mer PGN. Innebære gyldige trekk. feil er ubetydellige. digitalt feil, ugyldigetrekk stopper. mer sikkerhet, jo tryggere. lynsjakk ugyldig - nå må gjøre et trekk som gjør at man blir gyldig. aldri tilbake. i langsjakk, gå tilbake og parten som gjorde ugylig må gjøre gyldig. 
+On a digital board, if an illegal move is made, the board may stop registering further moves. This application should only display the chess game and should not prevent or interfere with gameplay, as online platforms do. Therefore, if an illegal move occurs, the application may freeze—essentially causing a crash. Since the application uses the Chess.js library (which enforces chess rules), an illegal move results in an error. The players should not be notified through the application, but the resulting PGN file becomes unusable. For a chess player, a PGN containing illegal moves is practically worthless for post-game analysis.
 
-for en sluttbruker, skal ikke få beskjed om feks samme situasjon 5 ganger. spillere må gi beskjed selv. samme person trekk og samme posisjn på brikkene for samme situasjojn. FEN vil ha denne informasjonene. Kan være kult for turneringsleder å få beskjed, slik de kan bli feridg med partiet. 
+In the future, it may be useful to implement functionality to detect illegal moves or repeated positions. A repeated position occurs when the same board state appears three times, including the same player's turn. After three repetitions, a player can request a draw, and after five repetitions, the judge may declare a draw. For this purpose, a notification system within the application could help tournament judges make informed decisions.
 
-Lokalt eller web. en pc med kamera som tar bilder. Fysisk maskin. Hvordan man viser det frem kommer an på arkitektur.  skytjeneste. sende trekket. ikke avhendige av denne maskinen til ¨å se partiet. api tilgjengelig på nettet, som sender til nettet. prioritere deteksjon fremfor visning. visning kan arbeides videre på. opp til oss. praktisk bruk, hjelp for turneringsleder, infromasjonsystem på skjermer i lokalet eller vise på nettet. 
+The end result of the application should be a complete PGN file containing all game data, including time, location, and all moves made. Each file should correspond to one sequence, which could be a game or a round. A new PGN file should be generated for each new game. Additionally, a tournament file in .xml format will contain metadata such as player names, opponents, and match results. This file is generated using an older Windows application called Tournamentservice.
 
-Lagre tidligere partier. lichess puller en PGN fil. spør en nettside konstant om trekk. tilby en pgn fil  typisk for denne runden. hver sekvens i PGn. lagre pgn etter hva som skjer. bach 1 og bach 2 etc. få med klokkeslett og hvilket bord. andre turnerings programvarer som kan gi resten av informasjonen. Hvilke som spiller .xml fil. arkiv på applikasjonen eller lastes ned? ny pgn når ny parti. 
+The product owner suggested that the first version of the application should assume a perfect scenario without illegal moves. Handling all possible errors adds complexity. The priority should be on detecting the correct piece positions and providing a clean visual display. Illegal moves can be ignored until the model is capable of accurately tracking a full game. The most important aspect is ensuring that valid moves are correctly detected.
 
-feil notasjon, representasjon av hva man har funnet. kamera som detekterer, fore all informasjon fra kamera til et datasett og generert partiet. Ta opp et parti og ta vare på dette og genere PGN fil fra denne videoen. 
+For future improvements, Stockfish can be integrated to evaluate positions and show which player has the advantage. This can be containerized using Docker. Instead of requiring users to install Stockfish manually, the engine can be included within a Docker container. Users would only need to download the Docker package, with no additional installations required.
 
-hoppe over feil i trekk til man kan detekterer et helt parti. kan bli komplekst. forkus på happy case og alt går bra. detekterer feil trekk, enkel måte å endre trekk. lage et lite verktøy som kan endre. kan finnes mange komplekse problemer. mye til å feil trekk. Endre på pgn underveis. vikitgere å detektere rikitg trekk. Demo, styre den til en happy case. 
-
-Spillere. vitigere med bord og tid. konfigurasjonsfil. kan vidresende lese fra xml. bruke noe som kan lese. gammel widows app, legger inn alle. xml total representasjon over denne turnering. poeng, rating, deltaker, motstander, resultat. endring, oppdateres. 
-
-lett å sette opp docker container med pakket inn stockfish. kan lage en pil når trekket kommer. som NRK. vise pil på hvem osm leder partiet. hvorfro docker? distibusjon på mange måter. analyse må innsatllere stockfish. alle på gjøre det på sin pc for å funker. ved docker kan du lage docker, og de andre kjøre dette. så funker det. realtivt lite arbeid. evaluering av neste trekk. gjorde spilleren bra leler dårlgi. 
-
-
-\subsection{Other}
-blir borte en stund. tilgjengelig på mail og melding.
+\subsection{Other} 
+The product owner will be unavailable for the upcoming period but is reachable via email or messages.
