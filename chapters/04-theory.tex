@@ -31,24 +31,24 @@ The use of \gls{git} as a version control system enables collaborative developme
 \subsubsection*{Computer Vision}
 \label{subsubsec:computer-vision}
 
-As a subfield of \gls{ai}, computer vision focuses on enabling machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive and understand visual information, automating tasks that traditionally require human intelligence. \cite{google:vision, microsoft:vision}
+As a subfield of \gls{ai}, computer vision focuses on enabling machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive, and understand visual information, automating tasks that traditionally require human intelligence (see Figure \ref{fig:computer-vision}). \cite{google:vision, microsoft:vision}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures//theory/computer-vision.png}
-    \caption{Computer Vision \& Human Vision \cite{turing:computer-vision}}
+    \includegraphics[width=0.75\linewidth]{figures/theory/computer-vision.png}
+    \caption[Computer Vision \& Human Vision]{Computer Vision \& Human Vision \cite{turing:computer-vision}}
     \label{fig:computer-vision}
 \end{figure}
 
 \subsubsection*{Artificial Neural Network}
 \label{subsubsec:artificial-neural-network}
 
-Artificial Neural Networks (ANNs) are a cornerstone of modern machine learning, excelling in processing diverse datasets, including images, audio, and text. Different types of neural networks are tailored for specific tasks. For instance, Recurrent Neural Networks (RNNs), particularly Long Short-Term Memory (LSTM) networks, are effective for sequential data like text or time series. In contrast, \glspl{cnn} are specifically designed for image-related tasks, such as image classification, object detection, and segmentation. Their unique architecture, which includes convolutional layers, enables them to automatically and efficiently extract spatial features from visual data. \cite{geeksforgeeks:cnn} \\
+Artificial Neural Networks (ANNs) are a cornerstone of modern machine learning, excelling in processing diverse datasets, including images, audio, and text. Different types of neural networks are tailored for specific tasks. For instance, Recurrent Neural Networks (RNNs), particularly Long Short-Term Memory (LSTM) networks, are effective for sequential data like text or time series. In contrast, \glspl{cnn} are specifically designed for image-related tasks, such as image classification, object detection, and segmentation. Their unique architecture, which includes convolutional layers, enables them to automatically and efficiently extract spatial features from visual data. An example of a \gls{cnn} architecture used to classify handwritten digits is shown in Figure \ref{fig:convolutional-neural-network}. \cite{geeksforgeeks:cnn} \\
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures//theory/convolutional-neural-network.png}
-    \caption{A CNN sequence to classify handwritten digits \cite{medium:cnn}}
+    \includegraphics[width=0.75\linewidth]{figures/theory/convolutional-neural-network.png}
+    \caption[A CNN sequence to classify handwritten digits]{A CNN sequence to classify handwritten digits \cite{medium:cnn}}
     \label{fig:convolutional-neural-network}
 \end{figure}
 
@@ -57,32 +57,40 @@ The versatility and effectiveness of \glspl{cnn} make them a fundamental tool in
 \subsubsection*{Supervised Learning}
 \label{subsubsec:supervised-learning}
 
-Supervised machine learning is a fundamental approach for machine learning and \gls{ai}. It involves training a model using labeled data, where each input comes with a corresponding correct output. The process is like a teacher guiding a student—hence the term “supervised” learning. \cite{geeksforgeeks:supervised-learning} \\
+Supervised learning is a fundamental approach for machine learning and \gls{ai}. It involves training a model using labeled data, where each input comes with a corresponding correct output. The process is like a teacher guiding a student—hence the term “supervised” learning. \cite{geeksforgeeks:supervised-learning} \\
 
 The data used in supervised learning is labeled — meaning that it contains examples of both inputs (called features) and correct outputs (labels). The algorithms analyze a large dataset of these training pairs to infer what a desired output value would be when asked to make a prediction on new data. \cite{google:supervised-learning} \\
 
-For instance, pretend you want to teach a model to identify shapes. You provide a labeled dataset that contains many different examples of shapes and the names of each shape. You let the algorithm try to define what set of characteristics belongs to each shape based on the labeled outputs. You can then test the model by showing it a shape and asking it to guess what shape it is, see figure \ref{fig:supervised-learning}. If the model provides an incorrect answer, you can continue training it and adjusting its parameters with more examples to improve its accuracy and minimize errors. \cite{google:supervised-learning} \\ 
+% For instance, pretend you want to teach a model to identify shapes. You provide a labeled dataset that contains many different examples of shapes and the names of each shape. You let the algorithm try to define what set of characteristics belongs to each shape based on the labeled outputs. You can then test the model by showing it a shape and asking it to guess what shape it is, see figure \ref{fig:supervised-learning}. If the model provides an incorrect answer, you can continue training it and adjusting its parameters with more examples to improve its accuracy and minimize errors. \cite{google:supervised-learning} \\ 
+
+For instance, consider a scenario where a model is trained to recognize geometric shapes. A labeled dataset would include various shape images paired with their respective names. Through exposure to these examples, the model learns to associate specific visual features with particular shapes. When presented with a new shape, the model attempts to classify it based on its learned knowledge. An overview of this process is illustrated in Figure~\ref{fig:supervised-learning}. If the model makes an incorrect prediction, it can be retrained with additional data to refine its accuracy. \cite{google:supervised-learning} \\
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/supervised-learning.png}
-    \caption{Supervised Learning Diagram \cite{tpointtech:supervised-learning}}
+    \caption[Supervised Learning process using labeled data]{Supervised Learning process using labeled data \cite{tpointtech:supervised-learning}}
     \label{fig:supervised-learning}
 \end{figure}
+
+\newpage
 
 Once the model has been trained and tested, you can use it to make predictions on unknown data based on the previous knowledge it has learned. \cite{google:supervised-learning}
 
 \subsubsection*{Classification}
 \label{subsubsec:classification}
 
-Classification algorithms are used to group data by predicting a categorical label or output variable based on the input data. Classification is used when output variables are categorical, meaning there are two or more classes. \cite{google:supervised-learning} \\
+% Classification algorithms are used to group data by predicting a categorical label or output variable based on the input data. Classification is used when output variables are categorical, meaning there are two or more classes. \cite{google:supervised-learning} \\
 
-One of the most common examples of classification algorithms in use is the spam filter in your email inbox. Here, a supervised learning model is trained to predict whether an email is spam or not with a dataset that contains labeled examples of both spam and legitimate emails. The algorithm extracts information about each email, including the sender, the subject line, body copy, and more. It then uses these features and corresponding output labels to learn patterns and assign a score that indicates whether an email is real or spam. \cite{google:supervised-learning}
+% One of the most common examples of classification algorithms in use is the spam filter in your email inbox. Here, a supervised learning model is trained to predict whether an email is spam or not with a dataset that contains labeled examples of both spam and legitimate emails. The algorithm extracts information about each email, including the sender, the subject line, body copy, and more. It then uses these features and corresponding output labels to learn patterns and assign a score that indicates whether an email is real or spam. \cite{google:supervised-learning}
+
+Classification is a type of supervised learning used to predict a categorical output variable based on input data. These output variables—known as classes—represent distinct categories, such as "spam" or "not spam", or "disease present" versus "no disease". Classification algorithms are specifically designed to assign new inputs to one of these predefined classes. \cite{google:supervised-learning} \\
+
+A common real-world application of classification is email spam detection. In this case, a supervised learning model is trained using a dataset containing labeled examples of both spam and legitimate emails. The model learns to identify patterns based on various features, such as the sender's address, subject line, and email content. These features, along with their corresponding labels, enable the algorithm to predict whether a new incoming email should be categorized as spam or not. An illustration of this classification process is shown in Figure \ref{fig:classification}. \cite{google:supervised-learning}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/classification.jpg}
-    \caption{Email Classification \cite{analytixlabs:classification}}
+    \caption[Email Classification]{Email Classification \cite{analytixlabs:classification}}
     \label{fig:classification}
 \end{figure}
 
@@ -141,11 +149,11 @@ Cohesion and coupling are two fundamental concepts in software design that signi
     \subfloat[\centering Cohesion]{{\includegraphics[width=0.5\linewidth]{figures/theory/cohesion.png}}}
     \subfloat[\centering Coupling]{{\includegraphics[width=0.5\linewidth]{figures/theory/coupling.png}}}
     
-    \caption{Cohesion \& Coupling \cite{geeksforgeeks:c&c}}
+    \caption[Cohesion \& Coupling]{Cohesion \& Coupling \cite{geeksforgeeks:c&c}}
     \label{fig:cohesion-coupling}
 \end{figure}
 
-Both coupling and cohesion are important factors in determining the maintainability, scalability, and reliability of a software system. Tight coupling and low cohesion often result in systems that are difficult to change, test, and debug. Conversely, loose coupling and high cohesion contribute to systems that are modular, flexible, and easier to improve over time. \cite{geeksforgeeks:c&c}
+Both coupling and cohesion are important factors in determining the maintainability, scalability, and reliability of a software system. Tight coupling and low cohesion often result in systems that are difficult to change, test, and debug. Conversely, loose coupling and high cohesion contribute to systems that are modular, flexible, and easier to improve over time. An illustration of this concept is shown in Figure \ref{fig:cohesion-coupling}. \cite{geeksforgeeks:c&c}
 
 \subsection{Documentation}
 \label{subsec:documentation}
