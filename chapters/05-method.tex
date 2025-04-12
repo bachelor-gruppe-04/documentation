@@ -20,11 +20,15 @@
 \section{Software Design}
 \label{sec:software-design}
 
+Regarding the design of the product, the product owner expressed no particular preferences and allowed the group full control in determining the website’s structure and color palette. 
+
 \subsection{Design Process}
 \label{subsec:design-process}
 
 \subsubsection*{User-Centered Design}
 \label{subsubsec:user-centered-design}
+
+This process aligns with the principles discussed in \ref{subsubsec:usability-testing}, as outlined in Chapter~\ref{chp:theory}. \\
 
 At the beginning of the design process, the group conducted wireframe testing with a diverse set of users. This included participants of varying age groups—from young to elderly—as well as both chess players and non-chess players. The goal was to evaluate whether users found the interface intuitive and whether the sizing and layout were appropriate across different demographics. \\
 
@@ -45,8 +49,30 @@ After completing their interaction with the application, participants filled out
     \item \textit{Do you have any feedback, suggestions for improvement, or features you would like to see added?}
 \end{itemize}
 
-This process aligns with the principles discussed in \ref{subsubsec:usability-testing}, as outlined in Chapter~\ref{chp:theory}.
+\subsubsection*{Color Palette}
+\label{subsubsec:color-palette}
 
+When selecting the color palette for the application, the group opted for a variation of blue. This choice was influenced by the symbolic associations of the color blue, which is often linked to imagination, intelligence, and wisdom \cite{blue}—qualities that closely reflect the essence of chess \cite{chess:ppqty, chess:chess-and-creativity}. \\
+
+To determine the most suitable variation, multiple versions of the application were created, each featuring a different color palette. These variations were printed and displayed on a wall, allowing candidates from diverse backgrounds to view and compare them. \\
+
+Participants were then asked to vote for their preferred version using a form. The variation that received the highest number of votes was ultimately chosen as the final color palette for the application. \\
+
+\begin{tikzpicture}
+\begin{axis}[
+	x tick label style={
+		/pgf/number format/1000 sep=},
+	ylabel=Number of Votes,
+	enlargelimits=0.05,
+	legend style={at={(0.5,-0.1)},
+	anchor=north,legend columns=-1},
+	ybar interval=0.7
+]
+\addplot 
+	coordinates {(1, 4) (2, 4) (3, 5) (4, 7) (5, 9) (6, 5) (7, 6) (8, 3) (9, 2) (10, 4) (11, 3) (12, 2) (13, 7) (14, 10) (15, 0)};
+\label{fig:color-palette-results}
+\end{axis}
+\end{tikzpicture}
 
 \subsection{Diagrams}
 \label{subsec:diagrams}
@@ -80,7 +106,7 @@ This process aligns with the principles discussed in \ref{subsubsec:usability-te
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/wireframe/overview.png}
-    \caption[Games Overview Wireframe]{Wireframe of the Games Overview}
+    \caption[Tournament View Wireframe]{Tournament View Wireframe}
     \label{fig:app-overview}
 \end{figure}
 
@@ -90,7 +116,7 @@ This process aligns with the principles discussed in \ref{subsubsec:usability-te
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/wireframe/table-view.png}
-    \caption[Table View Wireframe]{Wireframe of the Table View of a Game on Table 1}
+    \caption[Board View Wireframe of a Game on Table 1]{Board View Wireframe of a Game on Table 1}
     \label{fig:app-table-view}
 \end{figure}
 

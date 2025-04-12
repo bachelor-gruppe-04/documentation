@@ -28,8 +28,12 @@
             maxcitenames = 3,
             giveninits=false % Does NOT include initials
             ]{biblatex}
+\usepackage{pgfplots}
 \usepackage[colorlinks=true, allcolors=black]{hyperref}
 \usepackage[toc, acronyms]{glossaries}
+
+\usepgfplotslibrary{external}
+\tikzexternalize
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%% CONFIG %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -211,6 +215,8 @@
 \newacronym{ml}{ML}{Machine Learning}
 
 \newacronym{ntnu}{NTNU}{Norwegian University of Science and Technology}
+
+\newacronym{onnx}{ONNX}{Open Neural Network Exchange}
 
 \newacronym{pgn}{PGN}{Portable Game Notation}
 
