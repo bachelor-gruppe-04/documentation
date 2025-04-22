@@ -11,24 +11,58 @@
 \subsection{Agile Approach}
 \label{subsec:agile-approach}
 
-\subsection{Sprint Planning}
-\label{subsec:sprint-planning}
+During the development of the application, Agile software development methodologies were adopted. This approach was chosen to support flexibility, collaboration, and customer satisfaction throughout the project lifecycle.
 
-\subsection{Code Reviews}
-\label{subsec:code-review}
+\subsubsection*{Sprints}
+
+The team conducted bi-weekly meeting, each concluded with a sprint review and retrospective. Sprint planning involved discussions around:
+
+\begin{itemize}
+  \item \textbf{Sprint Goals:} Individual objectives and tasks to be completed before the next meeting.
+  \item \textbf{Completed Tasks:} A review of which issues were resolved during the sprint.
+  \item \textbf{Incomplete Tasks:} Identification of tasks that were not successfully completed and possible causes.
+  \item \textbf{Next Sprint Planning:} General objectives for the upcoming sprint.
+  \item \textbf{Action Items:} Assignments clarifying who would be responsible for specific tasks.
+  \item \textbf{Product Backlog Review:} Selection of tasks to work on during the next sprint.
+\end{itemize}
+
+During retrospectives, the team reflected on what went well during the sprint and identified areas for improvement, fostering continuous learning and adaptation.
+
+\subsubsection*{Product Owner}
+
+\subsubsection*{Supervisor}
+
+\subsubsection*{Issue Board}
+
+To manage and track tasks, the team utilized GitHub’s Issue Board. Each issue was categorized based on its type:
+\begin{itemize}
+  \item \textbf{Feature/Enhancement:} New functionality or improvements.
+  \item \textbf{Documentation:} Work related to improving documentation and team understanding.
+  \item \textbf{Bug:} Issues related to errors or unexpected behavior in the application.
+  \item \textbf{Task:} General tasks not fitting into the other categories.
+\end{itemize}
+
+Each issue was assigned to one or more team members to clarify responsibilities. The Issue Board was divided into four columns:
+\textit{No Status}, \textit{To Do}, \textit{In Progress}, and \textit{Done}, offering a clear visual overview of the development workflow.
+
+\subsubsection*{Code Review}
+
+In alignment with the workflow described in Subsection~\ref{subsec:version-control}, as outlined in Chapter \ref{chp:theory}, each issue was implemented on a dedicated branch. This setup enabled team members to conduct peer reviews via GitHub pull requests before merging changes into the main codebase. This process encouraged collaboration, maintained code quality, and facilitated shared decision-making within the team.
+
+\newpage
 
 \section{Software Design}
 \label{sec:software-design}
 
-Regarding the design of the product, the product owner expressed no particular preferences and allowed the group full control in determining the website’s structure and color palette. 
+Regarding the design of the product, the product owner expressed no particular preferences and allowed the team full control in determining the website’s structure and color palette.
 
 \subsection{Design Process}
 \label{subsec:design-process}
 
+The following processes align with the principles discussed in \ref{subsubsec:usability-testing}, as outlined in Chapter~\ref{chp:theory}.
+
 \subsubsection*{User-Centered Design}
 \label{subsubsec:user-centered-design}
-
-This process aligns with the principles discussed in \ref{subsubsec:usability-testing}, as outlined in Chapter~\ref{chp:theory}. \\
 
 At the beginning of the design process, the group conducted wireframe testing with a diverse set of users. This included participants of varying age groups—from young to elderly—as well as both chess players and non-chess players. The goal was to evaluate whether users found the interface intuitive and whether the sizing and layout were appropriate across different demographics. \\
 
@@ -49,75 +83,184 @@ After completing their interaction with the application, participants filled out
     \item \textit{Do you have any feedback, suggestions for improvement, or features you would like to see added?}
 \end{itemize}
 
+See Subsection \ref{subsec:wireframe} for the final tested wireframe.
+
+\newpage
+
 \subsubsection*{Color Palette}
 \label{subsubsec:color-palette}
 
-When selecting the color palette for the application, the group opted for a variation of blue. This choice was influenced by the symbolic associations of the color blue, which is often linked to imagination, intelligence, and wisdom \cite{blue}—qualities that closely reflect the essence of chess \cite{chess:ppqty, chess:chess-and-creativity}. \\
+In selecting the application's color palette, the group opted for a variation of blue. This choice was influenced by the symbolic associations of the color blue, which is often linked to imagination, intelligence, and wisdom \cite{blue}—qualities that align closely with the nature of chess \cite{chess:ppqty, chess:chess-and-creativity}. \\
 
-To determine the most suitable variation, multiple versions of the application were created, each featuring a different color palette. These variations were printed and displayed on a wall, allowing candidates from diverse backgrounds to view and compare them. \\
+To identify the most suitable stylistic direction, several versions of the application were developed, each showcasing a distinct color palette. These prototypes were printed and displayed in a shared space, allowing individuals from diverse backgrounds to view and compare them. \\
 
-Participants were then asked to vote for their preferred version using a form. The variation that received the highest number of votes was ultimately chosen as the final color palette for the application. \\
+Participants were invited to vote for their preferred versions via a form. Each participant was allowed up to three votes and had the option to leave comments. For instance, some expressed a preference for the light mode from palette \#08 and the dark mode from palette \#07, while others favored the board design from palette \#05 or the move-highlighting style from palette \#14. \\
 
-\begin{tikzpicture}
-\begin{axis}[
-	x tick label style={
-		/pgf/number format/1000 sep=},
-	ylabel=Number of Votes,
-	enlargelimits=0.05,
-	legend style={at={(0.5,-0.1)},
-	anchor=north,legend columns=-1},
-	ybar interval=0.7
-]
-\addplot 
-	coordinates {(1, 4) (2, 4) (3, 5) (4, 7) (5, 9) (6, 5) (7, 6) (8, 3) (9, 2) (10, 4) (11, 3) (12, 2) (13, 7) (14, 10) (15, 0)};
-\label{fig:color-palette-results}
-\end{axis}
-\end{tikzpicture}
+Rather than selecting a single predefined palette, the final color scheme was assembled by combining the most highly rated elements across the top-voted variations. This approach allowed for a more tailored and user-informed visual design (See Figure \ref{fig:color-palette-results} for the vote results). \\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/methods/color-palette-results.png}
+    \caption{Distribution of Votes Across Different Color Palettes}
+    \label{fig:color-palette-results}
+\end{figure}
+
+See Appendix~\ref{app:color-palettes} for the full set of tested color palettes.
 
 \subsection{Diagrams}
 \label{subsec:diagrams}
 
+To provide a comprehensive understanding of the system architecture and interaction flow, several \gls{uml} diagrams were created. These diagrams model different aspects of the live chess game digitization system, from component interactions and activity flow to user roles and use cases.
+
 \subsubsection*{Sequence Diagram}
 \label{subsubsec:sequence-diagram}
 
+The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the Admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. Users, from remote devices, can spectate the game in real time or save it as a \gls{pgn} file. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
+
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures/uml/sequence.png}
+    \includegraphics[width=0.75\linewidth]{figures/methods/uml/sequence.png}
     \caption[Sequence Diagram]{Sequence Diagram}
     \label{fig:sequence}
 \end{figure}
 
-\subsubsection*{Activity Diagram}
-\label{subsubsec:activity-diagram}
+\subsubsection*{Use-Case Diagram}
+\label{subsubsec:use-case-diagram}
+
+The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primary functionalities they interact with. Admins are responsible for hardware setup and initiating the game recording process. The system autonomously handles move detection, validation, and \gls{ui} updates. Users, on the other hand, access the game remotely to spectate or download \gls{pgn} files. This diagram provides a clear overview of who interacts with the system and what capabilities are exposed, forming the basis for understanding system requirements and user expectations.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[height=0.75\linewidth]{figures/uml/activity.png}
-    \caption[Activity Diagram]{Activity Diagram}
-    \label{fig:activity}
+    \includegraphics[width=0.75\linewidth]{figures/methods/uml/use-case.png}
+    \caption{Use-Case Diagram}
+    \label{fig:use-case}
+\end{figure}
+
+\begin{figure}[h!]
+    \subsubsection*{Activity Diagram}
+    \label{subsubsec:activity-diagram}
+    
+    \centering
+    \begin{minipage}[t]{0.5\textwidth}
+        \vspace{0pt}
+        The activity diagram, shown in Figure \ref{fig:activity}, provides a high-level overview of the operational workflow during a chess game session. It models the continuous loop of capturing board states, detecting and validating moves, and updating the game state until the game ends. If a move is invalid, the system flags it but does not terminate the session. Once the game concludes, it is converted into a standard \gls{pgn} format. This diagram emphasizes the logical flow and decision-making process, reflecting the system’s role in automating and maintaining the integrity of live digitization.
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \vspace{0pt}
+        \includegraphics[width=\linewidth]{figures/methods/uml/activity-2.png}
+        \caption[Activity Diagram]{Activity Diagram}
+        \label{fig:activity}
+    \end{minipage}
 \end{figure}
 
 \subsection{Wireframes}
 \label{subsec:wireframe}
 
-\subsubsection*{Tournament Overview}
-\label{subsubsec:tournament-overview}
+\subsubsection*{Control Panel}
+
+The Control Panel, Figure \ref{fig:control-panel-group}, is a desktop-only interface designed for tournament organizers to manage the digitization of multiple physical chess boards. The interface follows a simple three-step workflow:
+
+\begin{enumerate}
+    \item \textbf{Select Number of Cameras:} The admin specifies how many boards will be monitored, which informs the system how many camera feeds to initialize, Figure \ref{fig:control-panel-1}.
+    \item \textbf{Start Cameras and Digitization:} This action triggers the camera feeds, board state recognition, and move validation processes, Figure \ref{fig:control-panel-2}.
+    \item \textbf{Restart Boards for New Round:} At the end of a round, this step resets the system state across all boards, preparing it for the next set of games, Figure \ref{fig:control-panel-3}.
+\end{enumerate}
+
+The control panel is intentionally minimal and task-oriented, ensuring admins can quickly configure and manage the system with minimal technical overhead.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures/wireframe/overview.png}
-    \caption[Tournament View Wireframe]{Tournament View Wireframe}
-    \label{fig:app-overview}
+    \begin{subfigure}[h!]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methods/wireframes/control-panel-1.png}
+        \caption{Step 1}
+        \label{fig:control-panel-1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h!]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methods/wireframes/control-panel-2.png}
+        \caption{Step 2}
+        \label{fig:control-panel-2}
+    \end{subfigure}
+    
+    \vspace{1em}
+
+    \begin{subfigure}[h!]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methods/wireframes/control-panel-3.png}
+        \caption{Step 3}
+        \label{fig:control-panel-3}
+    \end{subfigure}
+    
+    \caption{Control Panel wireframes showing sequential interaction steps}
+    \label{fig:control-panel-group}
 \end{figure}
 
-\subsubsection*{Table View}
-\label{subsubsec:table-view}
+\begin{figure}[h!]
+\subsubsection*{Desktop View}
+    \centering
+    \begin{subfigure}[h!]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methods/wireframes/desktop-tournament-view.png}
+        \caption{Tournament View}
+        \label{fig:desktoop-tournament-view}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h!]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methods/wireframes/desktop-board-view.png}
+        \caption{Board View}
+        \label{fig:desktop-board-view}
+    \end{subfigure}
+    
+    \vspace{1em}
+
+    \begin{subfigure}[h!]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methods/wireframes/desktop-full-screen-video-view.png}
+        \caption{Fullscreen Video Feed}
+        \label{fig:desktop-fullscreen-video}
+    \end{subfigure}
+    
+    \caption{Desktop client-side view wireframes}
+    \label{fig:desktop-view-group}
+\end{figure}
 
 \begin{figure}[h!]
+\subsubsection*{Phone View}
     \centering
-    \includegraphics[width=0.75\linewidth]{figures/wireframe/table-view.png}
-    \caption[Board View Wireframe of a Game on Table 1]{Board View Wireframe of a Game on Table 1}
-    \label{fig:app-table-view}
+    \begin{subfigure}[h!]{0.2\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methods/wireframes/phone-tournament-view.png}
+        \caption{Tournament View}
+        \label{fig:phone-tournament-view}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h!]{0.2\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methods/wireframes/phone-board-view.png}
+        \caption{Board View}
+        \label{fig:phone-board-view}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h!]{0.2\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methods/wireframes/phone-full-screen-video-view-vertical.png}
+        \caption{Vertical Fullscreen Video Feed}
+        \label{fig:phone-fullscreen-video-vertical}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h!]{0.2\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/methods/wireframes/phone-full-screen-video-view-horizontal.png}
+        \caption{Horizontal Fullscreen Video Feed}
+        \label{fig:phone-fullscreen-video-horizontal}
+    \end{subfigure}
+    
+    \caption{Phone client-side view wireframes}
+    \label{fig:phone-view-group}
 \end{figure}
 
 \section{Tools and Platforms}
@@ -126,35 +269,24 @@ Participants were then asked to vote for their preferred version using a form. T
 \subsection{Development Tools}
 \label{subsec:development-tools}
 
-\subsubsection*{Visual Studio Code}
-\label{subsubsec:visual-studio-code}
-
-\subsubsection*{Postman}
-\label{subsubsec:postman}
-
-\subsubsection*{Netron.app}
-\label{subsubsec:natron}
-
-\subsubsection*{Git}
-\label{subsubsec:git}
-
-\subsubsection*{ChatGPT}
-\label{subsubsec:chatgpt}
+\begin{itemize}
+    \item \textbf{\gls{vscode}} supports almost every major programming language, making it an ideal all-in-one \gls{ide}.
+    \item \textbf{Postman} can test any \gls{api} with pre-configured code snippets: Postman includes a JavaScript-based library of code snippets that enable teams to easily author tests that validate their \gls{api}'s performance, reliability, and behavior.
+    \item \textbf{Netron.app} is a visualizer for neural network, deep learning and machine learning models.
+    \item \textbf{Git} is a distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+    \item \textbf{\glspl{llm}} are used as an assistance to discuss code quality and structures. Viewed/used as a "sparing" partner.
+    \item \textbf{Lighthouse} is an automated tool to help improve quality of web pages.
+\end{itemize}.
 
 \subsection{Collaboration and Design Tools}
 \label{subsec:collaboration-and-design-tools}
 
-\subsubsection*{GitHub}
-\label{subsubsec:github}
-
-\subsubsection*{Figma}
-\label{subsubsec:figma}
-
-\subsubsection*{OneDrive}
-\label{subsubsec:onedrive}
-
-\subsubsection*{Overleaf}
-\label{subsubsec:overleaf}
+\begin{itemize}
+    \item \textbf{GitHub} is used for it's in-house \textit{project} function, creating an Issue Board enabled with easy to use Issues. Also used for code reviewing and code managment.
+    \item \textbf{Figma} is a tool used for sketching and creating wireframes.
+    \item \textbf{OneDrive} is a platform used for storing files.
+    \item \textbf{Overleaf} was used as a report platform, with it's LaTeX support, making it suitable for writing longer reports.
+\end{itemize}
 
 \section{Technology Stack}
 \label{sec:technology-stack}
@@ -168,21 +300,21 @@ For the backend technology, Python is being used.
 \label{subsubsec:python-libraries}
 
 \begin{itemize}
-    \item \texttt{chess} is a library for Python, with move generation, move validation, and support for common formats. \cite{python:chess}
+    \item \textbf{chess} is a library for Python, with move generation, move validation, and support for common formats. \cite{python:chess}
     
-    \item \texttt{FastAPI} is a modern and fast web framework for building \Glspl{api} with Python. \cite{python:fastapi}
+    \item \textbf{FastAPI} is a modern and fast web framework for building \Glspl{api} with Python. \cite{python:fastapi}
     
-    \item \texttt{numpy} is a fundamental package for scientific computing in Python. \cite{python:numpy}
+    \item \textbf{numpy} is a fundamental package for scientific computing in Python. \cite{python:numpy}
     
-    \item \texttt{onnxruntime}, \texttt{onnxruntime-gpu} assists in model serialization and interface with ORT. \cite{python:onnx}
+    \item \textbf{onnxruntime}, \textbf{onnxruntime-gpu} assists in model serialization and interface with ORT. \cite{python:onnx}
     
-    \item \texttt{opencv-python}, \texttt{opencv-contrib-python}, \texttt{opencv-python-headless} is used to solve computer vision problems. \cite{python:opencv}
+    \item \textbf{opencv-python}, \textbf{opencv-contrib-python}, \textbf{opencv-python-headless} is used to solve computer vision problems. \cite{python:opencv}
     
-    \item \texttt{requests} allows to send HTTP requests easily. \cite{python:requests}
+    \item \textbf{requests} allows to send HTTP requests easily. \cite{python:requests}
     
-    \item \texttt{scipy} is a fundamental package for algorithms for scientific computing in python. \cite{python:scipy}
+    \item \textbf{scipy} is a fundamental package for algorithms for scientific computing in python. \cite{python:scipy}
     
-    \item \texttt{tensorflow}, \texttt{tensorflow-intel} makes it easy to create \gls{ml} models that can run in any environment. \cite{python:tensorflow}
+    \item \textbf{tensorflow}, \textbf{tensorflow-intel} makes it easy to create \gls{ml} models that can run in any environment. \cite{python:tensorflow}
 \end{itemize}
 
 \subsection{Frontend}
@@ -192,13 +324,13 @@ For the frontend technology, TypeScript is being used. As discussed in \ref{subs
 \subsubsection*{TypeScript Libraries}
 
 \begin{itemize}
-    \item \texttt{Vite} is a fast frontend build tool of web applications. \cite{ts:vite}
+    \item \textbf{Vite} is a fast frontend build tool of web applications. \cite{ts:vite}
     
-    \item \texttt{React} builds user interfaces out of individual pieces called components. \cite{ts:react}
+    \item \textbf{React} builds user interfaces out of individual pieces called components. \cite{ts:react}
     
-    \item \texttt{@vitejs/plugin-react-swc} Speeds up the Vite development server. \cite{ts:swc}
+    \item \textbf{@vitejs/plugin-react-swc} Speeds up the Vite development server. \cite{ts:swc}
     
-    \item \texttt{chess.ts} a Typescript chess library for chess move generation/validation, piece placement/movement, and check/checkmate/draw detection \cite{ts:chess}
+    \item \textbf{chess.ts} a Typescript chess library for chess move generation/validation, piece placement/movement, and check/checkmate/draw detection \cite{ts:chess}
     
-    \item \texttt{react-dom} serves as the entry point to the DOM and server renderers for React. \cite{ts:react-dom}
+    \item \textbf{react-dom} serves as the entry point to the DOM and server renderers for React. \cite{ts:react-dom}
 \end{itemize}

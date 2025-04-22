@@ -8,25 +8,26 @@
 \section{Literature Review}
 \label{sec:literature-review}
 
-With the advancement of technology, various digital applications and solutions have emerged to enhance the experience of playing and analyzing chess. Prominent online platforms such as \textit{chess.com} and \textit{lichess.org} allow players to compete across the globe, offering features such as online matchmaking, tutorials, and game analysis. \\
-Additionally, physical chessboards have been modernized through the integration of digital technologies, such as \gls{rfid} tags, which enable the digitization of physical chess games. \cite{quora:shah} \\
+As technology continues to evolve, a variety of digital tools and platforms have emerged to enhance the experience of playing and analyzing chess. Leading online platforms such as \textit{chess.com} and \textit{lichess.org} provide global matchmaking, tutorials, and advanced game analysis features, significantly transforming how chess is played and studied. \\
 
-Furthermore, advancements in \gls{ai} have led to the development of applications capable of automating tasks such as piece recognition and game digitization. One notable example is \textit{ChessCam}, a web- and mobile-based application designed for quick and efficient live chess digitization. ChessCam allows users to either upload pre-recorded videos of chess games or stream live games using a mobile phone or webcam. The application processes the video input, recognizes the moves, and generates \gls{pgn} files, which can be used for further analysis or archival purposes.
+In addition to software-based innovations, physical chessboards have also been modernized through the integration of digital technologies. For example, the use of \gls{rfid} tags enables the digitization of over-the-board games, allowing for automated tracking and broadcasting of moves. \cite{quora:shah} \\
+
+Clono is a tablet-based electronic scoresheet system designed to replace traditional paper scoresheets. It transmits game data to the Clono Server, enabling live online broadcasts of tournaments. Clono offers a secure, affordable, and easy-to-use solution that does not require electronic chessboards, cables, or on-site technical personnel. \cite{clono} \\
+
+Moreover, recent advancements in \gls{ai} have led to the development of applications capable of automating tasks such as piece recognition and game digitization. A notable example is \textit{ChessCam}, a web- and mobile-based application that facilitates rapid, real-time digitization of chess games. Users can either upload pre-recorded video footage or stream live games via a mobile phone or webcam. The application processes the visual input, detects moves, and generates \gls{pgn} files suitable for analysis or archival. \cite{chess:chesscam, lichess:chesscam}
 
 \section{Technologies}
 \label{sec:technologies}
-
-\textbf{*Brief description of what one might expect to read in the \textit{Tools and Technologies} section*}
 
 \subsection{Version Control}
 \label{subsec:version-control}
 
 The use of \gls{git} as a version control system enables collaborative development by allowing multiple developers to work on the same codebase simultaneously. \gls{git} facilitates the maintenance of the code and provides a comprehensive history of all modifications made to the project. These changes are tracked within project containers known as \glspl{repository}, ensuring transparency and accountability throughout the development process. \cite{alphaefficiency:git}
 
+\subsubsection*{Branches}
+
 \subsection{Machine Learning}
 \label{sec:machine-learning}
-
-\textbf{*Brief description of what one might expect to read in the \textit{Machine Learning} section*}
 
 \subsubsection*{Computer Vision}
 \label{subsubsec:computer-vision}
@@ -61,8 +62,6 @@ Supervised learning is a fundamental approach for \gls{ml} and \gls{ai}. It invo
 
 The data used in supervised learning is labeled — meaning that it contains examples of both inputs (called features) and correct outputs (labels). The algorithms analyze a large dataset of these training pairs to infer what a desired output value would be when asked to make a prediction on new data. \cite{google:supervised-learning} \\
 
-% For instance, pretend you want to teach a model to identify shapes. You provide a labeled dataset that contains many different examples of shapes and the names of each shape. You let the algorithm try to define what set of characteristics belongs to each shape based on the labeled outputs. You can then test the model by showing it a shape and asking it to guess what shape it is, see figure \ref{fig:supervised-learning}. If the model provides an incorrect answer, you can continue training it and adjusting its parameters with more examples to improve its accuracy and minimize errors. \cite{google:supervised-learning} \\ 
-
 For instance, consider a scenario where a model is trained to recognize geometric shapes. A labeled dataset would include various shape images paired with their respective names. Through exposure to these examples, the model learns to associate specific visual features with particular shapes. When presented with a new shape, the model attempts to classify it based on its learned knowledge. An overview of this process is illustrated in Figure~\ref{fig:supervised-learning}. If the model makes an incorrect prediction, it can be retrained with additional data to refine its accuracy. \cite{google:supervised-learning} \\
 
 \begin{figure}[h!]
@@ -79,10 +78,6 @@ Once the model has been trained and tested, you can use it to make predictions o
 \subsubsection*{Classification}
 \label{subsubsec:classification}
 
-% Classification algorithms are used to group data by predicting a categorical label or output variable based on the input data. Classification is used when output variables are categorical, meaning there are two or more classes. \cite{google:supervised-learning} \\
-
-% One of the most common examples of classification algorithms in use is the spam filter in your email inbox. Here, a supervised learning model is trained to predict whether an email is spam or not with a dataset that contains labeled examples of both spam and legitimate emails. The algorithm extracts information about each email, including the sender, the subject line, body copy, and more. It then uses these features and corresponding output labels to learn patterns and assign a score that indicates whether an email is real or spam. \cite{google:supervised-learning}
-
 Classification is a type of supervised learning used to predict a categorical output variable based on input data. These output variables—known as classes—represent distinct categories, such as "spam" or "not spam", or "disease present" versus "no disease". Classification algorithms are specifically designed to assign new inputs to one of these predefined classes. \cite{google:supervised-learning} \\
 
 A common real-world application of classification is email spam detection. In this case, a supervised learning model is trained using a dataset containing labeled examples of both spam and legitimate emails. The model learns to identify patterns based on various features, such as the sender's address, subject line, and email content. These features, along with their corresponding labels, enable the algorithm to predict whether a new incoming email should be categorized as spam or not. An illustration of this classification process is shown in Figure \ref{fig:classification}. \cite{google:supervised-learning}
@@ -94,34 +89,61 @@ A common real-world application of classification is email spam detection. In th
     \label{fig:classification}
 \end{figure}
 
-\subsection{Web Application}
+\subsection{Web}
 \label{subsec:web}
-
-\textbf{*Brief description of what one might expect to read in the \textit{Web Application} section*}
 
 \subsubsection*{Cross-Platform}
 \label{subsubsec:corss-platform}
 
-Run on all operative systems. Windows, Linux, and iOS.
+Cross-platform applications are software programs designed to function consistently across multiple operating systems or platforms. This includes desktop environments such as Windows, macOS, and Linux, as well as mobile platforms like iOS and Android. \cite{sevenpeaks:cross-platform}
+
+\subsubsection*{Client-Server Architecture}
+\label{subsubsec:client-server}
+
+Client-server architecture is a network model in which multiple clients request and receive services from a centralized server over a local network or the Internet. Clients interact with the system through an application interface, while the server handles data processing. This architecture enables centralized control, scalability, and efficient resource management. See Figure~\ref{fig:client-server-architecture}. \cite{liquidweb:client-server}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/theory/client-server-architecture.png}
+    \caption[Client-Server Architecture]{Client-Server Architecture \cite{liquidweb:client-server}}
+    \label{fig:client-server-architecture}
+\end{figure}
+
+\subsubsection*{WebSocket}
+\label{subsubsec:websocket}
+
+WebSocket is a standardized communication protocol that enables full-duplex communication over a single \gls{tcp} connection, making it well-suited for real-time web applications. Unlike traditional \gls{http} requests — which follow a request-response model — WebSocket establishes a persistent connection that allows both the client and server to send and receive data at any time. This reduces the need for polling or long polling, significantly lowering network traffic and latency. As a result, WebSocket improves the efficiency and responsiveness of data transmission, particularly in applications such as live data feeds and online games. See Figure \ref{fig:websocket-vs-http} for a comparison. \cite{nodejs:websocket, apidog:websocket}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/theory/websocket-vs-http.png}
+    \caption[WebSocket Connection VS HTTP Connection]{WebSocket Connection VS HTTP Connection \cite{apidog:websocket}}
+    \label{fig:websocket-vs-http}
+\end{figure}
 
 \section{Design}
 \label{sec:design}
 
-\textbf{*Brief description of what one might expect to read in the \textit{Design} section*}
-
 \subsection{Wireframe}
 \label{subsec:wireframe}
 
-\subsection{UX}
-\label{subsec:ux}
+A wireframe is a rough schematic created in the early stages of digital product design to help visualize and communicate the structure of a product or website. \cite{balsamiq:wireframe} \\
 
-\subsection{UI}
-\label{subsec:ui}
+The same screen can be built in a lot of different ways, but only a few of them will get your message across correctly and result in an easy-to-use software or website. \cite{balsamiq:wireframe} \\
+
+The purpose of a wireframe is to define a skeletal layout that is easy to understand, and encourages iteration and feedback. Getting to agreement on a good interface structure is a critical part of the software design process. \cite{balsamiq:wireframe} \\
+
+Wireframes are important because doing this work now, before any code is written and before the visual design is finalized, will save you lots of time and painful vadjustment work later. \cite{balsamiq:wireframe} 
+
+\subsection{WCAG}
+\label{subsec:wcag}
+
+\gls{wcag} provide technical specifications to improve the accessibility of websites and many other digital experiences. \cite{levelaccess:wcag}
 
 \section{Code Quality}
 \label{sec:code-quality}
-
-\textbf{*Brief description of what one might expect to read in the \textit{Code Quality} section*}
 
 \subsection{Code Review}
 \label{subsec:code-review}
@@ -146,14 +168,17 @@ Cohesion and coupling are two fundamental concepts in software design that signi
 \end{quote}
 
 \begin{figure}[h!]
-    \subfloat[\centering Cohesion]{{\includegraphics[width=0.5\linewidth]{figures/theory/cohesion.png}}}
-    \subfloat[\centering Coupling]{{\includegraphics[width=0.5\linewidth]{figures/theory/coupling.png}}}
-    
+    \centering
+    \subfloat{{\includegraphics[width=0.5\linewidth]{figures/theory/cohesion.png}}}
+    \subfloat{{\includegraphics[width=0.5\linewidth]{figures/theory/coupling.png}}}
+
     \caption[Cohesion \& Coupling]{Cohesion \& Coupling \cite{geeksforgeeks:c&c}}
     \label{fig:cohesion-coupling}
 \end{figure}
 
-Both coupling and cohesion are important factors in determining the maintainability, scalability, and reliability of a software system. Tight coupling and low cohesion often result in systems that are difficult to change, test, and debug. Conversely, loose coupling and high cohesion contribute to systems that are modular, flexible, and easier to improve over time. An illustration of this concept is shown in Figure \ref{fig:cohesion-coupling}. \cite{geeksforgeeks:c&c}
+Both cohesion and coupling are important factors in determining the maintainability, scalability, and reliability of a software system. Tight coupling and low cohesion often result in systems that are difficult to change, test, and debug. Conversely, loose coupling and high cohesion contribute to systems that are modular, flexible, and easier to improve over time. An illustration of this concept is shown in Figure \ref{fig:cohesion-coupling}. \cite{geeksforgeeks:c&c}
+
+\newpage
 
 \subsection{Documentation}
 \label{subsec:documentation}
@@ -170,8 +195,7 @@ In modern software development, documentation is not merely an afterthought but 
 \subsubsection*{Virtual Machine}
 \label{subsubsec:virtual-machine}
 
-
-Virtualization is the process of creating a software-based, or "virtual" version of a computer, with dedicated amounts of \gls{cpu}, memory, and storage that are "borrowed" from a physical host computer, and/or a remote server—such as a server in a cloud provider's datacenter. A \gls{vm} is a computer file, that behaves like an actual computer. It can run in a window as a separate computing environment. The \gls{vm} is partitioned from the rest of the system, meaning that the software inside a \gls{vm} can't interfere with the host computer's primary operating system.
+Virtualization refers to the creation of a software-based — or "virtual" — version of a computer, with dedicated allocations of \gls{cpu}, memory, and storage drawn from a physical host machine or a remote server, such as one in a cloud provider's data center. A \gls{vm} is essentially a computer file that behaves like an independent computer system. It operates within a window as a separate computing environment, isolated from the host operating system. This isolation ensures that the software running inside the \gls{vm} cannot interfere with the host machine’s primary system. \cite{microsoft:virtual-machine}
 
 \subsubsection*{Unit Testing}
 \label{subsubsec:unit-testing}
