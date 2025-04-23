@@ -90,12 +90,10 @@ A common real-world application of classification is email spam detection. In th
 \end{figure}
 
 \subsection{LeYOLO}
-\gls{leyolo} is a \gls{cnn} designed for real-time object detection. It is a lightweight version of the \gls{yolo} architecture. Compared to standard \gls{yolo} models, \gls{leyolo} is optimized for efficiency and has lower computational requirements. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates. \\
-
-The main difference between \gls{leyolo} and the original \gls{yolo} models lies in its simplified architecture. By reducing the number of layers and parameters, \gls{leyolo} achieves significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. [SOURCE NEEDED]
+\gls{leyolo} is a \gls{cnn} designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture. allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates.  [SOURCE NEEDED]\\
 
 \subsection{Bounding box}
-A bounding box is a rectangular region used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models like \gls{leyolo} predict these coordinates to both localize and classify objects within an image. [SOURCE NEEDED]
+A bounding box is a rectangular region used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image. [SOURCE NEEDED]
 
 \begin{figure}[h!]
     \centering
