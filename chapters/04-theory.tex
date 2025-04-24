@@ -102,9 +102,17 @@ A bounding box is a rectangular region used to indicate the location of an objec
     \label{fig:classification}
 \end{figure}
 
+\subsection{Anchor Boxes}
+Anchor boxes are predefined bounding boxes of various sizes and aspect ratios used as reference points for object detection models. These boxes are placed over the image or feature map to help the model predict the location and dimensions of objects.
+
+Rather than directly predicting bounding boxes, the model predicts \textit{offsets} (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a \textit{confidence score} indicating the likelihood that an object is present.
+
+Multiple anchor boxes are used at each position in the image to account for different object sizes and shapes. After generating predictions, \textit{Non-Maximum Suppression (NMS)} is applied to eliminate redundant boxes, keeping only the most accurate ones.
+
+
 
 \subsection{Inference} 
-Inference refers to the process of using a trained machine learning model to make predictions on new, unseen data. In the context of object detection models inference involves feeding an input image into the model, which then processes the image and outputs predictions. The predictions typically consist of object classes, confidence scores, and bounding box coordinates. [SOURCE NEEDED]
+Inference refers to the process of using a trained machine learning model to make predictions on new, unseen data. In the context of object detection models, inference involves feeding an input image into the model, which then processes the image and outputs predictions. The predictions typically consist of object classes, confidence scores, and bounding box coordinates. [SOURCE NEEDED]
 
 
 
