@@ -339,18 +339,12 @@ For the frontend technology, TypeScript is being used. As discussed in \ref{subs
 \section{Machine Learning Models}
 \label{sec:ml-models}
 
-THIS part is far from complete
-
-As explained earlier, we wanted to extract the PGN from a chess game using cameras. In order to achieve this, it was necessary to determine both the source and destination positions of moved pieces. After conducting research into existing approaches for chess digitization, a publicly available repository was discovered that addressed this exact problem. The solution, developed by Peter Batchelor, Tom Richardson, and other contributors, consists of two CNN models: one for detecting the chess pieces and another for identifying the four corners of the chessboard. \cite{lichess:chesscam}.
+The objective was to extract the \gls{PGN} from a chess game using cameras, requiring the identification of both source and destination positions of moved pieces. Research into existing chess digitization methods led to the discovery of a publicly available solution by Peter Batchelor, Tom Richardson, and other contributors. This solution employs two CNN models: one for detecting chess pieces and another for locating the four corners of the chessboard \cite{lichess:chesscam}.
 
 
 \subsection{Piece Detection Model}
 
 The piece detection model is responsible for identifying and classifying chess pieces within an image of the chessboard. Upon receiving an image as input, the model outputs bounding boxes and class labels corresponding to the pieces detected on the board.
-
-At a high level, the model works by analyzing the chessboard's layout and recognizing key features that distinguish each piece. It then classifies the pieces based on these features, providing both their locations and types.
-
-The input image is pre-processed to a standard resolution of 288x480 pixels with three color channels (RGB). This standardization ensures the model can process images consistently, regardless of their original size or aspect ratio. The model performs a series of convolutional operations to extract important visual features from the image, such as edges, textures, and distinctive patterns associated with the chessboard and the pieces.
 
 After processing the image, the model returns a set of predictions for each potential piece. These predictions include:
 
@@ -360,6 +354,5 @@ Class probabilities: Indicating the likelihood of each piece being a specific ty
 
 The model predicts these values for each anchor box. An anchor box is a predefined bounding box within the image that serves as a potential candidate location for a piece. By adjusting these anchor boxes, the model can detect and classify pieces across different positions on the chessboard.
 
-This approach is highly efficient, as it leverages anchor boxes—fixed locations and shapes within the image. The model refines these boxes to better match the actual positions of the pieces. This mechanism allows the model to detect and classify chess pieces accurately, even in complex or cluttered board setups.
 
 \begin{subfigure}[h!]{0.9\linewidth} \centering \includegraphics[width=\linewidth]{figures/methods/models/piece-model.png} \caption{Tournament View} \end{subfigure}
