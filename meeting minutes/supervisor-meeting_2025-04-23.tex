@@ -16,37 +16,25 @@
     \item Questions regarding the report
 \end{itemize}
 
-how does the highlight work? no server just local host. 
+The meeting started with a demonstration of the updated front-end application. The user interface has been improved for better usability, and new features were showcased, including an updated PGN display and move highlighting. The highlighting feature tracks the last move’s origin and destination squares, applying a visual cue to those tiles during rendering to indicate the most recent move.
 
-Control panel for tounament responsible, restart hte board and start cameras, not on website. desktop application. how many cameras. with progress bar. needs better styling. restart cameras either all or one. start tournament starts teh achine learning. seems fine. final tuches of connecting things. 
+The web application is currently run locally on localhost, as requested by the product owner. Since the application is divided into a front-end and a back-end, deploying it to a server should be straightforward.
 
-takes 1,5 minutes for connecting one camera. supervisor said its fine. Make move. nothing should happend. checks when the opponent makes a move. the the first move should have been printed in the console. new issue, not happend before.
+An additional feature, the control panel, has been developed as a standalone desktop application intended solely for use by the tournament organizer or judge. It operates independently of the web application, ensuring that no external users can access tournament administration. The control panel manages camera setup, starts the back-end, connects it to the front-end, and allows for restarting all or individual boards. Supervisor feedback included suggestions for improved styling and a more user-friendly interface.
 
-nevne i rapprt. hesten må være vinklet riktig. fra siden. 
+The back-end was also demonstrated to the supervisor. Connecting a camera takes approximately 1 minute and 30 seconds, which the supervisor considered acceptable. Once connected, the machine learning component should be able to read the board state. For testing purposes, each move is printed in the console log. As expected, white always makes the first move; however, the first move is currently not logged immediately. Instead, it appears in the console only after the second move is made. During the demonstration, this functionality did not work, despite functioning correctly the day before. This issue is currently being investigated. Another issue to take into account is the machine learning model’s ability to recognize knight pieces. It appears to only identify them correctly when viewed from the side. This limitation is currently being investigated and should be addressed in the final report. 
 
-Anders ulstein krus. Many students. would reccomend. next meeting on wednesday 
+The supervisor strongly suggests us to focus on connecting things, as well as write on the report. He also reccomended Anders Ulstein's sessions about report writing and academic texts. The next and third session is next Wednesday May 7th.  
 
-how technical. more referances. add image/figure. not technical details? sizes is irrelevant, but just explain of a higher level. 
+The first draft of the report was emailed to the supervisor a few days prior to the meeting. It included draft sections for the introduction, theory, and methods, while the results and discussion sections are yet to be written. The supervisor noted that the structure of the report is very good and mentioned that he had skimmed through it in advance. The front page follows the template provided in the course and currently includes the group members' names instead of candidate numbers. An additional front page will be added when the bachelor thesis is officially submitted.
 
-structure is very good. referance to alesund schacklag in footer where we talk about project. or referance.  
+The report should be written in a way that is accessible to all readers, regardless of their background. This means that all technical terms, both from computing and chess, should be briefly explained. More relevant or complex terms should be elaborated in the theory section, while simpler terms like Git, LaTeX, and Python can be included in a glossary. For example, Git can be described as \textit{“a tool used for source code management.”} Explanations in the theory section should be concise (maximum two lines) and focus on high-level understanding, avoiding unnecessary technical detail.
 
-kort introdukasjon for hvert kapittel i kursiv? keep the thesis structure.. both places. can shorten in thesis structure. small pharagraph before the chapter. 
+The introduction should include a section titled "Thesis Structure", which briefly outlines the overall organization of the report. Additionally, each chapter can begin with a short introductory paragraph that describes its specific content. The description in the "Thesis Structure" section should be concise, while the chapter-specific introductions can provide a bit more detail to guide the reader through the content.
 
-skal vi ha forside? fra template. keep names. keep it there. one automaticcaly and teh other one from template. 
+The results section of the report should be divided into three subsections: one for the machine learning component, one for the web application, and one for the overall development process. Each subsection should present results that reflect how well the respective part of the solution functions. For example, evaluating the accuracy and reliability of the machine learning system. It’s important that the structure of these subsections is mirrored in the discussion section, maintaining a consistent order to ensure clarity and coherence throughout the report. If machine learning is presented first in the results, it should also be the first topic discussed in the discussion section.
 
-references consistent. when refernce not have published date. website sites in a different way. leave it empty, the paranteses.  
-
-er det desktop? web? begge? i project goal section
-theisis structure? hvor mye
-
-glossaries, hvilke skal vi ha med? mer sjakk begreper. 
-skal ALLE kunne lese rapporten? eller kun relevante personer med noe peiling på rapport/sjakk/data. for everyone. theory and method, add a little bit. definitions. 2 lines maximum. theory is more about small pharagraphs. fine ot add to glossary. 
-
-results. machine learing, website, apps and the process itself. how to stucture is important. apllication and group results. how well does the machine learning work. 
-
-cosistent in discustion. same structure as the result.
-
-add ethics and socisal impacts? other thesis. 
+he supervisor recommended including sections on ethics and social impact in the report, even though these were not specified in the course-provided template. Such sections are found in other bachelor theses and help provide a broader perspective on the project's implications. Additionally, all references should be consistent throughout the report. For instance, the AAlesund Schaklag website should be cited in the section describing the project. If a reference lacks a publication date, it can simply be left blank.
 
 \subsection{Other}
-how often should we send report version. highlight/comment the changes. 
+The next draft of the report should be sent to the supervisor a few days in advance of the upcoming meeting to allow time for review and feedback.
