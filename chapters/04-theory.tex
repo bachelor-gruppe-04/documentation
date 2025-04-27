@@ -89,30 +89,54 @@ A common real-world application of classification is email spam detection. In th
     \label{fig:classification}
 \end{figure}
 
-\subsubsection*{LeYOLO}
+\subsubsection*{LeYOLO} 
 \gls{leyolo} is a \gls{cnn} designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture. allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates.  [SOURCE NEEDED]\\
 
-\subsubsection*{Bounding box}
-A bounding box is a rectangular region used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image. [SOURCE NEEDED]
+\subsubsection*{Bounding box} 
+A bounding box is a rectangular region used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and  the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image. [SOURCE NEEDED]
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/theory/bbox-example.png}
+    \includegraphics[width=0.8\linewidth]{figures/theory/image-recognition/bbox-example.png}
     \caption[Bounding box example]{Bounding box example \cite{peopleforai:boundingbox}}
-    \label{fig:classification}
+    \label{fig:boundingbox}
 \end{figure}
 
 \subsubsection*{Anchor Boxes}
-Anchor boxes are predefined bounding boxes of various sizes and aspect ratios used as reference points for object detection models. These boxes are placed over the image or feature map to help the model predict the location and dimensions of objects.
+Anchor boxes are predefined bounding boxes of various sizes and aspect ratios used as reference points for object detection models. These boxes are placed over the image or feature map (DET ER KUN FEATURE MAP IKKE IMAGE MEN SKAL VI FORKLARE FEATURE MAP?] to help the model predict the location and dimensions of objects.
 
-Rather than directly predicting bounding boxes, the model predicts \textit{offsets} (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a \textit{confidence score} indicating the likelihood that an object is present.
+Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present.
 
-Multiple anchor boxes are used at each position in the image to account for different object sizes and shapes. After generating predictions, \textit{Non-Maximum Suppression (NMS)} is applied to eliminate redundant boxes, keeping only the most accurate ones.
+Multiple anchor boxes are used at each position in the image to account for different object sizes and shapes. After generating predictions, \gls{nms} is applied to eliminate redundant boxes, keeping only the most accurate ones.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/theory/image-recognition/anchor-boxes.png}
+    \caption[Anchor boxes example]{Anchor boxes example \cite{thinkautonomous:anchorboxes}}
+    \label{fig:anchor-box}
+\end{figure}
+
+
+\subsubsection{Non-maximum suppression}
+\gls{nms} is a post-processing technique used in object detection to eliminate redundant or overlapping bounding boxes . When a model predicts multiple boxes for the same object, \gls{nms} ensures that only the most confident prediction is kept.
+
+The algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain.
+
+By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object.
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/theory/image-recognition/nms.png}
+    \caption[NMS before and after]{NMS before and after \cite{thepythoncode:nms}}
+    \label{fig:nms}
+\end{figure}
 
 
 \subsubsection*{Inference} 
-Inference refers to the process of using a trained machine learning model to make predictions on new, unseen data. In the context of object detection models, inference involves feeding an input image into the model, which then processes the image and outputs predictions. The predictions typically consist of object classes, confidence scores, and bounding box coordinates. [SOURCE NEEDED]
+Inference refers to the process of using a trained machine learning model to make predictions on new, unseen data. In the context of object detection models, inference involves feeding an input image into the model, which then processes the image and outputs predictions. The predictions typically consist of object classes, confidence scores, and bounding box coordinates. [SOURCE NEEDED] 
+
+
 
 
 
