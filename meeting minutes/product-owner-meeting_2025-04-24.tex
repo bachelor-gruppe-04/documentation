@@ -1,7 +1,7 @@
 \section{Meeting with product owner - April 24th}
 \begin{tabular}{ll}
     \textbf{Date:} & Thursday, April 24th 2025 \\
-    \textbf{Time:} & 18.30 - 0\\
+    \textbf{Time:} & 18.30 - 19.30\\
     \textbf{Location:} & Steinvågvegen 60, 6005 Aalesund \\
     \textbf{Participants:} & Birgitte Thoresen, Chris Sivert Sylte, Vegard Mytting and Arne Unneland\\
 \end{tabular}
@@ -16,25 +16,17 @@
     \item Feedback from product owner 
 \end{itemize}
 
-Starter med en demo av backend. arne gjør et trekk, så enda ett. dette blir logget riktig. hvert andre trekk sender den. funker for ett trekk, ikke mer. virker som den må kjøre noen ganger, før den gjør deet korrekt. samme med saleh tidligere på dagen. så arbeidet vi videre, og den fungerte. 
+The meeting began with a demonstration of the updated back-end application. The product owner tested the system, where chessboard moves were mapped using machine learning. The product owner made a white move followed by a black move, where the first move were correctly detected. Currently, moves are logged only after the subsequent move is made. During this demonstration, only the first move was logged correctly before the machine learning system failed to continue. After some waiting and additional attempts, the machine learning eventually began logging the chess moves accurately. It appears that the model needs a "warm-up" period before functioning reliably.
 
-control panel. for admin. når grunnstilling oppnådd så reset. kan fungere på flere kamera.
+Next, the control panel was demonstrated. Here, the tournament organizer can select the number of cameras and reset one or all of the chessboards. The product owner suggested an improvement: when a camera detects the starting position, the board should automatically reset without requiring manual intervention through the control panel. 
 
+Finally, the front-end application was demonstrated. The product owner was pleased with the chosen color scheme and overall design. For use on a large screen at a tournament, he requested that the tournament view display multiple boards simultaneously. For example, the view should show four boards, each displaying the players' names, clubs, ratings, and a preview of the board positions. Once a game is completed, it should be marked in the tournament view with the result of the game.
 
-videre, binde alt sammen. 
+For further development, the group needs to integrate the back-end with the front-end. One development idea from the product owner was to create an application that starts with a simple switch. This would allow chess players to use the application without needing any technical knowledge. When the switch is turned on, the application would start, connect to the cameras, and begin recording games. Players could then play as usual, with the cameras passively recording the moves. When a chessboard returns to its starting position, the application would recognize that the game has ended and reset the board accordingly. After the tournament or session, players would simply turn off the switch to stop the application.
 
-further development. trykke på en knapp som starter kamera. denne står og spiller. trenger ingen med kompetanse. når grunnstilling, reset board. når ferdig så skru av bryteren. 
+Another idea was to integrate Stockfish into the application, allowing players to analyze their games afterward. While the product owner shared several ideas for further development, he emphasized the importance of managing the remaining time carefully. The highest priority for this project is ensuring that the application can reliably and accurately read a chessboard.
 
-likte du fargene? fargene er fine. blått er bra. viser flere parti på turneringsview. med preview av brettene. spillere for klubb. rating, resultat etc. er partiet ferid, hva skjer da? markering
-
-hadde vært gøy emd stockfish, men lite tid. leegge  til mye innhold. 
-
-
-elbett. 3-4 tusen for brett (på rabatt). 1500 for biter. 1000 for klokke. billigste totalsum 5,5 tusen + kabler . DGT
-
-kamera 1000,- 
-
-kan fungere som sikring av utstyr. 
+The product owner also showed the group two of the digital chessboards used at the chess club, to compare them with the solution developed for this project. Te camera-based solution offers an extra benefit: it doubles as a security measure to monitor the equipment. The most significant difference is the cost of the equipment. This project requires only regular boards and pieces, along with a camera and a computer. In contrast, the digital boards require a specialized digital board (costing between 3,000 and 4,000 NOK even at a discounted price), special pieces (approximately 1,500 NOK), a special clock (around 1,000 NOK), and cables to connect everything to a computer. This setup typically costs over 5,500 NOK — and that’s for the most affordable option. 
 
 \subsection{Other} 
-siste møte. 
+Since the group will now focus on writing the report, this was the final scheduled meeting with the product owner. However, he will remain available via email for any questions related to the project.
