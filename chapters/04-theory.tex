@@ -26,7 +26,7 @@ The use of \gls{git} as a version control system enables collaborative developme
 
 \subsubsection*{Branches}
 
-Git utilizes branches, which are independent lines of development within a repository. Branches allow developers to work on new features, fixes, or experiments without affecting the main codebase. Once changes in a branch are tested and finalized, they can be merged back into the main branch, ensuring a streamlined and controlled integration process. Branching supports parallel development and helps prevent conflicts by isolating work until it's ready for review and integration.
+Git utilizes branches, which are independent lines of development within a repository. Branches allow developers to work on new features, fixes, or experiments without affecting the main codebase. Once changes in a branch are tested and finalized, they can be merged back into the main branch, ensuring a streamlined and controlled integration process. Branching supports parallel development and helps prevent conflicts by isolating work until it's ready for review and integration. \cite{git:branches}
 
 \subsection{Machine Learning}
 \label{sec:machine-learning}
@@ -136,6 +136,18 @@ The algorithm works by first selecting the box with the highest confidence score
     \label{fig:nms}
 \end{figure}
 
+
+\subsubsection*{Perspective Transformation}
+
+A perspective transformation is a specific type of image warping that corrects distortions caused by viewing a flat object from an angle. When an image is taken from a tilted viewpoint, objects that are normally rectangular, such as a chessboard, appear distorted and no longer have right angles. A perspective transformation uses mathematical techniques to map points from the distorted image back to their correct, undistorted positions. \cite{nvidia:perspective-transform}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/perspective-transformation.png}
+    \caption[Perspective transformation before and after]{Perspective transformation before and after  \cite{nvidia:perspective-transform}}
+    \label{fig:perspective-transformation}
+\end{figure}
 
 
 
