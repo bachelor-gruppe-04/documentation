@@ -128,7 +128,6 @@ Rather than directly predicting bounding boxes, the model predicts offsets (shif
 The algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object.
 \cite{thepythoncode:nms}
 
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/nms.png}
