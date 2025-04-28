@@ -39,7 +39,7 @@ As a subfield of \gls{ai}, computer vision focuses on enabling machines to inter
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/computer-vision.png}
-    \caption[Computer Vision \& Human Vision]{Computer Vision \& Human Vision \cite{turing:computer-vision}}
+    \caption[Computer Vision vs. Human Vision]{Comparison of Computer Vision and Human Vision: Illustrating the similarities and differences in processing visual data \cite{turing:computer-vision}} 
     \label{fig:computer-vision}
 \end{figure}
 
@@ -53,7 +53,7 @@ In contrast, \glspl{cnn} are specifically designed for image-related tasks, such
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/convolutional-neural-network.png}
-    \caption[A CNN sequence to classify handwritten digits]{A CNN sequence to classify handwritten digits \cite{medium:cnn}}
+    \caption[Example of CNN architecture for handwritten digit classification]{CNN architecture for classifying handwritten digits \cite{medium:cnn}}
     \label{fig:convolutional-neural-network}
 \end{figure}
 
@@ -74,7 +74,7 @@ A model trained to recognize geometric shapes uses a labeled dataset consisting 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png}
-    \caption[Supervised Learning process using labeled data]{Supervised Learning process using labeled data \cite{tpointtech:supervised-learning}}
+    \caption[Supervised Learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}}
     \label{fig:supervised-learning}
 \end{figure}
 
@@ -92,7 +92,7 @@ A bounding box is a rectangular region used to indicate the location of an objec
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/bbox-example.png}
-    \caption[Bounding box example]{Bounding box example \cite{peopleforai:boundingbox}}
+    \caption[Example of a bounding box in object detection]{Example of a bounding box used in object detection to localize an object within an image \cite{peopleforai:boundingbox}}
     \label{fig:boundingbox}
 \end{figure}
 
@@ -107,7 +107,8 @@ Rather than directly predicting bounding boxes, the model predicts offsets (shif
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/theory/image-recognition/anchor-boxes.png}
-    \caption[Anchor boxes example]{Anchor boxes example \cite{thinkautonomous:anchorboxes}}
+    \caption[Example of anchor boxes in object detection]{Example of anchor boxes in object detection, used as reference points to predict object locations
+    \cite{thinkautonomous:anchorboxes}}
     \label{fig:anchor-box}
 \end{figure}
 
@@ -117,10 +118,12 @@ Rather than directly predicting bounding boxes, the model predicts offsets (shif
 The algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object.
 \cite{thepythoncode:nms}
 
+\newpage
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/nms.png}
-    \caption[NMS before and after]{NMS before and after \cite{thepythoncode:nms}}
+    \caption[Non-maximum suppression (NMS) before and after applying the algorithm]{Non-maximum suppression (NMS) before and after applying the algorithm, showing the removal of overlapping bounding boxes \cite{thepythoncode:nms}}
     \label{fig:nms}
 \end{figure}
 
@@ -133,7 +136,7 @@ A perspective transformation is a specific type of image warping that corrects d
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/perspective-transformation.png}
-    \caption[Perspective transformation before and after]{Perspective transformation before and after  \cite{nvidia:perspective-transform}}
+    \caption[Perspective transformation before and after]{Perspective transformation before and after applying the algorithm, demonstrating how distortion caused by an angled viewpoint is corrected to restore the object’s original shape \cite{nvidia:perspective-transform}}
     \label{fig:perspective-transformation}
 \end{figure}
 
