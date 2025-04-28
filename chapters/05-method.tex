@@ -339,10 +339,11 @@ For the frontend technology, TypeScript is being used. As discussed in \ref{subs
 \section{Machine Learning Models}
 \label{sec:ml-models}
 
-Research into existing chess digitization methods, we identified a publicly available solution developed by Peter Batchelor, Tom Richardson, and other contributors. This solution serves as the foundation for our approach. It utilizes two \glspl{cnn}: one for detecting chess pieces and another for locating the squares of the chessboard \cite{lichess:chesscam}.
+After conducting research into existing chess digitization methods, a publicly available solution developed by Peter Batchelor, Tom Richardson, and other contributors was identified. This solution serves as the foundation for our approach. It utilizes two \glspl{cnn}: one for detecting chess pieces and another for locating the squares of the chessboard \cite{lichess:chesscam}.
 
-\subsection{}
-The chesscam repo had multiple options to choose between, both pytorch or ONNX. ONNX was chosen (then explain here why would choose that). To find the inputs and outputs of the models netron was used. 
+\subsection*{Format Selection and Preprocessing}
+The ChessCam repository provided multiple model formats, including PyTorch and ONNX. The ONNX format was chosen because it is framework-agnostic, making integration into different deployment environments easier. It also simplifies the inference process. Before the models were used, several preparatory steps were required. Netron, a model visualization tool, was employed to inspect the ONNX files and determine the expected input and output. This step helped in designing appropriate preprocessing steps and correctly interpreting the model outputs. Additionally, due to limited documentation, clarifications regarding the model structure were obtained through direct communication with the original developers.
+
 
 
 \subsection{Piece Detection Model}
