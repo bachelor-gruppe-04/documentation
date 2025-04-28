@@ -78,10 +78,21 @@ A model trained to recognize geometric shapes uses a labeled dataset consisting 
     \label{fig:supervised-learning}
 \end{figure}
 
-\subsection{Object Detection}
+\subsection{Model Deployment}
+
+\subsubsection*{ONNX}
+
+\gls{onnx} is an open-source format for representing machine learning models, enabling easy transfer and interoperability between different frameworks like PyTorch and TensorFlow. \cite{roboflow:onnx}
+
+\subsubsection*{Tensorflow}
+
+TensorFlow is an open-source machine learning framework developed by Google for building and deploying machine learning models. It provides comprehensive tools for deep learning, image processing, and natural language processing, and supports both training and inference of models. \cite{nvidia:tensorflow}
+
 
 \subsubsection*{Inference} 
 Inference refers to the process of using a trained machine learning model to make predictions on new, unseen data. In the context of object detection models, inference involves feeding an input image into the model, which then processes the image and outputs predictions. The predictions typically consist of object classes, confidence scores, and bounding box coordinates.\cite{nvidia:inference}
+
+\subsection{Object Detection}
 
 \subsubsection*{LeYOLO} 
 \gls{leyolo} is a \gls{cnn} designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture. allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates.\cite{openreview:leyolo}\\
