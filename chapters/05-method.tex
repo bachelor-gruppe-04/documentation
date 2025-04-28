@@ -339,11 +339,13 @@ For the frontend technology, TypeScript is being used. As discussed in \ref{subs
 \section{Machine Learning Models}
 \label{sec:ml-models}
 
-Research into existing chess digitization methods, we identified a publicly available solution developed by Peter Batchelor, Tom Richardson, and other contributors. This solution serves as the foundation for our approach. It utilizes two \glspl{cnn}: one for detecting chess pieces and another for locating the four corners of the chessboard \cite{lichess:chesscam}.
+Research into existing chess digitization methods, we identified a publicly available solution developed by Peter Batchelor, Tom Richardson, and other contributors. This solution serves as the foundation for our approach. It utilizes two \glspl{cnn}: one for detecting chess pieces and another for locating the squares of the chessboard \cite{lichess:chesscam}.
+
+\subsection{}
+The chesscam repo had multiple options to choose between, both pytorch or ONNX. ONNX was chosen (then explain here why would choose that). To find the inputs and outputs of the models netron was used. 
 
 
 \subsection{Piece Detection Model}
-The piece detection is a LeYOLO ONNX model.
 
 The piece detection model is responsible for identifying and classifying chess pieces within an image of the chessboard. Upon receiving an image as input, the model outputs bounding boxes and class labels corresponding to the pieces detected on the board.
 
@@ -356,4 +358,4 @@ Class probabilities: Indicating the likelihood of each piece being a specific ty
 The model predicts these values for each anchor box. An anchor box is a predefined bounding box within the image that serves as a potential candidate location for a piece. By adjusting these anchor boxes, the model can detect and classify pieces across different positions on the chessboard.
 
 
-\begin{subfigure}[h!]{0.9\linewidth} \centering \includegraphics[width=\linewidth]{figures/methods/models/piece-model.png} \caption{Tournament View} \end{subfigure}
+\begin{subfigure}[h!]{0.9\linewidth} \centering \includegraphics[width=\linewidth]{figures/methods/ml-models/piece-model.png} \caption{Tournament View} \end{subfigure}
