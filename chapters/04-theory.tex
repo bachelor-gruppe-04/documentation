@@ -107,7 +107,7 @@ Anchor boxes are predefined bounding boxes of various sizes and aspect ratios us
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/theory/image-recognition/anchor-boxes.png}
-    \caption[Example of anchor boxes in object detection]{Example of anchor boxes in object detection, used as reference points to predict object locations
+    \caption[Example of anchor boxes in object detection]{Illustration of multiple anchor boxes of different shapes and sizes centered on each grid cell in the image. These serve as initial reference boxes from which the model adjusts its predictions to fit actual objects
     \cite{thinkautonomous:anchorboxes}}
     \label{fig:anchor-box}
 \end{figure}
@@ -123,7 +123,7 @@ The algorithm works by first selecting the box with the highest confidence score
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/nms.png}
-    \caption[Non-maximum suppression (NMS) before and after applying the algorithm]{Non-maximum suppression (NMS) before and after applying the algorithm, showing the removal of overlapping bounding boxes \cite{thepythoncode:nms}}
+    \caption[Non-maximum suppression (NMS) before and after applying the algorithm]{Illustration of NMS before and after its application. NMS retains the bounding box with the highest confidence score while suppressing those that significantly overlap with it \cite{thepythoncode:nms}}
     \label{fig:nms}
 \end{figure}
 
