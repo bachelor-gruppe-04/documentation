@@ -35,12 +35,9 @@ However, the second camera, did not behave as expected. Despite being physically
 
 This issue was traced back to a cached or “ghost” device entry in the Windows Device Manager. A ghost device refers to a previously connected hardware device that is no longer physically attached to the system but whose configuration and driver information remain cached by the operating system. These leftover entries can lead to conflicts or incorrect device indexing when similar hardware is reconnected, especially when multiple identical devices are used. In this case, the system appeared to retain prior camera associations, which caused the application to misidentify or incorrectly assign the camera index.
 
-\subsection{Highlighting last move}
+\subsection{Special moves}
 When a move is made, the front-end highlights the previous and current tiles of the moved piece. User testing with different color palettes resulted in the selection of a bright contrast color relative to the main design scheme to ensure good visibility. \\
 
 The chessboard component manages the rules of chess, while the front-end is responsible only for storing tile positions and applying styling. In standard moves, highlighting the starting and ending tiles is sufficient. However, special moves such as castling, pawn promotion, and en passant capture require additional handling. \\
 
 In castling, both the king and a rook move simultaneously. Castling kingside (short castling) moves the king toward the board's edge, while castling queenside (long castling) moves the king toward the center. Since the default highlight logic tracks only one piece, it does not correctly represent castling moves. Additional logic was implemented to highlight the movements of both the king and rook during castling, ensuring consistency and clarity for the user.
-
-\subsection{Reading knights}
-Issues with the accuracy of reading the knights correctly.
