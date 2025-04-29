@@ -129,9 +129,7 @@ The algorithm works by first selecting the box with the highest confidence score
 
 \subsubsection*{Normalization}
 
-Normalization in image processing involves scaling pixel values to a consistent range, typically [0, 1] or [-1, 1], to improve model performance. By adjusting pixel intensities from their original range (0-255) to a smaller scale, normalization ensures that the model processes inputs in a more stable and consistent manner. This helps prevent issues related to large variations in intensity, accelerates model convergence, and promotes better training stability. Normalization is essential for deep learning models, as it ensures that the input features are on a similar scale, aiding in more efficient and accurate learning.
-
-\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/normalization.png} \caption[Normalization process in image preprocessing]{Illustration of the normalization process applied to an image, adjusting pixel values to a standard range for model input.} \label{fig:normalization} \end{figure}
+Normalization in image processing involves scaling pixel values to a consistent range, typically [0, 1] or [-1, 1], to improve model performance. By adjusting pixel intensities from their original range (0-255) to a smaller scale, normalization ensures that the model processes inputs in a more stable and consistent manner. This accelerates model convergence. Normalization ensures that the input features are on a similar scale, aiding in more efficient and accurate learning.
 
 \subsubsection*{Scaling}
 
@@ -148,13 +146,13 @@ Scaling process in image preprocessing]{Illustration of the scaling process in i
 
 \subsubsection*{Perspective Transformation}
 
-A perspective transformation is a specific type of image warping that corrects distortions caused by viewing a flat object from an angle. When an image is taken from a tilted viewpoint, objects that are normally rectangular, such as a chessboard, appear distorted and no longer have right angles. A perspective transformation uses mathematical techniques to map points from the distorted image back to their correct, undistorted positions \cite{nvidia:perspective-transform}.
+When an image is taken from a tilted viewpoint, objects that are normally rectangular, such as a chessboard, appear distorted and no longer have right angles. A perspective transformation is a specific type of image warping that corrects distortions caused by viewing a flat object from an angle A perspective transformation uses mathematical techniques to map points from the distorted image back to their correct, undistorted positions \cite{nvidia:perspective-transform}.
 
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/perspective-transformation.png}
-    \caption[Perspective transformation before and after]{Perspective transformation before and after applying the algorithm, demonstrating how distortion caused by an angled viewpoint is corrected to restore the object’s original shape \cite{nvidia:perspective-transform}}
+    \caption[Perspective transformation before and after]{Perspective transformation before and after applying the algorithm, demonstrating how distortion caused by an angled viewpoint is corrected to restore the object’s original shape.}
     \label{fig:perspective-transformation}
 \end{figure}
 
