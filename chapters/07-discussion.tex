@@ -16,6 +16,15 @@ A typical case would involve a group of chess players organizing a unofficial to
 
 After the tournament concludes, users could simply turn off the switch to shut down the system. This design enables the application to be used independently, without requiring technical expertise. It is intended to be accessible to both young adults and elderly users. Additionally, mounting the cameras on the ceiling contributes to enhanced security for the chess equipment.
 
+\subsection{Analyze chess games}
+An additional development idea involves giving both players and spectators ability to analyze completed chess games. Currently, the application generates a PGN (Portable Game Notation) file once a game is completed. This file can be imported into external platforms such as Lichess, where users can step through each move and receive insights such as the opening name, evaluation of moves, and suggested best plays. \\
+
+A proposed enhancement is to integrate the application directly with the Stockfish chess engine. By doing so, real-time analysis could be made available during ongoing games. This would allow spectators to view the current game evaluation — for example, indicating which player has the advantage at a given position. A common and effective way to display this is through an evaluation bar, which shifts visually based on the balance of the position, providing intuitive feedback to viewers. \\
+
+This feature could be integrated into both the tournament- and board-view, displaying evaluations for each board during live play. Such functionality would enrich the viewing experience for spectators and could also be useful for players who wish to review their games afterward. After the match, players could access a breakdown of the game with move-by-move assessments and suggestions for improvement. \\
+
+Integrating Stockfish would also open possibilities for additional automated insights, such as identifying blunders, mistakes, and inaccuracies, or offering engine-generated commentary. This would enhance the educational value of the application and make it more engaging for a broader range of users, including students, coaches, and casual players.
+
 \section{Obstacles}
 \subsection{Camera}
 During the development and testing phase of the front-end application, an obstacle related to camera initialization was encountered. The application is designed to access an external USB camera by specifying a camera ID other than 0, since ID 0 typically corresponds to the system's default or built-in (dashboard) camera, which is not relevant to this project.\\
