@@ -127,6 +127,24 @@ The algorithm works by first selecting the box with the highest confidence score
     \label{fig:nms}
 \end{figure}
 
+\subsubsection*{Normalization}
+
+Normalization in image processing involves scaling pixel values to a consistent range, typically [0, 1] or [-1, 1], to improve model performance. By adjusting pixel intensities from their original range (0-255) to a smaller scale, normalization ensures that the model processes inputs in a more stable and consistent manner. This helps prevent issues related to large variations in intensity, accelerates model convergence, and promotes better training stability. Normalization is essential for deep learning models, as it ensures that the input features are on a similar scale, aiding in more efficient and accurate learning.
+
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/normalization.png} \caption[Normalization process in image preprocessing]{Illustration of the normalization process applied to an image, adjusting pixel values to a standard range for model input.} \label{fig:normalization} \end{figure}
+
+\subsubsection*{Scaling}
+
+Scaling in image processing and machine learning refers to transforming input data, such as images, to meet the specific requirements of a model. This typically involves resizing the image to a consistent size, normalizing pixel values to a standard range, and converting the image into the correct format expected by the model.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/scaling.png}
+    \caption[Scaling process in image preprocessing]{Illustration of the scaling process in image preprocessing, resizing, normalizing, and converting the image format to prepare it for model input. \cite{thepythoncode:nms}}
+    \label{fig:nms}
+\end{figure}
+
+Scaling process in image preprocessing]{Illustration of the scaling process in image preprocessing, including resizing, normalizing, and converting the image format to prepare it for model input.
 
 \subsubsection*{Perspective Transformation}
 
