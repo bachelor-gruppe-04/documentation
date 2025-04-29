@@ -342,7 +342,7 @@ For the frontend technology, TypeScript is being used. As discussed in \ref{subs
 After conducting research into existing chess digitization methods, a publicly available solution developed by Peter Batchelor, Tom Richardson, and other contributors was identified. This solution serves as the foundation for our approach. It utilizes two \glspl{cnn}: one for detecting chess pieces and another for locating the squares of the chessboard \cite{lichess:chesscam}.
 
 \subsection*{Format Selection and Preprocessing}
-The ChessCam repository provided multiple model formats, including PyTorch and ONNX. The ONNX format was chosen because it is framework-agnostic, making integration into different deployment environments easier. It also simplifies the inference process. Before the models could be used, several preparatory steps were required. Netron, a model visualization tool, was employed to inspect the ONNX files and determine the expected input and output. This step was crucial in designing the appropriate preprocessing steps and correctly interpreting the model outputs. \\
+The ChessCam repository provided multiple model formats, including PyTorch and ONNX. The ONNX format was chosen because it is framework-agnostic, making integration into different deployment environments easier. Before the models could be used, several preparatory steps were required. Netron was employed to inspect the ONNX files and determine the expected input and output. \\
 
 Although the documentation for the models was limited, the necessary logic and structure of the models were already present in the repository itself. When additional clarifications were needed, they were obtained through direct communication with the original developers, ensuring that the intended use and functionality of the models were correctly understood. 
 
@@ -350,13 +350,15 @@ Although the documentation for the models was limited, the necessary logic and s
 
 \subsection{Piece Detection Model}
 
-The piece detection model is responsible for identifying and classifying chess pieces within an image of the chessboard. Upon receiving an image as input, the model outputs bounding boxes and class labels corresponding to the pieces detected on the board.
+\subsubsection{What does it do}
+The piece detection model is responsible for identifying and classifying chess. 
+
+\subsubsection{How does it work}
+It expects an image as input. It expects an image on the format 288x480 with three colour channels. Normally
+
+There are in total 12 class labels each for the type piece and which color it is.
 
 After processing the image, the model returns a set of predictions for each potential piece. These predictions include:
-
-Bounding box coordinates: Representing the position and size of each detected piece on the board.
-
-Class probabilities: Indicating the likelihood of each piece being a specific type, such as a king, queen, rook, knight, etc.
 
 The model predicts these values for each anchor box. An anchor box is a predefined bounding box within the image that serves as a potential candidate location for a piece. By adjusting these anchor boxes, the model can detect and classify pieces across different positions on the chessboard.
 
