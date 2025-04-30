@@ -362,11 +362,10 @@ Although the documentation for the models was limited, the necessary logic and s
 
 \subsection{Piece Detection Model}
 
-\subsubsection{What does it do}
-The piece detection model is responsible for identifying and classifying chess. 
 
-\subsubsection{How does it work}
-It expects an image as input. It expects an image on the format 288x480 with three colour channels. Normally
+The piece detection model is responsible for identifying and classifying chess. It expects an image as input. It expects an image on the format 288x480 w
+
+he piece detection model is responsible for identifying and classifying chess pieces. It expects an input image of size 288x480 with three color channels. Since video frames typically do not come in this exact format, the images are first scaled to the required dimensions to ensure compatibility with the model.
 
 There are in total 12 class labels each for the type piece and which color it is.
 
