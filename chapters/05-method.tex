@@ -39,7 +39,7 @@ The piece detection model is responsible for identifying and classifying chess p
 The piece-model outputs data in the format \textbf{[1, 16, 2835]}. \textbf{1} represents the batch size. \textbf{2835} represents the number of anchor boxes used in the detection. \textbf{16} consists of two parts:
 
 \begin{itemize} 
-\item The first 4 values are offset values that adjust the position and size of each anchor box so that it better aligns with a detected piece. These offsets are relative to predefined anchor boxes, as illustrated in Table \ref{tab:offset-table}.
+\item The first 4 values are offset values that adjust the position and size of each anchor box so that it better aligns with a detected piece. These offsets are relative to the predefined anchor boxes, as illustrated in Table \ref{tab:offset-table}.
 \end{itemize}
 
 \begin{table}[h]
