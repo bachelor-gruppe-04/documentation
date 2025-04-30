@@ -17,6 +17,82 @@
     \textit{Here, the development process and methodologies are described in detail. This includes the design and implementation of the desktop application, the selection of tools and frameworks, and the approach to solving the problem.}
 \end{center}
 
+
+
+\section{Machine Learning Models}
+\label{sec:ml-models}
+
+After conducting research into existing chess digitization methods, a publicly available solution developed by Peter Batchelor, Tom Richardson, and other contributors was identified. This solution serves as the foundation for our approach. It utilizes two \glspl{cnn}: one for detecting chess pieces and another for locating the squares of the chessboard \cite{lichess:chesscam}. \\
+
+Although the documentation for the models was limited, the necessary logic and structure of the models were already present in the repository itself. When additional clarifications were needed, they were obtained through direct communication with the original developers, ensuring that the intended use and functionality of the models were correctly understood. 
+
+\subsection*{Format Selection and Preprocessing}
+The ChessCam repository provided multiple model formats, including PyTorch and ONNX. The ONNX format was chosen because it is framework-agnostic, making integration into different deployment environments easier. Before the models could be used, several preparatory steps were required. Netron was employed to inspect the ONNX files and determine the expected input and output. \\
+
+\newpage
+
+
+\subsection{Piece Detection Model}
+\subsubsection*{Inputs and outputs}
+The piece detection model is responsible for identifying and classifying chess pieces on the board. It expects input in the format \textbf{[1, 3, 288, 480]}. \textbf{1} represents the batch size, i.e., the number of images processed at once, which is typically set to 1 during inference. \textbf{3} corresponds to the number of color channels (RGB), indicating that the image must be in color. \textbf{288} and \textbf{480} denote the height and width of the image in pixels, respectively. \\
+
+The model outputs data in the format \textbf{[1, 16, 2835]}. \textbf{1} represents the batch size, consistent with the input format. \textbf{16} consists of two parts: \begin{itemize} \item The first 4 values correspond to the bounding box coordinates (bbox) for each predicted piece. These are not the final bbox coordinates but rather the adjustments (offsets) relative to predefined anchor boxes within the image. \item The remaining 12 values represent the class probabilities for each possible piece type (e.g., black pawn, white knight, etc.). With 12 possible classes for the chess pieces, the model outputs a vector of 12 probabilities for each prediction. \end{itemize} \\
+
+\begin{table}[ht]
+\centering
+\caption{Chess Piece Classification Labels}
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Model Labels}} \\  % Adds a row at the top
+\hline
+\textbf{Black Pawn} & \textbf{White Pawn} \\
+\textbf{Black Knight} & \textbf{White Knight} \\
+\textbf{Black Bishop} & \textbf{White Bishop} \\
+\textbf{Black Rook} & \textbf{White Rook} \\
+\textbf{Black Queen} & \textbf{White Queen} \\
+\textbf{Black King} & \textbf{White King} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\textbf{2835} represents the number of anchor boxes used in the detection. These are predefined bounding boxes of various sizes and aspect ratios distributed across the image. These anchor boxes act as potential locations for detecting chess pieces, helping the model localize and classify objects effectively. \\
+
+To clarify, envision this: There are 2835 predefined anchor boxes spread across the image, each serving as a candidate location for detecting a chess piece. During training, the model learns to adjust these anchor boxes to better match the actual pieces on the board. It achieves this by predicting four offset values that modify the location and size of each anchor box. At runtime, for each anchor box, the model predicts these learned offsets and outputs 12 class probabilities, indicating the likelihood of each chess piece type being present at that location.
+
+\newpage
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lcccc}
+        \toprule
+        \textbf{Anchor box} & \textbf{Black Pawn} & \textbf{White Pawn} & \textbf{Black Knight} & \textbf{...} \\
+        \midrule
+        Anchor box 1 & 0.03 & 0.7 & 0.01 & ... \\
+        Anchor box 2 & 0.82 & 0.02 & 0.01 & ... \\
+        Anchor box 3 & 0.02 & 0.01 & 0.78 & ... \\
+        ... & ... & ... & ... & ... \\
+        \bottomrule
+    \end{tabular}
+    \caption{Table representing data values for anchor boxes and chess pieces.}
+    \label{tab:example-table}
+\end{table}
+
+\subsubsection*{Implementation}
+
+he piece detection model is responsible for identifying and classifying chess pieces. It expects an input image of size 288x480 with three color channels. Since video frames typically do not come in this exact format, the images are first scaled to the required dimensions to ensure compatibility with the model.
+
+There are in total 12 class labels each for the type piece and which color it is.
+
+After processing the image, the model returns a set of predictions for each potential piece. These predictions include:
+
+The model predicts these values for each anchor box. An anchor box is a predefined bounding box within the image that serves as a potential candidate location for a piece. By adjusting these anchor boxes, the model can detect and classify pieces across different positions on the chessboard.
+
+
+\begin{subfigure}[h!]{0.9\linewidth} \centering \includegraphics[width=\linewidth]{figures/methods/ml-models/piece-model.png} \caption{Tournament View} \end{subfigure}
+
+
+
 \section{Development Methodology}
 \label{sec:development-methodology}
 
@@ -346,32 +422,3 @@ For the frontend technology, TypeScript is being used. As discussed in \ref{subs
     
     \item \textbf{react-dom} serves as the entry point to the DOM and server renderers for React. \cite{ts:react-dom}
 \end{itemize}
-
-
-\section{Machine Learning Models}
-\label{sec:ml-models}
-
-After conducting research into existing chess digitization methods, a publicly available solution developed by Peter Batchelor, Tom Richardson, and other contributors was identified. This solution serves as the foundation for our approach. It utilizes two \glspl{cnn}: one for detecting chess pieces and another for locating the squares of the chessboard \cite{lichess:chesscam}.
-
-\subsection*{Format Selection and Preprocessing}
-The ChessCam repository provided multiple model formats, including PyTorch and ONNX. The ONNX format was chosen because it is framework-agnostic, making integration into different deployment environments easier. Before the models could be used, several preparatory steps were required. Netron was employed to inspect the ONNX files and determine the expected input and output. \\
-
-Although the documentation for the models was limited, the necessary logic and structure of the models were already present in the repository itself. When additional clarifications were needed, they were obtained through direct communication with the original developers, ensuring that the intended use and functionality of the models were correctly understood. 
-
-
-
-\subsection{Piece Detection Model}
-
-
-The piece detection model is responsible for identifying and classifying chess. It expects an image as input. It expects an image on the format 288x480 w
-
-he piece detection model is responsible for identifying and classifying chess pieces. It expects an input image of size 288x480 with three color channels. Since video frames typically do not come in this exact format, the images are first scaled to the required dimensions to ensure compatibility with the model.
-
-There are in total 12 class labels each for the type piece and which color it is.
-
-After processing the image, the model returns a set of predictions for each potential piece. These predictions include:
-
-The model predicts these values for each anchor box. An anchor box is a predefined bounding box within the image that serves as a potential candidate location for a piece. By adjusting these anchor boxes, the model can detect and classify pieces across different positions on the chessboard.
-
-
-\begin{subfigure}[h!]{0.9\linewidth} \centering \includegraphics[width=\linewidth]{figures/methods/ml-models/piece-model.png} \caption{Tournament View} \end{subfigure}
