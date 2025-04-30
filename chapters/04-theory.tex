@@ -16,81 +16,40 @@ To further streamline tournament operations, electronic scoresheet systems have 
 
 Advancements in \gls{ai} have also enabled the development of tools that automate the digitization of chess games through visual recognition. A prominent example is \textit{ChessCam}, a web- and mobile-based application that processes video footage or live streams to detect moves and generate \gls{pgn} files for analysis or archival. This approach makes it possible to digitize games with minimal hardware and manual input. \cite{chess:chesscam, lichess:chesscam}
 
-\section{Technologies}
-\label{sec:technologies}
+\section{Machine Learning} \label{sec:machine-learning}
 
-\subsection{Version Control}
-\label{subsec:version-control}
+As a subfield of \gls{ai}, \textbf{computer vision} focuses on enabling machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive and understand visual information, as illustrated in Figure~\ref{fig:computer-vision}
 
-The use of \gls{git} as a version control system enables collaborative development by allowing multiple developers to work on the same codebase simultaneously. \gls{git} facilitates the maintenance of the code and provides a comprehensive history of all modifications made to the project. These changes are tracked within project containers known as \glspl{repository}, ensuring transparency and accountability throughout the development process. \cite{alphaefficiency:git}
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/computer-vision.png} \caption[Computer Vision vs. Human Vision]{Comparison of Computer Vision and Human Vision: Illustrating the similarities and differences in processing visual data \cite{turing:computer-vision}} \label{fig:computer-vision} \end{figure}
 
-\subsubsection*{Branches}
+One of the most influential technologies in modern \gls{ml} is the \textbf{artificial neural network} (ANN). These networks excel at handling a wide range of data types, including images, audio, and text. Different neural network architectures are suited for specific tasks. For instance, recurring neural networks (RNNs), especially those incorporating \gls{lstm}, are effective for sequential data such as text. \\
 
-Git utilizes branches, which are independent lines of development within a repository. Branches allow developers to work on new features, fixes, or experiments without affecting the main codebase. Once changes in a branch are tested and finalized, they can be merged back into the main branch, ensuring a streamlined and controlled integration process. Branching supports parallel development and helps prevent conflicts by isolating work until it's ready for review and integration. \cite{git:branches}
+In contrast, Convolutional Neural Networks (CNNs) are particularly effective in processing image data. Their architecture leverages convolutional layers to extract spatial features, making them highly efficient in image classification, object detection, and segmentation tasks. An example of such a network applied to handwritten digit classification is shown in Figure~\ref{fig:convolutional-neural-network}. \\
 
-\subsection{Machine Learning}
-\label{sec:machine-learning}
+\newpage
 
-\subsubsection*{Computer Vision}
-\label{subsubsec:computer-vision}
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/convolutional-neural-network.png} \caption[Example of CNN architecture for handwritten digit classification]{CNN architecture for classifying handwritten digits \cite{medium:cnn}} \label{fig:convolutional-neural-network} \end{figure}
 
-As a subfield of \gls{ai}, computer vision focuses on enabling machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive, and understand visual information, automating tasks that traditionally require human intelligence.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/computer-vision.png}
-    \caption[Computer Vision vs. Human Vision]{Comparison of Computer Vision and Human Vision: Illustrating the similarities and differences in processing visual data \cite{turing:computer-vision}} 
-    \label{fig:computer-vision}
-\end{figure}
+Due to their ability to learn hierarchical representations of visual data, CNNs have become a foundational tool in many computer vision applications, ranging from medical diagnostics to autonomous driving. Another fundamental concept in machine learning is \textbf{supervised learning}, where models are trained on labeled datasets. Each example in the dataset includes both an input and the correct output, allowing the model to learn how the input relates to the expected output. After training, the model can generalize this learned relationship to make predictions on new, unseen data \cite{geeksforgeeks:supervised-learning, google:supervised-learning}. \\
 
-\subsubsection*{Artificial Neural Network}
-\label{subsubsec:artificial-neural-network}
+Within supervised learning, \textbf{classification} refers to predicting categorical outcomes. For example, a classification model trained on images of geometric shapes can learn to associate visual features with specific shape categories. When shown a new image, the model attempts to determine the most likely category based on its prior learning. This process is illustrated in Figure~\ref{fig:supervised-learning}, which shows how labeled data is used to train a model to make accurate predictions on unseen inputs. \\
 
-Artificial Neural Networks (ANNs) are a cornerstone of modern \gls{ml}, excelling in processing diverse datasets, including images, audio, and text. Different types of neural networks are tailored for specific tasks. For instance, Recurrent Neural Networks (RNNs), particularly \gls{lstm} networks, are effective for sequential data like text or time series. \\
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png} \caption[Supervised Learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}} \label{fig:supervised-learning} \end{figure}
 
-In contrast, \glspl{cnn} are specifically designed for image-related tasks, such as image classification, object detection, and segmentation. Their unique architecture, which includes convolutional layers, enables them to automatically and efficiently extract spatial features from visual data. An example of a \gls{cnn} architecture used to classify handwritten digits is shown in Figure \ref{fig:convolutional-neural-network} \cite{geeksforgeeks:cnn}. \\
+By combining supervised learning with powerful models like CNNs, machine learning systems have achieved remarkable success in tasks that require human-like perception and decision-making [KILDE?]. As these models become more accurate and versatile, deploying them efficiently to real-world applications becomes increasingly important.  \\
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/convolutional-neural-network.png}
-    \caption[Example of CNN architecture for handwritten digit classification]{CNN architecture for classifying handwritten digits \cite{medium:cnn}}
-    \label{fig:convolutional-neural-network}
-\end{figure}
+To facilitate this, \textbf{\gls{onnx}} is an open-source format for representing machine learning models, enabling easy transfer and interoperability between different frameworks like PyTorch and TensorFlow \cite{roboflow:onnx}. \\
 
-The versatility and effectiveness of \glspl{cnn} make them a fundamental tool in computer vision applications, ranging from medical imaging to autonomous vehicles. By leveraging their ability to learn hierarchical representations of visual data, \glspl{cnn} have become a driving force behind many advancements in \gls{ai} and \gls{ml}.
+Similarly, \textbf{tensorflow} is an open-source machine learning framework developed by Google for building and deploying machine learning models. It provides comprehensive tools for deep learning, image processing, and natural language processing, and supports both training and inference of models \cite{nvidia:tensorflow}. \\
 
-\subsubsection*{Supervised Learning} \label{subsubsec:supervised-learning}
+\textbf{Inference} refers to the process of using a trained machine learning model to make predictions on new, unseen data. In the context of object detection models, inference involves feeding an input image into the model, which then processes the image and outputs predictions. The predictions typically consist of object classes, confidence scores, and bounding box coordinates \cite{nvidia:inference}. \\
 
-Supervised learning is a key method in \gls{ml}. It involves training a model on a labeled dataset, where each input is paired with a corresponding correct output. Each input (or feature) is associated with a known output (or label). The learning algorithm examines these input-output pairs to understand the relationship between them. Once trained, the model can then use this learned relationship to predict outputs for new, unseen data \cite{geeksforgeeks:supervised-learning}
-\cite{google:supervised-learning}. \\
+\section{Object Detection}
 
-\subsubsection*{Classification}
-\label{subsubsec:classification}
+\textbf{\gls{leyolo}} is a \gls{cnn} designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture. allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
 
-Classification is a type of supervised learning used to predict a categorical output variable based on input data. These output variables known as classes represent distinct categories. Classification algorithms are specifically designed to assign new inputs to one of these predefined classes. \cite{google:supervised-learning} \\
-
-A model trained to recognize geometric shapes uses a labeled dataset consisting of various shape images paired with their respective names. Through exposure to these examples, the model learns to associate specific visual features with particular shapes. When presented with a new shape, the model attempts to classify it based on its learned knowledge. \\
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png}
-    \caption[Supervised Learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}}
-    \label{fig:supervised-learning}
-\end{figure}
-
-\subsection{Model Deployment}
-
-\gls{onnx} is an open-source format for representing machine learning models, enabling easy transfer and interoperability between different frameworks like PyTorch and TensorFlow \cite{roboflow:onnx}. \\
-
-TensorFlow is an open-source machine learning framework developed by Google for building and deploying machine learning models. It provides comprehensive tools for deep learning, image processing, and natural language processing, and supports both training and inference of models \cite{nvidia:tensorflow}. \\
-
-Inference refers to the process of using a trained machine learning model to make predictions on new, unseen data. In the context of object detection models, inference involves feeding an input image into the model, which then processes the image and outputs predictions. The predictions typically consist of object classes, confidence scores, and bounding box coordinates \cite{nvidia:inference}. \\
-
-\subsection{Object Detection}
-
-\gls{leyolo} is a \gls{cnn} designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture. allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
-
-A bounding box is a rectangular region used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and  the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}.
+A \textbf{bounding box} is a rectangular region used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and  the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. \\
 
 \begin{figure}[h!]
     \centering
@@ -99,7 +58,7 @@ A bounding box is a rectangular region used to indicate the location of an objec
     \label{fig:boundingbox}
 \end{figure}
 
-Anchor boxes are predefined bounding boxes of various sizes and aspect ratios used as reference points for object detection models. These boxes are placed over the image or feature map to help the model predict the location and dimensions of objects. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}.
+\textbf{Anchor boxes} are predefined bounding boxes of various sizes and aspect ratios used as reference points for object detection models. These boxes are placed over the image or feature map to help the model predict the location and dimensions of objects. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}.
 
 \newpage
 
@@ -113,7 +72,7 @@ Anchor boxes are predefined bounding boxes of various sizes and aspect ratios us
 \end{figure}
 
 \subsubsection*{Non-maximum suppression}
-\gls{nms} is a post-processing technique used in object detection to eliminate redundant or overlapping bounding boxes . When a model predicts multiple boxes for the same object, \gls{nms} ensures that only the most confident prediction is kept. \\
+\textbf{\gls{nms}} is a post-processing technique used in object detection to eliminate redundant or overlapping bounding boxes . When a model predicts multiple boxes for the same object, \gls{nms} ensures that only the most confident prediction is kept. \\
 
 The algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
 \cite{thepythoncode:nms}.
