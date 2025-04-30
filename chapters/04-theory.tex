@@ -49,7 +49,9 @@ Similarly, \textbf{tensorflow} is an open-source machine learning framework deve
 
 \textbf{\gls{leyolo}} is a \gls{cnn} designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture. allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
 
-A \textbf{bounding box} is a rectangular region used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and  the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. \\
+Central to object detection is the use of concept of \textbf{bounding boxes}. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. \\
+
+\newpage
 
 \begin{figure}[h!]
     \centering
@@ -58,10 +60,9 @@ A \textbf{bounding box} is a rectangular region used to indicate the location of
     \label{fig:boundingbox}
 \end{figure}
 
-\textbf{Anchor boxes} are predefined bounding boxes of various sizes and aspect ratios used as reference points for object detection models. These boxes are placed over the image or feature map to help the model predict the location and dimensions of objects. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}.
+To improve detection accuracy across different object sizes and shapes, models use \textbf{Anchor boxes}. Anchor boxes are predefined bounding boxes of various sizes and aspect ratios used as reference points for object detection models. These boxes are placed over the image or feature map to help the model predict the location and dimensions of objects. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}.
 
 \newpage
-
 
 \begin{figure}[h!]
     \centering
@@ -71,10 +72,7 @@ A \textbf{bounding box} is a rectangular region used to indicate the location of
     \label{fig:anchor-box}
 \end{figure}
 
-\subsubsection*{Non-maximum suppression}
-\textbf{\gls{nms}} is a post-processing technique used in object detection to eliminate redundant or overlapping bounding boxes . When a model predicts multiple boxes for the same object, \gls{nms} ensures that only the most confident prediction is kept. \\
-
-The algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
+Once multiple predictions have been made, some of them may overlap significantly. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. It removes redundant or overlapping bounding boxes and keeps only the most confident prediction. The NMS algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
 \cite{thepythoncode:nms}.
 
 \newpage
