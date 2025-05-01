@@ -44,7 +44,7 @@ As a subfield of \gls{ai}, computer vision focuses on enabling machines to inter
 \subsubsection*{Artificial Neural Network}
 \label{subsubsec:artificial-neural-network}
 
-Artificial Neural Networks (ANNs) are a cornerstone of modern \gls{ml}, excelling in processing diverse datasets, including images, audio, and text. Different types of neural networks are tailored for specific tasks. For instance, Recurrent Neural Networks (RNNs), particularly Long Short-Term Memory (LSTM) networks, are effective for sequential data like text or time series. In contrast, \glspl{cnn} are specifically designed for image-related tasks, such as image classification, object detection, and segmentation. Their unique architecture, which includes convolutional layers, enables them to automatically and efficiently extract spatial features from visual data. An example of a \gls{cnn} architecture used to classify handwritten digits is shown in Figure \ref{fig:convolutional-neural-network}. \cite{geeksforgeeks:cnn} \\
+\glspl{ann} are a cornerstone of modern \gls{ml}, excelling in processing diverse datasets, including images, audio, and text. Different types of neural networks are tailored for specific tasks. For instance, \glspl{rnn}, particularly \gls{lstm} networks, are effective for sequential data like text or time series. In contrast, \glspl{cnn} are specifically designed for image-related tasks, such as image classification, object detection, and segmentation. Their unique architecture, which includes convolutional layers, enables them to automatically and efficiently extract spatial features from visual data. An example of a \gls{cnn} architecture used to classify handwritten digits is shown in Figure \ref{fig:convolutional-neural-network}. \cite{geeksforgeeks:cnn} \\
 
 \begin{figure}[h!]
     \centering
@@ -103,9 +103,9 @@ A bounding box is a rectangular region used to indicate the location of an objec
 \end{figure}
 
 \subsubsection*{Anchor Boxes}
-Anchor boxes are predefined bounding boxes of various sizes and aspect ratios used as reference points for object detection models. These boxes are placed over the image or feature map to help the model predict the location and dimensions of objects.
+Anchor boxes are predefined bounding boxes of various sizes and aspect ratios used as reference points for object detection models. These boxes are placed over the image or feature map to help the model predict the location and dimensions of objects. \\
 
-Rather than directly predicting bounding boxes, the model predicts \textit{offsets} (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a \textit{confidence score} indicating the likelihood that an object is present.
+Rather than directly predicting bounding boxes, the model predicts \textit{offsets} (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a \textit{confidence score} indicating the likelihood that an object is present. \\
 
 Multiple anchor boxes are used at each position in the image to account for different object sizes and shapes. After generating predictions, \textit{Non-Maximum Suppression (NMS)} is applied to eliminate redundant boxes, keeping only the most accurate ones.
 
@@ -124,7 +124,7 @@ Inference refers to the process of using a trained machine learning model to mak
 \subsubsection*{Cross-Platform}
 \label{subsubsec:corss-platform}
 
-Cross-platform applications are software programs designed to function consistently across multiple operating systems or platforms. This includes desktop environments such as Windows, macOS, and Linux, as well as mobile platforms like iOS and Android. \cite{sevenpeaks:cross-platform}
+Cross-platform applications are software programs designed to function consistently across multiple \glspl{os} or platforms. This includes desktop environments such as Windows, macOS, and Linux, as well as mobile platforms like iOS and Android. \cite{sevenpeaks:cross-platform}
 
 \subsubsection*{Client-Server Architecture}
 \label{subsubsec:client-server}
@@ -151,6 +151,12 @@ WebSocket is a standardized communication protocol that enables full-duplex comm
     \caption[WebSocket Connection VS HTTP Connection]{WebSocket Connection VS HTTP Connection \cite{apidog:websocket}}
     \label{fig:websocket-vs-http}
 \end{figure}
+
+\subsubsection*{Threading}
+
+A thread is an entity within a process that can be scheduled for execution. Also, it is the smallest unit of processing that can be performed in an \gls{os}. In simple words, a thread is a sequence of such instructions within a program that can be executed independently of other code. For simplicity, you can assume that a thread is simply a subset of a process. \cite{geeksforgeeks:multithreading}
+
+\textbf{Needs more work ^^}
 
 \section{Design}
 \label{sec:design}
