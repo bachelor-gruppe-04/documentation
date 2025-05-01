@@ -26,7 +26,7 @@ After conducting research into existing chess digitization methods, a publicly a
 
 Although the documentation for the models was limited, the necessary logic and structure of the models were already present in the repository itself. When additional clarifications were needed, they were obtained through direct communication with the original developers, ensuring that the intended use and functionality of the models were correctly understood. \\
 
-The ChessCam repository provided multiple model formats, including PyTorch and ONNX. Before the models could be used, several preparatory steps were required. Netron was employed to inspect the ONNX files and determine the expected input and output. \\
+The ChessCam repository provided multiple model formats, including PyTorch and ONNX. Before the models could be used, it was necessary to understand their expected inputs and outputs. Netron was employed to inspect the ONNX files and determine these details. \\
 
 \newpage
 
@@ -57,7 +57,7 @@ The first 4 values were offset values that adjusted the position and size of eac
 \end{table}
 
 
-The remaining 12 values represented the probabilities for each possible piece type after the offset value had been applied. With 12 different piece types, the model output 12 probabilities for each anchor box. The classification labels were shown in Table \ref{tab:piece-label-table}, while Table \ref{tab:piece-probability-table} presented the predicted probabilities for each label across all anchor boxes. \\
+The remaining 12 values represented the probabilities for each possible piece type after the offset value had been applied. With 12 different piece types, the model output 12 probabilities for each anchor box. The classification labels are shown in Table \ref{tab:piece-label-table}. Table \ref{tab:piece-probability-table} presents the predicted probabilities for each label across all anchor boxes. \\
 
 \begin{table}[ht]
 \centering
@@ -82,7 +82,7 @@ The remaining 12 values represented the probabilities for each possible piece ty
 
 \begin{table}[h]
     \centering
-    \caption{Predicted class probabilities for each anchor box after applying the predicted offsets.}  % Caption moved to top
+    \caption{Predicted class probabilities for each anchor box after applying the offsets.}  % Caption moved to top
     \renewcommand{\arraystretch}{1.5} % Increase row height to allow text to be on top
     \begin{tabular}{lcccc}
         \toprule
@@ -105,12 +105,12 @@ To summarize, there were 2835 predefined anchor boxes spread across the image, e
 \newpage
 
 \subsection{Corner Detection Model}
-The corner detection model identified the points where the edges of the inner squares on the chessboard met, commonly referred to as intersection points. Up to 49 intersection points could be detected in a single image. These points were illustrated in Figure \ref{fig:xcorners-chessboard}.
+The corner detection model identified the points where the edges of the inner squares on the chessboard met, commonly referred to as intersection points. Up to 49 intersection points could be detected in a single image. These points are illustrated in Figure \ref{fig:xcorners-chessboard}.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/xcorners_chessboard.jpg}
-    \caption[s]{Visualization of intersection points where the edges of the inner squares on the chessboard met. The model identified and predicted these points. Up to 49 intersection points could be detected in a single image. \cite{vectorstock:chessboard-svg}}
+    \caption[s]{Visualization of intersection points where the edges of the inner squares on the chessboard meet. The model identified and predicted these points. Up to 49 intersection points could be detected in a single image. \cite{vectorstock:chessboard-svg}}
     \label{fig:xcorners-chessboard}
 \end{figure}
 
@@ -138,7 +138,7 @@ The first \textbf{4 values} were offset values that adjusted the position and si
     \label{tab:corner-offset-table}
 \end{table}
 
-The final value was the probability that the adjusted anchor box corresponded to an intersection point on the chessboard, as illustrated in Table \ref{tab:corner-probability-table}. \\
+The final value was the probability that the adjusted anchor box corresponded to an intersection point on the chessboard, as illustrated in Table~\ref{tab:corner-probability-table}. \\
 
 \begin{table}[h]
     \centering
@@ -163,25 +163,32 @@ The final value was the probability that the adjusted anchor box corresponded to
 
 
 \subsection{Combining the models}
-To track chess piece movements, it is necessary to identify the individual squares of the chessboard and associate each detected piece with its corresponding square. First the outer corners of the chessboard needs to be found. Given these corners, the board is divided into an 8x8 grid of equally sized squares. For each square, only the center point is considered for subsequent mapping.
+
+\subsubsection*{The plan}
+
+To track chess piece movements, the first step was to identify the individual squares of the chessboard. Once the squares were identified, each detected piece needed to be mapped to its corresponding square. This required determining the outer corners of the chessboard. With the corners identified, the board was divided into an 8x8 grid of equally sized squares. Since the distance between the corners was known and all squares in the grid are of uniform size, the centers of the squares could be precisely calculated. For each square, only the center point would be used for subsequent mapping, as shown in Figure~\ref{fig:chessboard-centers}.
+
+
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/outer_corners_centers_chessboard.jpg}
-    \caption[S]{Visualization of the  outer corners of the chessboard  and the centers of each individual square, forming an 8x8 grid. \cite{vectorstock:chessboard-svg}}
-    \label{fig:nms}
+    \caption[S]{Visualization of the outer corners of the chessboard and the centers of each individual square, forming an 8x8 grid. \cite{vectorstock:chessboard-svg}}
+    \label{fig:chessboard-centers}
 \end{figure}
 
 
-Chess pieces are detected separately, and the bottom center of each piece’s bounding box is selected as its representative location. Each detected piece is then mapped to the nearest square center based on the minimum Euclidean distance. This mapping enables the determination of the position of each piece on the chessboard.
+The bottom center of each piece’s bounding box was selected as its representative location, as highlighted in Figure~\ref{fig:bbox-black-pawn}. Each detected piece was then mapped to the nearest square center based on the minimum euclidean distance. This mapping allowed for the precise determination of each piece's position on the chessboard.
+
+
 
 \newpage
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.25\linewidth]{figures/methods/ml-models/black-pawn.png}
-    \caption[S]{Example of a detected chess piece with its classification confidence. The bottom center of the bounding box is used as the reference point for mapping the piece to its corresponding square. \cite{svgrepo:black-pawn-svg}}
-    \label{fig:nms}
+    \caption[FIX]{Example of a detected chess piece with its classification confidence. The bottom center of the bounding box was used as the reference point for mapping the piece to its corresponding square. \cite{svgrepo:black-pawn-svg}}
+    \label{fig:bbox-black-pawn}
 \end{figure}
 
 \subsubsection*{Implementation}
