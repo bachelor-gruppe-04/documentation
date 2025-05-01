@@ -32,9 +32,9 @@ The ChessCam repository provided multiple model formats, including PyTorch and O
 
 
 \subsection{Piece Detection Model}
-The piece detection model was responsible for identifying and classifying chess pieces on the board. It expected \textbf{input} in the format \textbf{[1, 3, 288, 480]}. \textbf{1} represented the batch size, i.e. the number of images processed at once, which was typically set to 1 during inference. \textbf{3} corresponded to the number of color channels (RGB), indicating that the image had to be in color. \textbf{288} and \textbf{480} denoted the height and width of the image in pixels, respectively. \
+The piece detection model was responsible for identifying and classifying chess pieces on the board. It expected \textbf{input} in the format \textbf{[1, 3, 288, 480]}. \textbf{1} represented the batch size, i.e. the number of images processed at once, which was typically set to 1 during inference. \textbf{3} corresponded to the number of color channels (RGB), indicating that the image had to be in color. \textbf{288} and \textbf{480} denoted the height and width of the image in pixels, respectively. \\
 
-The piece model output data in the format \textbf{[1, 16, 2835]}. \textbf{1} represented the batch size. \textbf{2835} represented the number of anchor boxes used in the detection. \textbf{16} consisted of two parts: \
+The piece model output data in the format \textbf{[1, 16, 2835]}. \textbf{1} represented the batch size. \textbf{2835} represented the number of anchor boxes used in the detection. \textbf{16} consisted of two parts: \\
 
 The first 4 values were offset values that adjusted the position and size of each anchor box to better align with a detected piece. These offsets were relative to the predefined anchor boxes, as illustrated in Table \ref{tab:piece-offset-table}.
 
@@ -110,7 +110,7 @@ The corner detection model identified the points where the edges of the inner sq
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/xcorners_chessboard.jpg}
-    \caption[s]{Visualization of intersection points where the edges of the inner squares on the chessboard met. The model identified and predicted these points. Up to 49 intersection points could be detected in a single image.}
+    \caption[s]{Visualization of intersection points where the edges of the inner squares on the chessboard met. The model identified and predicted these points. Up to 49 intersection points could be detected in a single image. \cite{vectorstock:chessboard-svg}}
     \label{fig:xcorners-chessboard}
 \end{figure}
 
@@ -163,29 +163,34 @@ The final value was the probability that the adjusted anchor box corresponded to
 
 
 \subsection{Combining the models}
-\subsubsection*{The idea}
 To track chess piece movements, it is necessary to identify the individual squares of the chessboard and associate each detected piece with its corresponding square. First the outer corners of the chessboard needs to be found. Given these corners, the board is divided into an 8x8 grid of equally sized squares. For each square, only the center point is considered for subsequent mapping.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/outer_corners_centers_chessboard.jpg}
-    \caption[S]{Visualization of the  outer corners of the chessboard  and the centers of each individual square, forming an 8x8 grid.}
+    \caption[S]{Visualization of the  outer corners of the chessboard  and the centers of each individual square, forming an 8x8 grid. \cite{vectorstock:chessboard-svg}}
     \label{fig:nms}
 \end{figure}
 
 
 Chess pieces are detected separately, and the bottom center of each piece’s bounding box is selected as its representative location. Each detected piece is then mapped to the nearest square center based on the minimum Euclidean distance. This mapping enables the determination of the position of each piece on the chessboard.
 
-Let me know if you need it tailored further or want any section expanded!
+\newpage
 
-When mapping a piece to 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.25\linewidth]{figures/methods/ml-models/black-pawn.png}
+    \caption[S]{Example of a detected chess piece with its classification confidence. The bottom center of the bounding box is used as the reference point for mapping the piece to its corresponding square. \cite{svgrepo:black-pawn-svg}}
+    \label{fig:nms}
+\end{figure}
+
+\subsubsection*{Implementation}
 
 
-To be able to find the squares the outer corners of the chessboard needs to be found. Once the squares are found we wish to assign each piece to their corresponding square. \\
 
 
 
-By finding the corners one can calculate where the squares are located.
+
 
 The piece detection model is responsible for identifying and classifying chess pieces. It expected an input image of size 288x480 with three color channels. Since video frames typically do not come in this exact format, the images are first scaled to the required dimensions to ensure compatibility with the model.
 

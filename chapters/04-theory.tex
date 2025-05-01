@@ -92,6 +92,10 @@ Normalization in image processing involves scaling pixel values to a consistent 
 
 Scaling in image processing and machine learning refers to transforming input data, such as images, to meet the specific requirements of a model. This typically involves resizing the image to a consistent size, normalizing pixel values to a standard range, and converting the image into the correct format expected by the model.
 
+
+
+
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/scaling.png}
@@ -112,6 +116,26 @@ When an image is taken from a tilted viewpoint, objects that are normally rectan
     \caption[Perspective transformation before and after]{Perspective transformation before and after applying the algorithm, demonstrating how distortion caused by an angled viewpoint is corrected to restore the object’s original shape.}
     \label{fig:perspective-transformation}
 \end{figure}
+
+
+
+
+
+The \textbf{Euclidean distance} is the straight-line distance between two points in a plane. For two points with coordinates $\mathbf{x} = (x_1, x_2)$ and $\mathbf{y} = (y_1, y_2)$, the Euclidean distance is given by:
+
+\[
+\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+\]
+
+As shown in Figure~\ref{fig:euclidean-distance}, the Euclidean distance represents the length of the straight line connecting the two points.
+
+\begin{figure}[h!]
+    \centering
+    \fbox{\includegraphics[width=0.4\linewidth]{figures/theory/math/euclidean-distance.png}}
+    \caption{Illustration of Euclidean distance: the straight-line distance between two points in 2D space~\cite{geeksforgeeks:euclidean-distance}.}
+    \label{fig:euclidean-distance}
+\end{figure}
+
 
 
 
