@@ -61,3 +61,8 @@ When a move is made, the front-end highlights the previous and current tiles of 
 The chessboard component manages the rules of chess, while the front-end is responsible only for storing tile positions and applying styling. In standard moves, highlighting the starting and ending tiles is sufficient. However, special moves such as \gls{castling}, pawn \gls{promotion}, and \gls{en-passant} capture require additional handling. \\
 
 In \gls{castling}, both the king and a rook move simultaneously. Since the default highlight logic tracks only one piece, it does not correctly represent \gls{castling} moves. Additional logic was implemented to highlight the movements of both the king and rook during \gls{castling}, ensuring consistency and clarity for the user.
+
+
+%The ONNX format was chosen because it was framework-agnostic, making integration into different deployment environments easier.
+
+%Dette var i metode, men hører ikke hjemme der
