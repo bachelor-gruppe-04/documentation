@@ -22,25 +22,25 @@
 \section{Machine Learning Models}
 \label{sec:ml-models}
 
-After conducting research into existing chess digitization methods, a publicly available solution developed by Peter Batchelor, Tom Richardson, and other contributors was identified. This solution serves as the foundation for our approach. It utilizes two \glspl{cnn}: one for detecting chess pieces and another for locating the squares of the chessboard \cite{lichess:chesscam}. \\
+After conducting research into existing chess digitization methods, a publicly available solution developed by Peter Batchelor, Tom Richardson, and other contributors was discovered. This solution served as the foundation for the approach. It utilized two \glspl{cnn}: one for detecting chess pieces and another for locating the squares of the chessboard \cite{lichess:chesscam}. \\
 
 Although the documentation for the models was limited, the necessary logic and structure of the models were already present in the repository itself. When additional clarifications were needed, they were obtained through direct communication with the original developers, ensuring that the intended use and functionality of the models were correctly understood. \\
 
-The ChessCam repository provided multiple model formats, including PyTorch and ONNX. The ONNX format was chosen because it is framework-agnostic, making integration into different deployment environments easier. [DISSE SISTE 2 SET MÅ SES PÅ] Before the models could be used, several preparatory steps were required. Netron was employed to inspect the ONNX files and determine the expected input and output. \\
+The ChessCam repository provided multiple model formats, including PyTorch and ONNX. Before the models could be used, several preparatory steps were required. Netron was employed to inspect the ONNX files and determine the expected input and output. \\
 
 \newpage
 
 
 \subsection{Piece Detection Model}
-The piece detection model is responsible for identifying and classifying chess pieces on the board. It expects \textbf{input} in the format \textbf{[1, 3, 288, 480]}. \textbf{1} represents the batch size, i.e. the number of images processed at once, which is typically set to 1 during inference. \textbf{3} corresponds to the number of color channels (RGB), indicating that the image must be in color. \textbf{288} and \textbf{480} denote the height and width of the image in pixels, respectively. \\
+The piece detection model was responsible for identifying and classifying chess pieces on the board. It expected \textbf{input} in the format \textbf{[1, 3, 288, 480]}. \textbf{1} represented the batch size, i.e. the number of images processed at once, which was typically set to 1 during inference. \textbf{3} corresponded to the number of color channels (RGB), indicating that the image had to be in color. \textbf{288} and \textbf{480} denoted the height and width of the image in pixels, respectively. \
 
-The piece model outputs data in the format \textbf{[1, 16, 2835]}. \textbf{1} represents the batch size. \textbf{2835} represents the number of anchor boxes used in the detection. \textbf{16} consists of two parts: \\
+The piece model output data in the format \textbf{[1, 16, 2835]}. \textbf{1} represented the batch size. \textbf{2835} represented the number of anchor boxes used in the detection. \textbf{16} consisted of two parts: \
 
-The first 4 values are offset values that adjust the position and size of each anchor box to better align with a detected piece. These offsets are relative to the predefined anchor boxes, as illustrated in Table \ref{tab:piece-offset-table}.
+The first 4 values were offset values that adjusted the position and size of each anchor box to better align with a detected piece. These offsets were relative to the predefined anchor boxes, as illustrated in Table \ref{tab:piece-offset-table}.
 
 \begin{table}[h]
     \centering
-    \caption{Offset coordinates for each anchor box with regards to identifying chess pieces.}  % Caption moved to top
+    \caption{Offset coordinates for each anchor box with regard to identifying chess pieces.}  % Caption moved to top
     \renewcommand{\arraystretch}{1.5} % Increase row height to allow text to be on top
     \begin{tabular}{lcccc}
         \toprule
@@ -57,7 +57,7 @@ The first 4 values are offset values that adjust the position and size of each a
 \end{table}
 
 
-The remaining 12 values represent the probabilities for each possible piece type after the offset value has been applied. With 12 different piece types, the model outputs 12 probabilities for each anchor box. The classification labels are shown in Table \ref{tab:piece-label-table}, while Table \ref{tab:piece-probability-table} presents the predicted probabilities for each label across all anchor boxes. \\
+The remaining 12 values represented the probabilities for each possible piece type after the offset value had been applied. With 12 different piece types, the model output 12 probabilities for each anchor box. The classification labels were shown in Table \ref{tab:piece-label-table}, while Table \ref{tab:piece-probability-table} presented the predicted probabilities for each label across all anchor boxes. \\
 
 \begin{table}[ht]
 \centering
@@ -100,32 +100,29 @@ The remaining 12 values represent the probabilities for each possible piece type
 
 \newpage
 
-To summarize, there are 2835 predefined anchor boxes spread across the image, each serving as a candidate location for detecting a chess piece. During training, the model learns to adjust these anchor boxes to better match the actual pieces on the board. It achieves this by predicting 4 offset values that modify the location and size of each anchor box. At runtime, for each anchor box, the model uses these learned offsets and outputs 12 class probabilities, indicating the likelihood of each chess piece type being present at that location.
+To summarize, there were 2835 predefined anchor boxes spread across the image, each serving as a candidate location for detecting a chess piece. During training, the model learned to adjust these anchor boxes to better match the actual pieces on the board. It achieved this by predicting 4 offset values that modified the location and size of each anchor box. At runtime, for each anchor box, the model used these learned offsets and output 12 class probabilities, indicating the likelihood of each chess piece type being present at that location.
 
 \newpage
 
 \subsection{Corner Detection Model}
-The corner detection model identifies the points where the edges of the inner squares on the chessboard meet, commonly referred to as intersection points.  Up to 49 intersection points can be detected in a single image. These points are illustrated in Figure \ref{fig:xcorners-chessboard}
+The corner detection model identified the points where the edges of the inner squares on the chessboard met, commonly referred to as intersection points. Up to 49 intersection points could be detected in a single image. These points were illustrated in Figure \ref{fig:xcorners-chessboard}.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/xcorners_chessboard.jpg}
-    \caption[s]{Visualization of intersection points where the edges of the inner squares on the chessboard meet. The model identifies and predicts these points. Up to 49 intersection points can be detected in a single image.}
+    \caption[s]{Visualization of intersection points where the edges of the inner squares on the chessboard met. The model identified and predicted these points. Up to 49 intersection points could be detected in a single image.}
     \label{fig:xcorners-chessboard}
 \end{figure}
 
+The input format for the corner model was the same as the piece model: \textbf{[1, 3, 288, 480]}. The corner model output predictions in the format \textbf{[1, 5, 2835]}. \textbf{1} represented the batch size. \textbf{2835} represented the number of anchor boxes used in the detection. \textbf{5} consisted of two parts: \\
 
-The input format for the corner model is the same as the piece  model: \textbf{[1, 3, 288, 480]}. The corner model outputs predictions in the format \textbf{[1, 5, 2835]}. \textbf{1} represents the batch size. \textbf{2835} represents the number of anchor boxes used in the detection. \textbf{5} consists of two parts: \\
-
-
-The first \textbf{4 values} are offset values that adjust the position and size of each anchor box, aligning it more accurately with a potential intersection point. These offsets are relative to the original anchor box coordinates, as shown in Table 
-\ref{tab:corner-offset-table}.
+The first \textbf{4 values} were offset values that adjusted the position and size of each anchor box, aligning it more accurately with a potential intersection point. These offsets were relative to the original anchor box coordinates, as shown in Table \ref{tab:corner-offset-table}.
 
 \newpage
 
 \begin{table}[h]
     \centering
-    \caption{Offset coordinates for each anchor box with regards to identifying intersection points.}  % Caption moved to top
+    \caption{Offset coordinates for each anchor box with regard to identifying intersection points.}  % Caption moved to top
     \renewcommand{\arraystretch}{1.5} % Increase row height to allow text to be on top
     \begin{tabular}{lcccc}
         \toprule
@@ -141,9 +138,7 @@ The first \textbf{4 values} are offset values that adjust the position and size 
     \label{tab:corner-offset-table}
 \end{table}
 
-
-The final value is the probability that the adjusted anchor box corresponds to an intersection point on the chessboard. Illustrated in Table \ref{tab:corner-probability-table}. \\
-
+The final value was the probability that the adjusted anchor box corresponded to an intersection point on the chessboard, as illustrated in Table \ref{tab:corner-probability-table}. \\
 
 \begin{table}[h]
     \centering
@@ -168,16 +163,31 @@ The final value is the probability that the adjusted anchor box corresponds to a
 
 
 \subsection{Combining the models}
+\subsubsection*{The idea}
+To track chess piece movements, it is necessary to identify the individual squares of the chessboard and associate each detected piece with its corresponding square. First the outer corners of the chessboard needs to be found. Given these corners, the board is divided into an 8x8 grid of equally sized squares. For each square, only the center point is considered for subsequent mapping.
 
-THIS Is not finished
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/outer_corners_centers_chessboard.jpg}
+    \caption[S]{Visualization of the  outer corners of the chessboard  and the centers of each individual square, forming an 8x8 grid.}
+    \label{fig:nms}
+\end{figure}
 
-To be able to see where the chess pieces moved from and to, we need to find the squares of the chessboard. Once the squares are found we wish to assign each piece to their respective square.
+
+Chess pieces are detected separately, and the bottom center of each piece’s bounding box is selected as its representative location. Each detected piece is then mapped to the nearest square center based on the minimum Euclidean distance. This mapping enables the determination of the position of each piece on the chessboard.
+
+Let me know if you need it tailored further or want any section expanded!
+
+When mapping a piece to 
+
+
+To be able to find the squares the outer corners of the chessboard needs to be found. Once the squares are found we wish to assign each piece to their corresponding square. \\
 
 
 
-We wish to find the squares of the chessboard and assign each piece to their respective squares. By finding the corners one can calculate where the squares are located.
+By finding the corners one can calculate where the squares are located.
 
-The piece detection model is responsible for identifying and classifying chess pieces. It expects an input image of size 288x480 with three color channels. Since video frames typically do not come in this exact format, the images are first scaled to the required dimensions to ensure compatibility with the model.
+The piece detection model is responsible for identifying and classifying chess pieces. It expected an input image of size 288x480 with three color channels. Since video frames typically do not come in this exact format, the images are first scaled to the required dimensions to ensure compatibility with the model.
 
 To identify candidate quadrilaterals on the chessboard, the implementation first performs Delaunay triangulation over the set of detected corner points. It then searches for pairs of adjacent triangles—triangles that share two vertices—and combines their points to form four-point quads. This method restricts the candidates to geometrically relevant regions made up of neighboring points, avoiding the need to evaluate all possible 4-point combinations, which would be computationally expensive and less accurate.
 
