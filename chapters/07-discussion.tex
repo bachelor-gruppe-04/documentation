@@ -43,6 +43,13 @@ A more advanced approach would involve reading the clock visually using the same
 
 Due to these limitations and the project's scope, implementing time control features was not prioritized in the current version of the application. However, the topic remains relevant for future development, especially for improving the spectator experience.
 
+\subsection{Generate initial position based on FEN}
+In chess, there are several valid starting positions depending on the variant being played. The most widely recognized is the \gls{classical} setup, where each player's pawns occupy the second rank and the back-rank pieces occupy the first rank, mirrored vertically for black and white. However, many chess variants such as \gls{chess960}, \gls{horde}, and \gls{racing-kings} use non-classical starting positions or even different piece configurations. These variants are currently not supported by the application, as only the classical chess setup is implemented. \\
+
+The product owner specified support for standard chess as the only requirement. However, enabling the application to support a wider range of chess variants would significantly increase its flexibility and usability across different contexts. \\
+
+A practical solution to support multiple starting positions is to implement support for importing a \gls{fen} string. \gls{fen} is a standardized notation used to describe specific board states in chess, including custom starting positions. Currently, the initial position is hardcoded for standard chess. By allowing the user to input a \gls{fen} string or select a variant from a predefined list (each associated with a corresponding \gls{fen}), the application could generate the appropriate board layout dynamically. This functionality would allow users to configure the board for any desired variant and enable a broader range of use cases, including training, analysis, or alternative tournament formats.
+
 \section{Obstacles}
 In addition to ideas for future development, there were also a few obstacles encountered during the development phase of this project. These challenges were addressed as they occurred, and solutions were implemented as part of the final application.
 
