@@ -39,6 +39,10 @@ Before the tournament begins, the organizer must start the application and confi
  
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/results/frontend/controlpanel-camera.png} \caption[Progress bar for camera connections]{A progress bar representing the status of connecting cameras}\label{fig:control-panel-camera} \end{figure}
 
+If the organizer attempts to connect more cameras than the system can detect, an error message is displayed, as shown in Figure~\ref{fig:control-panel-camera-error}. This provides feedback to the user about what went wrong. For example, the message "Error: Could not open Camera 1" indicates that the system could not find a camera with ID 1. In the illustrated scenario, no cameras were connected, which caused the error to appear. \\
+
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/results/frontend/controlpanel-camera-error.png} \caption[Error message for camera connections]{A error message for failure connecting cameras}\label{fig:control-panel-camera-error} \end{figure}
+
 The control panel also provides functionality for resetting individual boards or all boards simultaneously. When a tournament round is finished, the organizers must reset all boards before the next round can begin. By pressing the "Reset All Boards" button, they can reset all connected boards at once. In some scenarios, it may be necessary to reset a single board. In such cases, the organizers can use the "Select Which Board to Reset" feature, as shown in Figure~\ref{fig:control-panel-reset-boards}.\
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/results/frontend/controlpanel-reset-boards.png} \caption[Panel to reset a single board]{The panel to select which board to be reset}\label{fig:control-panel-reset-boards} \end{figure}
