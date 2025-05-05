@@ -61,3 +61,7 @@ When the tournament is started, the list of available boards is displayed in pla
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/tournament-view/mocked.png}}\caption[Display over tournament]{A mocked demonstration over a tournament display.}\label{fig:tournament-view-mocked} \end{figure}
 
+The \textbf{Board View} presents a detailed interface for following a specific game. It combines multiple visual elements to enhance the spectator experience. On the left side, a live camera feed shows the physical chessboard and players, offering a real-world perspective of the match. Alongside this is a PGN (Portable Game Notation) display that lists all moves played so far. In the center, a digital chessboard displays the current state of the game, updated in real time as moves are made. To the right, an evaluation bar provides a visual indication of which player is currently favored based on the position, helping users understand the balance of the game at a glance. \\
+
+Each board in the tournament has its own unique URL, following the format http://localhost:5173/board/{id}, where {id} corresponds to the board number. This allows spectators to directly access a specific game's Board View by navigating to its dedicated link, enabling easy sharing and bookmarking of individual matches.
+
