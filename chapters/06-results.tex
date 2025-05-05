@@ -19,7 +19,7 @@ The application consists of three main components: machine learning, WebSocket c
 \subsection{Machine Learning}
 To be completed.
 
-\subsection{WebSocket}
+\subsection{API}
 To enable real-time updates and improve the responsiveness of the front-end interface, the application uses a WebSocket connection between the back-end and the front-end. This method was suggested by the product owner and was also approved by the supervisor. This communication channel is used for transmitting move data as it is detected by the board recognition system. Unlike traditional HTTP requests, which operate on a request-response basis, WebSocket allows for continuous, two-way communication between the server and the client. \\
 
 Once the application initiates a connection, the WebSocket remains open throughout the session. As new moves are identified on the physical board, the back-end sends the corresponding move data as messages through the WebSocket. These messages are then received by the front-end, which updates the displayed move list and board state in real time. This provides a seamless viewing experience for users following live games. \\
@@ -31,9 +31,15 @@ The WebSocket functionality is encapsulated in a custom React hook on the front-
 \subsection{Frontend}
 The front-end of the application serves as the user interface. It includes a control panel for tournament organizers and a web application for spectators. The application's main responsibility is to visualize the chessboard and display ongoing moves. The front-end communicates with the back-end via WebSocket to ensure real-time updates and interactivity. \\
 
-The \textbf{control panel} is an administrative tool accessible only to the tournament organizers. It functions as a standalone dashboard application and is available exclusively on the computer that starts the application. This setup ensures that spectators visiting the website cannot access the control panel.
+The \textbf{control panel} is an administrative tool accessible only to the tournament organizers. It functions as a standalone dashboard application and is available exclusively on the computer that starts the application, as shown in Figure~\ref{fig:control-panel}. This setup ensures that spectators visiting the website cannot access the control panel. \\
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/results/frontend/controlpanel.png} \caption[Control panel for tournament organizers]{The control panel used by the tournament organizers.}\label{fig:control-panel} \end{figure}
 
-Before the tournament begins, the organizer must start the application and configure it using the control panel. This includes specifying the number of cameras to be used, allowing the application to connect to the appropriate number of video feeds. Once the connections are established, the tournament can be started by pressing the "Start Tournament" button. The control panel also provides functionality for resetting individual boards or all boards simultaneously.
+Before the tournament begins, the organizer must start the application and configure it using the control panel. This includes specifying the number of cameras to be used, allowing the application to connect to the appropriate number of video feeds. When the number of selected cameras is connecting, a progress bar is visible for the user, as shown in Figure~\ref{fig:control-panel-camera} Once the connections are established, the tournament can be started by pressing the "Start Tournament" button. \\
  
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/results/frontend/controlpanel-camera.png} \caption[Progress bar for camera connections]{A progress bar representing the status of connecting cameras}\label{fig:control-panel-camera} \end{figure}
+
+The control panel also provides functionality for resetting individual boards or all boards simultaneously. When a tournament round is finished, the organizers must reset all boards before the next round can begin. By pressing the "Reset All Boards" button, they can reset all connected boards at once. In some scenarios, it may be necessary to reset a single board. In such cases, the organizers can use the "Select Which Board to Reset" feature, as shown in Figure~\ref{fig:control-panel-reset-boards}.\
+
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/results/frontend/controlpanel-reset-boards.png} \caption[Panel to reset a single board]{The panel to select which board to be reset}\label{fig:control-panel-reset-boards} \end{figure}
+
