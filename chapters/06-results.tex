@@ -63,7 +63,29 @@ When the tournament is started, the list of available boards is displayed in pla
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/tournament-view/mocked.png}}\caption[Display over tournament]{A mocked demonstration of a tournament display.}\label{fig:tournament-view-mocked} \end{figure}
 
+The Tournament View automatically adjusts its layout when displayed on smaller screens, such as smartphones or tablets. In this mobile view, the table format used in the desktop version is replaced by a more compact, vertically stacked layout. This design makes the content easier to read and interact with on narrow screens. The loading screen remains visually similar but is scaled to fit the smaller display, as shown in Figure~\ref{fig:small-tournament-view-loading}. When the tournament begins, each game is presented as a vertical card, where key details, such as board number, player names, and the “LIVE” button, are reorganized to fit within the available width, as shown in Figure~\ref{fig:small-tournament-view}. This layout enhances readability and usability on mobile devices without reducing the overall functionality of the view. \\
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[h!]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/results/frontend/tournament-view/loading-mobile.png}
+        \caption{Loading screens}
+        \label{fig:small-tournament-view-loading}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h!]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/results/frontend/tournament-view/mocked-mobile.png}
+        \caption{Mocked data}
+        \label{fig:small-tournament-view}
+    \end{subfigure}
+    \caption{Tournament View on smaller screen}
+    \label{fig:small-view-group}
+\end{figure}
+
 The \textbf{Board View} presents a detailed interface for following a specific game. It combines multiple visual elements to enhance the spectator experience. On the left side, a live camera feed shows the physical chessboard and players, offering a real-world perspective of the match. Alongside this is a \gls{pgn} display that lists all moves played so far. In the center, a digital chessboard displays the current state of the game, updated in real time as moves are made. To the right, an evaluation bar provides a visual indication of which player is currently favored based on the position, helping users understand the balance of the game at a glance. \\
 
 Each board in the tournament has its own unique URL, following the format http://localhost:5173/board/{id}, where {id} corresponds to the board number. This allows spectators to directly access a specific game's Board View by navigating to its dedicated link, enabling easy sharing of individual games. \\
+
 
