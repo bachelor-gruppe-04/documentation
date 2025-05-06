@@ -84,7 +84,7 @@ The Tournament View automatically adjusts its layout when displayed on smaller s
     \label{fig:small-view-tournament-view-group}
 \end{figure}
 
-The \textbf{Board View} presents a detailed interface for following a specific game. It combines multiple visual elements to enhance the spectator experience, as shown in Figure~\ref{fig:board-view-mocked}. On the left side, a live camera feed shows the physical chessboard and players, offering a real-world perspective of the match. Alongside this is a \gls{pgn} display that lists all moves played so far. In the center, a digital chessboard displays the current state of the game, updated in real time as moves are made. To the right, an evaluation bar provides a visual indication of which player is currently favored based on the position, helping users understand the balance of the game without advanced chess knowledge. \\
+The \textbf{Board View} presents a detailed interface for following a specific game. It combines multiple visual elements to enhance the spectator experience, as shown in Figure~\ref{fig:board-view-mocked}. On the left side, a live camera feed shows the physical chessboard and players, offering a real-world perspective of the game. Alongside this is a \gls{pgn} display that lists all moves played so far. In the center, a digital chessboard displays the current state of the game, updated in real time as moves are made. To the right, an evaluation bar provides a visual indication of which player is currently favored based on the position, helping users understand the balance of the game without advanced chess knowledge. \\
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/board-view/desktop.png}}\caption[Display of a board]{A mocked demonstration of an active game}\label{fig:board-view-mocked} \end{figure}
 
@@ -120,6 +120,31 @@ At the bottom of the screen is the camera feed. While it is not as highly priori
     \caption{Board View on smaller screen}
     \label{fig:small-view-board-view-group}
 \end{figure}
+
+The application includes a \textbf{navigation header} that remains consistent across all pages. This header provides quick access to key sections of the site, including the Game Preview, How It Works, and About Us pages. On smaller screens, the navigation automatically collapses into a hamburger menu, maintaining a clean and user-friendly interface without reducing accessibility, as shown in Figure~\ref{fig:navigation-header}. \\
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[h!]{0.4\linewidth}
+        \centering
+        \fbox{\includegraphics[width=\linewidth]{figures/results/frontend/game-preview/navigation.png}}
+        \caption{Navigation header as a hamburger menu on a smaller screen}
+        \label{fig:navigation-header}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h!]{0.4\linewidth}
+        \centering
+        \fbox{\includegraphics[width=\linewidth]{figures/results/frontend/game-preview/mobile.png}}
+        \caption{Game preview on a smaller screen}
+        \label{fig:small-game-preview}
+    \end{subfigure}
+    \caption{Board View on smaller screen}
+    \label{fig:small-view-game-preview-group}
+\end{figure}
+
+Through the header, spectators can navigate to the \textbf{Game Preview} page. This view shares similarities with the Tournament View but is more focused on highlighting individual games. Instead of displaying all games in a table format, it includes a preview of the currently active game, giving users a quick overview without needing to enter the full Board View, as shown in Figure~\ref{fig:game-preview}.
+
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/game-preview/desktop.png}}\caption[Preview of active games]{A mocked demonstration of a game preview page.}\label{fig:game-preview} \end{figure}
 
 \section{Technical Achievements}
 Architecture overview (e.g., system diagram, deployment pipeline). Performance metrics (e.g., response time, uptime). Details on scalability, security, or CI/CD if relevant. 
