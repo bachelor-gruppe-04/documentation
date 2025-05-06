@@ -61,7 +61,7 @@ When the application is started, both the control panel and the web application 
 
 When the tournament is started, the list of available boards is displayed in place of the loading screen, as shown in Figure~\ref{fig:tournament-view-mocked}. This Tournament View serves as an overview of all active games in the tournament. Each row in the table represents a board, showing the board number, the name of the white and black players, and their respective ratings. The layout is designed to be clean and readable, with alternating row colors for better visual distinction. Player names and ratings are displayed prominently to give spectators an immediate sense of who is playing. At the far right of each row is a "LIVE" button. When clicked, this button redirects the user to the corresponding Board View, where they can watch the specific game in real time. \\
 
-\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/tournament-view/mocked.png}}\caption[Display over tournament]{A mocked demonstration of a tournament display.}\label{fig:tournament-view-mocked} \end{figure}
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/tournament-view/mocked.png}}\caption[Display of tournament]{A mocked demonstration of a tournament display.}\label{fig:tournament-view-mocked} \end{figure}
 
 The Tournament View automatically adjusts its layout when displayed on smaller screens, such as smartphones or tablets. In this mobile view, the table format used in the desktop version is replaced by a more compact, vertically stacked layout. This design makes the content easier to read and interact with on narrow screens. The loading screen remains visually similar but is scaled to fit the smaller display, as shown in Figure~\ref{fig:small-tournament-view-loading}. When the tournament begins, each game is presented as a vertical card, where key details, such as board number, player names, and the “LIVE” button, are reorganized to fit within the available width, as shown in Figure~\ref{fig:small-tournament-view}. This layout enhances readability and usability on mobile devices without reducing the overall functionality of the view. \\
 
@@ -70,7 +70,7 @@ The Tournament View automatically adjusts its layout when displayed on smaller s
     \begin{subfigure}[h!]{0.4\linewidth}
         \centering
         \includegraphics[width=\linewidth]{figures/results/frontend/tournament-view/loading-mobile.png}
-        \caption{Loading screens}
+        \caption{Loading screen}
         \label{fig:small-tournament-view-loading}
     \end{subfigure}
     \hfill
@@ -81,11 +81,42 @@ The Tournament View automatically adjusts its layout when displayed on smaller s
         \label{fig:small-tournament-view}
     \end{subfigure}
     \caption{Tournament View on smaller screen}
-    \label{fig:small-view-group}
+    \label{fig:small-view-tournament-view-group}
 \end{figure}
 
-The \textbf{Board View} presents a detailed interface for following a specific game. It combines multiple visual elements to enhance the spectator experience. On the left side, a live camera feed shows the physical chessboard and players, offering a real-world perspective of the match. Alongside this is a \gls{pgn} display that lists all moves played so far. In the center, a digital chessboard displays the current state of the game, updated in real time as moves are made. To the right, an evaluation bar provides a visual indication of which player is currently favored based on the position, helping users understand the balance of the game at a glance. \\
+The \textbf{Board View} presents a detailed interface for following a specific game. It combines multiple visual elements to enhance the spectator experience, as shown in Figure~\ref{fig:board-view-mocked}. On the left side, a live camera feed shows the physical chessboard and players, offering a real-world perspective of the match. Alongside this is a \gls{pgn} display that lists all moves played so far. In the center, a digital chessboard displays the current state of the game, updated in real time as moves are made. To the right, an evaluation bar provides a visual indication of which player is currently favored based on the position, helping users understand the balance of the game without advanced chess knowledge. \\
+
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/board-view/desktop.png}}\caption[Display of a board]{A mocked demonstration of an active game}\label{fig:board-view-mocked} \end{figure}
 
 Each board in the tournament has its own unique URL, following the format http://localhost:5173/board/{id}, where {id} corresponds to the board number. This allows spectators to directly access a specific game's Board View by navigating to its dedicated link, enabling easy sharing of individual games. \\
 
+The Board View includes several interactive and dynamic elements that enhance the spectator experience beyond static game updates. The live camera feed is displayed in the left section of the interface and can be expanded to a larger view if desired. This allows spectators to get a closer look at the physical chessboard and players, offering a more immersive viewing experience, as shown in Figure~\ref{fig:camera-fullscreen}. \\
 
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/board-view/camera-fullscreen.png}}\caption[Camera in full screen]{Expanded camera in full screen}\label{fig:camera-fullscreen} \end{figure}
+
+As the game progresses, the \gls{pgn} display updates in real time. It lists all moves made so far in a table, where the most recent move is visually marked. This is to help users follow the flow of the game without needing to track moves manually. The digital chessboard is also updated live. When a move is made, the board highlights both the square the piece moved from and the square it moved to, visually representing the last action taken. This helps spectators quickly identify changes in the game state. To the right of the board, an evaluation bar gives a quick visual indication of which player currently has the best position. This feature uses a vertical bar to indicate which player has the advantage. A higher bar toward the top or bottom signals a better position for White or Black, respectively. This makes it easier for casual viewers to understand the competitiveness of the game without requiring deep chess knowledge. \\
+
+Like the Tournament View, the Board View also adapts to smaller screens through a responsive layout. However, the adjustments in this view are more noticeable due to the limited space and size of the elements. The layout is prioritized based on typical spectator preferences, where the digital chessboard remains the central focus. Since the main purpose of this view is to present the ongoing game on a digital board, it is positioned at the top for maximum visibility on smaller screens. \\
+
+Below the chessboard is the \gls{pgn} display, which shows the list of moves played. In contrast to the desktop layout, where the moves may be presented in a table format, the layout for smaller screens uses a vertical list to create a cleaner and more compact presentation. This makes the move history easier to read on narrow screens, while still maintaining clarity, as shown in Figure~\ref{fig:small-board-view}. \\
+
+At the bottom of the screen is the camera feed. While it is not as highly prioritized as the board or move list, it remains available to users who want a live view of the game. The live camera can also be expanded to full screen for a closer look, as demonstrated in Figure~\ref{fig:small-board-view-camera-expanded}. This layout ensures that all core features remain accessible, while optimizing the viewing experience for mobile users. \\
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[h!]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/results/frontend/board-view/mobile.png}
+        \caption{Mocked data}
+        \label{fig:small-board-view}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h!]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/results/frontend/board-view/camera-fullscreen-mobile.png}
+        \caption{Camera expanded when in smaller screen}
+        \label{fig:small-board-view-camera-expanded}
+    \end{subfigure}
+    \caption{Board View on smaller screen}
+    \label{fig:small-view-board-view-group}
+\end{figure}
