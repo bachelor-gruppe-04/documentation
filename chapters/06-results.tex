@@ -4,7 +4,38 @@
 
 The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were tested, with 10 games per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves (15 moves by white and 15 moves by black). \\
 
-Each move was logged as either successful or unsuccessful to assess the model’s detection accuracy. A 30-second window was provided for the system to detect and transmit each move, starting from when the move was made over-the-board. If the system failed to detect the move within this window or detected an incorrect move, it was marked as unsuccessful. The game concluded once a move was marked unsuccessful or all 15 full moves were completed.
+Each move was logged as either successful or unsuccessful. A 30-second window was provided for the system to detect and transmit each move, starting from when the move was made over-the-board (OTB). If the system failed to detect the move within this window or detected an incorrect move, it was marked as unsuccessful. The game concluded once a move was marked unsuccessful or all 15 full moves were completed.
+
+\newpage
+
+\begin{table}[htbp]
+\centering
+\caption{Move detection accuracy on both wooden and plastic boards}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Category} & \textbf{OTB Moves} & \textbf{Successful Moves} & \textbf{Accuracy (\%)} \\
+\midrule
+\textbf{Total} & 1015 & 919 & 90.5\% \\
+\midrule
+\textbf{White Pieces} & & & \\
+\hspace{1em}Pawn  & 240 & 238 & 99.2\% \\
+\hspace{1em}Knight & 127 & 116 & 91.3\% \\
+\hspace{1em}Bishop & 73  & 53  & 72.6\% \\
+\hspace{1em}Rook   & 29  & 25  & 86.2\% \\
+\hspace{1em}Queen  & 40  & 38  & 95.0\% \\
+\hspace{1em}King   & 15  & 7   & 46.7\% \\
+\midrule
+\textbf{Black Pieces} & & & \\
+\hspace{1em}Pawn  & 243 & 240 & 98.8\% \\
+\hspace{1em}Knight & 77  & 74  & 96.1\% \\
+\hspace{1em}Bishop & 64  & 46  & 71.9\% \\
+\hspace{1em}Rook   & 21  & 5   & 23.8\% \\
+\hspace{1em}Queen  & 81  & 73  & 90.1\% \\
+\hspace{1em}King   & 5   & 4   & 80.0\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 
 
 
