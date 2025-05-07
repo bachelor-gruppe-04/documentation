@@ -1,5 +1,10 @@
 \chapter{Results}
 
+
+\begin{center}
+    \textit{This chapter presents the outcomes of the project, including the functionality and performance of the developed application. It highlights the achieved results in relation to the project goals and requirements.}
+\end{center}
+
 \section{Machine Learning Model}
 
 The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were tested, with 10 games per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves (15 moves by white and 15 moves by black). \\
@@ -15,35 +20,96 @@ Each move was logged as either successful or unsuccessful. A 30-second window wa
 \toprule
 \textbf{Category} & \textbf{OTB Moves} & \textbf{Successful Moves} & \textbf{Accuracy (\%)} \\
 \midrule
-\textbf{Total} & 1015 & 919 & 90.5\% \\
+\textbf{Total} & 1033 & 936 & 90.6\% \\
 \midrule
 \textbf{White Pieces} & & & \\
-\hspace{1em}Pawn  & 240 & 238 & 99.2\% \\
-\hspace{1em}Knight & 127 & 116 & 91.3\% \\
-\hspace{1em}Bishop & 73  & 53  & 72.6\% \\
+\hspace{1em}Pawn  & 244 & 242 & 99.2\% \\
+\hspace{1em}Knight & 128 & 117 & 91.4\% \\
+\hspace{1em}Bishop & 74  & 54  & 73.0\% \\
 \hspace{1em}Rook   & 29  & 25  & 86.2\% \\
-\hspace{1em}Queen  & 40  & 38  & 95.0\% \\
-\hspace{1em}King   & 15  & 7   & 46.7\% \\
+\hspace{1em}Queen  & 42  & 40  & 95.2\% \\
+\hspace{1em}King   & 16  & 8   & 50.0\% \\
 \midrule
 \textbf{Black Pieces} & & & \\
-\hspace{1em}Pawn  & 243 & 240 & 98.8\% \\
-\hspace{1em}Knight & 77  & 74  & 96.1\% \\
-\hspace{1em}Bishop & 64  & 46  & 71.9\% \\
+\hspace{1em}Pawn  & 247 & 243 & 98.4\% \\
+\hspace{1em}Knight & 78  & 75  & 96.2\% \\
+\hspace{1em}Bishop & 65  & 47  & 72.3\% \\
 \hspace{1em}Rook   & 21  & 5   & 23.8\% \\
-\hspace{1em}Queen  & 81  & 73  & 90.1\% \\
+\hspace{1em}Queen  & 84  & 76  & 90.5\% \\
 \hspace{1em}King   & 5   & 4   & 80.0\% \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+\begin{table}[htbp]
+\centering
+\caption{Summary of Total Moves and Success Rate by Board Type}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Board Type} & \textbf{Total Moves} & \textbf{Total Successful Moves} & \textbf{Success Rate (\%)} \\
+\midrule
+Plastic & 475 & 427 & 89.9\% \\
+Wooden  & 558 & 509 & 91.2\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\newpage
+
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=8pt,
+    width=\textwidth,
+    height=8cm,
+    enlarge x limits=0.05,
+    ymin=0,
+    ylabel={Number of Games Failed},
+    xlabel={Move Number},
+    xtick={1,...,15,All},
+    xticklabels={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,All},
+    x tick label style={rotate=45, anchor=east},
+    legend style={at={(0.5,-0.25)}, anchor=north, legend columns=-1},
+    nodes near coords,
+    symbolic x coords={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,All},
+    xticklabel style={font=\small},
+]
+\addplot+[style={fill=blue!50}] coordinates {
+    (1,0) (2,12) (3,2) (4,10) (5,14) (6,4) (7,3) (8,3) (9,0)
+    (10,0) (11,0) (12,0) (13,0) (14,0) (15,0) (Completed All,2)
+};
+\addplot+[style={fill=red!50}] coordinates {
+    (1,0) (2,6) (3,6) (4,16) (5,5) (6,3) (7,1) (8,0) (9,6)
+    (10,0) (11,0) (12,1) (13,3) (14,1) (15,0) (All,2)
+};
+\legend{Plastic, Wooden}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Failure causes by board type}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Board Type} & \textbf{Total Failures} & \textbf{No Detection} & \textbf{Incorrect Detection} \\
+\midrule
+Plastic & 48 & 47 & 1 \\
+Wooden & 48 & 40 & 8 \\
+\midrule
+\textbf{Total} & 96 & 87 & 9 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For a detailed breakdown of the chess games, including the \gls{eco}, failure points, and piece-wise failure statistics for each board type, see Appendix X.
 
 
 
-
-
-\begin{center}
-    \textit{This chapter presents the outcomes of the project, including the functionality and performance of the developed application. It highlights the achieved results in relation to the project goals and requirements.}
-\end{center}
 
 \section{Overview of Delivered Product}
 The delivered product refers to the final version of the application submitted at the conclusion of this Bachelor’s thesis. The application was developed at the request of the product owner and based on the requirements provided. The initial description served as a general concept rather than a detailed specification, which meant that decisions regarding design, architecture, and technology were left to the development team. Throughout the development process, ideas and design choices were discussed with the product owner and approved during regular meetings. \\
