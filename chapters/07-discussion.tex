@@ -6,7 +6,13 @@
 
 \section{Temprorary Title - Discussion of Results}
 
+The model’s approach of selecting the most likely move based on a confidence threshold of 0.60 revealed an interesting flaw in the detection of castling. Specifically, castling moves were often misclassified because the system evaluated each piece move independently. In many cases, the model assigned a higher confidence score to a rook moving from its starting square (e.g., from \textit{h1} to \textit{f1}) than to the king's two-square movement required for castling. As a result, 8 out of 9 castling errors occurred when the rook's move was mistakenly chosen over the correct castling sequence. A possible solution is to temporarily delay the king’s movement, ensuring the rook is still present on its original square. This could help the model assign greater certainty to the actual castling pattern.
 
+Another observation was the consistent failure point in specific openings. In several test sets, all 10 games of a given opening failed at the exact same move number. This pattern suggests that certain positions or board states consistently challenge the model, possibly due to recurring piece configurations or lighting conditions at those points in the game.
+
+Furthermore, move detection accuracy was noticeably lower at the edges of the board. This can be attributed to several factors. First, the board warping process relies on accurate corner detection to map square centers. While inner squares were generally well-aligned, squares near the edge—particularly the corners—were more prone to misalignment. This distortion likely contributed to decreased detection reliability in those areas. Second, the camera angle used in the setup was relatively steep, making it harder to clearly capture the chess pieces closest to the lens. Third, pieces on the far side of the board appeared smaller in the frame, and the distance between square centers in the warped image was compressed. This made it more likely for a piece to be assigned to an adjacent square, particularly along the edges where space is visually tighter.
+
+These findings highlight key limitations in the current setup and suggest concrete areas for improvement, such as refining the warping algorithm, enhancing corner detection accuracy, and adjusting the model’s treatment of multi-piece moves like castling.
 
 
 
