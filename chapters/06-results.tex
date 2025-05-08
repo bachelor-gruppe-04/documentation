@@ -9,13 +9,16 @@
 
 The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were tested, with 10 games per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves (15 moves by white and 15 moves by black). \\
 
-Each move was logged as either successful or unsuccessful. A 30-second window was provided for the system to detect and transmit each move, starting from when the move was made over-the-board (OTB). If the system failed to detect the move within this window or detected an incorrect move, it was marked as unsuccessful. The game concluded once a move was marked unsuccessful or all 15 full moves were completed.
+Each move was logged as either successful or unsuccessful. A 30-second window was provided for the model to detect and transmit each move, starting from when the move was made \gls{otb}. If the model failed to detect the move within this window or detected an incorrect move, it was marked as unsuccessful. The game concluded once a move was marked unsuccessful or all 15 full moves were completed. \\
+
+Table~\ref{tab:accuracy-total} presents the overall move detection accuracy, both in total and broken down by piece type and color. The model achieved an overall accuracy of 90.6\%, successfully detecting 936 out of 1033 \gls{otb} moves. Pawns had the highest detection rates, with over 98\% accuracy for both colors. In contrast, the model struggled particularly with black rooks with only 23.8\% accuracy.
 
 \newpage
 
 \begin{table}[htbp]
 \centering
-\caption{Move detection accuracy on both wooden and plastic boards}
+\caption{Move detection accuracy in total}
+\label{tab:accuracy-total}
 \begin{tabular}{lccc}
 \toprule
 \textbf{Category} & \textbf{OTB Moves} & \textbf{Successful Moves} & \textbf{Accuracy (\%)} \\
@@ -41,9 +44,13 @@ Each move was logged as either successful or unsuccessful. A 30-second window wa
 \end{tabular}
 \end{table}
 
+Table~\ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board slightly outperformed the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference may indicate a slightly more stable detection environment on the wooden surface. \\
+
+
 \begin{table}[htbp]
 \centering
 \caption{Summary of Total Moves and Success Rate by Board Type}
+\label{tab:board-type-accuracy}
 \begin{tabular}{lccc}
 \toprule
 \textbf{Board Type} & \textbf{Total Moves} & \textbf{Total Successful Moves} & \textbf{Success Rate (\%)} \\
@@ -56,6 +63,8 @@ Wooden  & 558 & 509 & 91.2\% \\
 
 
 \newpage
+
+Figure~\ref{fig:move-failures} shows the number of failed games (i.e., games where detection failed) grouped by the move number at which failure occurred. Bars are color-coded by board type. The majority of failures occurred within the first five moves, particularly at moves 2, 4, and 5. This trend suggests that the early game presents the greatest challenge for detection, potentially due to rapid development or ambiguity in piece positions. Notably, failures after move 9 were rare. \\
 
 
 \begin{figure}[htbp]
@@ -89,11 +98,17 @@ Wooden  & 558 & 509 & 91.2\% \\
 \legend{Plastic, Wooden}
 \end{axis}
 \end{tikzpicture}
+\caption{Number of failed games per move number across plastic and wooden boards.}
+\label{fig:move-failures}
 \end{figure}
+
+
+Table~\ref{tab:different-errors} categorizes the types of detection failures for each board type. The majority of failures were due to a complete lack of detection within the allotted time window. Incorrect detections (the model detecting a move but interpreting it wrongly) were less frequent but more common on the wooden board, accounting for 8 out of 48 failures, compared to just 1 on the plastic board.  \\
 
 \begin{table}[htbp]
 \centering
 \caption{Frequencies of Different Detection Errors}
+\label{tab:different-errors}
 \begin{tabular}{lccc}
 \toprule
 \textbf{Board Type} & \textbf{Total Failures} & \textbf{No Detection} & \textbf{Incorrect Detection} \\
@@ -108,8 +123,7 @@ Wooden & 48 & 40 & 8 \\
 
 For a detailed breakdown of the chess games, including the sequences of moves, failure points, and detection statistics for each board type, see Appendix FILL IN.
 
-
-
+\newpage
 
 \section{Overview of Delivered Product}
 The delivered product refers to the final version of the application submitted at the conclusion of this Bachelor’s thesis. The application was developed at the request of the product owner and based on the requirements provided. The initial description served as a general concept rather than a detailed specification, which meant that decisions regarding design, architecture, and technology were left to the development team. Throughout the development process, ideas and design choices were discussed with the product owner and approved during regular meetings. \\
@@ -122,9 +136,6 @@ The application itself is a local, camera-based system for digitalizing over-the
 
 \section{Functional Results}
 The application consists of three main components: machine learning, WebSocket communication, and the front-end interface. The back-end handles image recognition and game logic, using a machine learning model to detect board states. It communicates with the front-end through a WebSocket connection. The front-end is responsible for presenting this information to the user in real time. The cameras is connected with a USB-hub, where multiple cameras can be attached to the same computer. 
-
-\subsection{Machine Learning}
-To be completed.
 
 \subsection{API}
 To enable real-time updates and improve the responsiveness of the front-end interface, the application uses a WebSocket connection between the back-end and the front-end. This method was suggested by the product owner and was also approved by the supervisor. This communication channel is used for transmitting move data as it is detected by the board recognition system. Unlike traditional HTTP requests, which operate on a request-response basis, WebSocket allows for continuous, two-way communication between the server and the client. \\
