@@ -164,8 +164,6 @@ The final value was the probability that the adjusted anchor box corresponded to
 
 \subsection{Combining the models}
 
-\subsubsection*{The plan}
-
 To track chess piece movements, the first step was to identify the individual squares of the chessboard. Once the squares were identified, each detected piece needed to be mapped to its corresponding square. This required determining the outer corners of the chessboard. With the corners identified, the board was divided into an 8x8 grid of equally sized squares. Since the distance between the corners was known and all squares in the grid are of uniform size, the centers of the squares could be precisely calculated. For each square, only the center point would be used for subsequent mapping, as shown in Figure~\ref{fig:chessboard-centers}.
 
 
@@ -218,7 +216,7 @@ The model predicts these values for each anchor box. An anchor box is a predefin
 
 \subsection*{Model Testing}
 
-The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were selected, with 10 games played per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves meaning 15 moves by White and 15 by Black. \\
+The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were selected, with 10 games played per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves, corresponding to 15 moves by white and 15 moves by black. \\
 
 Each move was logged as either successful or unsuccessful. A 30-second window was provided for the model to detect and transmit each move, starting from the moment the move was made \gls{otb}. If the model failed to detect the move within this time frame, or if it detected the wrong move, it was marked as unsuccessful. The game concluded either when a move was marked unsuccessful or all 15 full moves had been completed. \\
 
@@ -255,11 +253,6 @@ For \textbf{code review}, the team used GitHub pull requests. Each issue was wor
 
 \section{Software Design}
 \label{sec:software-design}
-
-Regarding the design of the product, the product owner expressed no particular preferences and allowed the team full control in determining the website’s structure and color palette.
-
-\subsection{Design Process}
-\label{subsec:design-process}
 
 The following processes align with the principles discussed in \ref{subsubsec:usability-testing}, as outlined in Chapter~\ref{chp:theory}.
 
