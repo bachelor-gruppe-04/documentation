@@ -7,7 +7,7 @@
 
 \section{Machine Learning Model}
 
-The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were tested, with 10 games per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves (15 moves by white and 15 moves by black). \\
+The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were tested, with 10 games per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves  meaning 15 moves by white and 15 moves by black.\\
 
 Each move was logged as either successful or unsuccessful. A 30-second window was provided for the model to detect and transmit each move, starting from when the move was made \gls{otb}. If the model failed to detect the move within this window or detected an incorrect move, it was marked as unsuccessful. The game concluded once a move was marked unsuccessful or all 15 full moves were completed. \\
 
