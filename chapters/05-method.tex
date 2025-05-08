@@ -210,8 +210,28 @@ After processing the image, the model returns a set of predictions for each pote
 
 The model predicts these values for each anchor box. An anchor box is a predefined bounding box within the image that serves as a potential candidate location for a piece. By adjusting these anchor boxes, the model can detect and classify pieces across different positions on the chessboard.
 
-
 \begin{subfigure}[h!]{0.9\linewidth} \centering \includegraphics[width=\linewidth]{figures/methods/ml-models/piece-model.png} \caption{Tournament View} \end{subfigure}
+
+\newpage
+
+\section{Testing Procedure and Setup}
+
+\subsection*{Model Testing}
+
+The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were selected, with 10 games played per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves meaning 15 moves by White and 15 by Black. \\
+
+Each move was logged as either successful or unsuccessful. A 30-second window was provided for the model to detect and transmit each move, starting from the moment the move was made \gls{otb}. If the model failed to detect the move within this time frame, or if it detected the wrong move, it was marked as unsuccessful. The game concluded either when a move was marked unsuccessful or all 15 full moves had been completed. \\
+
+The webcam was mounted above the board at an angle of approximately 60–70\si{\degree}
+ relative to the table surface. The white pieces were placed on the left side of the camera's field of view, and the black pieces on the right.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/methods/testing/setup.png}
+    \caption[Setup during testing]{Physical setup during testing, showing the board, webcam position, and piece orientation.}
+    \label{fig:setup}
+\end{figure}
+
 
 
 
@@ -260,6 +280,9 @@ Each issue was assigned to one or more team members to clarify responsibilities.
 In alignment with the workflow described in Subsection~\ref{subsec:version-control}, as outlined in Chapter \ref{chp:theory}, each issue was implemented on a dedicated branch. This setup enabled team members to conduct peer reviews via GitHub pull requests before merging changes into the main codebase. This process encouraged collaboration, maintained code quality, and facilitated shared decision-making within the team.
 
 \newpage
+
+
+
 
 \section{Software Design}
 \label{sec:software-design}

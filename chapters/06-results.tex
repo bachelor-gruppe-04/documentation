@@ -7,9 +7,7 @@
 
 \section{Machine Learning Model}
 
-The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were tested, with 10 games per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves  meaning 15 moves by white and 15 moves by black.\\
-
-Each move was logged as either successful or unsuccessful. A 30-second window was provided for the model to detect and transmit each move, starting from when the move was made \gls{otb}. If the model failed to detect the move within this window or detected an incorrect move, it was marked as unsuccessful. The game concluded once a move was marked unsuccessful or all 15 full moves were completed. \\
+As described in Section FILL IN, the model was evaluated using 100 games. The resulting accuracy and error rates are presented below.
 
 Table~\ref{tab:accuracy-total} presents the overall move detection accuracy, both in total and broken down by piece type and color. The model achieved an overall accuracy of 90.6\%, successfully detecting 936 out of 1033 \gls{otb} moves. Pawns had the highest detection rates, with over 98\% accuracy for both colors. In contrast, the model struggled particularly with black rooks with only 23.8\% accuracy.
 
