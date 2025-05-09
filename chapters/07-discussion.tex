@@ -15,6 +15,9 @@ Furthermore, move detection accuracy was noticeably lower at the edges of the bo
 These findings highlight key limitations in the current setup and suggest concrete areas for improvement, such as refining the warping algorithm, enhancing corner detection accuracy, and adjusting the model’s treatment of multi-piece moves like castling.
 
 
+\subsubsection{Different gamemodes}
+
+The models job is to find the pieces on the board and then assign them to its respective square. This means as long as you define the starting postion or start fen, that allows you to play any the game from any posistion you want. That means you could start a match mid game or you could play other game modes. The model also has validation so that means it should be able to successfully
 
 
 
@@ -23,47 +26,13 @@ These findings highlight key limitations in the current setup and suggest concre
 Throughout the duration of this project, several ideas for development emerged. These from both the team, the product owner, and external contributors. Due to the time constraints of the Bachelor’s thesis, many of these ideas were not implemented and were therefore categorized as "Further development". After the product owner's request, ensuring accurate piece recognition was prioritized over extended functionality.
 
 \subsection{Independent application}
-During the meeting with the product owner at Aalesund Schaklag's location, the product owner and the leader of the chess club discussed potential future developments. One idea was to implement a finished version of the application where cameras are permanently mounted on the ceiling at the club. Since the chess club typically maintains standard table arrangement for chessboards, the cameras would not need to be moved. \\
+Future plans include a standalone version of the application with ceiling-mounted cameras at the chess club. These would connect to a PC running the system continuously, operable via a physical switch. Players could set up boards and activate the system without technical knowledge. The application would start automatically, read boards in real time, and shut down via the same switch.
 
-In this setup, the cameras would be connected to a computer located in a locked room, running the application continuously. The proposed solution involves connecting the system to a physical switch, enabling users to easily power the cameras and application on or off as needed. \\
-
-A typical case would involve a group of chess players organizing a unofficial tournament. Upon arrival, the tables would already be positioned correctly under the cameras. The participants would set up their chessboards, pieces, and clocks, and then activate the system by turning on the switch. Once activated, the application would automatically start, and the cameras would begin reading the boards. Games would be tracked and displayed through the application in real time. Boards set back to their initial position would be recognized as reset. \\
-
-After the tournament concludes, users could simply turn off the switch to shut down the system. This design enables the application to be used independently, without requiring technical expertise. It is intended to be accessible to both young adults and elderly users. Additionally, mounting the cameras on the ceiling contributes to enhanced security for the chess equipment.
-
-\subsection{Analyze chess games}
-An additional development idea involves giving both players and spectators ability to analyze completed chess games. Currently, the application generates a \gls{PGN} file once a game is completed. This file can be imported into external platforms such as \gls{lichess}, where users can step through each move and receive insights such as the opening name, evaluation of moves, and suggested best plays. \\
-
-A proposed enhancement is to integrate the application directly with the \gls{stockfish} chess engine. By doing so, real-time analysis could be made available during ongoing games. This would allow spectators to view the current game evaluation — for example, indicating which player has the advantage at a given position. A common and effective way to display this is through an evaluation bar, which shifts visually based on the balance of the position, providing intuitive feedback to viewers. \\
-
-This feature could be integrated into both the tournament- and board-view, displaying evaluations for each board during live play. Such functionality would enrich the viewing experience for spectators and could also be useful for players who wish to review their games afterward. After the match, players could access a breakdown of the game with move-by-move assessments and suggestions for improvement. \\
-
-Integrating \gls{stockfish} would also open possibilities for additional automated insights, such as identifying blunders, mistakes, and inaccuracies, or offering engine-generated commentary. This would enhance the educational value of the application and make it more engaging for a broader range of users, including students, coaches, and casual players.
-
-\subsection{Information about participants}
-In the current version of the application, all tournament participants are hardcoded directly into the code. This approach was chosen to allow the development team to focus on core functionality, particularly the accurate detection of board states. \\
-
-A more flexible and maintainable solution would involve allowing the tournament organizer to manually register participants once tournament registration is complete. This could be implemented through a user interface, such as a form, with participant data stored in a database. Relevant information for each player would typically include their name, age, chess club affiliation, and chess rating. \\
-
-One potential enhancement is to fetch player ratings directly from \gls{fide}, the international chess federation. \gls{fide} maintains the \gls{elo} rating system, which is the most widely used system for evaluating chess players and is also used by Aalesund Schaklag. When a player’s match is recorded in the \gls{fide} system, their rating is updated accordingly. By integrating with the \gls{fide} \gls{api} or database, the application could automatically retrieve up-to-date player ratings, ensuring accurate and consistent information for tournament use.
+\subsection{Participant Management}
+Players are currently hardcoded. A future version could allow manual registration through a UI, with data stored in a database. Integration with FIDE’s API could enable automatic rating retrieval.
 
 \subsection{Time control}
-For spectators watching live chess games on a screen, it can be difficult to follow the pace of the game, as the current version of the application does not display any information about time control. Chess games are typically played with varying time formats, including \gls{classical}, \gls{blitz}, and \gls{bullet}, each of which allocates different amounts of time per player. Tournaments generally specify a single time control variant, which could be included in the tournament description. \\
-
-A simple approach to improve spectator understanding would be to introduce a time control entity in the application. For example, if the tournament is set to use the \gls{blitz} format, the application could display an estimated countdown timer based on player moves. According to \gls{fide}, blitz games allocate 10 minutes or less per player. By knowing the variant in use, the application could estimate the time remaining based on the move timestamps. However, this method is not reliable, as several factors can introduce inaccuracies. This can be delays in move detection, move registration, and rendering on the screen. As a result, this solution would not provide precise or trustworthy time tracking. \\
-
-An alternative is to use a digital chess clock, similar to those used with electronic chess boards. These clocks can be connected to a computer via cable and provide accurate time tracking. However, this method increases the cost of the setup significantly. A single digital clock can cost around 1,500 NOK, which goes against the application’s goal of being a low-cost and low-maintenance solution. \\
-
-A more advanced approach would involve reading the clock visually using the same camera system that tracks the chessboard. In this solution, a machine learning model would be trained to recognize and interpret both the chessboard and the physical clock from the same image. The backend could then update the front-end with real-time clock values. While this approach would preserve the low-cost vision by removing the need for expensive clock hardware, it comes with technical challenges. The machine learning model could misread the clock due to obstructions, poor lighting, or low image resolution. For example, if a player’s hand is covering part of the clock, the system might not be able to detect the time correctly. These inaccuracies are particularly problematic in faster time formats like blitz or bullet, where even small errors or delays can significantly affect the perceived game state. \\
-
-Due to these limitations and the project's scope, implementing time control features was not prioritized in the current version of the application. However, the topic remains relevant for future development, especially for improving the spectator experience.
-
-\subsection{Generate initial position based on FEN}
-In chess, there are several valid starting positions depending on the variant being played. The most widely recognized is the \gls{classical} setup, where each player's pawns occupy the second rank and the back-rank pieces occupy the first rank, mirrored vertically for black and white. However, many chess variants such as \gls{chess960}, \gls{horde}, and \gls{racing-kings} use non-classical starting positions or even different piece configurations. These variants are currently not supported by the application, as only the classical chess setup is implemented. \\
-
-The product owner specified support for standard chess as the only requirement. However, enabling the application to support a wider range of chess variants would significantly increase its flexibility and usability across different contexts. \\
-
-A practical solution to support multiple starting positions is to implement support for importing a \gls{fen} string. \gls{fen} is a standardized notation used to describe specific board states in chess, including custom starting positions. Currently, the initial position is hardcoded for standard chess. By allowing the user to input a \gls{fen} string or select a variant from a predefined list (each associated with a corresponding \gls{fen}), the application could generate the appropriate board layout dynamically. This functionality would allow users to configure the board for any desired variant and enable a broader range of use cases, including training, analysis, or alternative tournament formats.
+The current system lacks time control tracking. Simple estimation based on timestamps is unreliable. Options include integrating digital clocks (costly) or using camera-based OCR to read physical clocks (technically complex and error-prone). This remains a future consideration. \\
 
 \section{Obstacles}
 In addition to ideas for future development, there were also a few obstacles encountered during the development phase of this project. These challenges were addressed as they occurred, and solutions were implemented as part of the final application.
