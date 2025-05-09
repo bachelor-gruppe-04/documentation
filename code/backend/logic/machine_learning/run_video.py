@@ -58,7 +58,7 @@ async def process_video(
 
         frame_counter += 1
 
-    # cap.release()
+    cap.release()
     # cv2.destroyAllWindows()
 
 async def prepare_to_run_video(board_id: int, video: cv2.VideoCapture):
