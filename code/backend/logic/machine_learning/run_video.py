@@ -46,7 +46,8 @@ async def process_video(
                 )
                 if payload:
                     move = payload[1]["sans"][0]
-
+                                        
+                    boards = storage.boards
                     board_service = BoardService()
                     await board_service.send_move(board_id, move)
 

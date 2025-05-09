@@ -177,7 +177,7 @@ class App(ctk.CTk):
       self.reset_select_button.configure(state="normal")
       self.reset_button.configure(state="normal")
       self.board_service.start_detectors()
-      self.start_button.configure(state="disabled")
+      self.start_button.configure(state="normal")
       
   def disable_main_buttons(self) -> None:
     """ Disable main buttons during connection. """
