@@ -47,7 +47,7 @@ Similarly, \textbf{tensorflow} is an open-source machine learning framework deve
 
 \section{Object Detection}
 
-\textbf{\gls{leyolo}} is a \gls{cnn} designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture. allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
+\textbf{\gls{leyolo}} is a \gls{cnn}-based architecturr designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
 
 Central to object detection is the use of concept of \textbf{bounding boxes}. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. \\
 
@@ -72,7 +72,7 @@ To improve detection accuracy across different object sizes and shapes, models u
     \label{fig:anchor-box}
 \end{figure}
 
-Once multiple predictions have been made, some of them may overlap significantly. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. It removes redundant or overlapping bounding boxes and keeps only the most confident prediction. The NMS algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
+ Once multiple predictions have been made, some of them may overlap significantly. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. It removes redundant or overlapping bounding boxes and keeps only the most confident prediction. The NMS algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
 \cite{thepythoncode:nms}.
 
 \newpage
@@ -179,35 +179,25 @@ WebSocket is a standardized communication protocol that enables full-duplex comm
 \subsection{Wireframe}
 \label{subsec:wireframe}
 
-A wireframe is a rough schematic created in the early stages of digital product design to help visualize and communicate the structure of a product or website \cite{balsamiq:wireframe}. \\
+A wireframe is a simplified visual representation of a user interface, used in the early stages of design to outline the structure and layout of a digital product. It focuses on functionality, content placement, and user interaction, without including detailed design elemens \cite{balsamiq:wireframe}.
 
-The same screen can be built in a lot of different ways, but only a few of them will get your message across correctly and result in an easy-to-use software or website \cite{balsamiq:wireframe}. \\
-
-The purpose of a wireframe is to define a skeletal layout that is easy to understand, and encourages iteration and feedback. Getting to agreement on a good interface structure is a critical part of the software design process \cite{balsamiq:wireframe}. \\
-
-Wireframes are important because doing this work now, before any code is written and before the visual design is finalized, will save you lots of time and painful vadjustment work later \cite{balsamiq:wireframe}.
-
-\subsection{WCAG}
+subsection{WCAG}
 \label{subsec:wcag}
 
-\gls{wcag} provide technical specifications to improve the accessibility of websites and many other digital experiences. \cite{levelaccess:wcag}
+The \gls{wcag} provide technical specifications to enhance the accessibility of websites and digital content. Developed by the World Wide Web Consortium (W3C), these guidelines aim to make digital experiences more accessible to individuals with various disabilities \cite{levelaccess:wcag}.
 
 \section{Code Quality}
 \label{sec:code-quality}
 
-\subsection{Code Review}
+subsection{Code Review}
 \label{subsec:code-review}
 
-Code review is a critical step in the software development process, where a developer's implementation is examined by one or more peers before it is merged into an upstream branch, such as a feature branch or the main branch. This process provides a second opinion on the solution, helping to identify bugs, logic errors, uncovered edge cases, and other potential issues that may have been overlooked during development. \cite{gitlab:code-review} \\
+Code review is a process in which one or more developers examine another developer’s code before it is merged into a shared branch, such as the main branch. The purpose is to identify issues such as bugs, logic errors, or edge cases that may not have been caught during initial development \cite{gitlab:code-review}. //
 
-A well-defined code review process is essential for maintaining high code quality and preventing unstable or faulty code from reaching production. By incorporating code reviews into the team's workflow, software development teams can foster continuous improvement, ensure that all code is reviewed by multiple perspectives, and reduce the risk of introducing defects into the codebase \cite{gitlab:code-review}. \\
-
-Pull requests are a widely used mechanism to facilitate code reviews in modern version control systems. A pull request is a formal proposal to merge a set of changes from one branch into another. It provides a platform for collaborators to review, discuss, and approve changes before they are integrated into the main codebase. Pull requests also display the differences between the source and target branches, making it easier for reviewers to understand the proposed changes and provide constructive feedback \cite{github:pr}.
+Modern version control systems often use pull requests to facilitate code reviews. A pull request is a formal proposal to merge changes from one branch into another and provides a platform for reviewing, discussing, and approving code. It also highlights differences between branches, helping reviewers understand and evaluate the proposed changes \cite{github:pr}.
 
 \subsection{Cohesion and Coupling}
 \label{subsec:cohesion-and-coupling}
-
-Cohesion and coupling are two fundamental concepts in software design that significantly impact the quality and maintainability of a system. \\
 
 \begin{quote}
 \textit{"\textbf{Cohesion} refers to the degree to which elements within a module work together to fulfill a single, well-defined purpose. \textbf{High cohesion} means that elements are closely related and focused on a single purpose, while \textbf{low cohesion} means that elements are loosely related and serve multiple purposes."} \cite{geeksforgeeks:c&c} \\
@@ -226,18 +216,14 @@ Cohesion and coupling are two fundamental concepts in software design that signi
     \label{fig:cohesion-coupling}
 \end{figure}
 
-Both cohesion and coupling are important factors in determining the maintainability, scalability, and reliability of a software system. Tight coupling and low cohesion often result in systems that are difficult to change, test, and debug. Conversely, loose coupling and high cohesion contribute to systems that are modular, flexible, and easier to improve over time. An illustration of this concept is shown in Figure \ref{fig:cohesion-coupling} \cite{geeksforgeeks:c&c}.
-
-\newpage
+Cohesion and coupling significantly impact the quality and maintainability of a system.
+High cohesion and loose coupling are desirable, as they lead to systems that are easier to test, modify, and extend. This relationship is illustrated in Figure \ref{fig:cohesion-coupling} 
+\cite{geeksforgeeks:c&c}.
 
 \subsection{Documentation}
 \label{subsec:documentation}
 
-Documentation is a critical component of software development, consisting of written materials that accompany a software program. It serves as a comprehensive reference for all stakeholders involved in the project, including developers, testers, and end-users. Documentation can take various forms, such as \gls{api} documentation, build instructions, user manuals, or internal design specifications. Its purpose is to provide clarity, facilitate understanding, and ensure the effective use and maintenance of the software \cite{geeksforgeeks:doc}. \\
-
-High-quality documentation is essential for the success of any software project. It simplifies onboarding for new team members, aids in troubleshooting and debugging, and ensures that the software can be maintained and extended over time. Moreover, well-documented code and systems reduce the risk of knowledge loss when team members change or when revisiting older parts of the codebase \cite{geeksforgeeks:doc}. \\
-
-In modern software development, documentation is not merely an afterthought but an integral part of the development process. It should be created and maintained alongside the code, ensuring that it remains accurate, up-to-date, and accessible to all relevant parties.
+Documentation is an essential part of software development, providing written references for developers, testers, and users. It includes materials such as \gls{api} references, build instructions, user guides, and design specifications. Documentation supports understanding, maintenance, and helps preserve knowledge over time. It should be created and maintained alongside the code to stay accurate and useful throughout the project lifecycle \cite{geeksforgeeks:doc}.
 
 \subsection{Testing}
 \label{subsec:testing}
@@ -245,40 +231,33 @@ In modern software development, documentation is not merely an afterthought but 
 \subsubsection*{Virtual Machine}
 \label{subsubsec:virtual-machine}
 
-Virtualization refers to the creation of a software-based — or "virtual" — version of a computer, with dedicated allocations of \gls{cpu}, memory, and storage drawn from a physical host machine or a remote server, such as one in a cloud provider's data center. A \gls{vm} is essentially a computer file that behaves like an independent computer system. It operates within a window as a separate computing environment, isolated from the host operating system. This isolation ensures that the software running inside the \gls{vm} cannot interfere with the host machine’s primary system \cite{microsoft:virtual-machine}.
+A \gls{vm} is a software program that acts like a real computer. It runs on a physical machine (the host) and has its own virtual \gls{cpu}, memory, and storage. The VM is separated from the host system, so anything running inside the VM cannot directly affect the host. This makes it useful for testing, running different operating systems, or isolating software environments \cite{microsoft:virtual-machine}.
 
 \subsubsection*{Unit Testing}
 \label{subsubsec:unit-testing}
 
-Unit testing is a fundamental software testing technique in which individual units or components of a software application are tested in isolation. A unit typically refers to the smallest testable part of a program, such as a function, method, or class. The goal of unit testing is to validate that each unit performs as expected under various conditions, ensuring its correctness and reliability \cite{geeksforgeeks:unit-test}. \\
-
-By identifying and addressing bugs early in the development cycle, unit testing significantly enhances code quality and reduces the cost of fixing issues later in the process. It is a core practice in \gls{tdd}, where tests are written before the actual code, promoting a disciplined approach to development and ensuring that the code meets its requirements from the outset \cite{geeksforgeeks:unit-test}. \\
-
-Unit testing also contributes to the maintainability and scalability of a software system. Well-tested units are easier to refactor, extend, and integrate into larger systems, as their behavior is clearly defined and verified. Additionally, unit tests serve as living documentation, providing insights into how individual components are intended to function.
+Unit testing involves testing individual components of a software application in isolation, such as functions, methods, or classes. The purpose is to ensure that each unit behaves as expected and is reliable under different conditions \cite{geeksforgeeks:unit-test}.
 
 \subsubsection*{Usability Testing}
 \label{subsec:usability-testing}
 
-Usability testing is a critical aspect of software testing that focuses on evaluating a system from the perspective of an end user. Its primary goal is to determine how easily and effectively users can interact with the system to achieve their objectives. This type of testing involves observing representative users as they navigate through the product, identifying areas of confusion, difficulty, or inefficiency in the user experience \cite{geeksforgeeks:user-test}. \\
+Usability testing evaluates a system from the end user’s perspective, focusing on how easily users can interact with the system to accomplish their goals. It involves observing users to identify areas of confusion, inefficiency, or difficulty in the user experience \cite{geeksforgeeks:user-test}.
 
-During usability testing, both qualitative and quantitative data are collected to assess the product's functionality and user satisfaction. Qualitative data, such as user feedback and observations, provides insights into user behavior and preferences. Quantitative data, such as task completion rates and time-on-task, offers measurable metrics to evaluate performance. Based on the findings, a detailed report is generated, outlining necessary improvements to enhance the product's usability \cite{geeksforgeeks:user-test}. \\
+Both qualitative data (e.g., user feedback) and quantitative data (e.g., task completion rates) are collected to assess functionality and user satisfaction. These findings are used to generate a report with recommendations for improving usability \cite{geeksforgeeks:user-test}.
 
-The ultimate goal of usability testing is to identify pain points in the user experience and uncover opportunities for improvement. By understanding how users interact with the product and where they encounter challenges, developers can make informed decisions to refine the design, improve functionality, and increase overall user satisfaction \cite{geeksforgeeks:user-test}.
 
 \subsection{Type Safety}
 \label{subsec:type-safety}
 
-Type safety is a fundamental concept in software development that ensures the correctness of a codebase by detecting type-related errors during the development process. In dynamically typed languages, such as JavaScript, variables can be assigned values of any type, which often leads to subtle and hard-to-detect bugs. These bugs can be time-consuming to diagnose and resolve, particularly in large or complex codebases. Type safety addresses this issue by enforcing strict type constraints, thereby reducing the likelihood of runtime errors and improving overall code reliability \cite{dev:type-safety}.
+Type safety ensures that operations in a program are performed on the correct data types, helping catch errors early in development. In dynamically typed languages like JavaScript, lack of type enforcement can lead to hidden bugs. Enforcing type safety reduces runtime errors and improves code reliability \cite{dev:type-safety}.
 
 \subsubsection*{Key Pillars of Type Safety}
 \label{subsubsec:type-safety-pillars}
 
 \begin{itemize}
-    \item \textbf{Reliability:} Type safety acts as a protective mechanism, preventing runtime errors caused by type mismatches. By ensuring that variables and functions adhere to predefined types, it enhances the stability and reliability of applications \cite{dev:type-safety}.
+\item \textbf{Reliability:} Enforcing correct data types prevents type-related runtime errors, improving application stability \cite{dev:type-safety}.
 
-    \item \textbf{Collaboration:} Explicit type declarations improve code readability and make it easier for developers to understand and work with each other's code. This fosters seamless collaboration, especially in team environments where multiple developers contribute to the same codebase \cite{dev:type-safety}.
+\item \textbf{Collaboration:} Clear type definitions make code easier to read and understand, aiding teamwork and maintainability \cite{dev:type-safety}.
 
-    \item \textbf{Efficient Debugging:} Type safety enables early detection of type-related discrepancies, reducing the time and effort required for debugging. By catching errors at compile time (or during development in statically typed languages), it minimizes the risk of runtime failures and simplifies the debugging process \cite{dev:type-safety}.
+\item \textbf{Efficient Debugging:} Detecting type errors early reduces debugging time and lowers the risk of runtime issues \cite{dev:type-safety}.
 \end{itemize}
-
-In summary, type safety is a critical aspect of code quality, offering significant benefits in terms of reliability, collaboration, and debugging efficiency. Its implementation, whether through statically typed languages or tools like TypeScript, plays a vital role in modern software development practices \cite{dev:type-safety}.
