@@ -212,79 +212,6 @@ The model predicts these values for each anchor box. An anchor box is a predefin
 
 \newpage
 
-\section{Testing}
-\label{sec:testing}
-
-\subsection{Model testing}
-\label{subsec:model-testing}
-
-The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were selected, with 10 games played per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves, corresponding to 15 moves by white and 15 moves by black. \\
-
-Each move was logged as either successful or unsuccessful. A 30-second window was provided for the model to detect and transmit each move, starting from the moment the move was made \gls{otb}. If the model failed to detect the move within this time frame, or if it detected the wrong move, it was marked as unsuccessful. The game concluded either when a move was marked unsuccessful or all 15 full moves had been completed. \\
-
-The webcam was mounted above the board at an angle of approximately 60–70\si{\degree}
- relative to the table surface. The white pieces were placed on the left side of the camera's field of view, and the black pieces on the right.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\linewidth]{figures/methods/testing/setup.png}
-    \caption[Setup during testing]{Physical setup during testing, showing the board, webcam position, and piece orientation.}
-    \label{fig:setup}
-\end{figure}
-
-\newpage
-
-
-
-\subsection*{Wireframe testing}
-\label{subsubsec:user-centered-design}
-
-The following processes align with the principles discussed in  Subsection~\ref{subsec:usability-testing} 
-outlined in Chapter~\ref{chp:theory}.
-
-At the beginning of the design process, the group conducted wireframe testing with a diverse set of users. This included participants of varying age groups from young to elderly as well as both chess players and non-chess players. The goal was to evaluate whether users found the interface intuitive and whether the sizing and layout were appropriate. \\
-
-All participants were given the same context before starting the test: 
-
-\begin{quote}
-\textit{You are viewing a chess game between two companions you know. You visit the tournament organizer's website and come across this webpage.}
-\end{quote}
-
-Participants were then either given specific tasks to perform within the application or asked to explore freely, mimicking a real-world scenario. This approach aimed to identify how naturally users could navigate and understand the application without explicit instruction. \\
-
-After completing their interaction with the application, participants filled out an anonymous feedback form. The form included the following questions:
-
-\begin{itemize}
-    \item \textit{On a scale from 1 to 5, how satisfied are you with the overall experience of the application?}
-    \item \textit{On a scale from 1 to 5, how satisfied are you with the Tournament View page?}
-    \item \textit{On a scale from 1 to 5, how satisfied are you with the Board View page?}
-    \item \textit{Do you have any feedback, suggestions for improvement, or features you would like to see added?}
-\end{itemize}
-
-See Subsection \ref{subsec:wireframe} for the final tested wireframe.
-
-\newpage
-
-\subsubsection*{Color Palette}
-\label{subsubsec:color-palette}
-
-In selecting the application's color palette, the group opted for a variation of blue. This choice was influenced by the symbolic associations of the color blue, which is often linked to imagination, intelligence, and wisdom \cite{blue} traits that are relevant to the game of chess \cite{chess:ppqty, chess:chess-and-creativity}. \\
-
-To identify the most suitable stylistic direction, several versions of the application were developed, each showcasing a distinct color palette. These prototypes were printed and displayed in a shared space, allowing individuals from diverse backgrounds to view and compare them. \\
-
-Participants were invited to vote for their preferred versions via a form. Each participant was allowed up to three votes and had the option to leave comments. For instance, some expressed a preference for the light mode from palette \#08 and the dark mode from palette \#07, while others favored the board design from palette \#05 or the move-highlighting style from palette \#14. \\
-
-Rather than selecting a single predefined palette, the final color scheme was assembled by combining the most highly rated elements across the top-voted variations. This approach allowed for a more tailored and user-informed visual design (See Figure \ref{fig:color-palette-results} for the vote results). \\
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\linewidth]{figures/methods/color-palette-results.png}
-    \caption{Distribution of Votes Across Different Color Palettes}
-    \label{fig:color-palette-results}
-\end{figure}
-
-See Appendix~\ref{app:color-palettes} for the full set of tested color palettes.
-
 
 \section{Agile Methodology}
 \label{sec:development-methodology}
@@ -302,7 +229,7 @@ For \textbf{code review}, the team used GitHub pull requests. Each issue was wor
 %\subsubsection*{Supervisor}
 
 
-\subsection{Diagrams}
+\section{Architecture}
 \label{subsec:diagrams}
 
 To provide a comprehensive understanding of the system architecture and interaction flow, several \gls{uml} diagrams were created. These diagrams model different aspects of the live chess game digitization system, from component interactions and activity flow to user roles and use cases.
@@ -311,6 +238,8 @@ To provide a comprehensive understanding of the system architecture and interact
 \label{subsubsec:sequence-diagram}
 
 The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the Admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. Users, from remote devices, can spectate the game in real time or save it as a \gls{pgn} file. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
+
+\newpage
 
 \begin{figure}[h!]
     \centering
@@ -354,35 +283,33 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system�
 
 \subsubsection*{Control Panel}
 
-The Control Panel, Figure \ref{fig:control-panel-group}, is a desktop-only interface designed for tournament organizers to manage the digitization of multiple physical chess boards. The interface follows a simple three-step workflow:
+The Control Panel is a desktop interface for tournament organizers to manage the digitization of multiple physical chess boards. It follows a simple three-step workflow:
 
 \begin{enumerate}
-    \item \textbf{Select Number of Cameras:} The admin specifies how many boards will be monitored, which informs the system how many camera feeds to initialize, Figure \ref{fig:control-panel-1}.
-    \item \textbf{Start Cameras and Digitization:} This action triggers the camera feeds, board state recognition, and move validation processes, Figure \ref{fig:control-panel-2}.
-    \item \textbf{Restart Boards for New Round:} At the end of a round, this step resets the system state across all boards, preparing it for the next set of games, Figure \ref{fig:control-panel-3}.
+\item \textbf{Select Number of Cameras:} Specify the number of boards to monitor, which determines how many camera feeds are initialized (Figure \ref{fig:control-panel-1}).
+\item \textbf{Start Cameras and Digitization:} Launches the camera feeds, board state recognition, and move validation (Figure \ref{fig:control-panel-2}).
+\item \textbf{Restart Boards for New Round:} Resets all boards at the end of a round, preparing the system for the next games (Figure \ref{fig:control-panel-3}).
 \end{enumerate}
 
-The control panel is intentionally minimal and task-oriented, ensuring admins can quickly configure and manage the system with minimal technical overhead.
+The interface is minimal and task-focused, enabling efficient system setup and management with little technical effort.
 
 \begin{figure}[h!]
     \centering
-    \begin{subfigure}[h!]{0.45\linewidth}
+    \begin{subfigure}[h!]{0.40\linewidth}
         \centering
         \includegraphics[width=\linewidth]{figures/methods/wireframes/control-panel-1.png}
         \caption{Step 1}
         \label{fig:control-panel-1}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[h!]{0.45\linewidth}
+    \begin{subfigure}[h!]{0.40\linewidth}
         \centering
         \includegraphics[width=\linewidth]{figures/methods/wireframes/control-panel-2.png}
         \caption{Step 2}
         \label{fig:control-panel-2}
     \end{subfigure}
-    
-    \vspace{1em}
 
-    \begin{subfigure}[h!]{0.45\linewidth}
+    \begin{subfigure}[h!]{0.40\linewidth}
         \centering
         \includegraphics[width=\linewidth]{figures/methods/wireframes/control-panel-3.png}
         \caption{Step 3}
@@ -393,26 +320,25 @@ The control panel is intentionally minimal and task-oriented, ensuring admins ca
     \label{fig:control-panel-group}
 \end{figure}
 
+
 \begin{figure}[h!]
 \subsubsection*{Desktop View}
     \centering
-    \begin{subfigure}[h!]{0.45\linewidth}
+    \begin{subfigure}[h!]{0.40\linewidth}
         \centering
         \includegraphics[width=\linewidth]{figures/methods/wireframes/desktop-tournament-view.png}
         \caption{Tournament View}
         \label{fig:desktoop-tournament-view}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[h!]{0.45\linewidth}
+    \begin{subfigure}[h!]{0.40\linewidth}
         \centering
         \includegraphics[width=\linewidth]{figures/methods/wireframes/desktop-board-view.png}
         \caption{Board View}
         \label{fig:desktop-board-view}
     \end{subfigure}
-    
-    \vspace{1em}
 
-    \begin{subfigure}[h!]{0.45\linewidth}
+    \begin{subfigure}[h!]{0.40\linewidth}
         \centering
         \includegraphics[width=\linewidth]{figures/methods/wireframes/desktop-full-screen-video-view.png}
         \caption{Fullscreen Video Feed}
@@ -461,62 +387,52 @@ The control panel is intentionally minimal and task-oriented, ensuring admins ca
 \section{Tools and Platforms}
 \label{sec:tools-and-platforms}
 
-\subsection{Development Tools}
+\subsection*{Development Tools}
 \label{subsec:development-tools}
 
 \begin{itemize}
-    \item \textbf{\gls{vscode}} supports almost every major programming language, making it an ideal all-in-one \gls{ide}.
-    \item \textbf{Postman} can test any \gls{api} with pre-configured code snippets: Postman includes a JavaScript-based library of code snippets that enable teams to easily author tests that validate their \gls{api}'s performance, reliability, and behavior.
-    \item \textbf{Netron.app} is a visualizer for neural network, deep learning and machine learning models.
-    \item \textbf{Git} is a distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
-    \item \textbf{\glspl{llm}} are used as an assistance to discuss code quality and structures. Viewed/used as a "sparing" partner.
-    \item \textbf{Lighthouse} is an automated tool to help improve quality of web pages.
+    \item \textbf{\gls{vscode}} was used as the primary development environment due to its support for multiple programming languages and extensions.
+\item \textbf{Postman} was employed for testing and validating RESTful \glspl{api}, utilizing built-in JavaScript-based test snippets.
+\item \textbf{Netron.app} was used to visualize neural network architectures during the evaluation phase.
+\item \textbf{Git} facilitated version control and collaboration throughout the development process.
+\item \textbf{\glspl{llm}} (e.g., ChatGPT) were consulted to review code and provide suggestions, functioning as a collaborative assistant.
+\item \textbf{Lighthouse} was used to evaluate and improve the performance and accessibility of the developed web interface.
 \end{itemize}.
 
-\subsection{Collaboration and Design Tools}
+\subsection*{Collaboration Tools}
 \label{subsec:collaboration-and-design-tools}
 
 \begin{itemize}
-    \item \textbf{GitHub} is used for it's in-house \textit{project} function, creating an Issue Board enabled with easy to use Issues. Also used for code reviewing and code managment.
-    \item \textbf{Figma} is a tool used for sketching and creating wireframes.
-    \item \textbf{OneDrive} is a platform used for storing files.
-    \item \textbf{Overleaf} was used as a report platform, with it's LaTeX support, making it suitable for writing longer reports.
+    \item \textbf{GitHub} was used for its built-in project management tool, which allowed the team to create an Issue Board for easy issue tracking. It was also used for code reviews and version control management.
+    
+    \item \textbf{Figma} was used as a tool for sketching and creating wireframes.
+    
+    \item \textbf{OneDrive} was used as a platform for storing and sharing files.
+    
+    \item \textbf{Overleaf} was used as the platform for writing the report, utilizing its LaTeX support to efficiently compose and format the thesis.
 \end{itemize}
+
 
 \section{Technology Stack}
 \label{sec:technology-stack}
 
-\subsection{Backend}
-\label{subsec:backend}
-
-For the backend technology, Python is being used.
-
-\subsubsection*{Python Libraries}
-\label{subsubsec:python-libraries}
+\subsection*{Backend}
+\subsubsection*{Python libraries}
 
 \begin{itemize}
-    \item \textbf{chess} is a library for Python, with move generation, move validation, and support for common formats. \cite{python:chess}
-    
-    \item \textbf{FastAPI} is a modern and fast web framework for building \Glspl{api} with Python. \cite{python:fastapi}
-    
-    \item \textbf{numpy} is a fundamental package for scientific computing in Python. \cite{python:numpy}
-    
-    \item \textbf{onnxruntime}, \textbf{onnxruntime-gpu} assists in model serialization and interface with ORT. \cite{python:onnx}
-    
-    \item \textbf{opencv-python}, \textbf{opencv-contrib-python}, \textbf{opencv-python-headless} is used to solve computer vision problems. \cite{python:opencv}
-    
-    \item \textbf{requests} allows to send HTTP requests easily. \cite{python:requests}
-    
-    \item \textbf{scipy} is a fundamental package for algorithms for scientific computing in python. \cite{python:scipy}
-    
-    \item \textbf{tensorflow}, \textbf{tensorflow-intel} makes it easy to create \gls{ml} models that can run in any environment. \cite{python:tensorflow}
+    \item \textbf{chess} – Used for move generation, validation, and parsing of chess game formats. \cite{python:chess}
+    \item \textbf{FastAPI} – Web framework used to develop RESTful APIs for backend services. \cite{python:fastapi}
+    \item \textbf{numpy} – Core package for numerical operations. \cite{python:numpy}
+    \item \textbf{onnxruntime} Used for running pre-trained machine learning models. \cite{python:onnx}
+    \item \textbf{opencv-python} Utilized for computer vision tasks. \cite{python:opencv}
+    \item \textbf{requests} – Used to handle HTTP communication. \cite{python:requests}
+    \item \textbf{scipy} – Employed for scientific and numerical computations. \cite{python:scipy}
+    \item \textbf{tensorflow}, Used to build and execute machine learning models. \cite{python:tensorflow}
 \end{itemize}
 
-\subsection{Frontend}
 
-For the frontend technology, TypeScript is being used. As discussed in \ref{subsec:type-safety}.
-
-\subsubsection*{TypeScript Libraries}
+\subsection*{Frontend}
+\subsubsection*{TypeScript libraries}
 
 \begin{itemize}
     \item \textbf{Vite} is a fast frontend build tool of web applications. \cite{ts:vite}
@@ -529,3 +445,74 @@ For the frontend technology, TypeScript is being used. As discussed in \ref{subs
     
     \item \textbf{react-dom} serves as the entry point to the DOM and server renderers for React. \cite{ts:react-dom}
 \end{itemize}
+
+\section{Testing}
+\label{sec:testing}
+
+\subsection{Model testing}
+\label{subsec:model-testing}
+
+The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were selected, with 10 games played per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves, corresponding to 15 moves by white and 15 moves by black. \\
+
+Each move was logged as either successful or unsuccessful. A 30-second window was provided for the model to detect and transmit each move, starting from the moment the move was made \gls{otb}. If the model failed to detect the move within this time frame, or if it detected the wrong move, it was marked as unsuccessful. The game concluded either when a move was marked unsuccessful or all 15 full moves had been completed. \\
+
+The webcam was mounted above the board at an angle of approximately 60–70\si{\degree}
+ relative to the table surface. The white pieces were placed on the left side of the camera's field of view, and the black pieces on the right.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/methods/testing/setup.png}
+    \caption[Setup during testing]{Physical setup during testing, showing the board, webcam position, and piece orientation.}
+    \label{fig:setup}
+\end{figure}
+
+\newpage
+
+
+
+\subsection{Wireframe testing}
+\label{subsubsec:user-centered-design}
+
+The following processes align with the principles discussed in  Subsection~\ref{subsec:usability-testing} 
+outlined in Chapter~\ref{chp:theory}. At the beginning of the design process, the group conducted wireframe testing with a diverse set of users. This included participants of varying age groups from young to elderly as well as both chess players and non-chess players. The goal was to evaluate whether users found the interface intuitive and whether the sizing and layout were appropriate. \\
+
+All participants were given the same context before starting the test: 
+
+\begin{quote}
+\textit{You are viewing a chess game between two companions you know. You visit the tournament organizer's website and come across this webpage.}
+\end{quote}
+
+Participants were then either given specific tasks to perform within the application or asked to explore freely, mimicking a real-world scenario. This approach aimed to identify how naturally users could navigate and understand the application without explicit instruction. \\
+
+After completing their interaction with the application, participants filled out an anonymous feedback form. The form included the following questions:
+
+\begin{itemize}
+    \item \textit{On a scale from 1 to 5, how satisfied are you with the overall experience of the application?}
+    \item \textit{On a scale from 1 to 5, how satisfied are you with the Tournament View page?}
+    \item \textit{On a scale from 1 to 5, how satisfied are you with the Board View page?}
+    \item \textit{Do you have any feedback, suggestions for improvement, or features you would like to see added?}
+\end{itemize}
+
+See Subsection \ref{subsec:wireframe} for the final tested wireframe.
+
+\newpage
+
+\subsection{Color palette testing}
+\label{subsubsec:color-palette}
+
+In selecting the application's color palette, the group opted for a variation of blue. This choice was influenced by the symbolic associations of the color blue, which is often linked to imagination, intelligence, and wisdom \cite{blue} traits that are relevant to the game of chess \cite{chess:ppqty, chess:chess-and-creativity}. \\
+
+To identify the most suitable stylistic direction, several versions of the application were developed, each showcasing a distinct color palette. These prototypes were printed and displayed in a shared space, allowing individuals from diverse backgrounds to view and compare them. \\
+
+Participants were invited to vote for their preferred versions via a form. Each participant was allowed up to three votes and had the option to leave comments. For instance, some expressed a preference for the light mode from palette \#08 and the dark mode from palette \#07, while others favored the board design from palette \#05 or the move-highlighting style from palette \#14. \\
+
+Rather than selecting a single predefined palette, the final color scheme was assembled by combining the most highly rated elements across the top-voted variations. This approach allowed for a more tailored and user-informed visual design (See Figure \ref{fig:color-palette-results} for the vote results). \\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/methods/color-palette-results.png}
+    \caption{Distribution of Votes Across Different Color Palettes}
+    \label{fig:color-palette-results}
+\end{figure}
+
+See Appendix~\ref{app:color-palettes} for the full set of tested color palettes.
