@@ -1,29 +1,19 @@
 \chapter*{Abstrakt}
 \addcontentsline{toc}{chapter}{Abstrakt}
 
-Formålet med dette prosjektet er å utvikle en automatisert løsning for \textbf{Aalesunds Schaklag} som muliggjør kontinuerlig sjakkspilling på et vanlig brett mens du samtidig digitalisere spillet til \gls{pgn}-filer. Digitaliserte spill gjøres tilgjengelige via et \gls{api} ved å strømme bevegelser som hendelser i en meldingskø. Systemet utnytter bildegjenkjenning for å identifisere brettet og brikkene, kombinert med sanntidsvalidering av trekk for å sikre overholdelse av sjakkreglene. \\
+Dette prosjektet, gjennomført i samarbeid med \textit{Aalesunds Schaklag}, hadde som mål å utvikle et automatisert system for digitalisering av sjakkpartier spilt over brett. Systemet gjorde det mulig for spillere å bruke et tradisjonelt fysisk brett, samtidig som trekkene deres ble fanget opp og registrert i sanntid. Bildegjenkjenning ble brukt for å oppdage brettets tilstand og validere trekk i henhold til sjakkreglene. De digitaliserte partiene ble vist i sanntid via et frontend-grensesnitt, og brukere kunne hente ut PGN (trekkhistorikk) for pågående partier. \\
 
-Løsningen er designet for å operere på lokal maskinvare, vanligvis med et \acrshort{usb}-tilkoblet webkamera og en lokal maskin (Windows eller Ubuntu), som sikrer at behandling utføres lokalt uten avhengighet av skyinfrastruktur. Mens digitale sjakkbrett som er i stand til lignende funksjonalitet finnes, er de kostbare og er omfattende å sette opp. Dette prosjektet har som mål å gi et kostnadseffektivt og effektivt alternativ ved å automatisere digitaliseringsprosessen. \\
+Løsningen var designet for å kjøre fullt og helt på lokal maskinvare, ved bruk av et USB-tilkoblet webkamera og en maskin med Windows eller Ubuntu – uten avhengighet til skytjenester. I motsetning til kommersielle digitale sjakkbrett, som ofte er kostbare og kompliserte å sette opp, tilbyr dette systemet et rimelig og lettdistribuerbart alternativ. \\
 
-Utviklingsprosessen fulgte smidige metoder, ved å bruke teknologier som \gls{leyolo} og \gls{python} for å implementere systemet. Denne tilnærmingen sikret iterativ fremgang, tilpasningsevne til endrede krav, og levering av en funksjonell og skalerbar løsning. \\
-
-\textbf{*oppsummering av resultat skrives her*}\\
-
-\textbf{*oppsummering av konklusjon skrives her*}
-
+Utviklingen fulgte smidige prinsipper og benyttet verktøy som Python og \acrshort{leyolo} for å levere en funksjonell og skalerbar prototype. Prosjektet viste at rimelig og lokalt driftet digitalisering av sjakkpartier over brett er både gjennomførbart og praktisk – for både klubber og enkeltpersoner.
 
 \newpage
 
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-This project aimed to develop an automated system to digitize \gls{otb} chess games. The system allowed players to use a traditional physical board while their moves were captured and recorded in real time. Image recognition was utilized to detect board states and validate moves according to chess rules. 
-The digitized games were displayed in real time through a frontend interface, allowing users to retrieve the PGN or move history of the ongoing game
+This project, conducted in collaboration with \textit{Aalesunds Schaklag}, aimed to develop an automated system to digitize \gls{otb} chess games. The system allowed players to use a traditional physical board while their moves were captured and recorded in real time. Image recognition was utilized to detect board states and validate moves according to chess rules. The digitized games were displayed in real time through a frontend interface, allowing users to retrieve the PGN (move history) of the ongoing game \\
 
-The solution was designed to run entirely on local hardware, using a USB-connected webcam and a standard Windows or Ubuntu machine, with no reliance on cloud services. Unlike commercial digital chessboards, which are often costly and complex to set up, this system provided a cost-effective and easy-to-deploy alternative.
+The solution was designed to run entirely on local hardware, using a USB-connected webcam and a Windows or Ubuntu machine, with no reliance on cloud services. Unlike commercial digital chessboards, which are often costly and complex to set up, this system provided a cost-effective and easy-to-deploy alternative. \\
 
 Development followed agile principles and employed tools such as Python and \acrshort{leyolo} to deliver a functional and scalable prototype. The project demonstrated that affordable, locally hosted digitization of OTB chess games is feasible and practical for clubs and individual users.
-
-\textbf{*recap of the result is written here*}\\
-
-\textbf{*recap of the conclusion is written here*}
