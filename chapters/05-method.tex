@@ -227,7 +227,6 @@ Finally, labels are assigned to the corners of the chessboard. These are 'a1', '
 
 \begin{subfigure}[h!]{0.9\linewidth} \centering \includegraphics[width=\linewidth]{figures/methods/ml-models/piece-model.png} \caption{Tournament View} \end{subfigure}
 
-\newpage
 
 
 \section{Project management}
@@ -238,62 +237,6 @@ The team organized their work into bi-weekly \textbf{sprints}, each culminating 
 To manage and track tasks, the team utilized GitHub’s \textbf{Issue Board}. Issues were categorized as follows: \textit{Enhancement} for new features or improvements, \textit{Documentation} for adding explanations or improving code safety, \textit{Bug} for errors or unexpected behaviors, and \textit{Task} for general tasks. Each issue was assigned to one or more team members to clarify responsibilities. The Issue Board was organized into four columns: \textit{No Status}, \textit{To Do}, \textit{In Progress}, and \textit{Done}, providing a clear visual overview of progress. \\
 
 For \textbf{code review}, the team used GitHub pull requests. Each issue was worked on in a separate branch, enabling team members to review and discuss contributions before merging them into the main codebase.
-
-
-% Jeg kommenterer disse ut ettersom jeg ikke helt vet hva som er ønsket skal stå under disse
-%\subsubsection*{Product Owner}
-
-%\subsubsection*{Supervisor}
-
-
-\section{Architecture}
-\label{subsec:diagrams}
-
-To provide a comprehensive understanding of the system architecture and interaction flow, several \gls{uml} diagrams were created. These diagrams model different aspects of the live chess game digitization system, from component interactions and activity flow to user roles and use cases.
-
-\subsubsection*{Sequence Diagram}
-\label{subsubsec:sequence-diagram}
-
-The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the Admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. Users, from remote devices, can spectate the game in real time or save it as a \gls{pgn} file. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
-
-\newpage
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\linewidth]{figures/methods/uml/sequence.png}
-    \caption[Sequence Diagram]{Sequence Diagram}
-    \label{fig:sequence}
-\end{figure}
-
-\subsubsection*{Use-Case Diagram}
-\label{subsubsec:use-case-diagram}
-
-The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primary functionalities they interact with. Admins are responsible for hardware setup and initiating the game recording process. The system autonomously handles move detection, validation, and \gls{ui} updates. Users, on the other hand, access the game remotely to spectate or download \gls{pgn} files. This diagram provides a clear overview of who interacts with the system and what capabilities are exposed, forming the basis for understanding system requirements and user expectations.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\linewidth]{figures/methods/uml/use-case.png}
-    \caption{Use-Case Diagram}
-    \label{fig:use-case}
-\end{figure}
-
-\begin{figure}[h!]
-    \subsubsection*{Activity Diagram}
-    \label{subsubsec:activity-diagram}
-    
-    \centering
-    \begin{minipage}[t]{0.5\textwidth}
-        \vspace{0pt}
-        The activity diagram, shown in Figure \ref{fig:activity}, provides a high-level overview of the operational workflow during a chess game session. It models the continuous loop of capturing board states, detecting and validating moves, and updating the game state until the game ends. If a move is invalid, the system flags it but does not terminate the session. Once the game concludes, it is converted into a standard \gls{pgn} format. This diagram emphasizes the logical flow and decision-making process, reflecting the system’s role in automating and maintaining the integrity of live digitization.
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.45\textwidth}
-        \vspace{0pt}
-        \includegraphics[width=\linewidth]{figures/methods/uml/activity-2.png}
-        \caption[Activity Diagram]{Activity Diagram}
-        \label{fig:activity}
-    \end{minipage}
-\end{figure}
 
 \subsection{Wireframes}
 \label{subsec:wireframe}
