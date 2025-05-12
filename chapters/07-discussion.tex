@@ -6,11 +6,19 @@
 
 \section{Temporary Title – Discussion of Results}
 
+WORK IN PROGRESS
+
 The model’s strategy of selecting the most likely move revealed a notable flaw in castling detection. Specifically, castling moves were often misclassified due to the system evaluating each piece movement independently. In many cases, the model assigned a higher confidence score to the rook's move from its original square than to the king’s two-square movement during castling. Consequently, 8 out of 9 misclassifications occurred when the model incorrectly selected the rook’s movement as the intended move, rather than recognizing the castling sequence. A possible solution is to briefly delay the rook’s movement, allowing the king’s two-square move to occur first. This removes ambiguity by ensuring that, at the moment of detection, only a single plausible move is visible—effectively forcing the model to select the castling move rather than misclassifying it as a standalone rook move. \\
 
 Another recurring issue was observed in the form of consistent failure points within specific openings. In several test sets, all 10 games of a given opening failed at the same move number. This pattern suggests that certain positions or board states consistently challenge the model, possibly due to recurring piece configurations or lighting conditions at those points in the game. \\
 
 Additionally, move detection accuracy decreased noticeably along the edges of the board. This limitation appears to result from a combination of factors. First, the board-warping algorithm relies on precise corner detection to accurately map square centers. While the inner squares were typically well-aligned, the outermost squares—particularly near the corners—were more prone to distortion, likely contributing to errors in piece localization. Second, the relatively steep camera angle made it harder to clearly distinguish pieces near the front edge of the board, as those closest to the lens were partially occluded or lacked visible detail. Third, pieces on the far side of the board appeared smaller in the frame, and the inter-square distances in the warped image were reduced. This made it more likely for pieces to be mistakenly assigned to adjacent squares, especially along the tighter edge regions. \\
+
+\subsection{Different gamemodes}
+
+The models job is to find the pieces on the board and then assign them to its respective square. This means as long as you define the starting postion or start fen, that allows you to play any the game from any posistion you want. That means you could start a match mid game or you could play other game modes. The model also has validation so that means it should be able to successfully
+
+
 
 Further testing supported these findings. As shown in Figure~\ref{fig:bbox-centers-incorrect}, the bounding boxes along the edges of the board are occasionally misaligned, reinforcing the challenges associated with edge square detection.
 
@@ -22,10 +30,6 @@ Further testing supported these findings. As shown in Figure~\ref{fig:bbox-cente
 \end{figure}
 
 
-
-\subsubsection{Different gamemodes}
-
-The models job is to find the pieces on the board and then assign them to its respective square. This means as long as you define the starting postion or start fen, that allows you to play any the game from any posistion you want. That means you could start a match mid game or you could play other game modes. The model also has validation so that means it should be able to successfully
 
 
 
