@@ -189,26 +189,24 @@ The bottom center of each piece’s bounding box was selected as its representat
     \label{fig:bbox-black-pawn}
 \end{figure}
 
-\subsubsection*{Implementation}
+\subsubsection*{Board detection}
 
-The essence of how it works:
-So how was this done? The camera first captures a video frame, which is then processed by both models. Each frame is resized to the required input dimensions, normalized so that pixel values fall between 0 and 1, and converted to the correct format and data type expected by the models, in this case resized to the expected input format {1,3,288,480} and returns the 
-[1, 16, 2835] for the piece model
-[1, 5, 2835] for the corner model.
+Each frame captured by the camera is processed by the two models. Before inference, the frame needs to match the models’ expected input dimensions [1, 3, 288, 480]. This process includes scaling the frame, normalizing the pixel values to fall within the range [0, 1] and converting the image to the appropriate data type. \\
 
-We now have 2835 locations for both the intersection points and piece locations. We wish to extract the best predictions from these dense outputs. To do this, we first filter out low-confidence predictions based on a score threshold. Then, we apply \gls{nms} to eliminate overlapping detections, ensuring that only the most confident and distinct predictions are kept.
+After inference, the models produce the prediction outputs: [1, 16, 2835] for pieces and [1, 5, 2835] for intersection points. These outputs represent 2835 potential locations for both chess pieces and intersection points. To identify the most reliable predictions, low-confidence entries are first filtered out by applying a score threshold. Next, NMS is applied to further refine the results. This process ensures only the most relevant and accurate locations for the pieces and intersections. \\
 
-To do this, we apply post-processing techniques, most importantly Non-Maximum Suppression (NMS), which helps eliminate overlapping or low-confidence predictions. This step ensures that only the most likely and distinct piece locations and board intersections (x-corners) are retained.
+To identify the board corners of the chessboard, Delaunay Triangulation is employed. The process aims at detecting potential quadrilateral shapes that may represent the four corners of the board. Delaunay triangulation is applied to the intersection points to generate a set of candidate triangles. This technique ensures that the intersection points are connected to form triangles, from which quadrilaterals can be identified. By iterating over the triangles and examining their shared vertices, the algorithm  identifies potential quadrilaterals that represent the four corners of the chessboard. \\
 
-Inside this function, the first step is to identify potential quadrilateral shapes that could represent the board's four corners. This is done by applying Delaunay triangulation on the detected x_corners to find a set of possible quads. A Delaunay triangulation ensures that the x_corners are used efficiently to form triangles, from which we can identify quadrilaterals. The get_quads function is used here to find such quads by iterating over the triangles and attempting to connect shared vertices to form four-sided polygons.
+Once a list of potential quads is generated, each quad is scored which evaluates how well the quad fits with the original intersection points. The quad with the highest score is selected as the most likely representation of the board corners. \\
 
-Once a list of potential quads is generated, each quad is scored which evaluates how well the quad fits with the original x_corners. The quad with the highest score is selected as the most likely representation of the board corners.
+Next, a perspective transformation is applied to map the board corners onto a regular grid. This transformation begins by calculating the inverse of the matrix used to generate the corner locations during the previous steps. The inverse matrix allows us to "undo" the original transformation, effectively reversing the process that mapped the real-world chessboard to its observed position.
 
-Next, we apply a perspective transformation to map the detected corners onto a regular grid. This is done by first calculating an inverse matrix of the transformation used to generate the corner locations, and then applying the inverse transformation to the predicted corners. The result is a set of warped corner coordinates that can be used to estimate the true position of the board on the screen.
+Once the inverse matrix is computed, it is applied to the predicted corner points, transforming them into a new set of coordinates. This step aligns the detected corners with a regular grid or a standard coordinate system, which represents the true position of the chessboard. As a result, the warped corner coordinates are obtained, and these can be used for further processing, such as rectifying the image, aligning the chessboard to a grid, or accurately estimating its position on the screen.
 
-Finally, the predicted corners are clamped to ensure that their values lie within the valid range for the image dimensions (width and height), ensuring no corner falls outside the image.
+In essence, this perspective transformation corrects the perspective distortion caused by the camera or observation angle, ensuring that the detected corners align correctly with the real-world layout of the chessboard. By applying this transformation, the system can reliably interpret the board's position, which is crucial for tasks such as gameplay analysis or visual representation.
 
-To summarize, the x_corners are processed by first identifying candidate quads through Delaunay triangulation, then evaluating each quad's suitability using scoring, and finally refining the corners using a perspective transformation. This series of steps helps accurately extract the four board corners from the intersection points, which can then be used for further processing.
+
+\\
 
 Finally, labels are assigned to the corners of the chessboard. These are 'a1', 'h1', 'a8', and 'h8'. The centers of all black and white pieces are computed and the board undergoes four 90-degree rotations. For each rotation, the midpoints of the white and black sides (between 'a1' and 'h1', and between 'a8' and 'h8') are calculated. The rotation that minimizes the distance between the piece centers and their corresponding midpoints is selected, indicating the optimal alignment. The labels 'a1', 'h1', 'a8', and 'h8' are then assigned to the corners based on this optimal orientation."
 
@@ -218,16 +216,26 @@ Finally, labels are assigned to the corners of the chessboard. These are 'a1', '
 \caption[S]{The white and black circles represent the calculated centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The board is rotated, and the labels are assigned based on the rotation that minimizes the distance between the centers and the midpoints.}
 \label{fig:board_label_assignment}
 \end{figure}
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.75\linewidth]{figures/methods/ml-models/label_assignment_board.jpg}
-\caption[S]{White and black circles represent the calculated centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The board is rotated, and the labels are assigned based on the rotation that minimizes the distance between the centers and the midpoints.}
-\label{fig:board_label_assignment}
-\end{figure}
+
+
+
+
+\subsubsection*{Move detection}
+
+After the chessboard and pieces have been detected, the application continuously processes each incoming video frame to detect whether a move has occurred. For every frame, the internal representation of the board state is updated based on the observed positions of the chess pieces.
+
+To ensure stability, the system updates its internal state using a decay-based mechanism that blends previous and current detections. This approach smooths out transient errors due to occlusions or momentary inconsistencies in the video feed. State updates are throttled to occur at fixed intervals, further mitigating noise sensitivity.
+
+Once the updated configuration is established, the system compares it against the legal move set of the current game state. If a high-confidence match is found, the move is registered and applied. In cases where a confident move is not detected, a fallback strategy is used: potential moves with lower confidence are temporarily stored, and only applied if they remain consistent over time. This delayed confirmation mechanism increases tolerance to uncertainty and improves overall robustness.
+
+Upon confirming a move it is committed to the internal chess engine and sent to the websocket for it to send to the frontend. The game state is updated accordingly for continued analysis and visualization.
+
+
 
 \begin{subfigure}[h!]{0.9\linewidth} \centering \includegraphics[width=\linewidth]{figures/methods/ml-models/piece-model.png} \caption{Tournament View} \end{subfigure}
 
-\newpage
+
+
 
 
 \section{Agile Methodology}
