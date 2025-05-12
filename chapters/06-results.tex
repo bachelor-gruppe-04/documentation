@@ -170,6 +170,35 @@ Architecture overview (e.g., system diagram, deployment pipeline). Performance m
 \section{Testing and Quality Assurance}
 \textit{Summary of testing performed (unit tests, integration tests, manual testing). Test coverage results or bugs discovered/fixed. If relevant, include tables or graphs showing test results or reliability.}
 
-\begin{itemize}
-    \item 
-\end{itemize}
+\subsubsection{Color Palette}
+
+Voting revealed a mix of preferences: some participants favored the light mode from palette \#08 and the dark mode from palette \#07, while others selected the board design from palette \#05 or the move-highlighting style from palette \#14. \\
+
+Rather than selecting a single predefined palette, the final color scheme was assembled by combining the most highly rated elements across the top-voted variations—yielding a more tailored, user-informed visual design. Figure \ref{fig:color-palette-results} shows the distribution of votes across all tested palettes; the full set of prototypes appears in Appendix B.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=17pt,
+    width=\textwidth,
+    height=8cm,
+    enlarge x limits=0.05,
+    ymin=0,
+    ylabel={Number of Votes},
+    xlabel={Color Palette ID},
+    xticklabels={01,02,03,04,05,06,07,08,09,10,11,12,13,14},
+    x tick label style={rotate=45, anchor=east},
+    nodes near coords,
+    symbolic x coords={01,02,03,04,05,06,07,08,09,10,11,12,13,14},
+    xticklabel style={font=\small},
+]
+\addplot+[style={fill=blue!50}] coordinates {
+    (01, 5) (02, 5) (03, 5) (04, 8) (05, 13) (06, 5) (07, 8) (08, 4) (09, 2) (10, 8) (11, 5) (12, 2) (13, 12) (14, 13)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Distribution of Votes Across Different Color Palettes.}
+\label{fig:color-palette-results}
+\end{figure}
