@@ -114,9 +114,9 @@ The corner detection model identified the points where the edges of the inner sq
     \label{fig:xcorners-chessboard}
 \end{figure}
 
-The input format for the corner model was the same as the piece model: \textbf{[1, 3, 288, 480]}. The corner model output predictions in the format \textbf{[1, 5, 2835]}. \textbf{1} represented the batch size. \textbf{2835} represented the number of anchor boxes used in the detection. \textbf{5} consisted of two parts: \\
+The input for the corner model was the same as the piece model: \textbf{[1, 3, 288, 480]}. The corner model output predictions in the format \textbf{[1, 5, 2835]}. \textbf{1} represented the batch size. \textbf{2835} represented the number of anchor boxes used in the detection. \textbf{5} consisted of two parts: \\
 
-The first \textbf{4 values} were offset values that adjusted the position and size of each anchor box, aligning it more accurately with a potential intersection point. These offsets were relative to the original anchor box coordinates, as shown in Table \ref{tab:corner-offset-table}.
+The first 4 values were offset values that adjusted the position and size of each anchor box, aligning it more accurately with a potential intersection point. These offsets were relative to the original anchor box coordinates, as shown in Table \ref{tab:corner-offset-table}.
 
 \newpage
 
@@ -142,7 +142,7 @@ The final value was the probability that the adjusted anchor box corresponded to
 
 \begin{table}[h]
     \centering
-    \caption{Predicted intersection probabilities for each anchor box after applying the predicted offsets.}
+    \caption{Predicted intersection probabilities for each anchor box after applying the offsets.}
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{lc}
         \toprule
@@ -176,7 +176,7 @@ To track chess piece movements, the first step was to identify the individual sq
 \end{figure}
 
 
-The bottom center of each piece’s bounding box was selected as its representative location, as highlighted in Figure~\ref{fig:bbox-black-pawn}. Each detected piece was then mapped to the nearest square center based on the minimum euclidean distance. This mapping allowed for the precise determination of each piece's position on the chessboard.
+The bottom center of each piece’s bounding box was selected as its representative location, as highlighted in Figure~\ref{fig:bbox-black-pawn}. Each detected piece was then mapped to the nearest square center based on the minimum euclidean distance.  This approach made it possible to accurately assign each piece to a specific square on the chessboard.
 
 
 
@@ -191,22 +191,39 @@ The bottom center of each piece’s bounding box was selected as its representat
 
 \subsubsection*{Implementation}
 
-THIS IS Not finished
+The essence of how it works:
+So how was this done? The camera first captures a video frame, which is then processed by both models. Each frame is resized to the required input dimensions, normalized so that pixel values fall between 0 and 1, and converted to the correct format and data type expected by the models, in this case resized to the expected input format {1,3,288,480} and returns the 
+[1, 16, 2835] for the piece model
+[1, 5, 2835] for the corner model.
 
-The piece detection model is responsible for identifying and classifying chess pieces. It expected an input image of size 288x480 with three color channels. Since video frames typically do not come in this exact format, the images are first scaled to the required dimensions to ensure compatibility with the model.
+We now have 2835 locations for both the intersection points and piece locations. We wish to extract the best predictions from these dense outputs. To do this, we first filter out low-confidence predictions based on a score threshold. Then, we apply \gls{nms} to eliminate overlapping detections, ensuring that only the most confident and distinct predictions are kept.
 
-To identify candidate quadrilaterals on the chessboard, the implementation first performs Delaunay triangulation over the set of detected corner points. It then searches for pairs of adjacent triangles—triangles that share two vertices—and combines their points to form four-point quads. This method restricts the candidates to geometrically relevant regions made up of neighboring points, avoiding the need to evaluate all possible 4-point combinations, which would be computationally expensive and less accurate.
+To do this, we apply post-processing techniques, most importantly Non-Maximum Suppression (NMS), which helps eliminate overlapping or low-confidence predictions. This step ensures that only the most likely and distinct piece locations and board intersections (x-corners) are retained.
 
+Inside this function, the first step is to identify potential quadrilateral shapes that could represent the board's four corners. This is done by applying Delaunay triangulation on the detected x_corners to find a set of possible quads. A Delaunay triangulation ensures that the x_corners are used efficiently to form triangles, from which we can identify quadrilaterals. The get_quads function is used here to find such quads by iterating over the triangles and attempting to connect shared vertices to form four-sided polygons.
 
+Once a list of potential quads is generated, each quad is scored which evaluates how well the quad fits with the original x_corners. The quad with the highest score is selected as the most likely representation of the board corners.
 
-The reason for doing it this way, is that unlike detecting the 4 corners of the board directly, the algorithm can still run successfully even if various parts of the board are obscured. The question then becomes, how does it find the corners from these points?
+Next, we apply a perspective transformation to map the detected corners onto a regular grid. This is done by first calculating an inverse matrix of the transformation used to generate the corner locations, and then applying the inverse transformation to the predicted corners. The result is a set of warped corner coordinates that can be used to estimate the true position of the board on the screen.
 
+Finally, the predicted corners are clamped to ensure that their values lie within the valid range for the image dimensions (width and height), ensuring no corner falls outside the image.
 
-There are in total 12 class labels each for the type piece and which color it is.
+To summarize, the x_corners are processed by first identifying candidate quads through Delaunay triangulation, then evaluating each quad's suitability using scoring, and finally refining the corners using a perspective transformation. This series of steps helps accurately extract the four board corners from the intersection points, which can then be used for further processing.
 
-After processing the image, the model returns a set of predictions for each potential piece. These predictions include:
+Finally, labels are assigned to the corners of the chessboard. These are 'a1', 'h1', 'a8', and 'h8'. The centers of all black and white pieces are computed and the board undergoes four 90-degree rotations. For each rotation, the midpoints of the white and black sides (between 'a1' and 'h1', and between 'a8' and 'h8') are calculated. The rotation that minimizes the distance between the piece centers and their corresponding midpoints is selected, indicating the optimal alignment. The labels 'a1', 'h1', 'a8', and 'h8' are then assigned to the corners based on this optimal orientation."
 
-The model predicts these values for each anchor box. An anchor box is a predefined bounding box within the image that serves as a potential candidate location for a piece. By adjusting these anchor boxes, the model can detect and classify pieces across different positions on the chessboard.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/methods/ml-models/label_assignment_board.jpg}
+\caption[S]{The white and black circles represent the calculated centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The board is rotated, and the labels are assigned based on the rotation that minimizes the distance between the centers and the midpoints.}
+\label{fig:board_label_assignment}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/methods/ml-models/label_assignment_board.jpg}
+\caption[S]{White and black circles represent the calculated centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The board is rotated, and the labels are assigned based on the rotation that minimizes the distance between the centers and the midpoints.}
+\label{fig:board_label_assignment}
+\end{figure}
 
 \begin{subfigure}[h!]{0.9\linewidth} \centering \includegraphics[width=\linewidth]{figures/methods/ml-models/piece-model.png} \caption{Tournament View} \end{subfigure}
 
