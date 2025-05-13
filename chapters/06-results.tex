@@ -9,8 +9,6 @@
 
 As described in Section~\ref{subsec:model-testing}, the model was evaluated using 100 games. Table~\ref{tab:accuracy-total} presents the overall move detection accuracy, both in total and broken down by piece type and color. The model achieved an overall accuracy of 90.6\%, successfully detecting 936 out of 1033 moves. Pawns had the highest detection rates, with over 98\% accuracy for both colors. In contrast, the model struggled particularly with black rooks with only 23.8\% accuracy.
 
-\newpage
-
 \begin{table}[htbp]
 \centering
 \caption{Move detection accuracy in total}
@@ -41,8 +39,7 @@ As described in Section~\ref{subsec:model-testing}, the model was evaluated usin
 \end{table}
 
 
-Table~\ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board slightly outperformed the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference may indicate a slightly more stable detection environment on the wooden surface. \\
-
+Table~\ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board slightly outperformed the plastic board, with a 91.2\% success rate compared to 89.9\%. \\
 
 \begin{table}[htbp]
 \centering
@@ -58,8 +55,7 @@ Wooden  & 558 & 509 & 91.2\% \\
 \end{tabular}
 \end{table}
 
-
-\newpage
+\vspace{0.5cm}
 
 Figure~\ref{fig:move-failures} shows the number of failed games (i.e., games where detection failed) grouped by the move number at which failure occurred. Bars are color-coded by board type. The majority of failures occurred within the first five moves, particularly at moves 2, 4, and 5. This trend suggests that the early game presents the greatest challenge for detection, potentially due to rapid development or ambiguity in piece positions. Notably, failures after move 9 were rare. \\
 
