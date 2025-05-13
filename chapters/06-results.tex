@@ -164,6 +164,14 @@ In addition, the web application features a Game Preview page that displays simp
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/game-preview/desktop.png}}\caption[Preview of active games]{A mocked demonstration of a game preview page.}\label{fig:game-preview} \end{figure}
 
+The user also has the option to download the \gls{pgn} file for a selected game. On the board view page, a dedicated button allows the user to download the PGN file corresponding to the currently displayed game. When this button is clicked, the file is saved locally to the user's computer, as shown in Figure~\ref{fig:download-pgn}. \\
+
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/download-pgn.png}}\caption[Preview of downloading a PGN file]{A demonstration of downloading a PGN file to a specific game}\label{fig:download-pgn} \end{figure}
+
+The downloaded file includes a header with key information such as the tournament name, date, and player names, followed by the recorded list of moves. An example of this file opened in a code editor is shown in Figure~\ref{fig:downloaded-pgn}. In this case, the game is still ongoing, so not all moves have been logged, and the result is marked as "In progress," indicating that the \gls{pgn} file is incomplete. \\
+
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/downloaded-pgn.png}}\caption[The downloaded PGN file]{The downloaded PGN file to a specific game, opened in a code editor}\label{fig:downloaded-pgn} \end{figure}
+
 \section{Project Management}
 \label{sec:results-project-management}
 
