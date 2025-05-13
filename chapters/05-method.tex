@@ -96,7 +96,7 @@ The remaining 12 values represented the probabilities for each possible piece ty
     \label{tab:piece-probability-table}
 \end{table}
 
-\newpage
+% \newpage
 
 To summarize, there were 2835 predefined anchor boxes spread across the image, each serving as a candidate location for detecting a chess piece. During training, the model learned to adjust these anchor boxes to better match the actual pieces on the board. It achieved this by predicting 4 offset values that modified the location and size of each anchor box. At runtime, for each anchor box, the model used these learned offsets and output 12 class probabilities, indicating the likelihood of each chess piece type being present at that location.
 
@@ -116,7 +116,7 @@ The input for the corner model was the same as the piece model: \textbf{[1, 3, 2
 
 The first 4 values were offset values that adjusted the position and size of each anchor box, aligning it more accurately with a potential intersection point. These offsets were relative to the original anchor box coordinates, as shown in Table \ref{tab:corner-offset-table}.
 
-\newpage
+% \newpage
 
 \begin{table}[h]
     \centering
@@ -157,7 +157,7 @@ The final value was the probability that the adjusted anchor box corresponded to
 \end{table}
 
 
-\newpage
+% \newpage
 
 
 \subsection{Combining The Models}
@@ -177,8 +177,8 @@ To track chess piece movements, the first step was to identify the individual sq
 The bottom center of each piece’s bounding box was selected as its representative location, as highlighted in Figure~\ref{fig:bbox-black-pawn}. Each detected piece was then mapped to the nearest square center based on the minimum euclidean distance.  This approach made it possible to accurately assign each piece to a specific square on the chessboard.
 
 
+% \newpage
 
-\newpage
 
 \begin{figure}[h!]
     \centering
@@ -203,7 +203,7 @@ Once the inverse matrix is applied, the resulting coordinates provide the correc
 
 Finally, labels were assigned to the corners of the chessboard: ‘a1’, ‘h1’, ‘a8’, and ‘h8’.The average center of all black and white pieces was computed, and the board underwent four 90-degree rotations. For each rotation, the midpoints of the white and black sides (between ‘a1’ and ‘h1’, and between ‘a8’ and ‘h8’) were calculated. The rotation that minimized the distance between the piece centers and their corresponding midpoints was selected, indicating the optimal alignment. The labels ‘a1’, ‘h1’, ‘a8’, and ‘h8’ were then assigned to the corners based on this orientation.
  
-\newpage
+% \newpage
 
 \begin{figure}[h!]
 \centering
@@ -230,14 +230,7 @@ Upon confirming a move it is committed to the internal chess engine and sent to 
     \label{fig:websocket-vs-http}
 \end{figure}
 
-\section{Project management}
-\label{sec:methods-project-management}
-
-The team organized their work into bi-weekly \textbf{sprints}, each culminating in a status report and retrospective. At the beginning of each sprint, the product backlog was reviewed to prioritize tasks for the upcoming sprint. Sprint goals were then set, and each team member outlined the tasks they planned to complete before the next meeting. The team reviewed completed tasks to assess progress. For any incomplete tasks, potential causes were discussed, and strategies for addressing them were devised. At the end of each sprint, retrospectives provided an opportunity for the team to reflect on their collaboration and identify areas for improvement. \\
-
-To manage and track tasks, the team utilized GitHub’s \textbf{Issue Board}. Issues were categorized as follows: \textit{Enhancement} for new features or improvements, \textit{Documentation} for adding explanations or improving code safety, \textit{Bug} for errors or unexpected behaviors, and \textit{Task} for general tasks. Each issue was assigned to one or more team members to clarify responsibilities. The Issue Board was organized into four columns: \textit{No Status}, \textit{To Do}, \textit{In Progress}, and \textit{Done}, providing a clear visual overview of progress. \\
-
-For \textbf{code review}, the team used GitHub pull requests. Each issue was worked on in a separate branch, enabling team members to review and discuss contributions before merging them into the main codebase.
+\section{Design}
 
 \subsection{Wireframes}
 \label{subsec:wireframe}
@@ -252,7 +245,9 @@ The Control Panel is a desktop interface for tournament organizers to manage the
 \item \textbf{Restart Boards for New Round:} Resets all boards at the end of a round, preparing the system for the next games (Figure \ref{fig:control-panel-3}).
 \end{enumerate}
 
-The interface is minimal and task-focused, enabling efficient system setup and management with little technical effort.
+The interface is minimal and task-focused, enabling efficient system setup and management with little technical effort. \\
+
+\newpage
 
 \begin{figure}[h!]
     \centering
@@ -282,6 +277,18 @@ The interface is minimal and task-focused, enabling efficient system setup and m
 \end{figure}
 
 
+The client-side view is implemented as a web-based interface, developed in accordance with the accessibility principles described in Subsection~\ref{subsec:wcag} of Chapter~\ref{chp:theory}. The design prioritizes usability, aiming to offer a clear, intuitive, and accessible experience for users across both desktop and mobile platforms. \\
+
+The interface is organized into two primary components: the \textbf{Tournament View} and the \textbf{Board View}. \\
+
+The \textbf{Tournament View} (see Figure~\ref{fig:desktop-tournament-view}) provides a concise overview of all active games in the tournament. Its clean and minimal layout presents key information such as board numbers, player names, and a navigation button for accessing the corresponding Board View. This approach ensures that users can quickly scan through the tournament and access matches with minimal effort. \\
+
+The \textbf{Board View} (see Figure~\ref{fig:desktop-board-view}) is focused on a single game, displaying both the live chessboard and a video stream of the ongoing match. The layout is designed for clarity, minimizing distractions so that users can easily follow the game in progress. \\
+
+To ensure compatibility with mobile devices, the interface incorporates responsive design principles. On smaller screens, the \textbf{Tournament View} simplifies its presentation by removing player names and retaining only the board number and navigation button (see Figure~\ref{fig:phone-tournament-view}). This streamlined layout maintains usability without overwhelming the limited screen space.
+Similarly, the \textbf{Board View} adjusts to a vertical layout on mobile devices, stacking the chessboard and video stream one above the other (see Figure~\ref{fig:phone-board-view}). This configuration enhances readability and preserves the overall clarity of the interface, even on compact displays.
+
+
 \begin{figure}[h!]
 \subsubsection*{Desktop View}
     \centering
@@ -289,7 +296,7 @@ The interface is minimal and task-focused, enabling efficient system setup and m
         \centering
         \includegraphics[width=\linewidth]{figures/methods/wireframes/desktop-tournament-view.png}
         \caption{Tournament View}
-        \label{fig:desktoop-tournament-view}
+        \label{fig:desktop-tournament-view}
     \end{subfigure}
     \hfill
     \begin{subfigure}[h!]{0.40\linewidth}
@@ -309,6 +316,7 @@ The interface is minimal and task-focused, enabling efficient system setup and m
     \caption{Desktop client-side view wireframes}
     \label{fig:desktop-view-group}
 \end{figure}
+
 
 \begin{figure}[h!]
 \subsubsection*{Phone View}
@@ -344,6 +352,17 @@ The interface is minimal and task-focused, enabling efficient system setup and m
     \caption{Phone client-side view wireframes}
     \label{fig:phone-view-group}
 \end{figure}
+
+\newpage
+
+\section{Project management}
+\label{sec:methods-project-management}
+
+The team organized their work into bi-weekly \textbf{sprints}, each culminating in a status report and retrospective. At the beginning of each sprint, the product backlog was reviewed to prioritize tasks for the upcoming sprint. Sprint goals were then set, and each team member outlined the tasks they planned to complete before the next meeting. The team reviewed completed tasks to assess progress. For any incomplete tasks, potential causes were discussed, and strategies for addressing them were devised. At the end of each sprint, retrospectives provided an opportunity for the team to reflect on their collaboration and identify areas for improvement. \\
+
+To manage and track tasks, the team utilized GitHub’s \textbf{Issue Board}. Issues were categorized as follows: \textit{Enhancement} for new features or improvements, \textit{Documentation} for adding explanations or improving code safety, \textit{Bug} for errors or unexpected behaviors, and \textit{Task} for general tasks. Each issue was assigned to one or more team members to clarify responsibilities. The Issue Board was organized into four columns: \textit{No Status}, \textit{To Do}, \textit{In Progress}, and \textit{Done}, providing a clear visual overview of progress. \\
+
+For \textbf{code review}, the team used GitHub pull requests. Each issue was worked on in a separate branch, enabling team members to review and discuss contributions before merging them into the main codebase.
 
 \section{Tools and Platforms}
 \label{sec:tools-and-platforms}
