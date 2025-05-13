@@ -209,7 +209,7 @@ Finally, labels were assigned to the corners of the chessboard: ‘a1’, ‘h1�
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.75\linewidth]{figures/methods/ml-models/label_assignment_board.jpg}
+\includegraphics[width=0.70\linewidth]{figures/methods/ml-models/label_assignment_board.jpg}
 \caption[S]{The white and black circles represent the average centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The board is rotated, and the labels are assigned based on the rotation that minimizes the distance between the centers and the midpoints.}
 \label{fig:board_label_assignment}
 \end{figure}
@@ -217,21 +217,20 @@ Finally, labels were assigned to the corners of the chessboard: ‘a1’, ‘h1�
 
 \subsubsection*{Move detection}
 
-WORK IN PROGRESS
-
 After the chessboard and pieces have been detected, the application continuously processes each incoming video frame to detect whether a move has occurred. For every frame, the internal representation of the board state is updated based on the observed positions of the chess pieces. \\
 
-To ensure stability, the system updates its internal state using a decay-based mechanism that blends previous and current detections. This approach smooths out transient errors due to occlusions or momentary inconsistencies in the video feed. State updates are throttled to occur at fixed intervals, further mitigating noise sensitivity. \\
+To ensure stability, the system updates its internal state using a decay-based mechanism that blends previous and current detections. This approach smooths out transient errors due to occlusions or momentary inconsistencies in the video feed. State updates are throttled to occur at fixed intervals, which reduces the frequency of updates and helps maintain performance while avoiding unnecessary processing during minor fluctuations in detection. \\
 
-Once the updated configuration is established, the system compares it against the legal move set of the current game state. If a high-confidence match is found, the move is registered and applied. In cases where a confident move is not detected, a fallback strategy is used: potential moves with lower confidence are temporarily stored, and only applied if they remain consistent over time. This delayed confirmation mechanism increases tolerance to uncertainty and improves overall robustness.
+Once the updated configuration is established, the system compares it against the legal move set of the current game state. If a high-confidence match is found, the move is registered and applied. In cases where a confident move is not detected, a fallback strategy is used: potential moves with lower confidence are temporarily stored, and only applied if they remain consistent over time. This delayed confirmation mechanism increases tolerance to uncertainty and improves overall robustness. \\
 
-Upon confirming a move it is committed to the internal chess engine and sent to the websocket for it to send to the frontend. The game state is updated accordingly for continued analysis and visualization.
+Upon confirming a move it is committed to the internal chess engine and sent to the websocket for it to send to the frontend. The game state is updated accordingly for continued analysis and visualization.\\
 
-
-
-\begin{subfigure}[h!]{0.9\linewidth} \centering \includegraphics[width=\linewidth]{figures/methods/ml-models/piece-model.png} \caption{Tournament View} \end{subfigure}
-
-
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/piece-model.png}
+    \caption[s]{Text here}
+    \label{fig:websocket-vs-http}
+\end{figure}
 
 \section{Project management}
 \label{sec:methods-project-management}
