@@ -22,7 +22,7 @@ As a subfield of \gls{ai}, \textbf{computer vision} focuses on enabling machines
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/computer-vision.png} \caption[Computer Vision vs. Human Vision]{Comparison of Computer Vision and Human Vision: Illustrating the similarities and differences in processing visual data \cite{turing:computer-vision}} \label{fig:computer-vision} \end{figure}
 
-One of the most influential technologies in modern \gls{ml} is the \textbf{artificial neural network} (ANN). These networks excel at handling a wide range of data types, including images, audio, and text. Different neural network architectures are suited for specific tasks. For instance, recurring neural networks (RNNs), especially those incorporating \gls{lstm}, are effective for sequential data such as text. \\
+One of the most influential technologies in modern \gls{ml} is the \textbf{\gls{ann}}. These networks excel at handling a wide range of data types, including images, audio, and text. Different neural network architectures are suited for specific tasks. For instance, \gls{rnn}, especially those incorporating \gls{lstm}, are effective for sequential data such as text. \\
 
 In contrast, \textbf{\glspl{cnn}} are particularly effective in processing image data. Their architecture leverages convolutional layers to extract spatial features, making them highly efficient in image classification, object detection, and segmentation tasks. An example of such a network applied to handwritten digit classification is shown in Figure~\ref{fig:convolutional-neural-network}. \\
 
@@ -31,13 +31,13 @@ In contrast, \textbf{\glspl{cnn}} are particularly effective in processing image
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/convolutional-neural-network.png} \caption[Example of CNN architecture for handwritten digit classification]{CNN architecture for classifying handwritten digits \cite{medium:cnn}} \label{fig:convolutional-neural-network} \end{figure}
 
 
-Due to their ability to learn hierarchical representations of visual data, CNNs have become a foundational tool in many computer vision applications, ranging from medical diagnostics to autonomous driving. Another fundamental concept in machine learning is \textbf{supervised learning}, where models are trained on labeled datasets. Each example in the dataset includes both an input and the correct output, allowing the model to learn how the input relates to the expected output. After training, the model can generalize this learned relationship to make predictions on new, unseen data \cite{geeksforgeeks:supervised-learning, google:supervised-learning}. \\
+Due to their ability to learn hierarchical representations of visual data, \glspl{cnn} have become a foundational tool in many computer vision applications, ranging from medical diagnostics to autonomous driving. Another fundamental concept in machine learning is \textbf{supervised learning}, where models are trained on labeled datasets. Each example in the dataset includes both an input and the correct output, allowing the model to learn how the input relates to the expected output. After training, the model can generalize this learned relationship to make predictions on new, unseen data \cite{geeksforgeeks:supervised-learning, google:supervised-learning}. \\
 
 Within supervised learning, \textbf{classification} refers to predicting categorical outcomes. For example, a classification model trained on images of geometric shapes can learn to associate visual features with specific shape categories. When shown a new image, the model attempts to determine the most likely category based on its prior learning. This process is illustrated in Figure~\ref{fig:supervised-learning}, which shows how labeled data is used to train a model to make accurate predictions on unseen inputs. \\
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png} \caption[Supervised Learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}} \label{fig:supervised-learning} \end{figure}
 
-By combining supervised learning with powerful models like CNNs, machine learning systems have achieved remarkable success in tasks that require human-like perception and decision-making [KILDE?]. As these models become more accurate and versatile, deploying them efficiently to real-world applications becomes increasingly important.  \\
+By combining supervised learning with powerful models like \glspl{cnn}, machine learning systems have achieved remarkable success in tasks that require human-like perception and decision-making [KILDE?]. As these models become more accurate and versatile, deploying them efficiently to real-world applications becomes increasingly important.  \\
 
 To facilitate this, \textbf{\gls{onnx}} is an open-source format for representing machine learning models, enabling easy transfer and interoperability between different frameworks like PyTorch and TensorFlow \cite{roboflow:onnx}. \\
 
@@ -72,7 +72,7 @@ To improve detection accuracy across different object sizes and shapes, models u
     \label{fig:anchor-box}
 \end{figure}
 
- Once multiple predictions have been made, some of them may overlap significantly. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. It removes redundant or overlapping bounding boxes and keeps only the most confident prediction. The NMS algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
+ Once multiple predictions have been made, some of them may overlap significantly. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. It removes redundant or overlapping bounding boxes and keeps only the most confident prediction. The \gls{nms} algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
 \cite{thepythoncode:nms}.
 
 \newpage
@@ -187,7 +187,7 @@ Design is a fundamental aspect of creating digital products, focusing on how use
 
 Another essential element in the design of digital solutions is \textbf{accessibility}. Universal design ensures that products are usable by as many people as possible, regardless of ability \cite{uutilsynet:universellutforming}. This involves considering users with visual, auditory, motor, or cognitive impairments from the very beginning of the design process. By planning for accessibility early, designers not only meet legal and ethical standards, but also improve the overall user experience for everyone. Inclusive design benefits a wider audience and reduces the need for costly adaptations later in development. \\
 
-To support accessibility in practice, the \textbf{\gls{wcag}} offer a detailed framework of recommendations. Developed by the World Wide Web Consortium (W3C), \gls{wcag} outlines how to make digital content more perceivable, operable, understandable, and robust \cite{levelaccess:wcag}. These guidelines are used globally to ensure web services are accessible to users with disabilities. Applying these principles from the wireframe stage onward helps integrate accessibility throughout the design process.
+To support accessibility in practice, the \textbf{\gls{wcag}} offer a detailed framework of recommendations. Developed by the \gls{w3c}, \gls{wcag} outlines how to make digital content more perceivable, operable, understandable, and robust \cite{levelaccess:wcag}. These guidelines are used globally to ensure web services are accessible to users with disabilities. Applying these principles from the wireframe stage onward helps integrate accessibility throughout the design process.
 
 \section{Software Engineering Principles}
 \label{sec:software-engineering-principles}
@@ -234,7 +234,7 @@ Documentation is an essential part of software development, providing written re
 \subsubsection*{Virtual Machine}
 \label{subsubsec:virtual-machine}
 
-A \gls{vm} is a software program that acts like a real computer. It runs on a physical machine (the host) and has its own virtual \gls{cpu}, memory, and storage. The VM is separated from the host system, so anything running inside the VM cannot directly affect the host. This makes it useful for testing, running different operating systems, or isolating software environments \cite{microsoft:virtual-machine}.
+A \gls{vm} is a software program that acts like a real computer. It runs on a physical machine (the host) and has its own virtual \gls{cpu}, memory, and storage. The \gls{vm} is separated from the host system, so anything running inside the \gls{vm} cannot directly affect the host. This makes it useful for testing, running different operating systems, or isolating software environments \cite{microsoft:virtual-machine}.
 
 \subsubsection*{Unit Testing}
 \label{subsubsec:unit-testing}
