@@ -354,8 +354,8 @@ The interface is minimal and task-focused, enabling efficient system setup and m
 \label{subsec:development-tools}
 
 \begin{itemize}
-    \item \textbf{\gls{vscode}} was used as the primary development environment due to its support for multiple programming languages and extensions.
-\item \textbf{Postman} was employed for testing and validating RESTful \glspl{api}, utilizing built-in JavaScript-based test snippets.
+    \item \textbf{\acrlong{vscode}} was used as the primary development environment due to its support for multiple programming languages and extensions.
+\item \textbf{Postman} was employed for testing and validating \scrshort{rest}ful \glspl{api}, utilizing built-in JavaScript-based test snippets.
 \item \textbf{Netron.app} was used to visualize neural network architectures during the evaluation phase.
 \item \textbf{Git} facilitated version control and collaboration throughout the development process.
 \item \textbf{\glspl{llm}} (e.g., ChatGPT) were consulted to review code and provide suggestions, functioning as a collaborative assistant.
@@ -380,21 +380,27 @@ The interface is minimal and task-focused, enabling efficient system setup and m
 \label{sec:technology-stack}
 
 \subsection*{Backend}
+
+Python was selected for the project's backend due to its simple and easy-to-use syntax. Additionally, its extensive ecosystem of libraries and frameworks reduces development time. The language also benefits from its strong community and industry support, providing resources for improving \gls{api} and \gls{ml} knowledge.
+
 \subsubsection*{Python libraries}
 
 \begin{itemize}
     \item \textbf{chess} – Used for move generation, validation, and parsing of chess game formats. \cite{python:chess}
-    \item \textbf{FastAPI} – Web framework used to develop RESTful APIs for backend services. \cite{python:fastapi}
+    \item \textbf{FastAPI} – Web framework used to develop \acrshort{rest}ful \glspl{api} for backend services. \cite{python:fastapi}
     \item \textbf{numpy} – Core package for numerical operations. \cite{python:numpy}
     \item \textbf{onnxruntime} Used for running pre-trained machine learning models. \cite{python:onnx}
     \item \textbf{opencv-python} Utilized for computer vision tasks. \cite{python:opencv}
-    \item \textbf{requests} – Used to handle HTTP communication. \cite{python:requests}
+    \item \textbf{requests} – Used to handle \gls{http} communication. \cite{python:requests}
     \item \textbf{scipy} – Employed for scientific and numerical computations. \cite{python:scipy}
-    \item \textbf{tensorflow}, Used to build and execute machine learning models. \cite{python:tensorflow}
+    \item \textbf{tensorflow} - Used to build and execute machine learning models. \cite{python:tensorflow}
 \end{itemize}
 
 
 \subsection*{Frontend}
+
+TypeScript was selected for the project's frontend language due to it's type-sefety, as discussed in Subsection \ref{subsec:type-safety} outlined in Chapter \ref{chp:theory}.
+
 \subsubsection*{TypeScript libraries}
 
 \begin{itemize}
@@ -402,7 +408,7 @@ The interface is minimal and task-focused, enabling efficient system setup and m
     
     \item \textbf{React} builds user interfaces out of individual pieces called components. \cite{ts:react}
     
-    \item \textbf{@vitejs/plugin-react-swc} Speeds up the Vite development server. \cite{ts:swc}
+    \item \textbf{\acrshort{swc}} Speeds up the Vite development server. \cite{ts:swc}
     
     \item \textbf{chess.ts} a Typescript chess library for chess move generation/validation, piece placement/movement, and check/checkmate/draw detection \cite{ts:chess}
     
