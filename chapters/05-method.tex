@@ -192,31 +192,25 @@ The bottom center of each piece’s bounding box was selected as its representat
 
 \subsubsection*{Board Detection}
 
-Each frame captured by the camera is processed by the two models. Before inference, the frame needs to match the models’ expected input dimensions [1, 3, 288, 480]. This process includes scaling the frame, normalizing the pixel values to fall within the range [0, 1] and converting the image to the appropriate data type. \\
+Each frame captured by the camera was processed by the two models. Before inference, the frame needs to match the models’ expected input dimensions [1, 3, 288, 480]. This process includes scaling the frame, normalizing the pixel values to fall within the range [0, 1] and converting the image to the appropriate data type. \\
 
-After inference, the models produce the prediction outputs: [1, 16, 2835] for pieces and [1, 5, 2835] for intersection points. These outputs represent 2835 potential locations for both chess pieces and intersection points. To identify the most reliable predictions, low-confidence entries are first filtered out by applying a score threshold. Next, NMS is applied to further refine the results. This process ensures only the most accurate locations for the pieces and intersections. \\
+After inference, the models produce the prediction outputs: [1, 16, 2835] for pieces and [1, 5, 2835] for intersection points. These outputs represent 2835 potential locations for both chess pieces and intersection points. To identify the most reliable predictions, low-confidence entries are first filtered out. Next, NMS was applied to further refine the results. This process ensures only the most accurate locations for the pieces and intersections were retained. \\
 
-To identify the board corners of the chessboard, Delaunay triangulation is employed. The process aims at detecting potential quadrilateral shapes that may represent the four corners of the board. Delaunay triangulation is applied to the intersection points to generate a set of candidate triangles. This technique ensures that the intersection points are connected to form triangles from which quadrilaterals can be identified. By iterating over the triangles and examining their shared vertices, the algorithm  identifies potential quadrilaterals that represent the four corners of the chessboard. \\
-
-Once a list of potential quads is generated, each quad is scored which evaluates how well the quad fits with the original intersection points. The quad with the highest score is selected as the most likely representation of the board corners. 
+To identify the board corners of the chessboard, Delaunay triangulation was used. Delaunay triangulation was applied to the intersection points to generate a set of candidate triangles. By iterating over these triangles and examining their shared vertices, the algorithm identifies potential quadrilaterals that represent the four corners of the chessboard. Once a list of candidate quadrilaterals was generated, each was scored based on how well it fit the original intersection points. The quadrilateral with the highest score was then selected as the most likely representation of the board corners.
 \\
 
-Delen under må skrives litt bedre
+With the corners identified, the next step was to correct the distortion caused by the camera angle. When viewed at an angle, the board appears skewed due to varying distances between the camera and different parts of the board. This distortion can be corrected by using a perspective transformation. Specifically, the inverse of the transformation matrix responsible for the distortion is computed. By applying this inverse to the distorted image, the transformation that warped the image is reversed, effectively 'flattening' the distorted chessboard back to its ideal, top-down view. \\ 
 
-Next, a perspective transformation is applied to map the corners of the board to a grid. This transformation begins by calculating the inverse of the matrix used to generate the corner locations during the previous steps. The inverse matrix allows to "undo" the original transformation, effectively reversing the process that mapped the real-world chessboard to its observed position. \\
+Once the inverse matrix is applied, the resulting coordinates provide the corrected positions of the corners in the distorted image. This transformation compensates for the camera angle, ensuring the chessboard’s layout is restored to its true form. \\
 
-Once the inverse matrix is computed, it is applied to the corner points, transforming them into a new set of coordinates. This step aligns the corners with a regular grid or a standard coordinate system, which represents the true position of the chessboard. As a result, the warped corner coordinates are obtained, and these can be used for further processing, such as rectifying the image, aligning the chessboard to a grid, or accurately estimating its position on the screen. \\
-
-In essence, this perspective transformation corrects the perspective distortion caused by the observation angle, ensuring that the detected corners align correctly with the real-world layout of the chessboard. \\
-
-Finally, labels are assigned to the corners of the chessboard. These are 'a1', 'h1', 'a8', and 'h8'. The centers of all black and white pieces are computed and the board undergoes four 90-degree rotations. For each rotation, the midpoints of the white and black sides (between 'a1' and 'h1', and between 'a8' and 'h8') are calculated. The rotation that minimizes the distance between the piece centers and their corresponding midpoints is selected, indicating the optimal alignment. The labels 'a1', 'h1', 'a8', and 'h8' are then assigned to the corners based on this orientation."
-
+Finally, labels were assigned to the corners of the chessboard: ‘a1’, ‘h1’, ‘a8’, and ‘h8’.The average center of all black and white pieces was computed, and the board underwent four 90-degree rotations. For each rotation, the midpoints of the white and black sides (between ‘a1’ and ‘h1’, and between ‘a8’ and ‘h8’) were calculated. The rotation that minimized the distance between the piece centers and their corresponding midpoints was selected, indicating the optimal alignment. The labels ‘a1’, ‘h1’, ‘a8’, and ‘h8’ were then assigned to the corners based on this orientation.
+ 
 \newpage
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/label_assignment_board.jpg}
-\caption[S]{The white and black circles represent the calculated centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The board is rotated, and the labels are assigned based on the rotation that minimizes the distance between the centers and the midpoints.}
+\caption[S]{The white and black circles represent the average centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The board is rotated, and the labels are assigned based on the rotation that minimizes the distance between the centers and the midpoints.}
 \label{fig:board_label_assignment}
 \end{figure}
 
