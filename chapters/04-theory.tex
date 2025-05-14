@@ -94,11 +94,15 @@ To improve detection accuracy across different object sizes and shapes, models u
     \label{fig:nms}
 \end{figure}
 
-\subsubsection*{Normalization}
+\section{Geometric Methods in Image Processing}
+
+
+
+\subsection*{Normalization}
 
 Normalization in image processing involves scaling pixel values to a consistent range, typically [0, 1] or [-1, 1], to improve model performance. By adjusting pixel intensities from their original range (0-255) to a smaller scale, normalization ensures that the model processes inputs in a more stable and consistent manner. This accelerates model convergence. Normalization ensures that the input features are on a similar scale, aiding in more efficient and accurate learning.
 
-\subsubsection*{Scaling}
+\subsection*{Scaling}
 
 Scaling in image processing and machine learning refers to transforming input data, such as images, to meet the specific requirements of a model. This typically involves resizing the image to a consistent size, normalizing pixel values to a standard range, and converting the image into the correct format expected by the model.
 
@@ -111,7 +115,7 @@ Scaling in image processing and machine learning refers to transforming input da
 
 Scaling process in image preprocessing]{Illustration of the scaling process in image preprocessing, including resizing, normalizing, and converting the image format to prepare it for model input.
 
-\subsubsection*{Perspective Transformation}
+\subsection*{Perspective Transformation}
 
 When an image is taken from a tilted viewpoint, objects that are normally rectangular, such as a chessboard, appear distorted and no longer have right angles. A perspective transformation is a specific type of image warping that corrects distortions caused by viewing a flat object from an angle A perspective transformation uses mathematical techniques to map points from the distorted image back to their correct, undistorted positions \cite{nvidia:perspective-transform}.
 
@@ -123,7 +127,8 @@ When an image is taken from a tilted viewpoint, objects that are normally rectan
     \label{fig:perspective-transformation}
 \end{figure}
 
-\subsection{Euclidean distance}
+\subsection*{Euclidean Distance}
+
 
 The Euclidean distance is the distance between two points in a plane. For two points with coordinates \( \mathbf{x} = (x_1, x_2) \) and \( \mathbf{y} = (y_1, y_2) \), the Euclidean distance is given by:
 
@@ -131,12 +136,12 @@ The Euclidean distance is the distance between two points in a plane. For two po
 d(\mathbf{x}, \mathbf{y}) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
 \]
 
-This formula gives the length of the shortest path connecting the two points.
+This formula gives the length of the shortest path connecting the two points. Euclidean distance is commonly used to measure the relationship between keypoints, object centers, or detected positions within an image.
 
 
-\subsection{Delaunay triangulation}
+\subsection*{Delaunay Triangulation}
 
-Delaunay Triangulation is a method of dividing a set of points into triangles such that no point is inside the circumcircle of any triangle. The circumcircle is the circle that passes through all three vertices of a triangle. It ensures that the triangles formed are as equiangular as possible,  meaning the triangle angles are close in size, minimizing the possibility of long, thin triangles. This property makes Delaunay Triangulation particularly useful for applications involving geometric data, such as finding quadrilaterals from a set of points.
+Delaunay triangulation is a method of dividing a set of points into triangles such that no point is inside the circumcircle of any triangle. The circumcircle is the circle that passes through all three vertices of a triangle. It ensures that the triangles formed are as equiangular as possible,  meaning the triangle angles are close in size, minimizing the possibility of long, thin triangles. This property makes Delaunay triangulation particularly useful for applications involving geometric data, such as finding quadrilaterals from a set of points.
 
 \section{Web}
 \label{subsec:web}
