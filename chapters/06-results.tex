@@ -144,6 +144,7 @@ The WebSocket server also handles specific command messages. For example, when t
 The WebSocket functionality is encapsulated in a custom React hook on the frontend, which manages the connection lifecycle and state updates. This abstraction simplifies integration into the user interface and ensures that resources are properly cleaned up when the component is unmounted. Overall, the use of WebSocket communication is a key component in delivering a responsive and live experience, particularly for tournaments and public displays where move-by-move tracking is essential.
 
 \subsection{Frontend}
+\label{subsec:results-frontend}
 The front-end of the application serves as the user interface. It includes a control panel for tournament organizers and a web application for spectators. The application's main responsibility is to visualize the chessboard and display ongoing moves. The front-end communicates with the back-end via WebSocket to ensure real-time updates and interactivity. \\
 
 The control panel is a standalone administrative interface used exclusively by tournament organizers to configure and manage the tournament setup. Accessible only from the host computer, it allows the organizer to select the number of camera inputs, initiate the tournament, and reset boards between rounds, as shown in Figure~\ref{fig:control-panel}. This interface ensures the secure and centralized management of tournament operations. \\

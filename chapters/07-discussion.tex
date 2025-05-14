@@ -29,6 +29,20 @@ Further testing supported these findings. As shown in Figure~\ref{fig:bbox-cente
     \label{fig:bbox-centers-incorrect}
 \end{figure}
 
+\section{Frontend}
+\subsection{Download PGN file}
+One of the project requirements was to digitize a chess game into a \gls{pgn} file. This functionality enables both players and spectators to download and analyze the game using external tools, such as \gls{lichess}’ analysis feature. As described in \ref{subsec:results-frontend}, the user can download the \gls{pgn} file with a single click. The file contains a header with technical metadata, such as the tournament name, date, and players, as well as a move list that can be used directly for analysis. \\
+
+The \gls{pgn} format is widely supported, and tools like \gls{lichess} can interpret both the complete file or just the move list. This flexibility allows users to gain insights into various aspects of the game, such as identifying the opening played, evaluating move accuracy, and understanding the overall game progression. Figure~\ref{fig:downloaded-pgn-analysis} shows how the downloaded \gls{pgn} can be used in an external analysis tool. In this scenario, a specific opening was played and the analysis recognised this. \\
+
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/lichess-analysis.png}}\caption[Lichess analysis tool]{A demonstration of importing a PGN file into Lichess' analysis tool}\label{fig:downloaded-pgn-analysis} \end{figure}
+
+By enabling \gls{pgn} downloads, the system provides users with a convenient way to review games and improve their understanding of chess. Instead of building a custom in-app analysis feature, this solution leverages existing, well-established services that offer robust and detailed feedback. This decision reduces development complexity while still providing users with valuable insights. \\
+
+However, one limitation is that users must leave the application to analyze the game, which can disrupt the user experience slightly. Despite this, integrating \gls{pgn} downloads remains a practical and effective solution, offering immediate access to game data without requiring additional implementation of complex analytical features.
+
+\subsection{Lighthouse Tests}
+
 \section{Challenges}
 In addition to ideas for future development, there were also a few obstacles encountered during the development phase of this project. These challenges were addressed as they occurred, and solutions were implemented as part of the final application.
 
