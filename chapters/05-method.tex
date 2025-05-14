@@ -56,13 +56,13 @@ The first 4 values were offset values that adjusted the position and size of eac
 
 
 The remaining 12 values represented the probabilities for each possible piece type after the offset value had been applied. With 12 different piece types, the model output 12 probabilities for each anchor box. The classification labels are shown in Table \ref{tab:piece-label-table}. Table \ref{tab:piece-probability-table} presents the predicted probabilities for each label across all anchor boxes. \\
-
 \begin{table}[ht]
+\renewcommand{\arraystretch}{1.1}  % Increase row height slightly
 \centering
 \caption{Classification labels for the 12 chess piece types predicted by the model.}
 \begin{tabular}{|c|c|}
 \hline
-\multicolumn{2}{|c|}{\textbf{Model Labels}} \\  % Adds a row at the top
+\multicolumn{2}{|c|}{\textbf{Model Labels}} \\  
 \hline
 \textbf{Black Pawn} & \textbf{White Pawn} \\
 \textbf{Black Knight} & \textbf{White Knight} \\
@@ -73,7 +73,8 @@ The remaining 12 values represented the probabilities for each possible piece ty
 \hline
 \end{tabular}
 \label{tab:piece-label-table}
-\end{table} 
+\end{table}
+
 
 \\
 
@@ -197,9 +198,9 @@ After inference, the models produce the prediction outputs: [1, 16, 2835] for pi
 To identify the board corners of the chessboard, Delaunay triangulation was used. Delaunay triangulation was applied to the intersection points to generate a set of candidate triangles. By iterating over these triangles and examining their shared vertices, the algorithm identifies potential quadrilaterals that represent the four corners of the chessboard. Once a list of candidate quadrilaterals was generated, each was scored based on how well it fit the original intersection points. The quadrilateral with the highest score was then selected as the most likely representation of the board corners.
 \\
 
-With the corners identified, the next step was to correct the distortion caused by the camera angle. When viewed at an angle, the board appears skewed due to varying distances between the camera and different parts of the board. This distortion can be corrected by using a perspective transformation. Specifically, the inverse of the transformation matrix responsible for the distortion is computed. By applying this inverse to the distorted image, the transformation that warped the image is reversed, effectively 'flattening' the distorted chessboard back to its ideal, top-down view. \\ 
+With the corners identified, the next step was to correct the distortion caused by the camera angle. When viewed at an angle, the board appears skewed due to varying distances between the camera and different parts of the board. This distortion can be corrected by using a perspective transformation. Specifically, the inverse of the transformation matrix responsible for the distortion is computed. By applying this inverse to the distorted image, the transformation that warped the image is reversed, effectively 'flattening' the distorted chessboard back to its ideal, top-down view. Once the inverse matrix is applied, the resulting coordinates provide the corrected positions of the corners in the distorted image. This transformation compensates for the camera angle, ensuring the chessboard’s layout is restored to its true form. \\
 
-Once the inverse matrix is applied, the resulting coordinates provide the corrected positions of the corners in the distorted image. This transformation compensates for the camera angle, ensuring the chessboard’s layout is restored to its true form. \\
+With the distortion corrected, the board is treated as an 8×8 grid of uniformly sized squares, each occupying a unit-length cell. The center of each square lies midway between its edges, resulting in center coordinates that range from 0.5 to 7.5 along in both the x and y axes. The center of the first square is at (0.5, 0.5), the second at (1.5, 0.5), and so on up to (7.5, 7.5). \\
 
 Finally, labels were assigned to the corners of the chessboard: ‘a1’, ‘h1’, ‘a8’, and ‘h8’.The average center of all black and white pieces was computed, and the board underwent four 90-degree rotations. For each rotation, the midpoints of the white and black sides (between ‘a1’ and ‘h1’, and between ‘a8’ and ‘h8’) were calculated. The rotation that minimized the distance between the piece centers and their corresponding midpoints was selected, indicating the optimal alignment. The labels ‘a1’, ‘h1’, ‘a8’, and ‘h8’ were then assigned to the corners based on this orientation.
  
