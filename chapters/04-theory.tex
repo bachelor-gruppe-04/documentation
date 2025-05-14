@@ -28,28 +28,31 @@ One such application area is \textbf{computer vision}, which combines principles
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/computer-vision.png} \caption[Computer Vision vs. Human Vision]{Comparison of Computer Vision and Human Vision: Illustrating the similarities and differences in processing visual data \cite{turing:computer-vision}} \label{fig:computer-vision} \end{figure}
 
-One of the most influential technologies in modern \gls{ml} is the \textbf{\gls{ann}}. These networks excel at handling a wide range of data types, including images, audio, and text. Different neural network architectures are suited for specific tasks. For instance, \gls{rnn}, especially those incorporating \gls{lstm}, are effective for sequential data such as text. \\
+One of the most influential technologies in modern \gls{ml} is the \gls{ann}. These networks excel at handling a wide range of data types, including images, audio, and text. Different neural network architectures are suited for specific tasks. For instance, \gls{rnn}, especially those incorporating \gls{lstm}, are effective for sequential data such as text. \\
 
-In contrast, \textbf{\glspl{cnn}} are particularly effective in processing image data. Their architecture leverages convolutional layers to extract spatial features, making them highly efficient in image classification, object detection, and segmentation tasks. An example of such a network applied to handwritten digit classification is shown in Figure~\ref{fig:convolutional-neural-network}. \\
+In contrast, \textbf{\glspl{cnn}} are particularly effective in processing image data. Their architecture leverages convolutional layers to extract spatial features, making them highly efficient in image classification and object detection. An example of such a network applied to handwritten digit classification is shown in Figure~\ref{fig:convolutional-neural-network}. \\
 
 \newpage
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/convolutional-neural-network.png} \caption[Example of CNN architecture for handwritten digit classification]{CNN architecture for classifying handwritten digits \cite{medium:cnn}} \label{fig:convolutional-neural-network} \end{figure}
 
+A key component of \glspl{cnn} is their ability to generate \textbf{feature maps}, which transform the input image into a space that highlights important visual patterns. As the image moves through the layers of the network, these feature maps capture crucial details such as edges, textures, and more complex shapes. Each feature map is the output of a convolutional layer, where filters are applied to extract relevant features. By emphasizing the most significant aspects of the image, these maps enable the network to learn and recognize patterns. This hierarchical approach to learning visual data has made \glspl{cnn} essential in a wide range of computer vision applications, from medical diagnostics to autonomous driving.
 
-Due to their ability to learn hierarchical representations of visual data, \glspl{cnn} have become a foundational tool in many computer vision applications, ranging from medical diagnostics to autonomous driving. Another fundamental concept in machine learning is \textbf{supervised learning}, where models are trained on labeled datasets. Each example in the dataset includes both an input and the correct output, allowing the model to learn how the input relates to the expected output. After training, the model can generalize this learned relationship to make predictions on new, unseen data \cite{geeksforgeeks:supervised-learning, google:supervised-learning}. \\
+\\
+
+Another fundamental concept in machine learning is \textbf{supervised learning}, where models are trained on labeled datasets. Each example in the dataset includes both an input and the correct output, allowing the model to learn how the input relates to the expected output. After training, the model can generalize this learned relationship to make predictions on new, unseen data \cite{geeksforgeeks:supervised-learning, google:supervised-learning}. \\
 
 Within supervised learning, \textbf{classification} refers to predicting categorical outcomes. For example, a classification model trained on images of geometric shapes can learn to associate visual features with specific shape categories. When shown a new image, the model attempts to determine the most likely category based on its prior learning. This process is illustrated in Figure~\ref{fig:supervised-learning}, which shows how labeled data is used to train a model to make accurate predictions on unseen inputs. \\
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png} \caption[Supervised Learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}} \label{fig:supervised-learning} \end{figure}
 
-By combining supervised learning with powerful models like \glspl{cnn}, machine learning systems have achieved remarkable success in tasks that require human-like perception and decision-making [KILDE?]. As these models become more accurate and versatile, deploying them efficiently to real-world applications becomes increasingly important.  \\
+By combining supervised learning with powerful models like \glspl{cnn}, machine learning systems have achieved remarkable success in tasks that require human-like perception and decision-making [KILDE]. As these models become more accurate and versatile, deploying them efficiently to real-world applications becomes increasingly important.  \\
 
-To facilitate this, \textbf{\gls{onnx}} is an open-source format for representing machine learning models, enabling easy transfer and interoperability between different frameworks like PyTorch and TensorFlow \cite{roboflow:onnx}. \\
+To address this, \textbf{\gls{onnx}} provides an open-source format for representing machine learning models, enabling seamless transfer and interoperability between different frameworks, including TensorFlow and PyTorch. This open format allows developers to switch between different tools depending on their specific needs during training, deployment, or optimization \cite{roboflow:onnx}.\\
 
-Similarly, \textbf{tensorflow} is an open-source machine learning framework developed by Google for building and deploying machine learning models. It provides comprehensive tools for deep learning, image processing, and natural language processing, and supports both training and inference of models \cite{nvidia:tensorflow}. \\
+Once a model is trained, \textbf{inference} is the process of using the trained model to make predictions on new, unseen data. In the context of object detection, inference involves feeding an input image into the model, which processes the image and outputs predictions—usually in the form of object classes, confidence scores, and bounding box coordinates \cite{nvidia:inference}.
 
-\textbf{Inference} refers to the process of using a trained machine learning model to make predictions on new, unseen data. In the context of object detection models, inference involves feeding an input image into the model, which then processes the image and outputs predictions. The predictions typically consist of object classes, confidence scores, and bounding box coordinates \cite{nvidia:inference}. \\
+ \\
 
 \section{Object Detection}
 Object detection is a fundamental task in computer vision that involves both identifying and locating objects within an image. Unlike simple image classification, which only determines what objects are present, object detection also specifies where each object is by drawing a bounding box around it. This dual capability makes object detection essential for applications that require not just recognition, but also precise localization of multiple objects in real time. \\
@@ -67,14 +70,14 @@ Central to object detection is the use of concept of \textbf{bounding boxes}. Bo
     \label{fig:boundingbox}
 \end{figure}
 
-To improve detection accuracy across different object sizes and shapes, models use \textbf{Anchor boxes}. Anchor boxes are predefined bounding boxes of various sizes and aspect ratios used as reference points for object detection models. These boxes are placed over the image or feature map to help the model predict the location and dimensions of objects. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}.
+To improve detection accuracy across different object sizes and shapes, models use anchor boxes. Anchor boxes are predefined bounding boxes of various sizes and aspect ratios, used as reference points for object detection. These boxes are selected based on common object sizes and aspect ratios found in the training dataset. The anchor boxes are placed over the feature map, which represents a transformed version of the input image. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present\cite{thinkautonomous:anchorboxes}.
 
 \newpage
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/theory/image-recognition/anchor-boxes.png}
-    \caption[Example of anchor boxes in object detection]{Illustration of multiple anchor boxes of different shapes and sizes centered on each grid cell in the image. These serve as initial reference boxes from which the model adjusts its predictions to fit actual objects
+    \caption[Example of anchor boxes in object detection]{Illustration of anchor boxes on the feature map. These serve as initial reference boxes from which the model adjusts to better fit the actual objects in the image
     \cite{thinkautonomous:anchorboxes}}
     \label{fig:anchor-box}
 \end{figure}
