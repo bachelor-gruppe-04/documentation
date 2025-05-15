@@ -76,8 +76,6 @@ The remaining 12 values represented the probabilities for each possible piece ty
 \end{table}
 
 
-\\
-
 
 \begin{table}[h]
     \centering
@@ -99,7 +97,7 @@ The remaining 12 values represented the probabilities for each possible piece ty
 
 There were 2835 predefined anchor boxes spread across the image, each serving as a candidate location for detecting a chess piece. During training, the model learned to adjust these anchor boxes to better match the actual pieces on the board. It achieved this by predicting 4 offset values that modified the location and size of each anchor box. At runtime, for each anchor box, the model used these learned offsets and output 12 class probabilities, indicating the likelihood of each chess piece type being present at that location.
 
-\newpage
+% \newpage
 
 \subsection{Corner Detection Model}
 The corner detection model identified the points where the edges of the inner squares on the chessboard met, commonly referred to as intersection points. Up to 49 intersection points could be detected in a single image. These points are illustrated in Figure \ref{fig:xcorners-chessboard}.
@@ -372,7 +370,7 @@ GitHub was used for both version control and task management. Issues in GitHub w
 
 \begin{itemize}
     \item \textbf{\acrlong{vscode}} was used as the primary development environment due to its support for multiple programming languages and extensions.
-\item \textbf{Postman} was employed for testing and validating \scrshort{rest}ful \glspl{api}, utilizing built-in JavaScript-based test snippets.
+\item \textbf{Postman} was employed for testing and validating \acrshort{rest}ful \glspl{api}, utilizing built-in JavaScript-based test snippets.
 \item \textbf{Netron.app} was used to visualize neural network architectures during the evaluation phase.
 \item \textbf{Git} facilitated version control and collaboration throughout the development process.
 \item \textbf{\glspl{llm}} (e.g., ChatGPT) were consulted to review code and provide suggestions, functioning as a collaborative assistant.
