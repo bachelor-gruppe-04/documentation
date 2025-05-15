@@ -244,6 +244,58 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the systemâ
 
 
 \subsection{Wireframe Testing}
+\label{subsec:results-wireframe}
+The testes revealed how these users experienced the structure of the wireframes. The wireframe's overall experience averages on 4,63. The Tournament View averaged on 4,75. The Board View averaged 4,38. 
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=6pt,
+    width=\textwidth,
+    height=8cm,
+    enlarge x limits=0.2,
+    ymin=0,
+    ymax=7,
+    ylabel={Number of Ratings},
+    xlabel={Rating},
+    symbolic x coords={1,2,3,4,5},
+    xtick=data,
+    x tick label style={rotate=0, anchor=north, font=\small},
+    legend style={
+        at={(0.5,-0.2)},
+        anchor=north,
+        legend columns=3
+    },
+    nodes near coords,
+    nodes near coords style={font=\footnotesize},
+    every node near coord/.append style={
+        /pgf/number format/.cd,
+        fixed,
+        precision=0,
+        /tikz/ifthenelse/.code={
+            \ifnum\pgfplotspointmeta=0
+                \pgfkeys{/pgfplots/disable node}
+            \fi
+        }
+    }
+]
+\addplot+[style={fill=blue!50}] coordinates {
+    (1,0) (2,0) (3,0) (4,3) (5,5)
+};
+\addplot+[style={fill=red!50}] coordinates {
+    (1,0) (2,0) (3,0) (4,2) (5,6)
+};
+\addplot+[style={fill=yellow!50}] coordinates {
+    (1,0) (2,0) (3,1) (4,3) (5,4)
+};
+\legend{Overall,Tournament View,Board View}
+\end{axis}
+\end{tikzpicture}
+\caption{Distrubution of ratings}
+\label{fig:move-failures}
+\end{figure}
 
 
 
@@ -251,7 +303,7 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the systemâ
 \label{subsec:results-color-palette}
 Voting revealed a mix of preferences: some participants favored the light mode from palette \#08 and the dark mode from palette \#07, while others selected the board design from palette \#05 or the move-highlighting style from palette \#14. \\
 
-Rather than selecting a single predefined palette, the final color scheme was assembled by combining the most highly rated elements across the top-voted variationsâ€”yielding a more tailored, user-informed visual design. Figure \ref{fig:color-palette-results} shows the distribution of votes across all tested palettes; the full set of prototypes appears in Appendix \ref{app:color-palettes}.
+Rather than selecting a single predefined palette, the final color scheme was assembled by combining the most highly rated elements across the top-voted variations, yielding a more tailored, user-informed visual design. Figure \ref{fig:color-palette-results} shows the distribution of votes across all tested palettes; the full set of prototypes appears in Appendix \ref{app:color-palettes}.
 
 \begin{figure}[htbp]
 \centering
