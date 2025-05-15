@@ -4,26 +4,35 @@
     \textit{This chapter presents the outcomes of the project, including the functionality and performance of the developed application. It highlights the achieved results in relation to the project goals and requirements.}
 \end{center}
 
-\section{Baseline Detection Performance from ChessCam}
+\section{Detection Performance from ChessCam}
 
-To establish a reference point for evaluating the performance of our system, we first consider the detection results reported in the original ChessCam repository [KILDE]. These metrics represent the upper-bound performance of the models.
+To establish a reference point for evaluating the performance of our system, we first consider the detection results reported in the original ChessCam repository~\cite{github:chesscam}. These metrics represent the upper-bound performance of the models.
 
-Figure~\ref{fig:chesscam-metrics} presents four key metrics that characterize the model’s best-case performance under idealized conditions:
-
-
-\cite{wandb:piece-detection}
-
-\cite{wandb:xcorner-detection}
-
-These results provide a strong benchmark against which our own detection pipeline will later be compared. It is important to note that our system operates under different testing conditions and may exhibit lower performance due to variations in lighting, perspective, and board configurations.
+The results presented in Figure~\ref{fig:chesscam-metrics} demonstrate that the piece model achieves consistently high detection performance across all key metrics under idealized conditions. Specifically, both precision and recall rapidly converge above 0.95. The mAP50 and mAP50-95 metrics also stabilize at high values, further confirming the model's strong overall detection accuracy. \cite{wandb:piece-detection}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figures/chesscam_metrics.png}
+\includegraphics[width=\textwidth]{figures/results/machine-learning/chesscam-piece-detection.png}
 \caption{Performance metrics reported from the original ChessCam repository, based on YOLOv8 training.}
-\label{fig:chesscam-metrics}
+\label{fig:chesscam-piece-metrics}
 \end{figure}
 
+
+
+
+
+
+These results provide a strong benchmark against which our own detection pipeline will later be compared. It is important to note that our system operates under different testing conditions and may exhibit lower performance due to variations in lighting, perspective, and board configurations.
+
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/results/machine-learning/chesscam-xcorners-detection.png}
+\caption{Performance metrics reported from the original ChessCam repository, based on YOLOv8 training.}
+\label{fig:chesscam-xcorners-metrics}
+\end{figure}
 
 
 

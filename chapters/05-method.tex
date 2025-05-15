@@ -1,32 +1,18 @@
 \chapter{Methods}
 \label{chp:methods}
 
-
-%% Vi kan sikkert skrive litt om dette i metode
-
-% \subsection{Version Control}
-% \label{subsec:version-control}
-
-% The use of \gls{git} as a version control system enables collaborative development by allowing multiple developers to work on the same codebase simultaneously. \gls{git} facilitates the maintenance of the code and provides a comprehensive history of all modifications made to the project. These changes are tracked within project containers known as \glspl{repository}, ensuring transparency and accountability throughout the development process. \cite{alphaefficiency:git}
-
-% \subsubsection*{Branches}
-
-% Git utilizes branches, which are independent lines of development within a repository. Branches allow developers to work on new features, fixes, or experiments without affecting the main codebase. Once changes in a branch are tested and finalized, they can be merged back into the main branch, ensuring a streamlined and controlled integration process. Branching supports parallel development and helps prevent conflicts by isolating work until it's ready for review and integration. \cite{git:branches}
-
 \begin{center}
     \textit{Here, the development process and methodologies are described in detail. This includes the design and implementation of the desktop application, the selection of tools and frameworks, and the approach to solving the problem.}
 \end{center}
 
-
-
 \section{Machine Learning Models}
 \label{sec:ml-models}
 
-After conducting research into existing chess digitization methods, a publicly available solution developed by Peter Batchelor, Tom Richardson, and other contributors was discovered. This solution served as the foundation for the approach. It utilized two \glspl{cnn}: one for detecting chess pieces and another for locating the squares of the chessboard \cite{lichess:chesscam}. \\
+During research into existing chess digitization methods, an open-source solution called ChessCam was identified. This project served as the foundation for the machine learning component developed in this thesis. It employed two \glspl{cnn}, one for detecting chess pieces and another for locating the squares of the chessboard \cite{github:chesscam}. \\
 
-Although the documentation for the models was limited, the necessary logic and structure of the models were already present in the repository itself. When additional clarifications were needed, they were obtained through direct communication with the original developers, ensuring that the intended use and functionality of the models were correctly understood. \\
+Although the documentation for the models was limited, the core logic and structure were available in the repository. When further clarification was required, it was obtained through communication with the developers, ensuring correct understanding of the models. \\
 
-The ChessCam repository provided multiple model formats, including PyTorch and \gls{onnx}. Before the models could be used, it was necessary to understand their expected inputs and outputs. Netron was employed to inspect the \gls{onnx} files and determine these details. \\
+The ChessCam repository offered models in multiple formats, including PyTorch and \gls{onnx}. To integrate them into the project, it was first necessary to understand the expected inputs and outputs. Netron was used to inspect and understand the models. \\
 
 
 \subsection{Piece Detection Model}
