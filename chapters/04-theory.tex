@@ -144,7 +144,7 @@ Delaunay triangulation is a method of dividing a set of points into triangles su
 \subsubsection*{Client-Server Architecture}
 \label{subsubsec:client-server}
 
-Client-server architecture is a network model in which multiple clients request and receive services from a centralized server over a local network or the Internet. Clients interact with the system through an application interface, while the server handles data processing. This architecture enables centralized control, scalability, and efficient resource management. See Figure~\ref{fig:client-server-architecture} \cite{liquidweb:client-server}.
+Client-server architecture is a network model in which multiple clients request and receive services from a centralized server over a local network or the internet. Clients interact with the system through an application interface, while the server handles data processing. This architecture enables centralized control, scalability, and efficient resource management. See Figure~\ref{fig:client-server-architecture} \cite{liquidweb:client-server}.
 
 
 \begin{figure}[h!]
@@ -157,7 +157,7 @@ Client-server architecture is a network model in which multiple clients request 
 \subsubsection*{WebSocket}
 \label{subsubsec:websocket}
 
-WebSocket is a standardized communication protocol that enables full-duplex communication over a single \gls{tcp} connection, making it well-suited for real-time web applications. Unlike traditional \gls{http} requests — which follow a request-response model — WebSocket establishes a persistent connection that allows both the client and server to send and receive data at any time. This reduces the need for polling or long polling, significantly lowering network traffic and latency. As a result, WebSocket improves the efficiency and responsiveness of data transmission, particularly in applications such as live data feeds and online games. See Figure \ref{fig:websocket-vs-http} for a comparison \cite{nodejs:websocket, apidog:websocket}.
+WebSocket is a standardized communication protocol that enables full-duplex communication over a single \gls{tcp} connection, making it well-suited for real-time web applications. Unlike traditional \gls{http} requests which follow a request-response model, WebSocket establishes a persistent connection that allows both the client and server to send and receive data at any time. This reduces the need for polling or long polling, significantly lowering network traffic and latency. As a result, WebSocket improves the efficiency and responsiveness of data transmission, particularly in applications such as live data feeds and online games. See Figure \ref{fig:websocket-vs-http} for a comparison \cite{nodejs:websocket, apidog:websocket}.
 
 
 \begin{figure}[h!]
@@ -172,17 +172,20 @@ WebSocket is a standardized communication protocol that enables full-duplex comm
 
 Design is a fundamental aspect of creating digital products, focusing on how users interact with and experience technology. It encompasses various disciplines, including interaction design, which aims to make digital interfaces intuitive and user-friendly. Concepts such as wireframes, accessibility, and the \gls{wcag} are often introduced to emphasize the importance of structure, usability, and universal access. \\
 
-\textbf{Wireframes} are one of the key tools used in the early stages of interface design. They serve as simplified blueprints for websites or applications, allowing designers to plan where elements like buttons, text, and images will appear. Wireframes help teams focus on layout, content structure, and user flow before any visual styling or branding is applied \cite{balsamiq:wireframe}. By separating form from function, designers can concentrate on how the product works and how users will navigate it. \\
+\textbf{Wireframes} are essential tools in the early stages of interface design. They act as simplified blueprints for websites or applications, helping designers plan the placement of elements such as buttons, text, and images. Wireframes help teams focus on layout, content structure, and user flow before any visual styling or branding is applied \cite{balsamiq:wireframe}. Separating form from function allows designers to prioritize usability and navigation before applying visual design. \\
 
-Another essential element in the design of digital solutions is \textbf{accessibility}. Universal design ensures that products are usable by as many people as possible, regardless of ability \cite{uutilsynet:universellutforming}. This involves considering users with visual, auditory, motor, or cognitive impairments from the very beginning of the design process. By planning for accessibility early, designers not only meet legal and ethical standards, but also improve the overall user experience for everyone. Inclusive design benefits a wider audience and reduces the need for costly adaptations later in development. \\
+Another essential element in design of digital solutions is \textbf{accessibility}. Universal design ensures that products are usable by as many people as possible, regardless of disabilities \cite{uutilsynet:universellutforming}. This involves considering users with visual, auditory, motor, or cognitive impairments from the beginning of the design process. By planning for accessibility early, designers not only meet legal and ethical standards, but also improve the overall user experience for everyone. Inclusive design benefits a wider audience and reduces the need for costly adaptations later in development. \\
 
 To support accessibility in practice, the \textbf{\gls{wcag}} offer a detailed framework of recommendations. Developed by the \gls{w3c}, \gls{wcag} outlines how to make digital content more perceivable, operable, understandable, and robust \cite{levelaccess:wcag}. These guidelines are used globally to ensure web services are accessible to users with disabilities. Applying these principles from the wireframe stage onward helps integrate accessibility throughout the design process.
 
 \section{Project management}
 \label{sec:project-management}
-\textbf{\gls{scrum}} is a way of organizing and managing work that focuses on working in short, repeating cycles. This approach makes it easier to handle changing requirements and helps the team deliver small, usable parts of the product regularly \cite{scrumguides:scrum}. \\
 
-The work is divided into \textbf{sprints}, which are short time periods, usually between two and four weeks. At the start of each sprint, the team holds a planning meeting to decide what they want to achieve and how they will do it. The work is chosen from a list of tasks called the Product Backlog, and the goal is to finish a working piece of the product by the end of the sprint. \\
+\textbf{Agile} is a flexible, iterative approach to managing projects, especially in software development. It emphasizes collaboration, continuous customer feedback, and the ability to adapt quickly to changing requirements throughout the project lifecycle. Agile breaks work into small, manageable increments, enabling teams to deliver value continuously and respond effectively to new information or challenges. \\
+
+One of the most widely used Agile frameworks is \textbf{\gls{scrum}}, which organizes work into short, repeatable cycles called \textbf{sprints}. This structure helps teams handle changing requirements and deliver small, functional parts of the product regularly \cite{scrumguides:scrum}. \textbf{\gls{scrum}} is a way of organizing and managing work that focuses on working in short, repeating cycles. This approach makes it easier to handle changing requirements and helps the team deliver small, usable parts of the product regularly \cite{scrumguides:scrum}. \\
+
+\textbf{Sprints} are short time periods, usually between two and four weeks. At the start of each sprint, the team holds a planning meeting to decide what they want to achieve and how they will do it. The work is chosen from a list of tasks called the Product Backlog, and the goal is to finish a working piece of the product by the end of the sprint. \\
 
 There are three main roles on the team. The \textbf{Product Owner} is responsible for deciding what the team should work on and in what order. The \textbf{development team} are the ones who actually build the product. They organize their own work and make sure it gets done. The \textbf{Scrum Master} helps the team stay focused, removes any problems that might slow them down, and makes sure the team follows the process.\\
 

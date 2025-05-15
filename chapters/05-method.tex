@@ -38,7 +38,7 @@ The first 4 values were offset values that adjusted the position and size of eac
 
 \begin{table}[h]
     \centering
-    \caption{Offset coordinates for each anchor box with regard to identifying chess pieces.}  % Caption moved to top
+    \caption[Offset values for anchor boxes - chess pieces]{Offset coordinates for each anchor box with regard to identifying chess pieces.}  % Caption moved to top
     \renewcommand{\arraystretch}{1.5} % Increase row height to allow text to be on top
     \begin{tabular}{lcccc}
         \toprule
@@ -57,9 +57,9 @@ The first 4 values were offset values that adjusted the position and size of eac
 
 The remaining 12 values represented the probabilities for each possible piece type after the offset value had been applied. With 12 different piece types, the model output 12 probabilities for each anchor box. The classification labels are shown in Table \ref{tab:piece-label-table}. Table \ref{tab:piece-probability-table} presents the predicted probabilities for each label across all anchor boxes. \\
 \begin{table}[ht]
-\renewcommand{\arraystretch}{1.1}  % Increase row height slightly
+\renewcommand{\arraystretch}{1.2}  % Increase row height slightly
 \centering
-\caption{Classification labels for the 12 chess piece types predicted by the model.}
+\caption[Labels for chess piece types]{Classification labels for the 12 chess piece types predicted by the model.}
 \begin{tabular}{|c|c|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Model Labels}} \\  
@@ -81,8 +81,8 @@ The remaining 12 values represented the probabilities for each possible piece ty
 
 \begin{table}[h]
     \centering
-    \caption{Predicted class probabilities for each anchor box after applying the offsets.}  % Caption moved to top
-    \renewcommand{\arraystretch}{1.5} % Increase row height to allow text to be on top
+    \caption[Predicted chess piece type after applying offsets]{Predicted class probabilities for each anchor box after applying the offsets.}  % Caption moved to top
+    \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{lcccc}
         \toprule
         \textbf{Anchor box} & \textbf{Black Pawn} & \textbf{White Pawn} & \textbf{Black Knight} & \textbf{...} \\
@@ -96,8 +96,6 @@ The remaining 12 values represented the probabilities for each possible piece ty
     \end{tabular}
     \label{tab:piece-probability-table}
 \end{table}
-
-% \newpage
 
 To summarize, there were 2835 predefined anchor boxes spread across the image, each serving as a candidate location for detecting a chess piece. During training, the model learned to adjust these anchor boxes to better match the actual pieces on the board. It achieved this by predicting 4 offset values that modified the location and size of each anchor box. At runtime, for each anchor box, the model used these learned offsets and output 12 class probabilities, indicating the likelihood of each chess piece type being present at that location.
 
@@ -121,7 +119,7 @@ The first 4 values were offset values that adjusted the position and size of eac
 
 \begin{table}[h]
     \centering
-    \caption{Offset coordinates for each anchor box with regard to identifying intersection points.}  % Caption moved to top
+    \caption[Offset values for anchor box - intersection points]{Offset coordinates for each anchor box with regard to identifying intersection points.}  % Caption moved to top
     \renewcommand{\arraystretch}{1.5} % Increase row height to allow text to be on top
     \begin{tabular}{lcccc}
         \toprule
@@ -141,7 +139,7 @@ The final value was the probability that the adjusted anchor box corresponded to
 
 \begin{table}[h]
     \centering
-    \caption{Predicted intersection probabilities for each anchor box after applying the offsets.}
+    \caption[Predicted intersection points after applying offsets]{Predicted intersection probabilities for each anchor box after applying the offsets.}
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{lc}
         \toprule
@@ -170,7 +168,7 @@ To track chess piece movements, the first step was to identify the individual sq
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/outer_corners_centers_chessboard.jpg}
-    \caption[S]{Visualization of the outer corners of the chessboard and the centers of each individual square, forming an 8x8 grid. \cite{vectorstock:chessboard-svg}}
+    \caption[Chessboard corners and centers]{Visualization of the corners of the chessboard and the centers of each individual square, forming an 8x8 grid. \cite{vectorstock:chessboard-svg}}
     \label{fig:chessboard-centers}
 \end{figure}
 
@@ -184,7 +182,7 @@ The bottom center of each piece’s bounding box was selected as its representat
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.25\linewidth]{figures/methods/ml-models/black-pawn.png}
-    \caption[FIX]{Example of a detected chess piece with its classification confidence. The bottom center of the bounding box was used as the reference point for mapping the piece to its corresponding square. \cite{svgrepo:black-pawn-svg}}
+    \caption[Detected chess piece and its bounding box]{Example of a detected chess piece with its classification confidence. The bottom center of the bounding box was used as the reference point for mapping the piece to its corresponding square. \cite{svgrepo:black-pawn-svg}}
     \label{fig:bbox-black-pawn}
 \end{figure}
 
@@ -209,7 +207,7 @@ Finally, labels were assigned to the corners of the chessboard: ‘a1’, ‘h1�
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.70\linewidth]{figures/methods/ml-models/label_assignment_board.jpg}
-\caption[S]{The white and black circles represent the average centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The board is rotated, and the labels are assigned based on the rotation that minimizes the distance between the centers and the midpoints.}
+\caption[Assigning labels to chessboard]{The white and black circles represent the average centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The board is rotated, and the labels are assigned based on the rotation that minimizes the distance between the centers and the midpoints.}
 \label{fig:board_label_assignment}
 \end{figure}
 
@@ -227,7 +225,7 @@ Upon confirming a move it is committed to the internal chess engine and sent to 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/piece-model.png}
-    \caption[s]{Text here}
+    \caption[Visualization of piece model and corner model]{Visualization of the detected pieces and centers of the squares.}
     \label{fig:websocket-vs-http}
 \end{figure}
 
