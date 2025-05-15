@@ -52,7 +52,6 @@ To address this, \textbf{\gls{onnx}} provides an open-source format for represen
 
 Once a model is trained, \textbf{inference} is the process of using the trained model to make predictions on new, unseen data. In the context of object detection, inference involves feeding an input image into the model, which processes the image and outputs predictions—usually in the form of object classes, confidence scores, and bounding box coordinates \cite{nvidia:inference}. \\
 
-
 After training and deploying a model, it is essential to evaluate how well it performs. Two key performance metrics are \textbf{precision} and \textbf{recall}. \textbf{Precision} measures how many of the model’s predictions are actually correct. A high precision means that the model makes few false detections. \textbf{Recall} measures how many of the actual objects the model manages to detect. A high recall means that the model rarely misses.
 
 \[
@@ -61,10 +60,6 @@ After training and deploying a model, it is essential to evaluate how well it pe
 \[
 \text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \]
-
-\vspace{0.5em}
-
-Since there is a trade-off between precision and recall, they are commonly analyzed together using a precision–recall curve. The area under this curve is known as the \textbf{\gls{ap}}. This is calculated for each object category individually. The average across all categories gives the \textbf{mean Average Precision (mAP)}. A higher mAP indicates that the model is both accurate and comprehensive in its predictions.
 
 \section{Object Detection}
 Object detection is a fundamental task in computer vision that involves both identifying and locating objects within an image. Unlike simple image classification, which only determines what objects are present, object detection also specifies where each object is by drawing a bounding box around it. This dual capability makes object detection essential for applications that require not just recognition, but also precise localization of multiple objects in real time. \\

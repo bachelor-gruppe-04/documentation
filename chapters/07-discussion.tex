@@ -29,6 +29,16 @@ Further testing supported these findings. As shown in Figure~\ref{fig:bbox-cente
 
 \section{Discussion of Delivered Product}
 
+\section{Overview of Delivered Product}
+The application was developed as an open-source project with the intention that the code can be reused, maintained, and extended by others. All components are built using open and freely available technologies, ensuring that the system can be installed on local hardware without the need for licensed software or cloud-based services. This aligns with the requirement that all processing should be performed locally, using common hardware such as a webcam connected to a local machine running either Windows or Ubuntu. \\
+
+The project follows clear coding standards and development best practices, making the code easy to understand and modify. All functionality is well documented, enabling future developers to build upon the existing solution. For example, to support new chess variants, integrate additional hardware, or improve the recognition models. To support future development and accessibility, the source code is published in a public Git repository without restrictions on reuse or adaptation. \\
+
+The application itself is a local, camera-based system for digitalizing over-the-board chess games in real-time. It detects piece movements on a physical chessboard using image recognition and converts the game into a \gls{pgn} file, which can be viewed or analyzed digitally. The system operates entirely on local hardware, with a front-end interface that allows users to follow games live and a back-end that manages board recognition and game logic. The application is designed to be low-cost, open-source, and easy to maintain, with extensibility in mind for future features.
+
+The delivered product refers to the final version of the application submitted at the conclusion of this Bachelor’s thesis. The application was developed at the request of the product owner and based on the requirements provided. The initial description served as a general concept rather than a detailed specification, which meant that decisions regarding design, architecture, and technology were left to the development team. Throughout the development process, ideas and design choices were discussed with the product owner and approved during regular meetings.
+
+
 \section{Machine Learning}
 
 \section{API}
@@ -130,13 +140,13 @@ Further development could focus on enabling a single camera to detect and track 
 
 Feedback from external collaborators has indicated strong interest in this feature, suggesting it would increase the system's appeal and usability. Implementing multi-board detection would require advances in computer vision algorithms, potentially leveraging techniques such as object detection, perspective correction, and spatial segmentation to reliably differentiate and monitor several boards within a single frame.
 
-\subsection{User-Friendly Variant Selection}
-The current version of the application supports different starting positions, but the process for selecting a variant is not user-friendly. While both the backend and frontend are capable of handling non-standard setups, users must manually modify the code to change the game mode. This involves locating the desired variant, copying its \gls{fen} string, and updating it in both the backend and frontend separately, an approach that is not practical for general users. \\
+\subsection{Variant Selection}
+While both the backend and frontend are capable of handling non-standard setups, users must manually modify the code to change the game mode. This involves locating the desired variant, copying its \gls{fen} string, and updating it in both the backend and frontend separately, an approach that is not practical for general users. \\
 
 To improve usability, one idea is to implement a user interface that allows players to select from a list of predefined chess variants, each linked to its corresponding \gls{fen} string. This would eliminate the need for manual code changes and make variant selection accessible to all users, enabling broader support for formats such as \textit{\gls{chess960}}, \textit{\gls{horde}}, and \textit{\gls{racing-kings}}.
 
 \subsection{Internationalization}
-Currently, the application supports only the English language. Feedback from the usability testing revealed a clear demand for multilingual support, particularly for Norwegian. Several participants noted that not all users are fluent or comfortable with English, which may hinder accessibility and user experience—especially among older users or those less familiar with technical environments. \\
+Currently, the application supports only English. Feedback from the usability testing revealed a clear demand for multilingual support, particularly for Norwegian. Several participants noted that not all users are fluent or comfortable with English, which may hinder accessibility and user experience—especially among older users or those less familiar with technical environments. \\
 
 Introducing \gls{i18n} would make the application more inclusive and accessible to a broader audience. This would involve implementing a localization framework to support multiple language files, enabling dynamic language switching, and ensuring that all \gls{ui} text elements are properly translatable. \\
 

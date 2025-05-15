@@ -4,33 +4,23 @@
     \textit{This chapter presents the outcomes of the project, including the functionality and performance of the developed application. It highlights the achieved results in relation to the project goals and requirements.}
 \end{center}
 
-\section{Detection Performance from ChessCam}
+\section{Detection Performance Models}
 
-To establish a reference point for evaluating the performance of our system, we first consider the detection results reported in the original ChessCam repository~\cite{github:chesscam}. These metrics represent the upper-bound performance of the models.
+As a baseline for evaluating detection performance, results from ChessCam repository were first considered \cite{github:chesscam}. These metrics represent the upper-bound performance of the models under ideal conditions. \\
 
-The results presented in Figure~\ref{fig:chesscam-metrics} demonstrate that the piece model achieves consistently high detection performance across all key metrics under idealized conditions. Specifically, both precision and recall rapidly converge above 0.95. The mAP50 and mAP50-95 metrics also stabilize at high values, further confirming the model's strong overall detection accuracy. \cite{wandb:piece-detection}.
+Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece detection model, which demonstrates consistently high precision and recall throughout training. Both metrics rapidly converge above 0.95, indicating stable and reliable detection \cite{wandb:piece-detection}. In contrast, Figure~\ref{fig:chesscam-xcorners-metrics} presents the results for xcorners detection, showing moderately lower performance. Precision and recall improve steadily over time and stabilize at approximately 0.8 and 0.75, respectively \cite{wandb:xcorner-detection}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figures/results/machine-learning/chesscam-piece-detection.png}
-\caption{Performance metrics reported from the original ChessCam repository, based on YOLOv8 training.}
+\includegraphics[width=\textwidth]{figures/results/machine-learning/piece-metrics.png}
+\caption{Performance metrics for piece detection from ChessCam repository \cite{wandb:piece-detection}.}
 \label{fig:chesscam-piece-metrics}
 \end{figure}
 
-
-
-
-
-
-These results provide a strong benchmark against which our own detection pipeline will later be compared. It is important to note that our system operates under different testing conditions and may exhibit lower performance due to variations in lighting, perspective, and board configurations.
-
-
-
-
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figures/results/machine-learning/chesscam-xcorners-detection.png}
-\caption{Performance metrics reported from the original ChessCam repository, based on YOLOv8 training.}
+\includegraphics[width=\textwidth]{figures/results/machine-learning/xcorners-metrics.png}
+\caption{Performance metrics for xcorners detection from ChessCam repository \cite{wandb:xcorner-detection}.}
 \label{fig:chesscam-xcorners-metrics}
 \end{figure}
 
@@ -89,8 +79,6 @@ Wooden  & 558 & 509 & 91.2\% \\
 \end{tabular}
 \end{table}
 
-
-% \newpage
 
 Figure~\ref{fig:move-failures} shows the number of failed games (i.e., games where detection failed) grouped by the move number at which failure occurred. Bars are color-coded by board type. The majority of failures occurred within the first five moves, particularly at moves 2, 4, and 5. This trend suggests that the early game presents the greatest challenge for detection, potentially due to rapid development or ambiguity in piece positions. Notably, failures after move 9 were rare. \\
 
@@ -153,21 +141,12 @@ For a detailed breakdown of the chess games, including the sequences of moves, f
 
 % \newpage
 
-\section{Overview of Delivered Product}
-The delivered product refers to the final version of the application submitted at the conclusion of this Bachelor’s thesis. The application was developed at the request of the product owner and based on the requirements provided. The initial description served as a general concept rather than a detailed specification, which meant that decisions regarding design, architecture, and technology were left to the development team. Throughout the development process, ideas and design choices were discussed with the product owner and approved during regular meetings. \\
-
-The application was developed as an open-source project with the intention that the code can be reused, maintained, and extended by others. All components are built using open and freely available technologies, ensuring that the system can be installed on local hardware without the need for licensed software or cloud-based services. This aligns with the requirement that all processing should be performed locally, using common hardware such as a webcam connected to a local machine running either Windows or Ubuntu. \\
-
-The project follows clear coding standards and development best practices, making the code easy to understand and modify. All functionality is well documented, enabling future developers to build upon the existing solution. For example, to support new chess variants, integrate additional hardware, or improve the recognition models. To support future development and accessibility, the source code is published in a public Git repository without restrictions on reuse or adaptation. \\
-
-The application itself is a local, camera-based system for digitalizing over-the-board chess games in real-time. It detects piece movements on a physical chessboard using image recognition and converts the game into a \gls{pgn} file, which can be viewed or analyzed digitally. The system operates entirely on local hardware, with a front-end interface that allows users to follow games live and a back-end that manages board recognition and game logic. The application is designed to be low-cost, open-source, and easy to maintain, with extensibility in mind for future features.
-
 \section{API}
-To enable real-time updates and improve the responsiveness of the frontend interface, the application uses a WebSocket connection between the backend and the frontend. This method was suggested by the product owner and was also approved by the supervisor. This communication channel is used for transmitting move data as it is detected by the board recognition system. Unlike traditional \gls{http} requests, which operate on a request-response basis, WebSocket allows for continuous, two-way communication between the server and the client as outlined in Subsubsection \ref{subsubsec:websocket} in Section \ref{chp:theory}. \\
+To enable real-time updates and improve the responsiveness of the frontend interface, the application uses a WebSocket connection between the backend and the frontend. This method was suggested by the product owner and was also approved by the supervisor. This communication channel is used for transmitting move data as it is detected by the board recognition system. Unlike traditional \gls{http} requests, which operate on a request-response basis, WebSocket allows for continuous, two-way communication between the server and the client as outlined in \ref{subsubsec:websocket} \\
 
 Once the application initiates a connection, the WebSocket remains open throughout the session. As new moves are identified on the physical board, the backend sends the corresponding move data as messages through the WebSocket. These messages are then received by the frontend, which updates the displayed move list and board state in real-time. This provides a seamless viewing experience for users following live games. \\
 
-The WebSocket server also handles specific command messages. For example, when the server sends a message labeled \texttt{RESET}, the frontend clears the current move list typically indicating the start of a new game. The \texttt{RESET} command also resets the backend system, allowing for a new tournament round to begin. A message labeled \texttt{INVALID} is used to signal an unrecognized or incorrect move and does not trigger any frontend changes. All other messages are assumed to be valid algebraic notation representing chess moves and are appended to the game history displayed to the user. \\
+The WebSocket server also handles specific command messages. For example, when the server sends a message labeled \texttt{RESET}, the frontend clears the current move list typically indicating the start of a new game. The \texttt{RESET} command also resets the backend system, allowing for a new tournament round to begin. A message labeled \texttt{INVALID} is used to signal an unrecognized or incorrect move and does not trigger any frontend changes. \\
 
 The WebSocket functionality is encapsulated in a custom React hook on the frontend, which manages the connection lifecycle and state updates. This abstraction simplifies integration into the user interface and ensures that resources are properly cleaned up when the component is unmounted. Overall, the use of WebSocket communication is a key component in delivering a responsive and live experience, particularly for tournaments and public displays where move-by-move tracking is essential.
 
