@@ -239,9 +239,30 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the systemâ
 
 
 
-\subsection{Wireframe Testing}
-\label{subsec:results-wireframe}
-The testes revealed how these users experienced the structure of the wireframes. The wireframe's overall experience averages on 4,63. The Tournament View averaged on 4,75. The Board View averaged 4,38. 
+\subsection{Wireframe}
+\label{subsec:wireframe-results}
+
+A total of eight individuals participated in the wireframe usability test, excluding project developers and stakeholders. While the sample size was limited, participants were intentionally selected to represent a broad range of ages, technical backgrounds, and familiarity with chess. \\
+
+Overall, the feedback was generally positive. Participants were asked to rate their satisfaction on a 1â€“5 Likert scale. The average scores from the feedback form were as follows:
+
+\begin{itemize}
+    \item The \textbf{overall user experience} received an average rating of \textbf{4.63} out of 5.
+    \item The \textbf{Tournament View page} received the highest average rating of \textbf{4.75}.
+    \item The \textbf{Board View page} received a slightly lower average rating of \textbf{4.38}.
+\end{itemize}
+
+Participants commented that the interface was easy to navigate and that the layout felt intuitive. The Tournament View, in particular, was praised for its clarity and structure. Several testers without prior experience using chess-related software indicated that the interface felt approachable and visually clear. \\
+
+However, participants also suggested a few areas for improvement:
+
+\begin{itemize}
+    \item Adding a full-screen function for the video feed.
+    \item Enhancing the visual design of some UI elements for improved aesthetics.
+    \item Supporting multiple languages for users who do not speak English.
+\end{itemize}
+
+While these findings are based on a small participant group, they offer early indications that the interface is both accessible and functional for a wide range of users. These insights will guide further development and refinement of the user interface.
 
 \begin{figure}[htbp]
 \centering
@@ -255,7 +276,7 @@ The testes revealed how these users experienced the structure of the wireframes.
     ymin=0,
     ymax=7,
     ylabel={Number of Ratings},
-    xlabel={Rating},
+    xlabel={Rating (1 = Poor, 5 = Excellent)},
     symbolic x coords={1,2,3,4,5},
     xtick=data,
     x tick label style={rotate=0, anchor=north, font=\small},
@@ -277,21 +298,22 @@ The testes revealed how these users experienced the structure of the wireframes.
         }
     }
 ]
-\addplot+[style={fill=blue!50}] coordinates {
+\addplot+[style={fill=blue!50}, bar shift=-6pt] coordinates {
     (1,0) (2,0) (3,0) (4,3) (5,5)
 };
-\addplot+[style={fill=red!50}] coordinates {
+\addplot+[style={fill=red!50}, bar shift=0pt] coordinates {
     (1,0) (2,0) (3,0) (4,2) (5,6)
 };
-\addplot+[style={fill=yellow!50}] coordinates {
+\addplot+[style={fill=yellow!50}, bar shift=6pt] coordinates {
     (1,0) (2,0) (3,1) (4,3) (5,4)
 };
-\legend{Overall,Tournament View,Board View}
+\legend{Overall, Tournament View, Board View}
 \end{axis}
 \end{tikzpicture}
-\caption{Distrubution of ratings}
+\caption{Distribution of satisfaction ratings from participants across different interface views.}
 \label{fig:move-failures}
 \end{figure}
+
 
 
 
