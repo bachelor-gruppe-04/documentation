@@ -57,6 +57,14 @@ To address these issues, slightly modified color variants were chosen for each t
 \section{Project management}
 \label{sec:discussion-project-management}
 
+The application of a Scrum inspired methodology proved to be an effective project management strategy, particularly given the composition and size of the team. While the team followed core Scrum practices such as sprint planning, reviews, and retrospectives, the absence of a dedicated Scrum Master led to a more lightweight and adaptive implementation. Responsibilities typically associated with the Scrum Master role, such as facilitating meetings and managing the sprint process, were informally distributed among team members. This approach enabled greater flexibility and autonomy, which aligned well with the needs of a smaller team. \\
+
+The communication within the team functioned efficiently throughout the project. Daily in-person collaboration during office hours allowed for rapid feedback, informal stand-ups, and immediate resolution of issues. The accessibility of all team members facilitated a high degree of responsiveness, reducing reliance on scheduled meetings and improving overall coordination.\\
+
+Version control and task management were handled using Git, which provided a robust framework for organizing and reviewing code. Each task was implemented in a dedicated branch and linked to a corresponding GitHub issue. All changes were integrated into the main branch exclusively through pull requests, with peer review enforced for every contribution. This workflow contributed significantly to maintaining code quality, minimizing integration issues, and ensuring transparency in the development process. \\
+
+GitHub Actions was utilized to implement automated workflows that enhanced both reliability and productivity. One workflow ran Python unit tests on each push, while another automated the process of updating LaTeX-based documentation. These workflows reduced manual effort and helped detect issues early in the development cycle. However, one workflow—the test pipeline—persistently failed in the continuous integration environment. This was due to its dependency on physical camera hardware, which was unavailable during automated runs triggered by merges into the main branch. While the failure was expected and did not impact the overall delivery pipeline, it underscored the importance of designing test workflows that differentiate between hardware-dependent and environment-agnostic components.
+
 \section{Challenges}
 In addition to ideas for future development, there were also a few obstacles encountered during the development phase of this project. These challenges were addressed as they occurred, and solutions were implemented as part of the final application. \\
 
