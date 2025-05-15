@@ -1,9 +1,34 @@
 \chapter{Results}
 
-
 \begin{center}
     \textit{This chapter presents the outcomes of the project, including the functionality and performance of the developed application. It highlights the achieved results in relation to the project goals and requirements.}
 \end{center}
+
+\section{Baseline Detection Performance from ChessCam}
+
+To establish a reference point for evaluating the performance of our system, we first consider the detection results reported in the original ChessCam repository [KILDE]. These metrics represent the upper-bound performance of the models.
+
+Figure~\ref{fig:chesscam-metrics} presents four key metrics that characterize the model’s best-case performance under idealized conditions:
+
+Precision (~0.96): The proportion of predicted detections that correctly correspond to ground truth objects, reflecting the model’s ability to avoid false positives.
+
+Recall (~0.95): The proportion of ground truth objects that are successfully detected, indicating low false negative rates.
+
+mAP@0.5 (>0.97): The mean Average Precision at a 0.5 IoU threshold, combining precision and recall for moderately strict localization.
+
+mAP@0.5:0.95 (~0.80): A more stringent metric that averages mAP over multiple IoU thresholds, capturing the model's robustness across varying levels of detection overlap.
+
+These results provide a strong benchmark against which our own detection pipeline will later be compared. It is important to note that our system operates under different testing conditions and may exhibit lower performance due to variations in lighting, perspective, and board configurations.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/chesscam_metrics.png}
+\caption{Performance metrics reported from the original ChessCam repository, based on YOLOv8 training.}
+\label{fig:chesscam-metrics}
+\end{figure}
+
+
+
 
 \section{Machine Learning Model}
 
