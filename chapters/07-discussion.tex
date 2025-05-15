@@ -139,4 +139,9 @@ The current version of the application supports different starting positions, bu
 
 To improve usability, one idea is to implement a user interface that allows players to select from a list of predefined chess variants, each linked to its corresponding \gls{fen} string. This would eliminate the need for manual code changes and make variant selection accessible to all users, enabling broader support for formats such as \textit{\gls{chess960}}, \textit{\gls{horde}}, and \textit{\gls{racing-kings}}.
 
+\subsection{Internationalization}
+Currently, the application supports only the English language. Feedback from the usability testing revealed a clear demand for multilingual support, particularly for Norwegian. Several participants noted that not all users are fluent or comfortable with English, which may hinder accessibility and user experience—especially among older users or those less familiar with technical environments. \\
 
+Introducing internationalization (i18n) would make the application more inclusive and accessible to a broader audience. This would involve implementing a localization framework to support multiple language files, enabling dynamic language switching, and ensuring that all UI text elements are properly translatable. \\
+
+As the system is intended for public and possibly international use in tournament settings, multilingual support would be a valuable enhancement. Future development should prioritize adding language selection functionality, beginning with Norwegian, and designing the system architecture to support additional languages as needed.
