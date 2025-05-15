@@ -61,7 +61,7 @@ To address these issues, slightly modified color variants were chosen for each t
 In addition to ideas for future development, there were also a few obstacles encountered during the development phase of this project. These challenges were addressed as they occurred, and solutions were implemented as part of the final application. \\
 
 \subsection{Camera}
-During the development and testing phase of the front-end application, an obstacle related to camera initialization was encountered. The application is designed to access an external USB camera by specifying a camera ID other than 0, since ID 0 typically corresponds to the system's default or built-in (dashboard) camera, which is not relevant to this project.\\
+During the development and testing phase of the front-end application, an obstacle related to camera initialization was encountered. The application is designed to access an external \gls{usb} camera by specifying a camera ID other than 0, since ID 0 typically corresponds to the system's default or built-in (dashboard) camera, which is not relevant to this project.\\
 
 Two identical external webcams were used for this project, both connected via a USB hub. One of the cameras functioned correctly. When connected, the front-end application successfully initialized the camera feed, and the video stream was displayed on the webpage as expected.\\
 
@@ -70,9 +70,9 @@ However, the second camera, did not behave as expected. Despite being physically
 This issue was traced back to a cached or “ghost” device entry in the Windows Device Manager. A ghost device refers to a previously connected hardware device that is no longer physically attached to the system but whose configuration and driver information remain cached by the operating system. These leftover entries can lead to conflicts or incorrect device indexing when similar hardware is reconnected, especially when multiple identical devices are used. In this case, the system appeared to retain prior camera associations, which caused the application to misidentify or incorrectly assign the camera index.
 
 \subsection{Special moves}
-When a move is made, the front-end highlights the previous and current tiles of the moved piece. User testing with different color palettes resulted in the selection of a bright contrast color relative to the main design scheme to ensure good visibility. \\
+When a move is made, the frontend highlights the previous and current tiles of the moved piece. User testing with different color palettes resulted in the selection of a bright contrast color relative to the main design scheme to ensure good visibility. \\
 
-The chessboard component manages the rules of chess, while the front-end is responsible only for storing tile positions and applying styling. In standard moves, highlighting the starting and ending tiles is sufficient. However, special moves such as \gls{castling}, pawn \gls{promotion}, and \gls{en-passant} capture require additional handling. \\
+The chessboard component manages the rules of chess, while the frontend is responsible only for storing tile positions and applying styling. In standard moves, highlighting the starting and ending tiles is sufficient. However, special moves such as \gls{castling}, pawn \gls{promotion}, and \gls{en-passant} capture require additional handling. \\
 
 In \gls{castling}, both the king and a rook move simultaneously. Since the default highlight logic tracks only one piece, it does not correctly represent \gls{castling} moves. Additional logic was implemented to highlight the movements of both the king and rook during \gls{castling}, ensuring consistency and clarity for the user.
 
@@ -108,12 +108,12 @@ Throughout the project, various development ideas emerged from the team, the pro
 \subsection{Independent Application}
 During a meeting at Aalesund Schaklag, the product owner and club leader discussed deploying a finalized version of the application with ceiling-mounted cameras. Since the club maintains a standard table layout, the cameras could remain fixed and connected to a computer running the application continuously. A physical switch would allow easy power control.
 
-In a typical use case, the organizer could start an unofficial tournament by turning on the switch, prompting the system to begin tracking games automatically. Once games were finished, the organizer would reset the  returned to their initial position would be recognized as reset. The system would be user-friendly, requiring no technical knowledge and would also protect equipment by having cameras out of reach.
+In a typical use case, the organizer could start an unofficial tournament by turning on the switch, prompting the system to begin tracking games automatically. Once games were finished, the organizer would reset the returned to their initial position would be recognized as reset. The system would be user-friendly, requiring no technical knowledge and would also protect equipment by having cameras out of reach.
 
 \subsection{Information About Participants}
 Currently, all tournament participants are hardcoded into the system. This approach limits scalability and increases the complexity of system maintenance. A more sustainable solution would involve integrating the system with established platforms such as TournamentService, a widely used tool for managing player registration in chess tournaments. \\
 
-TournamentService retrieves player data from both the Norwegian Chess Federation (NSF) and the international FIDE database, ensuring that participant information is accurate and up-to-date.
+TournamentService retrieves player data from both the Norwegian Chess Federation (NSF) and the international \gls{fide} database, ensuring that participant information is accurate and up-to-date.
 By implementing such an integration, participants would be able to register by simply searching for their name. The system could then automatically retrieve and populate essential details, such as chess rating, club affiliation, and other relevant metadata. This would significantly streamline the registration process and reduce the likelihood of manual entry errors. \\
 
 
@@ -143,6 +143,6 @@ To improve usability, one idea is to implement a user interface that allows play
 \subsection{Internationalization}
 Currently, the application supports only the English language. Feedback from the usability testing revealed a clear demand for multilingual support, particularly for Norwegian. Several participants noted that not all users are fluent or comfortable with English, which may hinder accessibility and user experience—especially among older users or those less familiar with technical environments. \\
 
-Introducing internationalization (i18n) would make the application more inclusive and accessible to a broader audience. This would involve implementing a localization framework to support multiple language files, enabling dynamic language switching, and ensuring that all UI text elements are properly translatable. \\
+Introducing \gls{i18n} would make the application more inclusive and accessible to a broader audience. This would involve implementing a localization framework to support multiple language files, enabling dynamic language switching, and ensuring that all \gls{ui} text elements are properly translatable. \\
 
 As the system is intended for public and possibly international use in tournament settings, multilingual support would be a valuable enhancement. Future development should prioritize adding language selection functionality, beginning with Norwegian, and designing the system architecture to support additional languages as needed.
