@@ -116,10 +116,16 @@ One potential solution is to estimate the remaining time based on move detection
 
 One alternative is using digital clocks with USB connectivity. This method ensures precise and accurate time tracking, as the clock is directly connected to the PC. Digital clocks with \gls{usb}-support such as the DGT3000 offer reliable tracking as the connection ensures the time matches the actual clock. However, these clocks are costly, priced approximately 1000 NOK each \cite{sjakkbutikken:dgt-clock}. Given that Aalesunds Schaklag aims to minimize expenses, this option may not be ideal despite the accuracy it provides. \\
 
-A more affordable but challenging solution is using cameras to visually read physical clocks through a machine learning model. Challenges such as occlusion, poor lighting, and camera resolution make this difficult, especially for faster time controls. \\
+A more affordable but challenging solution is using cameras to visually read physical clocks through a \gls{ml} model. Challenges such as occlusion, poor lighting, and camera resolution make this difficult, especially for faster time controls. \\
 
 Therefore, time control features were not prioritized in the current version but remain an area for future improvement.
 
+\subsection{Multi-Board Detection Capability}
+The current system architecture supports a one-to-one mapping between cameras and chessboards, each board requires a dedicated camera. While this setup is functional, it introduces scalability and logistical challenges, particularly in larger tournament settings where numerous boards are involved. \\
+
+Further development could focus on enabling a single camera to detect and track multiple boards simultaneously. This enhancement would significantly reduce the hardware requirements and simplify the setup process, addressing common issues such as cable clutter. \\
+
+Feedback from external collaborators has indicated strong interest in this feature, suggesting it would increase the system's appeal and usability. Implementing multi-board detection would require advances in computer vision algorithms, potentially leveraging techniques such as object detection, perspective correction, and spatial segmentation to reliably differentiate and monitor several boards within a single frame.
 
 \subsection{User-Friendly Variant Selection}
 The current version of the application supports different starting positions, but the process for selecting a variant is not user-friendly. While both the backend and frontend are capable of handling non-standard setups, users must manually modify the code to change the game mode. This involves locating the desired variant, copying its \gls{fen} string, and updating it in both the backend and frontend separately, an approach that is not practical for general users. \\
