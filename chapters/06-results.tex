@@ -205,6 +205,11 @@ GitHub was used consistently throughout the project for both task management and
 
 Tasks were assigned to individual team members and tracked using GitHub Issues. Issues were labeled and moved through the workflow stages: \textit{No Status}, \textit{To Do}, \textit{In Progress}, and \textit{Done}. This workflow was followed consistently for larger development tasks. However, some minor items, particularly quick fixes and small adjustments, were occasionally completed outside of the issue board during periods of intensive development, resulting in slightly reduced traceability for those changes.\\
 
+In addition to manual code review, automated workflows were implemented using GitHub Actions to support continuous integration and reduce human error. One workflow was configured to run Python unit tests on every push, ensuring code stability throughout development. Another workflow was responsible for automatically updating LaTeX-based documentation by cloning the relevant repository and pushing changes after each update, as shown in Figure~\ref{fig:workflow-latex}. These pipelines contributed to improved reliability, automation of repetitive tasks, and early detection of breaking changes during development. \\
+
+\begin{figure}[h!] \centering 
+\includegraphics[width=0.75\linewidth]{figures/results/workflows/latex.png}\caption[Upload Latex workflow]{The workflow for update documentation with code}\label{fig:workflow-latex} \end{figure}
+
 \subsection{Architecture Overview}
 \label{subsec:diagrams}
 
