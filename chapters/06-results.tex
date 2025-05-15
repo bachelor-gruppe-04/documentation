@@ -101,21 +101,21 @@ Figure~\ref{fig:move-failures} shows the number of failed games (i.e., games whe
     ymin=0,
     ylabel={Number of Games Failed},
     xlabel={Move Number},
-    xtick={1,...,15,All},
-    xticklabels={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,All},
-    x tick label style={rotate=45, anchor=east},
+    xtick={1,...,15},
+    xticklabels={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
+    x tick label style={rotate=0, anchor=north, font=\small},
     legend style={at={(0.5,-0.25)}, anchor=north, legend columns=-1},
     nodes near coords,
-    symbolic x coords={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,All},
+    symbolic x coords={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
     xticklabel style={font=\small},
 ]
 \addplot+[style={fill=blue!50}] coordinates {
     (1,0) (2,12) (3,2) (4,10) (5,14) (6,4) (7,3) (8,3) (9,0)
-    (10,0) (11,0) (12,0) (13,0) (14,0) (15,0) (All,2)
+    (10,0) (11,0) (12,0) (13,0) (14,0) (15,0)
 };
 \addplot+[style={fill=red!50}] coordinates {
     (1,0) (2,6) (3,6) (4,16) (5,5) (6,3) (7,1) (8,0) (9,6)
-    (10,0) (11,0) (12,1) (13,3) (14,1) (15,0) (All,2)
+    (10,0) (11,0) (12,1) (13,3) (14,1) (15,0)
 };
 \legend{Plastic, Wooden}
 \end{axis}
@@ -325,13 +325,13 @@ While these findings are based on a small participant group, they offer early in
         }
     }
 ]
-\addplot+[style={fill=blue!50}, bar shift=-6pt] coordinates {
+\addplot+[style={fill=blue!50}] coordinates {
     (1,0) (2,0) (3,0) (4,3) (5,5)
 };
-\addplot+[style={fill=red!50}, bar shift=0pt] coordinates {
+\addplot+[style={fill=red!50}] coordinates {
     (1,0) (2,0) (3,0) (4,2) (5,6)
 };
-\addplot+[style={fill=yellow!50}, bar shift=6pt] coordinates {
+\addplot+[style={fill=yellow!50}] coordinates {
     (1,0) (2,0) (3,1) (4,3) (5,4)
 };
 \legend{Overall, Tournament View, Board View}
@@ -340,7 +340,6 @@ While these findings are based on a small participant group, they offer early in
 \caption{Distribution of satisfaction ratings from participants across different interface views.}
 \label{fig:wireframe-test-results}
 \end{figure}
-
 
 
 
@@ -363,7 +362,7 @@ Rather than selecting a single predefined palette, the final color scheme was as
     ylabel={Number of Votes},
     xlabel={Color Palette ID},
     xticklabels={01,02,03,04,05,06,07,08,09,10,11,12,13,14},
-    x tick label style={rotate=45, anchor=east},
+    x tick label style={rotate=0, anchor=north, font=\small},
     nodes near coords,
     symbolic x coords={01,02,03,04,05,06,07,08,09,10,11,12,13,14},
     xticklabel style={font=\small},
