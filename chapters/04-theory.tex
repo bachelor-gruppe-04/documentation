@@ -34,15 +34,15 @@ In contrast, \textbf{\glspl{cnn}} are particularly effective in processing image
 
 \newpage
 
-\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/convolutional-neural-network.png} \caption[Example of CNN architecture for handwritten digit classification]{CNN architecture for classifying handwritten digits \cite{medium:cnn}} \label{fig:convolutional-neural-network} \end{figure}
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/convolutional-neural-network.png} \caption[CNN architecture for handwritten digit classification]{CNN architecture for classifying handwritten digits \cite{medium:cnn}} \label{fig:convolutional-neural-network} \end{figure}
 
-A key component of \glspl{cnn} is their ability to generate \textbf{feature maps}, which transform the input image into a space that highlights important visual patterns. As the image moves through the layers of the network, these feature maps capture crucial details such as edges, textures, and more complex shapes. Each feature map is the output of a convolutional layer, where filters are applied to extract relevant features. By emphasizing the most significant aspects of the image, these maps enable the network to learn and recognize patterns. This hierarchical approach to learning visual data has made \glspl{cnn} essential in a wide range of computer vision applications, from medical diagnostics to autonomous driving.
-
-\\
+A key component of \glspl{cnn} is their ability to generate \textbf{feature maps}, which transform the input image into a space that highlights important visual patterns. As the image moves through the layers of the network, these feature maps capture crucial details such as edges, textures, and more complex shapes. Each feature map is the output of a convolutional layer, where filters are applied to extract relevant features. By emphasizing the most significant aspects of the image, these maps enable the network to learn and recognize patterns. This hierarchical approach to learning visual data has made \glspl{cnn} essential in a wide range of computer vision applications, from medical diagnostics to autonomous driving. \\
 
 Another fundamental concept in machine learning is \textbf{supervised learning}, where models are trained on labeled datasets. Each example in the dataset includes both an input and the correct output, allowing the model to learn how the input relates to the expected output. After training, the model can generalize this learned relationship to make predictions on new, unseen data \cite{geeksforgeeks:supervised-learning, google:supervised-learning}. \\
 
 Within supervised learning, \textbf{classification} refers to predicting categorical outcomes. For example, a classification model trained on images of geometric shapes can learn to associate visual features with specific shape categories. When shown a new image, the model attempts to determine the most likely category based on its prior learning. This process is illustrated in Figure~\ref{fig:supervised-learning}, which shows how labeled data is used to train a model to make accurate predictions on unseen inputs. \\
+
+\newpage
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png} \caption[Supervised Learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}} \label{fig:supervised-learning} \end{figure}
 
@@ -59,38 +59,36 @@ Object detection is a fundamental task in computer vision that involves both ide
 
 \textbf{\gls{leyolo}} is a \gls{cnn}-based architecture designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
 
-Central to object detection is the use of concept of \textbf{bounding boxes}. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. \\
-
-\newpage
+Central to object detection is the use of concept of \textbf{bounding boxes}. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. An example of how bounding boxes are used to localize objects within an image is illustrated in Figure~\ref{fig:boundingbox}.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/bbox-example.png}
-    \caption[Example of a bounding box in object detection]{Example of a bounding box used in object detection to localize an object within an image \cite{peopleforai:boundingbox}}
+    \caption[Bounding box in object detection]{Example of a bounding box used in object detection to localize an object within an image \cite{peopleforai:boundingbox}}
     \label{fig:boundingbox}
 \end{figure}
 
-To improve detection accuracy across different object sizes and shapes, models use anchor boxes. Anchor boxes are predefined bounding boxes of various sizes and aspect ratios, used as reference points for object detection. These boxes are selected based on common object sizes and aspect ratios found in the training dataset. The anchor boxes are placed over the feature map, which represents a transformed version of the input image. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present\cite{thinkautonomous:anchorboxes}.
+To improve detection accuracy across different object sizes and shapes, models use \textbf{anchor boxes}. Anchor boxes are predefined bounding boxes of various sizes and aspect ratios, used as reference points for object detection. These boxes are selected based on common object sizes and aspect ratios found in the training dataset. The anchor boxes are placed over the feature map, which represents a transformed version of the input image. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}. An illustration of how anchor boxes are positioned on the feature map is shown in Figure~\ref{fig:anchor-box}.
 
 \newpage
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/theory/image-recognition/anchor-boxes.png}
-    \caption[Example of anchor boxes in object detection]{Illustration of anchor boxes on the feature map. These serve as initial reference boxes from which the model adjusts to better fit the actual objects in the image
+    \caption[Anchor boxes in object detection]{Illustration of anchor boxes on the feature map. These serve as initial reference boxes from which the model adjusts to better fit the actual objects in the image
     \cite{thinkautonomous:anchorboxes}}
     \label{fig:anchor-box}
 \end{figure}
 
  Once multiple predictions have been made, some of them may overlap significantly. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. It removes redundant or overlapping bounding boxes and keeps only the most confident prediction. The \gls{nms} algorithm works by first selecting the box with the highest confidence score. It then removes all other boxes that have a high overlap with the selected box. This process is repeated iteratively until no boxes with significant overlap remain. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
-\cite{thepythoncode:nms}.
+\cite{thepythoncode:nms}. The effect of applying NMS is illustrated in Figure~\ref{fig:nms}.
 
 \newpage
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/nms.png}
-    \caption[Non-maximum suppression (NMS) before and after applying the algorithm]{Illustration of NMS before and after its application. NMS retains the bounding box with the highest confidence score while suppressing those that significantly overlap with it \cite{thepythoncode:nms}}
+    \caption[NMS before and after applying the algorithm]{Illustration of NMS before and after its application \cite{thepythoncode:nms}.}
     \label{fig:nms}
 \end{figure}
 
@@ -98,26 +96,22 @@ To improve detection accuracy across different object sizes and shapes, models u
 
 
 
-\subsection*{Normalization}
+\subsection*{Normalization and Scaling}
 
-Normalization in image processing involves scaling pixel values to a consistent range, typically [0, 1] or [-1, 1], to improve model performance. By adjusting pixel intensities from their original range (0-255) to a smaller scale, normalization ensures that the model processes inputs in a more stable and consistent manner. This accelerates model convergence. Normalization ensures that the input features are on a similar scale, aiding in more efficient and accurate learning.
-
-\subsection*{Scaling}
-
-Scaling in image processing and machine learning refers to transforming input data, such as images, to meet the specific requirements of a model. This typically involves resizing the image to a consistent size, normalizing pixel values to a standard range, and converting the image into the correct format expected by the model.
+Normalization in image processing involves scaling pixel values to a consistent range, such as [0, 1] or [-1, 1]. This helps improve model performance by making the input data uniform. By adjusting pixel intensities from their original 0–255 range, normalization allows the model to process inputs more consistently, leading to faster and more stable convergence.
+\textbf{Scaling} in image processing and machine learning involves resizing images to the format required by the model, as shown in Figure~\ref{fig:nms}. 
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/scaling.png}
-    \caption[Scaling process in image preprocessing]{Illustration of the scaling process in image preprocessing, resizing, normalizing, and converting the image format to prepare it for model input. \cite{thepythoncode:nms}}
+    \caption[Scaling in image processing]{Illustration of the scaling process in image preprocessing, resizing the image to prepare it for model input. \cite{thepythoncode:nms}}
     \label{fig:nms}
 \end{figure}
 
-Scaling process in image preprocessing]{Illustration of the scaling process in image preprocessing, including resizing, normalizing, and converting the image format to prepare it for model input.
 
 \subsection*{Perspective Transformation}
 
-When an image is taken from a tilted viewpoint, objects that are normally rectangular, such as a chessboard, appear distorted and no longer have right angles. A perspective transformation is a specific type of image warping that corrects distortions caused by viewing a flat object from an angle A perspective transformation uses mathematical techniques to map points from the distorted image back to their correct, undistorted positions \cite{nvidia:perspective-transform}.
+When an image is taken from a tilted viewpoint, objects that are normally rectangular, such as chessboards, appear distorted and no longer have right angles. A perspective transformation is a specific type of image warping that corrects distortions caused by viewing a flat object from an angle. A perspective transformation uses mathematical techniques to map points from the distorted image back to their correct, undistorted positions, as illustrated in Figure~\ref{fig:perspective-transformation} \cite{nvidia:perspective-transform}.
 
 
 \begin{figure}[h!]
@@ -130,13 +124,13 @@ When an image is taken from a tilted viewpoint, objects that are normally rectan
 \subsection*{Euclidean Distance}
 
 
-The Euclidean distance is the distance between two points in a plane. For two points with coordinates \( \mathbf{x} = (x_1, x_2) \) and \( \mathbf{y} = (y_1, y_2) \), the Euclidean distance is given by:
+The Euclidean distance is the straight-line distance between two points in a plane. For two points with coordinates \( \mathbf{p} = (p_1, p_2) \) and \( \mathbf{q} = (q_1, q_2) \), the Euclidean distance is given by:
 
 \[
-d(\mathbf{x}, \mathbf{y}) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+d(\mathbf{p}, \mathbf{q}) = \sqrt{(p_1 - q_1)^2 + (p_2 - q_2)^2}
 \]
 
-This formula gives the length of the shortest path connecting the two points. Euclidean distance is commonly used to measure the relationship between keypoints, object centers, or detected positions within an image.
+This formula gives the length of the path connecting the two points. Euclidean distance is used to measure the relationship between object centers or detected positions within an image \cite{cohen:precalculus}.
 
 
 \subsection*{Delaunay Triangulation}
