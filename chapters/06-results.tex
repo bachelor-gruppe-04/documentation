@@ -131,10 +131,7 @@ The project follows clear coding standards and development best practices, makin
 
 The application itself is a local, camera-based system for digitalizing over-the-board chess games in real time. It detects piece movements on a physical chessboard using image recognition and converts the game into a \gls{pgn} file, which can be viewed or analyzed digitally. The system operates entirely on local hardware, with a front-end interface that allows users to follow games live and a back-end that manages board recognition and game logic. The application is designed to be low-cost, open-source, and easy to maintain, with extensibility in mind for future features.
 
-\section{Functional Results}
-The application consists of three main components: machine learning, WebSocket communication, and the frontend interface. The backend handles image recognition and game logic, using a machine learning model to detect board states. It communicates with the frontend through a WebSocket connection. The front-end is responsible for presenting this information to the user in real time. The cameras is connected with a \acrshort{usb}-hub, where multiple cameras can be attached to the same computer. 
-
-\subsection{API}
+\section{API}
 To enable real-time updates and improve the responsiveness of the frontend interface, the application uses a WebSocket connection between the backend and the frontend. This method was suggested by the product owner and was also approved by the supervisor. This communication channel is used for transmitting move data as it is detected by the board recognition system. Unlike traditional \gls{http} requests, which operate on a request-response basis, WebSocket allows for continuous, two-way communication between the server and the client as outlined in Subsubsection \ref{subsubsec:websocket} in Section \ref{chp:theory}. \\
 
 Once the application initiates a connection, the WebSocket remains open throughout the session. As new moves are identified on the physical board, the backend sends the corresponding move data as messages through the WebSocket. These messages are then received by the frontend, which updates the displayed move list and board state in real-time. This provides a seamless viewing experience for users following live games. \\
@@ -143,7 +140,7 @@ The WebSocket server also handles specific command messages. For example, when t
 
 The WebSocket functionality is encapsulated in a custom React hook on the frontend, which manages the connection lifecycle and state updates. This abstraction simplifies integration into the user interface and ensures that resources are properly cleaned up when the component is unmounted. Overall, the use of WebSocket communication is a key component in delivering a responsive and live experience, particularly for tournaments and public displays where move-by-move tracking is essential.
 
-\subsection{Frontend}
+\section{Frontend}
 \label{subsec:results-frontend}
 The front-end of the application serves as the user interface. It includes a control panel for tournament organizers and a web application for spectators. The application's main responsibility is to visualize the chessboard and display ongoing moves. The front-end communicates with the back-end via WebSocket to ensure real-time updates and interactivity. \\
 
