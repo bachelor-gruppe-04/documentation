@@ -52,6 +52,20 @@ To address this, \textbf{\gls{onnx}} provides an open-source format for represen
 
 Once a model is trained, \textbf{inference} is the process of using the trained model to make predictions on new, unseen data. In the context of object detection, inference involves feeding an input image into the model, which processes the image and outputs predictions—usually in the form of object classes, confidence scores, and bounding box coordinates \cite{nvidia:inference}. \\
 
+
+After training and deploying a model, it is essential to evaluate how well it performs. Two key performance metrics are \textbf{precision} and \textbf{recall}. \textbf{Precision} measures how many of the model’s predictions are actually correct. A high precision means that the model makes few false detections. \textbf{Recall} measures how many of the actual objects the model manages to detect. A high recall means that the model rarely misses.
+
+\[
+\text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
+\]
+\[
+\text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
+\]
+
+\vspace{0.5em}
+
+Since there is a trade-off between precision and recall, they are commonly analyzed together using a precision–recall curve. The area under this curve is known as the \textbf{\gls{ap}}. This is calculated for each object category individually. The average across all categories gives the \textbf{mean Average Precision (mAP)}. A higher mAP indicates that the model is both accurate and comprehensive in its predictions.
+
 \section{Object Detection}
 Object detection is a fundamental task in computer vision that involves both identifying and locating objects within an image. Unlike simple image classification, which only determines what objects are present, object detection also specifies where each object is by drawing a bounding box around it. This dual capability makes object detection essential for applications that require not just recognition, but also precise localization of multiple objects in real time. \\
 
@@ -89,27 +103,12 @@ An IoU value of 1.0 means a perfect match between the prediction and the ground 
  Once multiple bounding box predictions have been made, some of them may overlap significantly. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. It removes redundant or overlapping bounding boxes and keeps only the most confident prediction. \gls{nms} selects the bounding box with the highest confidence score and suppresses all other boxes that have a high IoU overlap with it. This process repeats iteratively until no overlapping boxes remain above the chosen IoU threshold. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
 \cite{thepythoncode:nms}. The effect of applying NMS is illustrated in Figure~\ref{fig:nms}.
 
-\newpage
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/nms.png}
     \caption[NMS before and after]{Illustration of NMS before and after its application \cite{thepythoncode:nms}.}
     \label{fig:nms}
 \end{figure}
-
-After training and deploying a model, it is essential to evaluate its performance. In object detection, this is typically done using the following metrics. \textbf{Precision} measures the proportion of predicted bounding boxes that are correct (i.e., they sufficiently overlap with ground truth boxes). \textbf{Recall} measures the proportion of actual objects that the model successfully detects:
-\[
-\text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
-\]
-
-\[
-\text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
-\]
-
-\vspace{0.5em}
-
-Since there is often a trade-off between precision and recall, these metrics are combined using a precision–recall curve. The area under this curve is known as the \textbf{\gls{ap}}. \gls{ap} is calculated for each class individually, and the average across all classes gives the \textbf{mean Average Precision (mAP)}. A higher mAP value indicates that the model achieves both high precision and high recall across all object classes and IoU thresholds, making it one of the most comprehensive metrics for object detection performance.
 
 
 \section{Geometric Methods in Image Processing}
