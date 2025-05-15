@@ -32,6 +32,10 @@
             ]{biblatex}
 \usepackage{pgfplots}
 \usepackage{pdfpages}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{array}
 \usepackage[colorlinks=true, allcolors=black]{hyperref}
 \usepackage[toc, acronyms]{glossaries}
 
@@ -44,6 +48,8 @@
   group-minimum-digits = 4,
   table-number-alignment = center
 }
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%% CONFIG %%%%%%%%%%%%%%%%%%%%%%%%%
