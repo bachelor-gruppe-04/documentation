@@ -19,11 +19,6 @@ The overall move accuracy across all games was 90.6\%. Performance between board
 
 While the ChessCam models used in this project demonstrate high precision and recall under ideal conditions (Section \ref{chesscam-metrics}), our real-world move detection accuracy of 90.6\% is naturally lower. This is expected, as full move detection in physical games involves not just accurate identification of pieces and board geometry, but also handling lighting variations, ambiguous moves (castling) and general noise. Thus, the ChessCam metrics serve more as an upper bound, while our results reflect the practical challenges of real-time, physical chess move recognition. \\
 
-
-POSITIVES:(
-
-
-Negatives: (TEMPORARY)
 One consistent source of error was tied to specific move numbers within certain openings. In some test sets, all 10 games of a particular opening failed at the same move, suggesting that specific board states challenge the model. This caused some piece types, especially the black rook, to receive unusually low scores (23.8\%). Since black rooks had relatively few moves overall and repeatedly failed at the same point in the games, their scores were artificially suppressed. \\
 
 Another common issue involved the model misclassifying castling moves. The model selects the move with the highest predicted probability, but during castling, it often assigned a higher probability to the rook’s move from its original square rather than to the king’s two-square move. As a result, castling was frequently mistaken for a rook move. Of the 9 total misclassifications, 8 were caused by this specific error. One potential solution is to delay the rook’s movement by moving the king two squares first. This would give the model only one valid move to detect, reducing the likelihood of misclassification. \\
@@ -77,9 +72,9 @@ The application of a Scrum inspired methodology proved to be an effective projec
 
 The communication within the team functioned efficiently throughout the project. Daily in-person collaboration during office hours allowed for rapid feedback, informal stand-ups, and immediate resolution of issues. The accessibility of all team members facilitated a high degree of responsiveness, reducing reliance on scheduled meetings and improving overall coordination.\\
 
-Version control and task management were handled using Git, which provided a robust framework for organizing and reviewing code. Each task was implemented in a dedicated branch and linked to a corresponding GitHub issue. All changes were integrated into the main branch exclusively through pull requests, with peer review enforced for every contribution. This workflow contributed significantly to maintaining code quality, minimizing integration issues, and ensuring transparency in the development process. \\
+Version control and task management were handled using Git, which provided a robust framework for organizing and reviewing code. Each task was implemented in a dedicated branch and linked to a corresponding GitHub issue. All changes were integrated into the main branch exclusively through pull requests, with peer review enforced for every contribution. This workflow contributed to maintaining code quality, minimizing integration issues, and ensuring transparency in the development process. \\
 
-GitHub Actions was used to automate parts of the development process, helping improve both efficiency and reliability. One workflow automatically ran Python unit tests whenever code was pushed, and another kept the LaTeX-based documentation up to date. These workflows reduced manual work and made it easier to catch problems early. However, the test workflow consistently failed in the continuous integration environment, as shown in Figure~\ref{fig:workflow-test}. This because it depended on camera hardware, which was not available when the tests ran automatically after merging code into the main branch. This failure was expected and did not affect the overall delivery process, but it highlighted the need to separate tests that rely on physical hardware from those that can run in a standard test environment. \\
+GitHub Actions was used to automate the development process, including running Python unit tests and updating LaTeX documentation. This improved efficiency and helped catch issues early. However, the test workflow consistently failed in the CI environment due to its dependence on camera hardware (see Figure~\ref{fig:workflow-test}). Since this hardware was unavailable during automated runs, the failures were expected and did not impact the final delivery. This highlighted the need to separate hardware-dependent tests from those suitable for standard test environments.\\
 
 \begin{figure}[h!] \centering 
 \includegraphics[width=0.75\linewidth]{figures/results/workflows/tests.png}\caption[Python tests workflow]{The workflow for Python unit tests}\label{fig:workflow-test} \end{figure}
@@ -87,16 +82,20 @@ GitHub Actions was used to automate parts of the development process, helping im
 Overall, the project management approach successfully balanced structure and flexibility. The adapted Scrum practices, supported by reliable tooling, effective peer review, and strong communication, created a productive environment well-suited to the team's working style. 
 
 \section{Challenges}
-In addition to ideas for future development, there were also a few obstacles encountered during the development phase of this project. These challenges were addressed as they occurred, and solutions were implemented as part of the final application. \\
+In addition to ideas for future development, there were also a few obstacles encountered during development. These challenges were addressed as they occurred, and solutions were implemented as part of the final application. \\
 
 \subsection{Camera}
-During the development and testing phase of the front-end application, an obstacle related to camera initialization was encountered. The application is designed to access an external \gls{usb} camera by specifying a camera ID other than 0, since ID 0 typically corresponds to the system's default or built-in (dashboard) camera, which is not relevant to this project.\\
 
-Two identical external webcams were used for this project, both connected via a USB hub. One of the cameras functioned correctly. When connected, the front-end application successfully initialized the camera feed, and the video stream was displayed on the webpage as expected.\\
+During development, the application occasionally selected the system’s built-in front camera instead of the intended external USB cameras. The root cause was identified as cached “ghost” devices in the Windows Device Manager. These are records of previously connected hardware that remain stored even after the devices are disconnected. Such ghost entries can cause conflicts and incorrect device indexing, especially when multiple identical cameras are involved, leading to the misassignment of camera IDs. Temporarily, disconnecting the external cameras and restarting the system forced ID reassignment and resolved the problem, though this is not an ideal solution. \\
 
-However, the second camera, did not behave as expected. Despite being physically identical to the first camera and verified to work through the system's built-in camera application, the front-end application failed to display its video feed. Instead, it defaulted to camera ID 0, resulting in the system's dashboard camera being selected.\\
 
-This issue was traced back to a cached or “ghost” device entry in the Windows Device Manager. A ghost device refers to a previously connected hardware device that is no longer physically attached to the system but whose configuration and driver information remain cached by the operating system. These leftover entries can lead to conflicts or incorrect device indexing when similar hardware is reconnected, especially when multiple identical devices are used. In this case, the system appeared to retain prior camera associations, which caused the application to misidentify or incorrectly assign the camera index.
+
+
+
+
+
+
+
 
 \subsection{Highlighting moves}
 When a move is made, the frontend highlights the previous and current tiles of the moved piece. User testing with different color palettes resulted in the selection of a bright contrast color relative to the main design scheme to ensure good visibility. \\
