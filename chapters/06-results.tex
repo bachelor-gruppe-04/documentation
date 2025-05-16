@@ -250,7 +250,7 @@ We use Package Diagrams to depict how packages and their elements have been orga
 \subsection{Machine Learning Model}
 \label{machine-learning-test}
 
-As described in Section~\ref{subsec:model-testing}, the model was evaluated using 100 games. Table~\ref{tab:accuracy-total} presents the overall move detection accuracy, both in total and broken down by piece type and color. The model achieved an overall accuracy of 90.6\%, successfully detecting 936 out of 1033 moves. Pawns had the highest detection rates, with over 98\% accuracy for both colors. In contrast, the model struggled particularly with black rooks with only 23.8\% accuracy.
+As described in Section \ref{subsec:model-testing}, the model was evaluated using 100 games. Table \ref{tab:accuracy-total} presents the overall move detection accuracy, both in total and broken down by piece type and color. The model achieved an overall accuracy of 90.6\%, successfully detecting 936 out of 1033 moves. Pawns had the highest detection rates, with over 98\% accuracy for both colors. In contrast, the model struggled particularly with black rooks with only 23.8\% accuracy.
 
 \begin{table}[htbp]
 \centering
@@ -339,7 +339,7 @@ Figure \ref{fig:move-failures} shows the number of failed games (i.e., games whe
 \end{figure}
 
 
-Table~\ref{tab:different-errors} categorizes the types of detection failures for each board type. The majority of failures were due to a complete lack of detection within the allotted time window. Incorrect detections (the model detecting a move but interpreting it wrongly) were less frequent but more common on the wooden board, accounting for 8 out of 48 failures, compared to just 1 on the plastic board.  \\
+Table \ref{tab:different-errors} categorizes the types of detection failures for each board type. The majority of failures were due to a complete lack of detection within the allotted time window. Incorrect detections (the model detecting a move but interpreting it wrongly) were less frequent but more common on the wooden board, accounting for 8 out of 48 failures, compared to just 1 on the plastic board.  \\
 
 \begin{table}[htbp]
 \centering
@@ -359,13 +359,11 @@ Wooden & 48 & 40 & 8 \\
 
 For a detailed breakdown of the chess games, including the sequences of moves, failure points, and detection statistics for each board type, see Appendix FILL IN.
 
-\subsection{Manual Testing}
-
 \subsection{API}
 
-\subsection{Simulation (WebSocket)}
+\subsubsection*{Simulation (WebSocket)}
 
-\subsection{Postman (REST)}
+\subsubsection*{Postman (REST)}
 
 \subsection{Wireframe}
 \label{subsec:wireframe-results}
