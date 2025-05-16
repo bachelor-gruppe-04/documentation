@@ -22,14 +22,14 @@ Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/results/machine-learning/piece-metrics.png}
-\caption{Performance metrics for piece detection from ChessCam repository \cite{wandb:piece-detection}.}
+\caption[Performance piece detection (ChessCam)]{Performance metrics for piece detection from ChessCam repository \cite{wandb:piece-detection}.}
 \label{fig:chesscam-piece-metrics}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/results/machine-learning/xcorners-metrics.png}
-\caption{Performance metrics for xcorners detection from ChessCam repository \cite{wandb:xcorner-detection}.}
+\caption[Performance xcorners detection (ChessCam)]{Performance metrics for xcorners detection from ChessCam repository \cite{wandb:xcorner-detection}.}
 \label{fig:chesscam-xcorners-metrics}
 \end{figure}
 
@@ -39,10 +39,6 @@ Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece
 % Once the application initiates a connection, the WebSocket remains open throughout the session. As new moves are identified on the physical board, the backend sends the corresponding move data as messages through the WebSocket. These messages are then received by the frontend, which updates the displayed move list and board state in real-time. \\
 
 % The WebSocket server also processes specific command messages to manage game state. For instance, a message labeled \texttt{RESET} prompts the frontend to clear the current move list, signaling the start of a new game, while simultaneously resetting the backend to prepare for a new tournament round. Conversely, a message labeled \texttt{INVALID} indicates an unrecognized or illegal move and does not result in any frontend updates. 
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. \\
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
 \begin{table}[h!]
     \centering
@@ -73,21 +69,21 @@ The control panel is a standalone administrative interface used by tournament or
 
 Once the application is launched, the accompanying web application becomes accessible to spectators. It is designed to allow viewers to follow the tournament across a range of devices. Spectators can navigate between views, observe live games, and explore additional information about the system. Built as a responsive interface, it adapts to both desktop and mobile screens to ensure accessibility and usability. \\
 
-The landing page is The Tournament View. The Tournament View presents an overview of all ongoing games. Each entry shows the board number, the players' names and ratings, and a link to follow the game live, as shown in Figure~\ref{fig:tournament-view-mocked}. \\
+The landing page is the tournament view. The tournament view presents an overview of all ongoing games. Each entry shows the board number, the players' names and ratings, and a link to follow the game live, as shown in Figure~\ref{fig:tournament-view-mocked}. \\
 
-\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/tournament-view/mocked.png}}\caption[Display of tournament]{A mocked demonstration of a tournament display.}\label{fig:tournament-view-mocked} \end{figure}
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/tournament-view/mocked.png}}\caption[Display of tournament view]{A mocked demonstration of tournament view.}\label{fig:tournament-view-mocked} \end{figure}
 
-Another page is the Game Preview, which displays miniature boards for multiple games. This view provides an overview of all active games, allowing users to quickly identify and select any game for detailed viewing, as shown in Figure~\ref{fig:game-preview}. It offers an efficient way to stay updated on several games at once. \\
+Another page is the game preview, which displays miniature boards for multiple games. This view provides an overview of all active games, allowing users to quickly identify and select any game for detailed viewing, as shown in Figure~\ref{fig:game-preview}. It offers an efficient way to stay updated on several games at once. \\
 
-\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/game-preview/desktop.png}}\caption[Preview of active games]{A mocked demonstration of a game preview page.}\label{fig:game-preview} \end{figure}
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/game-preview/desktop.png}}\caption[Display of game preview]{A mocked demonstration of game preview.}\label{fig:game-preview} \end{figure}
 
-One of the main pages in the web application is the The Board View. The Board View presents a detailed view of a single game. It features a digital chessboard, a list of moves played, a live camera feed, and an evaluation bar, as shown in Figure~\ref{fig:download-pgn}. The elements update in real-time, creating an engaging experience for users. On the Board View page, users can download the \gls{pgn} file of the current game via a dedicated button, which saves the file locally. The board view is shown in Figure~\ref{fig:download-pgn}. \\
+One of the main pages in the web application is the the board view. The board view presents a detailed view of a single game. It features a digital chessboard, a list of moves played, a live camera feed, and an evaluation bar, as shown in Figure~\ref{fig:download-pgn}. The elements update in real-time, creating an engaging experience for users. On the Board View page, users can download the \gls{pgn} file of the current game via a dedicated button, which saves the file locally. The board view is shown in Figure~\ref{fig:download-pgn}. \\
 
-\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/download-pgn.png}}\caption[Preview of downloading a PGN file]{A demonstration of downloading a PGN file to a specific game}\label{fig:download-pgn} \end{figure}
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/download-pgn.png}}\caption[Display of board view]{A demonstration of downloading a PGN file to a specific game}\label{fig:download-pgn} \end{figure}
 
 The downloaded file includes a header with key information such as the tournament name, date, and player names, followed by the recorded moves. It also indicates whether the game is still in progress. When the game is completed, this field displays the result 1-0, 0-1, or $\frac{1}{2}$–$\frac{1}{2}$. Figure~\ref{fig:downloaded-pgn} shows an example of such a file. \\
 
-\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/downloaded-pgn.png}}\caption[The downloaded PGN file]{The downloaded PGN file to a specific game, opened in a code editor}\label{fig:downloaded-pgn} \end{figure}
+\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/downloaded-pgn.png}}\caption[PGN file and metadata]{The downloaded PGN file to a specific game, opened in a code editor.}\label{fig:downloaded-pgn} \end{figure}
 
 \section{Project Management}
 \label{sec:results-project-management}
@@ -102,7 +98,7 @@ Tasks were assigned to individual team members and tracked using GitHub Issues. 
 In addition to manual code review, automated workflows were implemented using GitHub Actions to support continuous integration and reduce human error. One workflow was configured to run Python unit tests on every push, ensuring code stability throughout development. Another workflow was responsible for automatically updating LaTeX-based documentation by cloning the relevant repository and pushing changes after each update, as shown in Figure~\ref{fig:workflow-latex}. These pipelines contributed to improved reliability, automation of repetitive tasks, and early detection of breaking changes during development. \\
 
 \begin{figure}[h!] \centering 
-\includegraphics[width=0.75\linewidth]{figures/results/workflows/latex.png}\caption[Upload LaTeX workflow]{The workflow for update documentation with code}\label{fig:workflow-latex} \end{figure}
+\includegraphics[width=0.75\linewidth]{figures/results/workflows/latex.png}\caption[Upload LaTeX workflow]{The workflow for update documentation with code.}\label{fig:workflow-latex} \end{figure}
 
 \section{Technical Achievements}
 
@@ -114,26 +110,26 @@ To provide a comprehensive understanding of the system architecture and interact
 \subsubsection*{Sequence Diagram}
 \label{subsubsec:sequence-diagram}
 
-The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the Admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. Users, from remote devices, can spectate the game in real-time or save it as a \gls{pgn} file. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
+The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
 
 \newpage
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{figures/results/uml/sequence.png}
-    \caption[Sequence Diagram]{Sequence Diagram}
+    \caption[Sequence diagram]{Sequence diagram showing the interaction flow between system components.}
     \label{fig:sequence}
 \end{figure}
 
 \subsubsection*{Use-Case Diagram}
 \label{subsubsec:use-case-diagram}
 
-The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primaryfunctionalities they interact with. Admins are responsible for hardware setup and initiating the game recordingprocess. The system autonomously handles move detection, validation, and \gls{ui} updates. Users, on the otherhand, access the game remotely to spectate or download \gls{pgn} files. This diagram provides a clear overview ofwho interacts with the system and what capabilities are exposed, forming the basis for understanding systemrequirements and user expectations.
+The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primary functionalities they interact with. Admins are responsible for hardware setup and initiating the game recording process. The system autonomously handles move detection, validation, and \gls{ui} updates. Users, on the otherhand, access the game remotely to spectate or download \gls{pgn} files. This diagram provides a clear overview of who interacts with the system and what capabilities are exposed, forming the basis for understanding system requirements and user expectations.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{figures/results/uml/use-case.png}
-    \caption{Use-Case Diagram}
+    \caption[Use-case diagram]{Use-case diagram outlining the system’s main actors and their interactions with key functionalities.}
     \label{fig:use-case}
 \end{figure}  
 
@@ -150,7 +146,7 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system�
     \begin{minipage}[t]{0.45\textwidth}
         \vspace{0pt}
         \includegraphics[width=\linewidth]{figures/results/uml/activity-2.png}
-        \caption[Activity Diagram]{Activity Diagram}
+        \caption[Activity Diagram]{Activity diagram showing the operational flow of move detection, validation, and game state updates.}
         \label{fig:activity}
     \end{minipage}
 \end{figure}
