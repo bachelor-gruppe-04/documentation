@@ -13,7 +13,6 @@ The application itself is a local, camera-based system for digitalizing over-the
 
 The delivered product refers to the final version of the application submitted at the conclusion of this Bachelor’s thesis. The application was developed at the request of the product owner and based on the requirements provided. The initial description served as a general concept rather than a detailed specification, which meant that decisions regarding design, architecture, and technology were left to the development team. Throughout the development process, ideas and design choices were discussed with the product owner and approved during regular meetings.
 
-
 \section{Detection Performance Models}
 
 As a baseline for evaluating detection performance, results from ChessCam repository were first considered \cite{github:chesscam}. These metrics represent the upper-bound performance of the models under ideal conditions. \\
@@ -72,12 +71,12 @@ As described in Section~\ref{subsec:model-testing}, the model was evaluated usin
 \end{table}
 
 
-Table~\ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board slightly outperformed the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference may indicate a slightly more stable detection environment on the wooden surface. \\
+Table~\ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board slightly outperformed the plastic board, with a 91.2\% success rate compared to 89.9\%. \\
 
 
 \begin{table}[htbp]
 \centering
-\caption{Summary of Total Moves and Success Rate by Board Type}
+\caption{Summary of total moves and success rate by board type}
 \label{tab:board-type-accuracy}
 \begin{tabular}{lccc}
 \toprule
@@ -90,7 +89,7 @@ Wooden  & 558 & 509 & 91.2\% \\
 \end{table}
 
 
-Figure~\ref{fig:move-failures} shows the number of failed games (i.e., games where detection failed) grouped by the move number at which failure occurred. Bars are color-coded by board type. The majority of failures occurred within the first five moves, particularly at moves 2, 4, and 5. This trend suggests that the early game presents the greatest challenge for detection, potentially due to rapid development or ambiguity in piece positions. Notably, failures after move 9 were rare. \\
+Figure~\ref{fig:move-failures} shows the number of failed games (games where detection failed) grouped by the move number at which failure occurred. Bars are color-coded by board type. The majority of failures occurred within the first five moves, particularly at moves 2, 4, and 5. \\
 
 
 \begin{figure}[htbp]

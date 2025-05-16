@@ -4,47 +4,50 @@
     \textit{The results are analyzed and discussed in this chapter. It explores the implications of the findings, identifies limitations, and suggests potential areas for future improvement.}
 \end{center}
 
-\section{Temporary Title – Discussion of Results}
+\section{Machine Learning Model}
+\subsection{Detection of moves}
 
-WORK IN PROGRESS
+The overall move accuracy across all games was 90.6\%. Performance between board types was similar, with slightly better detection rates on the wooden board (91.2\%) compared to the plastic board (89.9\%), as shown in Table~\ref{tab:board-type-accuracy}. This minor difference may be attributed to the higher visual contrast between the wooden pieces and the board surface, which likely makes them easier for the model to distinguish than the black and white plastic pieces, which tend to blend in with the board. \\
 
-The model’s strategy of selecting the most likely move revealed a notable flaw in castling detection. Specifically, castling moves were often misclassified due to the system evaluating each piece movement independently. In many cases, the model assigned a higher confidence score to the rook's move from its original square than to the king’s two-square movement during castling. Consequently, 8 out of 9 misclassifications occurred when the model incorrectly selected the rook’s movement as the intended move, rather than recognizing the castling sequence. A possible solution is to briefly delay the rook’s movement, allowing the king’s two-square move to occur first. This removes ambiguity by ensuring that, at the moment of detection, only a single plausible move is visible—effectively forcing the model to select the castling move rather than misclassifying it as a standalone rook move. \\
+One consistent source of error was tied to specific move numbers within certain openings. In some test sets, all 10 games of a particular opening failed at the same move, suggesting that specific board states or piece arrangements challenge the model. This caused some piece types, especially the black rook, to receive unusually low scores (23.8\%). Since these pieces had relatively few moves overall and repeatedly failed at the same point in the games, their scores were artificially suppressed. \\
 
-Another recurring issue was observed in the form of consistent failure points within specific openings. In several test sets, all 10 games of a given opening failed at the same move number. This pattern suggests that certain positions or board states consistently challenge the model, possibly due to recurring piece configurations or lighting conditions at those points in the game. \\
+A common issue involved the model misclassifying castling moves. Since the model selects the move with the highest probability, it often confused castling with a rook move, rather than correctly identifying the king’s two-square move. Out of a total of 9 misclassifications, 8 were due caused by this. One potential solution is to delay the rook’s movement by moving the king two squares first. The model would face only one valid move to detect, reducing the chance of misclassification. \\
 
-Additionally, move detection accuracy decreased noticeably along the edges of the board. This limitation appears to result from a combination of factors. First, the board-warping algorithm relies on precise corner detection to accurately map square centers. While the inner squares were typically well-aligned, the outermost squares—particularly near the corners—were more prone to distortion, likely contributing to errors in piece localization. Second, the relatively steep camera angle made it harder to clearly distinguish pieces near the front edge of the board, as those closest to the lens were partially occluded or lacked visible detail. Third, pieces on the far side of the board appeared smaller in the frame, and the inter-square distances in the warped image were reduced. This made it more likely for pieces to be mistakenly assigned to adjacent squares, especially along the tighter edge regions. \\
-
-The models job is to find the pieces on the board and then assign them to its respective square. This means as long as you define the starting postion or start fen, that allows you to play any the game from any posistion you want. That means you could start a match mid game or you could play other game modes. The model also has validation so that means it should be able to successfully \\
-
-Further testing supported these findings. As shown in Figure~\ref{fig:bbox-centers-incorrect}, the bounding boxes along the edges of the board are occasionally misaligned, reinforcing the challenges associated with edge square detection.
+We also observed reduced accuracy along the edges of the board, affecting both piece detection and the localization of square centers. Several factors likely contribute to this. The board-warping algorithm depends heavily on precise corner detection, which is more error-prone near the edges. The steep camera angle causes pieces closer to the camera to appear larger and obscure important details. Meanwhile, pieces farther away appear smaller and are more difficult to detect. Figure~\ref{fig:bbox-centers-incorrect} illustrates this issue, showing bounding boxes near the edges that are frequently misaligned and square centers that are noticeably offset. In contrast, detection accuracy and alignment improve significantly toward the center of the board.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/discussion/bbox-centers-incorrect.png}
-    \caption{Bounding box centers overlaid on a physical chessboard. Some boxes near the edges are misaligned, indicating inaccuracies likely due to board edge detection, or model generalization limitations.}
+    \caption{Bounding box centers overlaid on a physical chessboard. Some boxes near the edges are misaligned, indicating inaccuracies likely due to board edge detection or model generalization limitations.}
     \label{fig:bbox-centers-incorrect}
 \end{figure}
 
-\section{Machine Learning}
+While the ChessCam models used in this project demonstrate high precision and recall under ideal conditions, our real-world move detection accuracy of 90.6\% is naturally lower. This is expected, as full move detection in physical games involves not just accurate identification of pieces and board geometry, but also handling sequence interpretation, lighting variations, ambiguous moves (like castling), and general noise. Thus, the ChessCam metrics serve more as an upper bound, while our results reflect the practical challenges of real-time, physical chess move recognition.
+
+
+
+
+
+
 
 \section{API}
 
 \section{Frontend}
 \subsection{Download PGN file}
-One of the project requirements was to digitize a chess game into a \gls{pgn} file. This functionality enables both players and spectators to download and analyze the game using external tools, such as \gls{lichess}’ analysis feature. As described in section \ref{subsec:results-frontend}, the user can download the \gls{pgn} file with a single click. The file contains a header with technical metadata, such as the tournament name, date, and players, as well as a move list that can be used directly for analysis. \\
+One project requirement was to digitize chess games into \gls{pgn} files, enabling players and spectators to download and analyze them using external tools such as \gls{lichess}’ analysis feature. As described in Section~\ref{subsec:results-frontend}, the application provides access to PGN files containing technical metadata. \\
 
-The \gls{pgn} format is widely supported, and tools like \gls{lichess} can interpret both the complete file or just the move list. This flexibility allows users to gain insights into various aspects of the game, such as identifying the opening played, evaluating move accuracy, and understanding the overall game progression. Figure~\ref{fig:downloaded-pgn-analysis} shows how the downloaded \gls{pgn} can be used in an external analysis tool. In this scenario, a specific opening was played and the analysis recognised this. \\
+The \gls{pgn} format is widely supported, and tools such as \gls{lichess} can interpret both the complete file or just the move list. This flexibility allows users to gain insights into various aspects of the game, such as identifying the opening played, evaluating move accuracy, and understanding the overall game progression. Figure~\ref{fig:downloaded-pgn-analysis} shows how the downloaded \gls{pgn} can be used in an external analysis tool. \\
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/lichess-analysis.png}}\caption[Lichess analysis tool]{A demonstration of importing a PGN file into Lichess' analysis tool}\label{fig:downloaded-pgn-analysis} \end{figure}
 
 By enabling \gls{pgn} downloads, the system provides users with a convenient way to review games and improve their understanding of chess. Instead of building a custom in-app analysis feature, this solution leverages existing, well-established services that offer robust and detailed feedback. This decision reduces development complexity while still providing users with valuable insights. \\
 
-However, one limitation is that users must leave the application to analyze the game, which can disrupt the user experience slightly. Despite this, integrating \gls{pgn} downloads remains a practical and effective solution, offering immediate access to game data without requiring additional implementation of complex analytical features.
+However, one limitation is that users must leave the application to analyze the game, which can disrupt the user experience. Despite this, integrating \gls{pgn} downloads remains a practical and effective solution, offering immediate access to game data without requiring additional implementation of complex analytical features.
 
 \subsection{Lighthouse Tests}
 The frontend application was developed based on wireframes, team discussions, and user testing. To evaluate the quality of the user interface, Lighthouse tests were conducted on every page, with particular focus on the accessibility score. \\
 
-Initial accessibility scores ranged from 80 to 90 across the various pages. To improve these scores, several adjustments were required—primarily involving color contrast. As shown in \ref{subsec:results-color-palette}, a specific color palette was selected for the application. However, issues were identified with the contrast between the primary blue color and the white background in light mode, as well as between the secondary blue (used for buttons) and the black background in dark mode. \\
+Initial accessibility scores ranged from 80 to 90 across the various pages. To improve these scores, several adjustments were required, primarily involving color contrast. As shown in \ref{subsec:results-color-palette}, a specific color palette was selected for the application. However, issues were identified with the contrast between the primary blue color and the white background in light mode, as well as between the secondary blue (used for buttons) and the black background in dark mode. \\
 
 To address these issues, slightly modified color variants were chosen for each theme. This led to the adoption of a more customized color palette for both light and dark modes. As a result, the application now achieves a 100 accessibility scores throughout all pages, with both light and dark mode. 
 
