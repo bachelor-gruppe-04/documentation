@@ -4,6 +4,16 @@
     \textit{This chapter presents the outcomes of the project, including the functionality and performance of the developed application. It highlights the achieved results in relation to the project goals and requirements.}
 \end{center}
 
+\section{Overview of Delivered Product}
+The application was developed as an open-source project with the intention that the code can be reused, maintained, and extended by others. All components are built using open and freely available technologies, ensuring that the system can be installed on local hardware without the need for licensed software or cloud-based services. This aligns with the requirement that all processing should be performed locally, using common hardware such as a webcam connected to a local machine running either Windows or Ubuntu. \\
+
+The project follows clear coding standards and development best practices, making the code easy to understand and modify. All functionality is well documented, enabling future developers to build upon the existing solution. For example, to support new chess variants, integrate additional hardware, or improve the recognition models. To support future development and accessibility, the source code is published in a public Git repository without restrictions on reuse or adaptation. \\
+
+The application itself is a local, camera-based system for digitalizing over-the-board chess games in real-time. It detects piece movements on a physical chessboard using image recognition and converts the game into a \gls{pgn} file, which can be viewed or analyzed digitally. The system operates entirely on local hardware, with a front-end interface that allows users to follow games live and a back-end that manages board recognition and game logic. The application is designed to be low-cost, open-source, and easy to maintain, with extensibility in mind for future features.
+
+The delivered product refers to the final version of the application submitted at the conclusion of this Bachelor’s thesis. The application was developed at the request of the product owner and based on the requirements provided. The initial description served as a general concept rather than a detailed specification, which meant that decisions regarding design, architecture, and technology were left to the development team. Throughout the development process, ideas and design choices were discussed with the product owner and approved during regular meetings.
+
+
 \section{Detection Performance Models}
 
 As a baseline for evaluating detection performance, results from ChessCam repository were first considered \cite{github:chesscam}. These metrics represent the upper-bound performance of the models under ideal conditions. \\
@@ -141,7 +151,7 @@ For a detailed breakdown of the chess games, including the sequences of moves, f
 
 % \newpage
 
-\section{WebSocket}
+\section{API}
 To support continuous communication between the backend and frontend, the application establishes a WebSocket connection. This communication channel is used for transmitting move data as it is detected by the board recognition system. Unlike traditional \gls{http} requests, which operate on a request-response basis, WebSocket allows for continuous, two-way communication between the server and the client as described in \ref{subsubsec:websocket} \\
 
 Once the application initiates a connection, the WebSocket remains open throughout the session. As new moves are identified on the physical board, the backend sends the corresponding move data as messages through the WebSocket. These messages are then received by the frontend, which updates the displayed move list and board state in real-time. \\
@@ -155,28 +165,31 @@ The frontend of the application serves as the user interface. It includes a cont
 
 The control panel is a standalone administrative interface used by tournament organizers to configure and manage the tournament setup. It allows the organizer to select the number of cameras, initiate the tournament, and reset boards between rounds, as shown in Figure~\ref{fig:control-panel}. This interface ensures the centralized management of tournament operations. \\
 
+\newpage
+
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/results/frontend/control-panel/control-panel.png} \caption[Control panel for tournament organizers]{The control panel used by the tournament organizers.}\label{fig:control-panel} \end{figure}
 
-Once the application is launched, the accompanying web application becomes accessible to spectators. It is designed to allow viewers to follow the tournament across a range of devices. Built as a responsive interface, it adapts to both desktop and mobile screens to ensure accessibility and usability. Spectators can navigate between views, observe live games, and explore additional information about the system. \\
+Once the application is launched, the accompanying web application becomes accessible to spectators. It is designed to allow viewers to follow the tournament across a range of devices. Spectators can navigate between views, observe live games, and explore additional information about the system. Built as a responsive interface, it adapts to both desktop and mobile screens to ensure accessibility and usability. \\
 
-The Tournament View presents an overview of all ongoing games. Each entry shows the board number, the players' names and ratings, and a link to follow the game live, as shown in Figure~\ref{fig:tournament-view-mocked}. The content is updated continuously, providing spectators with a live view of the tournament's progress. \\
+
+
+The landing page is The Tournament View. The Tournament View presents an overview of all ongoing games. Each entry shows the board number, the players' names and ratings, and a link to follow the game live, as shown in Figure~\ref{fig:tournament-view-mocked}. The content is updated continuously, providing spectators with a live view of the tournament's progress. \\
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/tournament-view/mocked.png}}\caption[Display of tournament]{A mocked demonstration of a tournament display.}\label{fig:tournament-view-mocked} \end{figure}
 
-The Board View presents a detailed view of a single game. It features a digital chessboard, a list of moves played, a live camera feed, and an evaluation bar, as shown in Figure~\ref{fig:board-view-mocked}. The elements update in real-time, creating an engaging experience for users"
+Another page is the Game Preview, which displays miniature boards for multiple games. This view provides an overview of all active games, allowing users to quickly identify and select any match for detailed viewing, as shown in Figure~\ref{fig:game-preview}. It offers an efficient way to stay updated on several games at once. \\
 
-\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/board-view/desktop.png}}\caption[Display of a board]{A mocked demonstration of an active game}\label{fig:board-view-mocked} \end{figure}
-
-Game Preview displays miniature boards for multiple games. This view provides an overview of all active games, allowing users to quickly identify and select any match for detailed viewing, as shown in Figure~\ref{fig:game-preview}. It offers an efficient way to stay updated on several games at once. \\
-
+\newpage
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/game-preview/desktop.png}}\caption[Preview of active games]{A mocked demonstration of a game preview page.}\label{fig:game-preview} \end{figure}
 
-On the Board View page, users can download the \gls{pgn} file of the current game via a dedicated button, which saves the file locally, as shown in Figure~\ref{fig:download-pgn}. \\
+One of the main pages in the web application is the The Board View. The Board View presents a detailed view of a single game. It features a digital chessboard, a list of moves played, a live camera feed, and an evaluation bar, as shown in Figure~\ref{fig:download-pgn}. The elements update in real-time, creating an engaging experience for users. On the Board View page, users can download the \gls{pgn} file of the current game via a dedicated button, which saves the file locally. The board view is shown in Figure~\ref{fig:download-pgn}. \\
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/download-pgn.png}}\caption[Preview of downloading a PGN file]{A demonstration of downloading a PGN file to a specific game}\label{fig:download-pgn} \end{figure}
 
-The downloaded file includes a header with key information such as the tournament name, date, and player names, followed by the recorded moves. It also indicates whether the game is still in progress. Figure~\ref{fig:downloaded-pgn} shows an example of such a file. \\
+The downloaded file includes a header with key information such as the tournament name, date, and player names, followed by the recorded moves. It also indicates whether the game is still in progress. When the game is completed, this field displays the result 1-0, 0-1, or $\frac{1}{2}$–$\frac{1}{2}$. Figure~\ref{fig:downloaded-pgn} shows an example of such a file. \\
+
+\newpage
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/downloaded-pgn.png}}\caption[The downloaded PGN file]{The downloaded PGN file to a specific game, opened in a code editor}\label{fig:downloaded-pgn} \end{figure}
 
