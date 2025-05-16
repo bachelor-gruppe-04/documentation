@@ -14,6 +14,7 @@ The application itself is a local, camera-based system for digitalizing over-the
 The delivered product refers to the final version of the application submitted at the conclusion of this Bachelor’s thesis. The application was developed at the request of the product owner and based on the requirements provided. The initial description served as a general concept rather than a detailed specification, which meant that decisions regarding design, architecture, and technology were left to the development team. Throughout the development process, ideas and design choices were discussed with the product owner and approved during regular meetings.
 
 \section{Detection Performance Models}
+\label{chesscam-metrics}
 As a baseline for evaluating detection performance, results from ChessCam repository were first considered \cite{github:chesscam}. These metrics represent the upper-bound performance of the models under ideal conditions. \\
 
 Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece detection model, which demonstrates consistently high precision and recall throughout training. Both metrics rapidly converge above 0.95, indicating stable and reliable detection \cite{wandb:piece-detection}. In contrast, Figure~\ref{fig:chesscam-xcorners-metrics} presents the results for xcorners detection, showing moderately lower performance. Precision and recall improve steadily over time and stabilize at approximately 0.8 and 0.75, respectively \cite{wandb:xcorner-detection}. \\
