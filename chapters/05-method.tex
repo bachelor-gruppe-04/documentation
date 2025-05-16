@@ -24,7 +24,7 @@ The first 4 values were offset values that adjusted the position and size of eac
 
 \begin{table}[h]
     \centering
-    \caption[Example offset values for anchor boxes - chess pieces]{Offset coordinates for each anchor box with regard to identifying chess pieces.}  % Caption moved to top
+    \caption[Offset values for anchor boxes (chess pieces)]{Example offset coordinates for each anchor box with regard to identifying chess pieces.}  % Caption moved to top
     \renewcommand{\arraystretch}{1.5} % Increase row height to allow text to be on top
     \begin{tabular}{lcccc}
         \toprule
@@ -65,7 +65,7 @@ The remaining 12 values represented the probabilities for each possible piece ty
 
 \begin{table}[h]
     \centering
-    \caption[Predicted chess piece type after applying offsets]{Predicted class probabilities for each anchor box after applying the offsets.}  % Caption moved to top
+    \caption[Predicted chess piece after applying offset]{Predicted class probabilities for each anchor box after applying the offset.}  % Caption moved to top
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{lcccc}
         \toprule
@@ -91,7 +91,7 @@ The corner detection model identified the points where the edges of the inner sq
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/xcorners_chessboard.jpg}
-    \caption[Detected intersection points on chessboard]{Visualization of intersection points where the edges of the inner squares on the chessboard meet. The model identified and predicted these points. Up to 49 intersection points could be detected in a single image. \cite{vectorstock:chessboard-svg}}
+    \caption[Detected intersection points on chessboard]{Visualization of intersection points where the edges of the inner squares on the chessboard meet. The model identified and predicted these points. Up to 49 intersection points could be detected in a single image \cite{vectorstock:chessboard-svg}.}
     \label{fig:xcorners-chessboard}
 \end{figure}
 
@@ -103,7 +103,7 @@ The first 4 values were offset values that adjusted the position and size of eac
 
 \begin{table}[h]
     \centering
-    \caption[Offset values for anchor box - intersection points]{Example offset coordinates for each anchor box with regard to identifying intersection points.}  % Caption moved to top
+    \caption[Offset values for anchor box (intersection points)]{Example offset coordinates for each anchor box with regard to identifying intersection points.}  % Caption moved to top
     \renewcommand{\arraystretch}{1.5} % Increase row height to allow text to be on top
     \begin{tabular}{lcccc}
         \toprule
@@ -123,7 +123,7 @@ The final value was the probability that the adjusted anchor box corresponded to
 
 \begin{table}[h]
     \centering
-    \caption[Predicted intersection points after applying offsets]{Predicted intersection probabilities for each anchor box after applying the offsets.}
+    \caption[Predicted intersection points after applying offset]{Predicted intersection probabilities for each anchor box after applying the offset.}
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{lc}
         \toprule
@@ -152,7 +152,7 @@ To track chess piece movements, the first step was to identify the individual sq
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/methods/ml-models/outer_corners_centers_chessboard.jpg}
-    \caption[Chessboard corners and centers]{Visualization of the corners of the chessboard and the centers of each individual square, forming an 8x8 grid. \cite{vectorstock:chessboard-svg}}
+    \caption[Chessboard corners and centers]{Visualization of the corners of the chessboard and the centers of each individual square \cite{vectorstock:chessboard-svg}.}
     \label{fig:chessboard-centers}
 \end{figure}
 
@@ -166,7 +166,7 @@ The bottom center of each piece’s bounding box was selected as its representat
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.25\linewidth]{figures/methods/ml-models/black-pawn.png}
-    \caption[Detected chess piece and its bounding box]{Example of a detected chess piece with its classification confidence. The bottom center of the bounding box was used as the reference point for mapping the piece to its corresponding square. \cite{svgrepo:black-pawn-svg}}
+    \caption[Detected chess piece and its bounding box]{Example of a detected chess piece with its classification confidence. The bottom center of the bounding box was used as the reference point for mapping the piece to its corresponding square \cite{svgrepo:black-pawn-svg}.}
     \label{fig:bbox-black-pawn}
 \end{figure}
 
@@ -191,9 +191,10 @@ To finalize the board orientation, the average center of all black and white pie
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.70\linewidth]{figures/methods/ml-models/label_assignment_board.jpg}
-\caption[Assigning labels to chessboard]{The white and black circles represent the average centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The board is rotated, and the labels are assigned based on the rotation that minimizes the distance between the centers and the midpoints.}
+\caption[Assigning labels to chessboard]{The white and black circles represent the average centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides \cite{vectorstock:chessboard-svg}.}
 \label{fig:board_label_assignment}
 \end{figure}
+
 
 
 \subsubsection*{Move detection}
@@ -253,7 +254,7 @@ The interface is minimal and task-focused, enabling efficient system setup and m
         \label{fig:control-panel-3}
     \end{subfigure}
     
-    \caption{Control Panel wireframes showing sequential interaction steps}
+    \caption[Control panel wireframes]{Control Panel wireframes showing sequential interaction steps}
     \label{fig:control-panel-group}
 \end{figure}
 
@@ -294,7 +295,7 @@ Similarly, the \textbf{Board View} adjusts to a vertical layout on mobile device
         \label{fig:desktop-fullscreen-video}
     \end{subfigure}
     
-    \caption{Desktop client-side view wireframes}
+    \caption{Desktop client-side wireframes}
     \label{fig:desktop-view-group}
 \end{figure}
 
@@ -330,7 +331,7 @@ Similarly, the \textbf{Board View} adjusts to a vertical layout on mobile device
         \label{fig:phone-fullscreen-video-horizontal}
     \end{subfigure}
     
-    \caption{Phone client-side view wireframes}
+    \caption{Phone client-side wireframes}
     \label{fig:phone-view-group}
 \end{figure}
 
@@ -432,7 +433,7 @@ The webcam was mounted above the board at an angle of approximately 60–70\si{\
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/methods/testing/setup.png}
-    \caption[Setup during testing]{Physical setup during testing, showing the board, webcam position, and piece orientation.}
+    \caption[Setup during testing]{Physical setup during testing, showing the board, camera position, and piece orientation.}
     \label{fig:setup}
 \end{figure}
 

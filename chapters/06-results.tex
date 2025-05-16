@@ -95,7 +95,7 @@ The frontend of the application serves as the user interface. It includes a cont
 
 The control panel is a standalone administrative interface used by tournament organizers to configure and manage the tournament setup. It allows the organizer to select the number of cameras, initiate the tournament, and reset boards between rounds, as shown in Figure~\ref{fig:control-panel}. This interface ensures the centralized management of tournament operations. \\
 
-\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/results/frontend/control-panel/control-panel.png} \caption[Control panel for tournament organizers]{The control panel used by the tournament organizers.}\label{fig:control-panel} \end{figure}
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/results/frontend/control-panel/control-panel.png} \caption[Display of control panel]{The control panel used by the tournament organizers.}\label{fig:control-panel} \end{figure}
 
 Once the application is launched, the accompanying web application becomes accessible to spectators. It is designed to allow viewers to follow the tournament across a range of devices. Spectators can navigate between views, observe live games, and explore additional information about the system. Built as a responsive interface, it adapts to both desktop and mobile screens to ensure accessibility and usability. \\
 
@@ -250,7 +250,7 @@ As described in Section~\ref{subsec:model-testing}, the model was evaluated usin
 
 \begin{table}[htbp]
 \centering
-\caption{Move detection accuracy in total}
+\caption{Move detection accuracy total}
 \label{tab:accuracy-total}
 \begin{tabular}{lccc}
 \toprule
@@ -283,7 +283,7 @@ Table \ref{tab:board-type-accuracy} compares the success rates between the two p
 
 \begin{table}[htbp]
 \centering
-\caption{Summary of Total Moves and Success Rate by Board Type}
+\caption[Move detection accuracy board type]{Summary of total moves and success rate by board type}
 \label{tab:board-type-accuracy}
 \begin{tabular}{lccc}
 \toprule
@@ -330,7 +330,7 @@ Figure \ref{fig:move-failures} shows the number of failed games (i.e., games whe
 \legend{Plastic, Wooden}
 \end{axis}
 \end{tikzpicture}
-\caption{Number of failed games per move number across plastic and wooden boards.}
+\caption[Detection failures per move number]{Number of failed games per move number across plastic and wooden boards.}
 \label{fig:move-failures}
 \end{figure}
 
@@ -339,7 +339,7 @@ Table~\ref{tab:different-errors} categorizes the types of detection failures for
 
 \begin{table}[htbp]
 \centering
-\caption{Frequencies of Different Detection Errors}
+\caption[Different detection errors]{Frequencies of Different Detection Errors}
 \label{tab:different-errors}
 \begin{tabular}{lccc}
 \toprule
@@ -434,7 +434,7 @@ While these findings are based on a small participant group, they offer early in
 \legend{Overall, Tournament View, Board View}
 \end{axis}
 \end{tikzpicture}
-\caption{Distribution of satisfaction ratings from participants across different interface views.}
+\caption[Satisfaction rating distribution]{Distribution of satisfaction ratings from participants across different interface views.}
 \label{fig:wireframe-test-results}
 \end{figure}
 
@@ -469,6 +469,6 @@ Rather than selecting a single predefined palette, the final color scheme was as
 };
 \end{axis}
 \end{tikzpicture}
-\caption{Distribution of Votes Across Different Color Palettes}
+\caption[Votes per palette]{Distribution of Votes Across Different Color Palettes}
 \label{fig:color-palette-results}
 \end{figure}
