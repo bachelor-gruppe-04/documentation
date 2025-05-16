@@ -30,7 +30,14 @@ Further testing supported these findings. As shown in Figure~\ref{fig:bbox-cente
 \section{API}
 
 \section{Frontend}
-\subsection{Download PGN file}
+The frontend was developed based on the initial wireframes but was modified throughout the project in response to feedback from the supervisor, product owner, and user testing. Despite these adjustments, the core components and functionality remained consistent with the original design.
+
+\subsection{Game preview}
+The Game Preview page was not part of the initial wireframe, as described in Section \ref{subsec:wireframe}. However, following a suggestion from the product owner, this feature was added to provide a better overall overview of all ongoing games. One scenario for this functionality is when a spectator wishes to follow multiple games simultaneously. \\
+
+Since the application architecture was already based on individual chessboard instances, implementing this feature was relatively straightforward. By reusing existing chessboard components identified by unique IDs, the Game Preview page was able to display all active games dynamically. Only minor code modifications were necessary to make the component more flexible and support this functionality.
+
+\subsection{Download \gls{pgn} file}
 One of the project requirements was to digitize a chess game into a \gls{pgn} file. This functionality enables both players and spectators to download and analyze the game using external tools, such as \gls{lichess}’ analysis feature. As described in section \ref{subsec:results-frontend}, the user can download the \gls{pgn} file with a single click. The file contains a header with technical metadata, such as the tournament name, date, and players, as well as a move list that can be used directly for analysis. \\
 
 The \gls{pgn} format is widely supported, and tools like \gls{lichess} can interpret both the complete file or just the move list. This flexibility allows users to gain insights into various aspects of the game, such as identifying the opening played, evaluating move accuracy, and understanding the overall game progression. Figure~\ref{fig:downloaded-pgn-analysis} shows how the downloaded \gls{pgn} can be used in an external analysis tool. In this scenario, a specific opening was played and the analysis recognised this. \\
