@@ -141,40 +141,42 @@ For a detailed breakdown of the chess games, including the sequences of moves, f
 
 % \newpage
 
-\section{API}
-To support continuous communication between the backend and frontend, the application establishes a WebSocket connection. This communication channel is used for transmitting move data as it is detected by the board recognition system. Unlike traditional \gls{http} requests, which operate on a request-response basis, WebSocket allows for continuous, two-way communication between the server and the client as outlined in \ref{subsubsec:websocket} \\
+\section{WebSocket}
+To support continuous communication between the backend and frontend, the application establishes a WebSocket connection. This communication channel is used for transmitting move data as it is detected by the board recognition system. Unlike traditional \gls{http} requests, which operate on a request-response basis, WebSocket allows for continuous, two-way communication between the server and the client as described in \ref{subsubsec:websocket} \\
 
-Once the application initiates a connection, the WebSocket remains open throughout the session. As new moves are identified on the physical board, the backend sends the corresponding move data as messages through the WebSocket. These messages are then received by the frontend, which updates the displayed move list and board state in real-time. This provides a seamless viewing experience for users following live games. \\
+Once the application initiates a connection, the WebSocket remains open throughout the session. As new moves are identified on the physical board, the backend sends the corresponding move data as messages through the WebSocket. These messages are then received by the frontend, which updates the displayed move list and board state in real-time. \\
 
-The WebSocket server also handles specific command messages. For example, when the server sends a message labeled \texttt{RESET}, the frontend clears the current move list typically indicating the start of a new game. The \texttt{RESET} command also resets the backend system, allowing for a new tournament round to begin. A message labeled \texttt{INVALID} is used to signal an unrecognized or incorrect move and does not trigger any frontend changes. The WebSocket functionality is encapsulated in a custom React hook on the frontend, which manages the connection lifecycle and state updates. 
+The WebSocket server also processes specific command messages to manage game state. For instance, a message labeled \texttt{RESET} prompts the frontend to clear the current move list, signaling the start of a new game, while simultaneously resetting the backend to prepare for a new tournament round. Conversely, a message labeled \texttt{INVALID} indicates an unrecognized or illegal move and does not result in any frontend updates. 
+
 
 \section{Frontend}
 \label{subsec:results-frontend}
-The front-end of the application serves as the user interface. It includes a control panel for tournament organizers and a web application for spectators. The application's main responsibility is to visualize the chessboard and display ongoing moves. The front-end communicates with the back-end via WebSocket to ensure real-time updates and interactivity. \\
+The frontend of the application serves as the user interface. It includes a control panel for tournament organizers and a web application for spectators. The application's responsibility is to visualize the chessboard and display ongoing moves. The frontend communicates with the backend via WebSocket to ensure real-time updates. \\
 
-The control panel is a standalone administrative interface used exclusively by tournament organizers to configure and manage the tournament setup. Accessible only from the host computer, it allows the organizer to select the number of camera inputs, initiate the tournament, and reset boards between rounds, as shown in Figure~\ref{fig:control-panel}. This interface ensures the secure and centralized management of tournament operations. \\
+The control panel is a standalone administrative interface used by tournament organizers to configure and manage the tournament setup. It allows the organizer to select the number of cameras, initiate the tournament, and reset boards between rounds, as shown in Figure~\ref{fig:control-panel}. This interface ensures the centralized management of tournament operations. \\
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/results/frontend/control-panel/control-panel.png} \caption[Control panel for tournament organizers]{The control panel used by the tournament organizers.}\label{fig:control-panel} \end{figure}
 
-Once the application is launched, the accompanying web application becomes accessible to spectators. It is designed to allow viewers to follow the tournament in real-time across a range of devices. Built as a responsive interface, it adapts to both desktop and mobile screens to ensure accessibility and usability. Spectators can navigate between views, observe live games, and explore additional information about the system. \\
+Once the application is launched, the accompanying web application becomes accessible to spectators. It is designed to allow viewers to follow the tournament across a range of devices. Built as a responsive interface, it adapts to both desktop and mobile screens to ensure accessibility and usability. Spectators can navigate between views, observe live games, and explore additional information about the system. \\
 
-One of the main pages in the web application is the Tournament View, which presents an overview of all ongoing games. Each entry shows the board number, the players' names and ratings, and a link to follow the game live, as shown in Figure~\ref{fig:tournament-view-mocked}. The content is updated continuously, providing spectators with a live snapshot of the tournament's progress. \\
+The Tournament View presents an overview of all ongoing games. Each entry shows the board number, the players' names and ratings, and a link to follow the game live, as shown in Figure~\ref{fig:tournament-view-mocked}. The content is updated continuously, providing spectators with a live view of the tournament's progress. \\
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/tournament-view/mocked.png}}\caption[Display of tournament]{A mocked demonstration of a tournament display.}\label{fig:tournament-view-mocked} \end{figure}
 
-Another page is the Board View, which focuses on a single game in greater detail. This view includes a digital chessboard, a list of moves played, a live camera feed, and a visual evaluation bar, as shown in Figure~\ref{fig:board-view-mocked}. The elements update in real time, creating an engaging and intuitive experience for users following a particular match. \\
+The Board View presents a detailed view of a single game. It features a digital chessboard, a list of moves played, a live camera feed, and an evaluation bar, as shown in Figure~\ref{fig:board-view-mocked}. The elements update in real-time, creating an engaging experience for users"
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/board-view/desktop.png}}\caption[Display of a board]{A mocked demonstration of an active game}\label{fig:board-view-mocked} \end{figure}
 
-In addition, the web application features a Game Preview page that displays simplified mini-boards for multiple games. This view enables users to quickly glance through active games and select one to view in detail, as shown in Figure~\ref{fig:game-preview}. It offers a compact and efficient way to stay updated on several games at once. \\
+Game Preview displays miniature boards for multiple games. This view provides an overview of all active games, allowing users to quickly identify and select any match for detailed viewing, as shown in Figure~\ref{fig:game-preview}. It offers an efficient way to stay updated on several games at once. \\
+
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/game-preview/desktop.png}}\caption[Preview of active games]{A mocked demonstration of a game preview page.}\label{fig:game-preview} \end{figure}
 
-The user also has the option of downloading the \gls{pgn} file for a selected game. On the board view page, a dedicated button allows the user to download the \gls{pgn} file corresponding to the game currently displayed. When this button is clicked, the file is saved locally on the user's computer, as shown in Figure~\ref{fig:download-pgn}. \\
+On the Board View page, users can download the \gls{pgn} file of the current game via a dedicated button, which saves the file locally, as shown in Figure~\ref{fig:download-pgn}. \\
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/download-pgn.png}}\caption[Preview of downloading a PGN file]{A demonstration of downloading a PGN file to a specific game}\label{fig:download-pgn} \end{figure}
 
-The downloaded file includes a header with key information such as the tournament name, date, and player names, followed by the recorded list of moves. An example of this file opened in a code editor is shown in Figure~\ref{fig:downloaded-pgn}. In this case, the game is still ongoing, so not all moves have been logged, and the result is marked as "in progress," indicating that the \gls{pgn} file is incomplete. \\
+The downloaded file includes a header with key information such as the tournament name, date, and player names, followed by the recorded moves. It also indicates whether the game is still in progress. Figure~\ref{fig:downloaded-pgn} shows an example of such a file. \\
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/downloaded-pgn.png}}\caption[The downloaded PGN file]{The downloaded PGN file to a specific game, opened in a code editor}\label{fig:downloaded-pgn} \end{figure}
 
@@ -203,7 +205,7 @@ To provide a comprehensive understanding of the system architecture and interact
 \subsubsection*{Sequence Diagram}
 \label{subsubsec:sequence-diagram}
 
-The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the Admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. Users, from remote devices, can spectate the game in real time or save it as a \gls{pgn} file. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
+The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the Admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. Users, from remote devices, can spectate the game in real-time or save it as a \gls{pgn} file. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
 
 \newpage
 

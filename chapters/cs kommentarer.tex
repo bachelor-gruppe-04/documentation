@@ -39,8 +39,6 @@
 %The reason for doing it this way, is that unlike detecting the 4 corners of the board directly, the algorithm can still run successfully even if various parts of the board are obscured. The question then becomes, how does it find the corners from these points?
 
 
-
-
 %, indicating that the model is highly effective at correctly identifying chess pieces with minimal false positives and false negatives.
 
 %These findings highlight the robustness of the ChessCam detection pipeline when evaluated on the original dataset and serve as a reliable upper-bound benchmark for subsequent comparisons
@@ -48,7 +46,8 @@
 %This indicates that x-corner detection is more sensitive to variations in the input data and may require further tuning or training data augmentation to match the robustness of the piece detection model.
 
 
-%Dette hører vel hjemme i diskusjon
+
+%4.3 API (diskusjon)
 
 %and improve the responsiveness of the frontend interface
 
@@ -56,3 +55,25 @@
 
 %This abstraction simplifies integration into the user interface and ensures that resources are properly cleaned up when the component is unmounted. Overall, the use of WebSocket communication is a key component in delivering a responsive and live experience, particularly for tournaments and public displays where move-by-move tracking is essential.
 
+%This provides a seamless viewing experience for users following live games.
+
+%On the frontend, WebSocket functionality is encapsulated within a custom React hook, which handles connection lifecycle management and state synchronization. jeg fjerna denne siden det er allerede forklart lifecycle og state tidligere i avsnittene
+
+%4.4 Frontend
+%Accessible only from the host computer, i
+
+%secure and
+
+%One of the main pages in the web application is the
+
+%Another page is the 
+
+%following a particular match.
+
+%In addition, the web application features a
+
+%compact
+
+%korta ned litt på download pgn i 4.4 frontend
+
+%file opened in a code editor 
