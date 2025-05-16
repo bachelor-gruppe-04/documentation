@@ -16,7 +16,8 @@ As an alternative to RFID-based systems, electronic scoresheet solutions have be
 
 Advancements in \gls{ai} have also enabled the development of tools that automate the digitization of chess games through visual recognition. A prominent example is \textit{ChessCam}, a web- and mobile-based application that processes video footage or live streams to detect moves and generate \gls{pgn} files. This approach makes it possible to digitize games with minimal hardware and manual work. \cite{github:chesscam, lichess:chesscam}
 
-\section{Artificial Intelligence} \label{sec:machine-learning}
+\section{Artificial Intelligence} 
+\label{sec:artificial-intelligence}
 
 \gls{ai} refers to the development of computer systems capable of performing tasks that typically require human intelligence, such as reasoning, problem-solving, perception, and language understanding. It encompasses a wide range of techniques and approaches aimed at replicating or augmenting human cognitive functions. [KILDE] \\
 
@@ -24,15 +25,11 @@ A subfield of \gls{ai} is \gls{ml}, which focuses on enabling computers to learn
 
 One such application area is \textbf{computer vision}, which combines principles from both AI and ML to enable machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive and understand visual information, as illustrated in Figure~\ref{fig:computer-vision}
 
-
-
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/computer-vision.png} \caption[Computer vision vs. human vision]{Comparison of Computer Vision and Human Vision: Illustrating the similarities and differences in processing visual data \cite{turing:computer-vision}} \label{fig:computer-vision} \end{figure}
 
 One of the most influential technologies in modern \gls{ml} is the \gls{ann}. These networks excel at handling a wide range of data types, including images, audio, and text. Different neural network architectures are suited for specific tasks. For instance, \gls{rnn}, especially those incorporating \gls{lstm}, are effective for sequential data such as text. \\
 
 In contrast, \textbf{\glspl{cnn}} are particularly effective in processing image data. Their architecture leverages convolutional layers to extract spatial features, making them highly efficient in image classification and object detection. An example of such a network applied to handwritten digit classification is shown in Figure~\ref{fig:convolutional-neural-network}. \\
-
-\newpage
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/convolutional-neural-network.png} \caption[CNN architecture for handwritten digit classification]{CNN architecture for classifying handwritten digits \cite{medium:cnn}} \label{fig:convolutional-neural-network} \end{figure}
 
@@ -42,15 +39,13 @@ Another fundamental concept in machine learning is \textbf{supervised learning},
 
 Within supervised learning, \textbf{classification} refers to predicting categorical outcomes. For example, a classification model trained on images of geometric shapes can learn to associate visual features with specific shape categories. When shown a new image, the model attempts to determine the most likely category based on its prior learning. This process is illustrated in Figure~\ref{fig:supervised-learning}, which shows how labeled data is used to train a model to make accurate predictions on unseen inputs. \\
 
-\newpage
-
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png} \caption[Supervised learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}} \label{fig:supervised-learning} \end{figure}
 
 By combining supervised learning with powerful models like \glspl{cnn}, machine learning systems have achieved remarkable success in tasks that require human-like perception and decision-making [KILDE]. As these models become more accurate and versatile, deploying them efficiently to real-world applications becomes increasingly important.  \\
 
 To address this, \textbf{\gls{onnx}} provides an open-source format for representing machine learning models, enabling seamless transfer and interoperability between different frameworks, including TensorFlow and PyTorch. This open format allows developers to switch between different tools depending on their specific needs during training, deployment, or optimization \cite{roboflow:onnx}.\\
 
-Once a model is trained, \textbf{inference} is the process of using the trained model to make predictions on new, unseen data. In the context of object detection, inference involves feeding an input image into the model, which processes the image and outputs predictions—usually in the form of object classes, confidence scores, and bounding box coordinates \cite{nvidia:inference}. \\
+Once a model is trained, \textbf{inference} is the process of using the trained model to make predictions on new, unseen data. In the context of object detection, inference involves feeding an input image into the model, which processes the image and outputs predictions, usually in the form of object classes, confidence scores, and bounding box coordinates \cite{nvidia:inference}. \\
 
 After training and deploying a model, it is essential to evaluate how well it performs. Two key performance metrics are \textbf{precision} and \textbf{recall}. \textbf{Precision} measures how many of the model’s predictions are actually correct. A high precision means that the model makes few false detections. \textbf{Recall} measures how many of the actual objects the model manages to detect. A high recall means that the model rarely misses.
 
@@ -62,6 +57,8 @@ After training and deploying a model, it is essential to evaluate how well it pe
 \]
 
 \section{Object Detection}
+\label{sec:object-detection}
+
 Object detection is a fundamental task in computer vision that involves both identifying and locating objects within an image. Unlike simple image classification, which only determines what objects are present, object detection also specifies where each object is by drawing a bounding box around it. This dual capability makes object detection essential for applications that require not just recognition, but also precise localization of multiple objects in real time. \\
 
 \textbf{\gls{leyolo}} is a \gls{cnn}-based architecture designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
@@ -71,13 +68,11 @@ Central to object detection is the use of concept of \textbf{bounding boxes}. Bo
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/bbox-example.png}
-    \caption[Bounding box in object detection]{Example of a bounding box used in object detection to localize an object within an image \cite{peopleforai:boundingbox}}
+    \caption[Bounding box in object detection]{Example of a bounding box used in object detection to localize an object within an image}
     \label{fig:boundingbox}
 \end{figure}
 
 To improve detection accuracy across different object sizes and shapes, models use \textbf{anchor boxes}. Anchor boxes are predefined bounding boxes of various sizes and aspect ratios, used as reference points for object detection. These boxes are selected based on common object sizes and aspect ratios found in the training dataset. The anchor boxes are placed over the feature map, which represents a transformed version of the input image. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}. An illustration of how anchor boxes are positioned on the feature map is shown in Figure~\ref{fig:anchor-box}.
-
-\newpage
 
 \begin{figure}[h!]
     \centering
@@ -86,14 +81,12 @@ To improve detection accuracy across different object sizes and shapes, models u
     \label{fig:anchor-box}
 \end{figure}
 
-
 To evaluate whether a predicted bounding box is accurate, a metric called \textbf{\gls{iou}} is used. \gls{iou} quantifies the overlap between the predicted bounding box and the ground truth box, the annotated box in the training dataset that precisely marks the object's true location. It is calculated as the ratio of the area of overlap to the area of union between the predicted and ground truth boxes:
 
 \[
 \text{IoU} = \frac{\text{Area of Overlap}}{\text{Area of Union}}
 \]
 An IoU value of 1.0 means a perfect match between the prediction and the ground truth, while 0 indicates no overlap. In practice, a prediction is considered correct if the IoU exceeds a certain threshold, commonly 0.5. \\
-
 
  Once multiple bounding box predictions have been made, some of them may overlap significantly. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. It removes redundant or overlapping bounding boxes and keeps only the most confident prediction. \gls{nms} selects the bounding box with the highest confidence score and suppresses all other boxes that have a high IoU overlap with it. This process repeats iteratively until no overlapping boxes remain above the chosen IoU threshold. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
 \cite{thepythoncode:nms}. The effect of applying NMS is illustrated in Figure~\ref{fig:nms}.
@@ -105,12 +98,12 @@ An IoU value of 1.0 means a perfect match between the prediction and the ground 
     \label{fig:nms}
 \end{figure}
 
-
 \section{Geometric Methods in Image Processing}
-
+\label{sec:geometric-methods}
 
 
 \subsection*{Normalization and Scaling}
+\label{subsec:normalization-and-scaling}
 
 Normalization in image processing involves scaling pixel values to a consistent range, such as [0, 1] or [-1, 1]. This helps improve model performance by making the input data uniform. By adjusting pixel intensities from their original 0–255 range, normalization allows the model to process inputs more consistently, leading to faster and more stable convergence.
 \textbf{Scaling} in image processing and machine learning involves resizing images to the format required by the model, as shown in Figure~\ref{fig:nms}. 
@@ -118,15 +111,15 @@ Normalization in image processing involves scaling pixel values to a consistent 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/scaling.png}
-    \caption[Scaling in image processing]{Illustration of the scaling process in image preprocessing, resizing the image to prepare it for model input. \cite{thepythoncode:nms}}
+    \caption[Scaling in image processing]{Illustration of the scaling process in image preprocessing, resizing the image to prepare it for model input.}
     \label{fig:nms}
 \end{figure}
 
 
 \subsection*{Perspective Transformation}
+\label{subsec:perspective-transformation}
 
 When an image is taken from a tilted viewpoint, objects that are normally rectangular, such as chessboards, appear distorted and no longer have right angles. A perspective transformation is a specific type of image warping that corrects distortions caused by viewing a flat object from an angle. A perspective transformation uses mathematical techniques to map points from the distorted image back to their correct, undistorted positions, as illustrated in Figure~\ref{fig:perspective-transformation} \cite{nvidia:perspective-transform}.
-
 
 \begin{figure}[h!]
     \centering
@@ -136,7 +129,7 @@ When an image is taken from a tilted viewpoint, objects that are normally rectan
 \end{figure}
 
 \subsection*{Euclidean Distance}
-
+\label{subsec:euclidean-distance}
 
 The Euclidean distance is the straight-line distance between two points in a plane. For two points with coordinates \( \mathbf{p} = (p_1, p_2) \) and \( \mathbf{q} = (q_1, q_2) \), the Euclidean distance is given by:
 
@@ -148,15 +141,15 @@ This formula gives the length of the path connecting the two points. Euclidean d
 
 
 \subsection*{Delaunay Triangulation}
+\label{subsec:delaunay-triangulation}
 
 Delaunay triangulation is a method of dividing a set of points into triangles such that no point is inside the circumcircle of any triangle. The circumcircle is the circle that passes through all three vertices of a triangle. It ensures that the triangles formed are as equiangular as possible,  meaning the triangle angles are close in size, minimizing the possibility of long, thin triangles. This property makes Delaunay triangulation particularly useful for applications involving geometric data, such as finding quadrilaterals from a set of points.
 
 \section{Web}
-\label{subsec:web}
-
+\label{sec:web}
 
 \subsection*{Client-Server Architecture}
-\label{subsubsec:client-server}
+\label{subsec:client-server}
 
 Client-server architecture is a network model in which multiple clients request and receive services from a centralized server over a local network or the internet. Clients interact with the system through an application interface, while the server handles data processing. This architecture enables centralized control, scalability, and efficient resource management. See Figure~\ref{fig:client-server-architecture} \cite{liquidweb:client-server}.
 
@@ -169,10 +162,9 @@ Client-server architecture is a network model in which multiple clients request 
 \end{figure}
 
 \subsection*{WebSocket}
-\label{subsubsec:websocket}
+\label{subsec:websocket}
 
 WebSocket is a standardized communication protocol that enables full-duplex communication over a single \gls{tcp} connection, making it well-suited for real-time web applications. Unlike traditional \gls{http} requests which follow a request-response model, WebSocket establishes a persistent connection that allows both the client and server to send and receive data at any time. This reduces the need for polling or long polling, significantly lowering network traffic and latency. As a result, WebSocket improves the efficiency and responsiveness of data transmission, particularly in applications such as live data feeds and online games. See Figure \ref{fig:websocket-vs-http} for a comparison \cite{nodejs:websocket, apidog:websocket}.
-
 
 \begin{figure}[h!]
     \centering
@@ -265,7 +257,6 @@ Unit testing involves testing individual components of a software application in
 Usability testing evaluates a system from the end user’s perspective, focusing on how easily users can interact with the system to accomplish their goals. It involves observing users to identify areas of confusion, inefficiency, or difficulty in the user experience \cite{geeksforgeeks:user-test}.
 
 Both qualitative data (e.g., user feedback) and quantitative data (e.g., task completion rates) are collected to assess functionality and user satisfaction. These findings are used to generate a report with recommendations for improving usability \cite{geeksforgeeks:user-test}.
-
 
 \subsection{Type Safety}
 \label{subsec:type-safety}
