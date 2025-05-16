@@ -39,6 +39,28 @@ Once the application initiates a connection, the WebSocket remains open througho
 
 The WebSocket server also processes specific command messages to manage game state. For instance, a message labeled \texttt{RESET} prompts the frontend to clear the current move list, signaling the start of a new game, while simultaneously resetting the backend to prepare for a new tournament round. Conversely, a message labeled \texttt{INVALID} indicates an unrecognized or illegal move and does not result in any frontend updates. 
 
+\begin{table}[h!]
+    \centering
+    \caption[API endpoint overview]{Overview of available FastAPI REST and WebSocket endpoints for board control and video streaming}
+    \label{tab:api-endpoints}
+    \begin{tabular}{L{0.15\linewidth}L{0.25\linewidth}L{0.5\linewidth}}
+        \toprule
+        \textbf{Method} & \textbf{Endpoint} & \textbf{Description} \\
+        \midrule
+        \texttt{POST} & \texttt{/reset/\{board\_id\}} & Resets a specific chess board by ID. \\
+        \texttt{POST} & \texttt{/reset\_all} & Resets all boards in memory. \\
+        \texttt{GET} & \texttt{/boards} & Returns a list of all board IDs currently active. \\
+        \texttt{GET} & \texttt{/video/\{id\}} & Streams MJPEG (Motion JPEG) video from a specific camera (board ID). \\
+        \texttt{WebSocket} & \texttt{/moves/\{board\_id\}} & Sends live chess move updates to subscribed WebSocket clients. \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\subsection{WebSocket}
+
+\subsection{REST}
+
 
 \section{Frontend}
 \label{subsec:results-frontend}
@@ -93,8 +115,6 @@ To provide a comprehensive understanding of the system architecture and interact
 
 The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the Admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. Users, from remote devices, can spectate the game in real-time or save it as a \gls{pgn} file. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
 
-\newpage
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{figures/results/uml/sequence.png}
@@ -102,9 +122,10 @@ The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chrono
     \label{fig:sequence}
 \end{figure}
 
+\newpage
+
 \subsubsection*{Use-Case Diagram}
 \label{subsubsec:use-case-diagram}
-
 The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the systemâ€™s main actors and the primaryfunctionalities they interact with. Admins are responsible for hardware setup and initiating the game recordingprocess. The system autonomously handles move detection, validation, and \gls{ui} updates. Users, on the otherhand, access the game remotely to spectate or download \gls{pgn} files. This diagram provides a clear overview ofwho interacts with the system and what capabilities are exposed, forming the basis for understanding systemrequirements and user expectations.
 
 \begin{figure}[h!]
@@ -135,7 +156,6 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the systemâ
 \newpage
 
 \subsubsection*{Class Diagram}
-
 The most widely use UML diagram is the class diagram. It is the building block of all object oriented software systems. We use class diagrams to depict the static structure of a system by showing system's classes, their methods and attributes. Class diagrams also help us identify relationship between different classes or objects.
 
 \begin{figure}[h!]
@@ -169,10 +189,7 @@ The most widely use UML diagram is the class diagram. It is the building block o
 
 \newpage
 
-\newpage
-
 \subsubsection*{Package Diagram}
-
 We use Package Diagrams to depict how packages and their elements have been organized. A package diagram simply shows us the dependencies between different packages and internal composition of packages.
 
 \begin{itemize}
@@ -193,6 +210,9 @@ We use Package Diagrams to depict how packages and their elements have been orga
     \caption{Package Diagram for Frontend}
     \label{fig:package-frontend}
 \end{figure}
+
+\section{Testing and Quality Assurance}
+
 \subsection{Manual Testing}
 
 \subsection{Machine Learning Model}
@@ -326,7 +346,7 @@ However, participants also suggested a few areas for improvement:
 
 \begin{itemize}
     \item Adding a full-screen function for the video feed.
-    \item Enhancing the visual design of some UI elements for improved aesthetics.
+    \item Enhancing the visual design of some \gls{ui} elements for improved aesthetics.
     \item Supporting multiple languages for users who do not speak English.
 \end{itemize}
 
