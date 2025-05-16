@@ -5,6 +5,13 @@
 \end{center}
 
 \section{Overview of Delivered Product}
+The delivered product functions as intended and meets all defined requirements. It allows players to conduct \gls{otb} chess games using a traditional physical board, while each move is automatically detected, validated, and stored digitally in \gls{pgn} format. These \gls{pgn} files can be accessed in real time through the frontend interface, enabling both live viewing and post-game analysis. \\
+
+The core functionality of the system has proven to be reliable across different test scenarios, see section \ref{machine-learning-test}. Players are able to engage with the game naturally, without needing to alter their usual playing behavior or interact directly with the system during game play. The seamless digitization process provides a user-friendly experience, especially for tournament organizers or spectators who wish to follow games live. \\
+
+Despite this, a minor delay is present between the moment a physical move is made and its appearance on the digital board. This latency is primarily caused by the time required for image capture, model inference, and subsequent processing. While the delay does not significantly impact usability, it could be minimized through further optimization of the machine learning models or by deploying the system on more powerful hardware. \\
+
+Move validation is handled through a three-step process to ensure both accuracy and legality of each detected move. The machine learning model first detects changes on the board, followed by backend validation using a chess engine that checks the move against the current game state. Finally, the frontend performs an additional check before updating the display. If an illegal move is identified at any point, the system stops further updates to prevent errors or corrupted game data. In line with the product owner's request, the system includes no extra error handling or user notifications. It is intended solely as a display tool for passive observation and live broadcasting, not as an active referee. This approach keeps the interface simple while preserving reliable and consistent game visualization.
 
 \section{Machine Learning}
 
