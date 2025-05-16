@@ -55,11 +55,41 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
         \texttt{POST} & \texttt{/reset/\{board\_id\}} & Resets a specific chess board by ID. \\
         \texttt{POST} & \texttt{/reset\_all} & Resets all boards in memory. \\
         \texttt{GET} & \texttt{/boards} & Returns a list of all active board IDs. \\
-        \texttt{GET} & \texttt{/video/\{id\}} & Streams MJPEG (Motion JPEG) video from a specific camera (board ID). \\
+        \texttt{GET} & \texttt{/video/\{id\}} & Streams \gls{mjpeg} video from a specific camera (board ID). \\
         \texttt{WebSocket} & \texttt{/moves/\{board\_id\}} & Sends live chess move updates to subscribed WebSocket clients. \\
         \bottomrule
     \end{tabular}
 \end{table}
+
+% \begin{code}[h!]
+% \caption{Reset Specific Board}
+% \label{code:reset-specific-board}
+% \lstinputlisting[language=Python, firstline=9, lastline=17]{code/backend/logic/api/routes/admin_routes.py}
+% \end{code}
+
+% \begin{code}[h!]
+% \caption{Reset All Boards}
+% \label{code:reset-specific-board}
+% \lstinputlisting[language=Python, firstline=19, lastline=23]{code/backend/logic/api/routes/admin_routes.py}
+% \end{code}
+
+% \begin{code}[h!]
+% \caption{Get List of All Active Boards}
+% \label{code:get-boards-list}
+% \lstinputlisting[language=Python, firstline=25, lastline=29]{code/backend/logic/api/routes/admin_routes.py}
+% \end{code}
+
+% \begin{code}[h!]
+% \caption{Get Video Feed}
+% \label{code:video-feed}
+% \lstinputlisting[language=Python, firstline=7, lastline=20]{code/backend/logic/api/routes/video_routes.py}
+% \end{code}
+
+% \begin{code}[h!]
+% \caption{WebSocket route}
+% \label{code:websocket}
+% \lstinputlisting[language=Python, firstline=6, lastline=27]{code/backend/logic/api/routes/websocket_routes.py}
+% \end{code}
 
 
 
@@ -116,7 +146,7 @@ To provide a comprehensive understanding of the system architecture and interact
 
 The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the Admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. Users, from remote devices, can spectate the game in real-time or save it as a \gls{pgn} file. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
 
-\newpage
+% \newpage
 
 \begin{figure}[h!]
     \centering
@@ -192,8 +222,6 @@ The most widely use UML diagram is the class diagram. It is the building block o
 
 \newpage
 
-\newpage
-
 \subsubsection*{Package Diagram}
 
 We use Package Diagrams to depict how packages and their elements have been organized. A package diagram simply shows us the dependencies between different packages and internal composition of packages.
@@ -216,7 +244,8 @@ We use Package Diagrams to depict how packages and their elements have been orga
     \caption{Package Diagram for Frontend}
     \label{fig:package-frontend}
 \end{figure}
-\subsection{Manual Testing}
+
+\section{Testing and Quality Assurance}
 
 \subsection{Machine Learning Model}
 \label{machine-learning-test}
@@ -253,7 +282,7 @@ As described in Section~\ref{subsec:model-testing}, the model was evaluated usin
 \end{table}
 
 
-Table~\ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board slightly outperformed the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference may indicate a slightly more stable detection environment on the wooden surface. \\
+Table \ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board slightly outperformed the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference may indicate a slightly more stable detection environment on the wooden surface. \\
 
 
 \begin{table}[htbp]
@@ -271,10 +300,10 @@ Wooden  & 558 & 509 & 91.2\% \\
 \end{table}
 
 
-Figure~\ref{fig:move-failures} shows the number of failed games (i.e., games where detection failed) grouped by the move number at which failure occurred. Bars are color-coded by board type. The majority of failures occurred within the first five moves, particularly at moves 2, 4, and 5. This trend suggests that the early game presents the greatest challenge for detection, potentially due to rapid development or ambiguity in piece positions. Notably, failures after move 9 were rare. \\
+Figure \ref{fig:move-failures} shows the number of failed games (i.e., games where detection failed) grouped by the move number at which failure occurred. Bars are color-coded by board type. The majority of failures occurred within the first five moves, particularly at moves 2, 4, and 5. This trend suggests that the early game presents the greatest challenge for detection, potentially due to rapid development or ambiguity in piece positions. Notably, failures after move 9 were rare. \\
 
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -330,6 +359,14 @@ Wooden & 48 & 40 & 8 \\
 
 For a detailed breakdown of the chess games, including the sequences of moves, failure points, and detection statistics for each board type, see Appendix FILL IN.
 
+\subsection{Manual Testing}
+
+\subsection{API}
+
+\subsection{Simulation (WebSocket)}
+
+\subsection{Postman (REST)}
+
 \subsection{Wireframe}
 \label{subsec:wireframe-results}
 
@@ -355,7 +392,7 @@ However, participants also suggested a few areas for improvement:
 
 While these findings are based on a small participant group, they offer early indications that the interface is both accessible and functional for a wide range of users. These insights will guide further development and refinement of the user interface.
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -413,7 +450,7 @@ Voting revealed a mix of preferences: some participants favored the light mode f
 
 Rather than selecting a single predefined palette, the final color scheme was assembled by combining the most highly rated elements across the top-voted variations, yielding a more tailored, user-informed visual design. Figure \ref{fig:color-palette-results} shows the distribution of votes across all tested palettes; the full set of prototypes appears in Appendix \ref{app:color-palettes}.
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
