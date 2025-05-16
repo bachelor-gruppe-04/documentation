@@ -211,7 +211,7 @@ The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chrono
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures/methods/uml/sequence.png}
+    \includegraphics[width=\linewidth]{figures/results/uml/sequence.png}
     \caption[Sequence Diagram]{Sequence Diagram}
     \label{fig:sequence}
 \end{figure}
@@ -219,14 +219,14 @@ The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chrono
 \subsubsection*{Use-Case Diagram}
 \label{subsubsec:use-case-diagram}
 
-The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primary functionalities they interact with. Admins are responsible for hardware setup and initiating the game recording process. The system autonomously handles move detection, validation, and \gls{ui} updates. Users, on the other hand, access the game remotely to spectate or download \gls{pgn} files. This diagram provides a clear overview of who interacts with the system and what capabilities are exposed, forming the basis for understanding system requirements and user expectations.
+The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primaryfunctionalities they interact with. Admins are responsible for hardware setup and initiating the game recordingprocess. The system autonomously handles move detection, validation, and \gls{ui} updates. Users, on the otherhand, access the game remotely to spectate or download \gls{pgn} files. This diagram provides a clear overview ofwho interacts with the system and what capabilities are exposed, forming the basis for understanding systemrequirements and user expectations.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures/methods/uml/use-case.png}
+    \includegraphics[width=\linewidth]{figures/results/uml/use-case.png}
     \caption{Use-Case Diagram}
     \label{fig:use-case}
-\end{figure}
+\end{figure}  
 
 \begin{figure}[h!]
     \subsubsection*{Activity Diagram}
@@ -240,7 +240,7 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system�
     \hfill
     \begin{minipage}[t]{0.45\textwidth}
         \vspace{0pt}
-        \includegraphics[width=\linewidth]{figures/methods/uml/activity-2.png}
+        \includegraphics[width=\linewidth]{figures/results/uml/activity-2.png}
         \caption[Activity Diagram]{Activity Diagram}
         \label{fig:activity}
     \end{minipage}
@@ -248,18 +248,42 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system�
 
 \newpage
 
-\subsubsection*{State Machine Diagram}
-
-A state diagram is used to represent the condition of the system or part of the system at finite instances of time. It’s a behavioral diagram and it represents the behavior using finite state transitions.
-
-\begin{itemize}
-    \item State diagrams are also referred to as State machines and State-chart Diagrams
-    \item These terms are often used interchangeably. So simply, a state diagram is used to model the dynamic behavior of a class in response to time and changing external stimuli.
-\end{itemize}
-
 \subsubsection*{Class Diagram}
 
 The most widely use UML diagram is the class diagram. It is the building block of all object oriented software systems. We use class diagrams to depict the static structure of a system by showing system's classes, their methods and attributes. Class diagrams also help us identify relationship between different classes or objects.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{figures/results//uml/class.png}
+    \caption{Class Diagram}
+    \label{fig:class}
+\end{figure}
+
+\begin{figure}[h!]
+    \subsubsection*{State Machine Diagram}
+    \label{subsubsec:state-machine-diagram}
+
+    \centering
+    \begin{minipage}[t]{0.45\textwidth}
+        A state diagram is used to represent the condition of the system or part of the system at finite instances of time. It’s a behavioral diagram and it represents the behavior using finite state transitions.
+
+        \begin{itemize}
+            \item State diagrams are also referred to as State machines and State-chart Diagrams
+            \item These terms are often used interchangeably. So simply, a state diagram is used to model the dynamic behavior of a class in response to time and changing external stimuli.
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.5\textwidth}
+        \vspace{0pt}
+        \includegraphics[width=\linewidth]{figures/results/uml/state-machine.png}
+        \caption[State Machine Diagram]{State Machine Diagram}
+        \label{fig:state-machine}
+    \end{minipage}
+\end{figure}
+
+\newpage
+
+\newpage
 
 \subsubsection*{Package Diagram}
 
@@ -270,15 +294,32 @@ We use Package Diagrams to depict how packages and their elements have been orga
     \item They are primarily used to organise class and use case diagrams.
 \end{itemize}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{figures/results//uml/package-backend.png}
+    \caption{Package Diagram for Backend}
+    \label{fig:package-backend}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{figures/results//uml/package-frontend.png}
+    \caption{Package Diagram for Frontend}
+    \label{fig:package-frontend}
+\end{figure}
 
 
-
+\newpage
 
 
 \section{Testing and Quality Assurance}
 \textit{Summary of testing performed (unit tests, integration tests, manual testing). Test coverage results or bugs discovered/fixed. If relevant, include tables or graphs showing test results or reliability.}
 
-\subsection{Manual Testing}
+\subsection{Detection}
+
+\subsubsection*{During Development}
+
+\subsubsection*{}
 
 \subsection{Wireframe}
 \label{subsec:wireframe-results}
