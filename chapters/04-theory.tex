@@ -111,13 +111,13 @@ An IoU value of 1.0 means a perfect match between the prediction and the ground 
 \label{subsec:normalization-and-scaling}
 
 Normalization in image processing involves adjusting pixel values to a consistent range, such as [0, 1] or [-1, 1]. This helps improve model performance by making the input data uniform. By adjusting pixel intensities from their original 0–255 range, normalization allows the model to process inputs more consistently, leading to faster and more stable convergence.
-\textbf{Scaling} in image processing and machine learning involves resizing images to the format required by the model, as shown in Figure~\ref{fig:nms}. 
+\textbf{Scaling} in image processing and machine learning involves resizing images to the format required by the model, as shown in Figure~\ref{fig:scaling} \cite{brownlee:normalization}. 
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/scaling.png}
     \caption[Scaling before and after]{Illustration of the scaling process in image preprocessing, resizing the image to prepare it for model input.}
-    \label{fig:nms}
+    \label{fig:scaling}
 \end{figure}
 
 
@@ -129,7 +129,7 @@ When an image is taken from a tilted viewpoint, objects that are normally rectan
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/perspective-transformation.png}
-    \caption[Perspective transformation before and after]{Perspective transformation before and after applying the algorithm, demonstrating how distortion caused by an angled viewpoint is corrected to restore the object’s original shape.}
+    \caption[Perspective transformation before and after]{Effect of perspective transformation on a distorted image. The algorithm corrects the distortion caused by an angled viewpoint, restoring the object’s original rectangular shape.}
     \label{fig:perspective-transformation}
 \end{figure}
 
@@ -148,7 +148,7 @@ This formula gives the length of the path connecting the two points. Euclidean d
 \subsection*{Delaunay Triangulation}
 \label{subsec:delaunay-triangulation}
 
-Delaunay triangulation is a method of dividing a set of points into triangles such that no point is inside the circumcircle of any triangle. The circumcircle is the circle that passes through all three vertices of a triangle. It ensures that the triangles formed are as equiangular as possible,  meaning the triangle angles are close in size, minimizing the possibility of long, thin triangles. This property makes Delaunay triangulation particularly useful for applications involving geometric data, such as finding quadrilaterals from a set of points.
+Delaunay triangulation is a method of dividing a set of points into triangles such that no point is inside the circumcircle of any triangle. The circumcircle is the circle that passes through all three vertices of a triangle. It ensures that the triangles formed are as equiangular as possible,  meaning the triangle angles are close in size, minimizing the possibility of long, thin triangles. This property makes Delaunay triangulation particularly useful for applications involving geometric data, such as finding quadrilaterals from a set of points \cite{ianthehenry:delaunay}.
 
 \section{Web}
 \label{sec:web}
@@ -156,13 +156,13 @@ Delaunay triangulation is a method of dividing a set of points into triangles su
 \subsection*{Client-Server Architecture}
 \label{subsec:client-server}
 
-Client-server architecture is a network model in which multiple clients request and receive services from a centralized server over a local network or the internet. Clients interact with the system through an application interface, while the server handles data processing. This architecture enables centralized control, scalability, and efficient resource management. See Figure~\ref{fig:client-server-architecture} \cite{liquidweb:client-server}.
+Client-server architecture is a network model in which multiple clients request and receive services from a centralized server over a local network or the internet. Clients interact with the system through an application interface, while the server handles data processing. This architecture enables centralized control, scalability, and efficient resource management \cite{liquidweb:client-server}. See Figure~\ref{fig:client-server-architecture}.
 
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/client-server-architecture.png}
-    \caption[Client-server architecture]{Client-server architecture \cite{liquidweb:client-server}}
+    \caption[Client-server architecture]{Client-server architecture \cite{liquidweb:client-server}.}
     \label{fig:client-server-architecture}
 \end{figure}
 
