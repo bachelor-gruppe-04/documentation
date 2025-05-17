@@ -2,17 +2,17 @@
 \label{chp:methods}
 
 \begin{center}
-    \textit{Here, the development process and methodologies are described in detail. This includes the design and implementation of the desktop application, the selection of tools and frameworks, and the approach to solving the problem.}
+    \textit{This chapter outlines the development process, including the design and implementation of the application, tools and framework used, and testing strategies.}
 \end{center}
+
 
 \section{Machine Learning Models}
 \label{sec:ml-models}
 
-During research into existing chess digitization methods, an open-source solution called ChessCam was identified. This project served as the foundation for the machine learning component developed in this thesis. It employed two \glspl{cnn}, one for detecting chess pieces and another for locating the squares of the chessboard \cite{github:chesscam}. \\
+As mentioned in the theory chapter, ChessCam is an open-source tool for digitizing chess games using visual recognition. During the early development phase, this project was revisited in greater depth and ultimately chosen as the foundation for the machine learning component. It employs two \glspl{cnn}, one for detecting chess pieces and another for locating the squares of the chessboard \cite{github:chesscam}. While the documentation was limited, the core logic and structure of the models were accessible in the repository. For any unclear aspects, communication with the developers helped ensure a correct and thorough understanding of the models. \\
 
-Although the documentation for the models was limited, the core logic and structure were available in the repository. When further clarification was required, it was obtained through communication with the developers, ensuring correct understanding of the models. \\
+The ChessCam repository offered models in multiple formats, including PyTorch and \gls{onnx}. To integrate them into the project, it was first necessary to understand the expected inputs and outputs. Netron was used to inspect and understand the models.
 
-The ChessCam repository offered models in multiple formats, including PyTorch and \gls{onnx}. To integrate them into the project, it was first necessary to understand the expected inputs and outputs. Netron was used to inspect and understand the models. \\
 
 
 \subsection{Piece Detection Model}
