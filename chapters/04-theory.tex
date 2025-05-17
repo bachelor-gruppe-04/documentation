@@ -8,7 +8,7 @@
 \section{Literature Review}
 \label{sec:literature-review}
 
-As technology continues to evolve, a variety of digital tools and platforms have emerged to enhance the experience of playing and analyzing chess. Leading online platforms such as \textit{chess.com} and \textit{lichess.org} provide global matchmaking, tutorials, and advanced game analysis features. These innovations have significantly transformed how chess is played and studied. \\
+As technology continues to evolve, a variety of digital tools and platforms have emerged to enhance the experience of playing and analyzing chess. Leading online platforms such as \textit{chess.com} and \textit{lichess.org} provide global matchmaking, tutorials, and advanced game analysis features. These innovations have transformed how chess is played and studied. \\
 
 In parallel with these software-based innovations, physical chessboards and tournament practices have also been modernized through the integration of digital technologies. For instance, the use of \gls{rfid} enables the digitization of \gls{otb} games. \gls{rfid} works by embedding small tags in the chess pieces, which are detected by sensors in the board to identify each move \cite{quora:shah}. This approach bridges the gap between physical gameplay and digital analysis. \\
 
@@ -66,7 +66,7 @@ After training and deploying a model, it is important to evaluate its performanc
 
 Object detection is a fundamental task in computer vision that involves both identifying and locating objects within an image. Unlike simple image classification, which only determines what objects are present, object detection also specifies where each object is by drawing a bounding box around it. This dual capability makes object detection essential for applications that require not just recognition, but also precise localization \cite{ibm:object-detection}. \\
 
-\textbf{\gls{leyolo}} is a \gls{cnn}-based architecture designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
+\textbf{\gls{leyolo}} is a \gls{cnn}-based architecture designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture allows it to achieve faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
 
 Central to object detection is the use of \textbf{bounding boxes}. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. An example of how bounding boxes are used to localize objects within an image is illustrated in Figure~\ref{fig:boundingbox}.
 
@@ -93,7 +93,7 @@ To evaluate whether a predicted bounding box is accurate, a metric called \textb
 \]
 An IoU value of 1.0 means a perfect match between the prediction and the ground truth, while 0 indicates no overlap. In practice, a prediction is considered correct if the IoU exceeds a certain threshold, commonly 0.5 \cite{ultralytics:iou}. \\
 
- Once multiple bounding box predictions have been made, some of them may overlap significantly. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. \gls{nms} removes redundant or overlapping bounding boxes and keeps only the most confident prediction. It selects the bounding box with the highest confidence score and suppresses all other boxes that have a high \gls{iou} overlap with it. This process repeats iteratively until no overlapping boxes remain above the chosen IoU threshold. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
+ Once multiple bounding box predictions have been made, some of them may overlap. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. \gls{nms} removes redundant or overlapping bounding boxes and keeps only the most confident prediction. It selects the bounding box with the highest confidence score and suppresses all other boxes that have a high \gls{iou} overlap with it. This process repeats iteratively until no overlapping boxes remain above the chosen IoU threshold. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
 \cite{thepythoncode:nms}. The effect of applying \gls{nms} is illustrated in Figure~\ref{fig:nms}.
 
 \begin{figure}[h!]
@@ -169,7 +169,9 @@ Client-server architecture is a network model in which multiple clients request 
 \subsection*{WebSocket}
 \label{subsec:websocket}
 
-WebSocket is a standardized communication protocol that enables full-duplex communication over a single \gls{tcp} connection, making it well-suited for real-time web applications. Unlike traditional \gls{http} requests which follow a request-response model, WebSocket establishes a persistent connection that allows both the client and server to send and receive data at any time. This reduces the need for polling or long polling, significantly lowering network traffic and latency. As a result, WebSocket improves the efficiency and responsiveness of data transmission, particularly in applications such as live data feeds and online games. See Figure \ref{fig:websocket-vs-http} for a comparison \cite{nodejs:websocket, apidog:websocket}.
+WebSocket is a standardized communication protocol that enables full-duplex communication over a single \gls{tcp} connection, making it well-suited for real-time web applications. Unlike traditional \gls{http} requests which follow a request-response model, WebSocket establishes a persistent connection that allows both the client and server to send and receive data at any time. This reduces the need for polling or long polling, lowering network traffic and latency. As a result, WebSocket improves the efficiency and responsiveness of data transmission, particularly in applications such as live data feeds and online games. See Figure \ref{fig:websocket-vs-http} for a comparison \cite{nodejs:websocket, apidog:websocket}.
+
+\newpage
 
 \begin{figure}[h!]
     \centering
@@ -234,7 +236,7 @@ Modern version control systems often use pull requests to facilitate code review
     \label{fig:cohesion-coupling}
 \end{figure}
 
-Cohesion and coupling significantly impact the quality and maintainability of a system.
+Cohesion and coupling impact the quality and maintainability of a system.
 High cohesion and loose coupling are desirable, as they lead to systems that are easier to test, modify, and extend. This relationship is illustrated in Figure \ref{fig:cohesion-coupling} 
 \cite{geeksforgeeks:c&c}.
 
