@@ -29,9 +29,9 @@ One area where \gls{ai} and \gls{ml} are commonly applied is \textbf{computer vi
 
 One of the most influential technologies in modern \gls{ml} is the \gls{ann}. These networks excel at handling a wide range of data types, including images, audio, and text. Different neural network architectures are suited for specific tasks. For instance, \glspl{rnn}, especially those incorporating \gls{lstm}, are effective for sequential data such as text. \\
 
-In contrast, \textbf{\glspl{cnn}} are particularly effective in processing image data. Their architecture leverages convolutional layers to extract \textbf{spatial features}. Spatial features refer to patterns related to the position and arrangement of pixels in an image, making \glspl{cnn} highly efficient in image classification and object detection. An example of such a network applied to handwritten digit classification is shown in Figure~\ref{fig:convolutional-neural-network}.  \\
+In contrast, \textbf{\glspl{cnn}} are particularly effective in processing image data. Their architecture leverages convolutional layers to extract spatial features. \textbf{Spatial features} refer to patterns related to the position and arrangement of pixels in an image, making \glspl{cnn} highly efficient in image classification and object detection. An example of such a network applied to handwritten digit classification is shown in Figure~\ref{fig:convolutional-neural-network}.  \\
 
-\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/convolutional-neural-network.png} \caption[CNN architecture for handwritten digit classification]{CNN architecture for classifying handwritten digits \cite{medium:cnn}} \label{fig:convolutional-neural-network} \end{figure}
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/convolutional-neural-network.png} \caption[CNN architecture for handwritten digit classification]{CNN architecture for classifying handwritten digits \cite{medium:cnn}.} \label{fig:convolutional-neural-network} \end{figure}
 
 A key component of \glspl{cnn} is their ability to generate \textbf{feature maps}, which are the result of detecting spatial features at different locations in the image. These feature maps transform the input into a representation that highlights important visual patterns. As the image moves through the layers of the network, these feature maps capture crucial details such as edges, textures, and more complex shapes. Each feature map is the output of a convolutional layer, where filters are applied to extract relevant features. By emphasizing the most significant aspects of the image, these maps enable the network to learn and recognize patterns. This hierarchical approach to learning visual data has made \glspl{cnn} essential in a wide range of computer vision applications, from medical diagnostics to autonomous driving \cite{encord:cnn}. \\
 
@@ -39,19 +39,24 @@ Another fundamental concept in machine learning is \textbf{supervised learning},
 
 Within supervised learning, \textbf{classification} refers to predicting categorical outcomes. For example, a classification model trained on images of geometric shapes learns to associate visual features with specific shape categories. When shown a new image, the model attempts to determine the most likely category based on its prior learning. This process is illustrated in Figure~\ref{fig:supervised-learning}, which shows how labeled data is used to train a model to make accurate predictions on unseen inputs. \\
 
-\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png} \caption[Supervised learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}} \label{fig:supervised-learning} \end{figure}
+\newpage
 
-By combining supervised learning with powerful models such as \glspl{cnn}, machine learning systems have achieved remarkable success in tasks that require human-like perception and decision-making [KILDE]. As these models become more accurate and versatile, deploying them efficiently to real-world applications becomes increasingly important.  \\
+\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png} \caption[Supervised learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}.} \label{fig:supervised-learning} \end{figure}
+
+
+
+By combining supervised learning with powerful models such as \glspl{cnn}, machine learning systems have achieved remarkable success in tasks that require human-like perception and decision-making \cite{chengyi:cnn}. As these models become more accurate and versatile, deploying them efficiently to real-world applications becomes increasingly important.  \\
 
 To facilitate deployment across diverse environments and platforms, \textbf{\gls{onnx}} provides an open-source format for representing machine learning models. It enables seamless transfer and interoperability between different frameworks, including TensorFlow and PyTorch. This open format allows developers to switch between different tools depending on their specific needs during training, deployment, or optimization \cite{roboflow:onnx}.\\
 
 Once a model is trained, \textbf{inference} is the process of using the trained model to make predictions on new, unseen data. In the context of object detection, inference involves feeding an input image into the model, which processes the image and outputs predictions, usually in the form of object classes, bounding box coordinates, and confidence scores \cite{nvidia:inference}. \\
 
-After training and deploying a model, it is essential to evaluate how well it performs. Two key performance metrics are \textbf{precision} and \textbf{recall}. \textbf{Precision} measures how many of the model’s predictions are actually correct. A high precision means that the model makes few false detections. \textbf{Recall} measures how many of the actual objects the model manages to detect. A high recall means that the model rarely misses.
+After training and deploying a model, it is important to evaluate its performance. Two key metrics are precision and recall. \textbf{Precision} measures the proportion of correct positive predictions, indicating how many of the model’s positive predictions are actually correct. High precision means few false positives. \textbf{Recall} measures the proportion of actual positives detected by the model, showing how many relevant instances are identified. High recall means few false negatives \cite{builtin:precision-recall}.
 
 \[
 \text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \]
+
 \[
 \text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \]
@@ -59,16 +64,16 @@ After training and deploying a model, it is essential to evaluate how well it pe
 \section{Object Detection}
 \label{sec:object-detection}
 
-Object detection is a fundamental task in computer vision that involves both identifying and locating objects within an image. Unlike simple image classification, which only determines what objects are present, object detection also specifies where each object is by drawing a bounding box around it. This dual capability makes object detection essential for applications that require not just recognition, but also precise localization of multiple objects. \\
+Object detection is a fundamental task in computer vision that involves both identifying and locating objects within an image. Unlike simple image classification, which only determines what objects are present, object detection also specifies where each object is by drawing a bounding box around it. This dual capability makes object detection essential for applications that require not just recognition, but also precise localization \cite{ibm:object-detection}. \\
 
 \textbf{\gls{leyolo}} is a \gls{cnn}-based architecture designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture allows it to achieve significantly faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
 
-Central to object detection is the use of concept of \textbf{bounding boxes}. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. An example of how bounding boxes are used to localize objects within an image is illustrated in Figure~\ref{fig:boundingbox}.
+Central to object detection is the use of \textbf{bounding boxes}. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. An example of how bounding boxes are used to localize objects within an image is illustrated in Figure~\ref{fig:boundingbox}.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/bbox-example.png}
-    \caption[Bounding box in object detection]{Example of a bounding box used in object detection to localize an object within an image}
+    \caption[Bounding box in object detection]{Example of a bounding box used in object detection to localize an object within an image \cite{peopleforai:boundingbox}.}
     \label{fig:boundingbox}
 \end{figure}
 
