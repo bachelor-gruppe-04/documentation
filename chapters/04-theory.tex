@@ -162,7 +162,7 @@ Client-server architecture is a network model in which multiple clients request 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/theory/client-server-architecture.png}
-    \caption[Client-server architecture]{Client-server architecture \cite{liquidweb:client-server}.}
+    \caption[Client-server architecture]{Client-server model where clients access services from a centralized server via the internet \cite{liquidweb:client-server}.}
     \label{fig:client-server-architecture}
 \end{figure}
 
@@ -217,11 +217,11 @@ Modern version control systems often use pull requests to facilitate code review
 \label{subsec:cohesion-and-coupling}
 
 \begin{quote}
-\textit{"\textbf{Cohesion} refers to the degree to which elements within a module work together to fulfill a single, well-defined purpose. \textbf{High cohesion} means that elements are closely related and focused on a single purpose, while \textbf{low cohesion} means that elements are loosely related and serve multiple purposes."} \cite{geeksforgeeks:c&c} \\
+\textit{"\textbf{Cohesion} refers to the degree to which elements within a module work together to fulfill a single, well-defined purpose. High cohesion means that elements are closely related and focused on a single purpose, while low cohesion means that elements are loosely related and serve multiple purposes"} \cite{geeksforgeeks:c&c}. \\
 \end{quote}
 
 \begin{quote}
-\textit{"\textbf{Coupling} refers to the degree of interdependence between software modules. \textbf{Tight coupling} means that modules are closely connected and changes in one module may affect other modules. \textbf{Loose coupling} means that modules are independent, and changes in one module have little impact on other modules."} \cite{geeksforgeeks:c&c} \\
+\textit{"\textbf{Coupling} refers to the degree of interdependence between software modules. Tight coupling means that modules are closely connected and changes in one module may affect other modules. Loose coupling means that modules are independent, and changes in one module have little impact on other modules"} \cite{geeksforgeeks:c&c}. \\
 \end{quote}
 
 \begin{figure}[h!]
@@ -229,7 +229,7 @@ Modern version control systems often use pull requests to facilitate code review
     \subfloat{{\includegraphics[width=0.5\linewidth]{figures/theory/cohesion.png}}}
     \subfloat{{\includegraphics[width=0.5\linewidth]{figures/theory/coupling.png}}}
 
-    \caption[Cohesion and coupling]{Cohesion and coupling \cite{geeksforgeeks:c&c}}
+    \caption[Cohesion and coupling]{Cohesion shows internal module connectivity while coupling illustrates interdependence between modules \cite{geeksforgeeks:c&c}.}
     \label{fig:cohesion-coupling}
 \end{figure}
 
@@ -240,27 +240,16 @@ High cohesion and loose coupling are desirable, as they lead to systems that are
 \subsection{Documentation}
 \label{subsec:documentation}
 
-Documentation is an essential part of software development, providing written references for developers, testers, and users. It includes materials such as \gls{api} references, build instructions, user guides, and design specifications. Documentation supports understanding, maintenance, and helps preserve knowledge over time. It should be created and maintained alongside the code to stay accurate and useful throughout the project lifecycle \cite{geeksforgeeks:doc}.
+Documentation is an essential part of software development, providing written references for developers. It includes materials such as \gls{api} references, build instructions, user guides, and design specifications. Documentation supports understanding, maintenance, and helps preserve knowledge over time. It should be created and maintained alongside the code to stay accurate and useful throughout the project lifecycle \cite{geeksforgeeks:doc}.
 
-\subsection{Testing}
+\subsection{Software testing}
 \label{subsec:testing}
 
-\subsubsection*{Virtual Machine}
-\label{subsubsec:virtual-machine}
+Software testing involves evaluating a system or its components to ensure they function correctly and meet user expectations. Two common approaches are unit testing and usability testing. \\
 
-A \gls{vm} is a software program that acts like a real computer. It runs on a physical machine (the host) and has its own virtual \gls{cpu}, memory, and storage. The \gls{vm} is separated from the host system, so anything running inside the \gls{vm} cannot directly affect the host. This makes it useful for testing, running different operating systems, or isolating software environments \cite{microsoft:virtual-machine}.
+\textbf{Unit testing} focuses on verifying individual components of a software application, such as functions, methods, or classes in isolation. The goal is to confirm that each unit performs as intended under various conditions, improving reliability and simplifying debugging \cite{geeksforgeeks:unit-test}. \\
 
-\subsubsection*{Unit Testing}
-\label{subsubsec:unit-testing}
-
-Unit testing involves testing individual components of a software application in isolation, such as functions, methods, or classes. The purpose is to ensure that each unit behaves as expected and is reliable under different conditions \cite{geeksforgeeks:unit-test}.
-
-\subsubsection*{Usability Testing}
-\label{subsec:usability-testing}
-
-Usability testing evaluates a system from the end user’s perspective, focusing on how easily users can interact with the system to accomplish their goals. It involves observing users to identify areas of confusion, inefficiency, or difficulty in the user experience \cite{geeksforgeeks:user-test}.
-
-Both qualitative data (e.g., user feedback) and quantitative data (e.g., task completion rates) are collected to assess functionality and user satisfaction. These findings are used to generate a report with recommendations for improving usability \cite{geeksforgeeks:user-test}.
+\textbf{Usability testing}, assesses the system from the end user’s perspective. It examines how easily users can navigate and interact with the interface to accomplish their goals. This process often involves observing users to identify confusion, inefficiencies, or obstacles in the user experience \cite{geeksforgeeks:user-test}. Both qualitative feedback (for example user impressions) and quantitative metrics (for example task completion rates) are collected to evaluate effectiveness and satisfaction. The insights gained are then used to recommend improvements \cite{geeksforgeeks:user-test}.
 
 \subsection{Type Safety}
 \label{subsec:type-safety}
