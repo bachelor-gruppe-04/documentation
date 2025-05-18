@@ -33,29 +33,56 @@ Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece
 \label{fig:chesscam-xcorners-metrics}
 \end{figure}
 
-\section{API}
 % To support continuous communication between the backend and frontend, the application establishes a WebSocket connection. This communication channel is used for transmitting move data as it is detected by the board recognition system. Unlike traditional \gls{http} requests, which operate on a request-response basis, WebSocket allows for continuous, two-way communication between the server and the client as described in \ref{subsubsec:websocket} \\
 
 % Once the application initiates a connection, the WebSocket remains open throughout the session. As new moves are identified on the physical board, the backend sends the corresponding move data as messages through the WebSocket. These messages are then received by the frontend, which updates the displayed move list and board state in real-time. \\
 
 % The WebSocket server also processes specific command messages to manage game state. For instance, a message labeled \texttt{RESET} prompts the frontend to clear the current move list, signaling the start of a new game, while simultaneously resetting the backend to prepare for a new tournament round. Conversely, a message labeled \texttt{INVALID} indicates an unrecognized or illegal move and does not result in any frontend updates. 
 
+% \begin{table}[h!]
+%     \centering
+%     \caption[API endpoint overview]{Overview of available FastAPI REST and WebSocket endpoints for board control and video streaming}
+%     \label{tab:api-endpoints}
+%     \begin{tabular}{L{0.15\linewidth}L{0.25\linewidth}L{0.5\linewidth}}
+%         \toprule
+%         \textbf{Method} & \textbf{Endpoint} & \textbf{Description} \\
+%         \midrule
+%         \texttt{POST} & \texttt{/reset/\{board\_id\}} & Resets a specific chess board by ID. \\
+%         \texttt{POST} & \texttt{/reset\_all} & Resets all boards in memory. \\
+%         \texttt{GET} & \texttt{/boards} & Returns a list of all active board IDs. \\
+%         \texttt{GET} & \texttt{/video/\{id\}} & Streams \gls{mjpeg} video from a specific camera (board ID). \\
+%         \texttt{WebSocket} & \texttt{/moves/\{board\_id\}} & Sends live chess move updates to subscribed WebSocket clients. \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+
+\section{API Testing Results}
+
+All \gls{rest} and WebSocket endpoints were manually tested using Postman and a custom WebSocket simulator. Each endpoint responded with the correct HTTP status codes and performed the expected action. WebSocket connections remained stable, and all transmitted moves were successfully received and rendered in the frontend interface.\\
+
+No errors, dropped messages, or unexpected behaviors were observed during testing. These results confirm that the \gls{api} layer is functionally complete and provides reliable backend–frontend communication.
+
 \begin{table}[h!]
-    \centering
-    \caption[API endpoint overview]{Overview of available FastAPI REST and WebSocket endpoints for board control and video streaming}
-    \label{tab:api-endpoints}
-    \begin{tabular}{L{0.15\linewidth}L{0.25\linewidth}L{0.5\linewidth}}
-        \toprule
-        \textbf{Method} & \textbf{Endpoint} & \textbf{Description} \\
-        \midrule
-        \texttt{POST} & \texttt{/reset/\{board\_id\}} & Resets a specific chess board by ID. \\
-        \texttt{POST} & \texttt{/reset\_all} & Resets all boards in memory. \\
-        \texttt{GET} & \texttt{/boards} & Returns a list of all active board IDs. \\
-        \texttt{GET} & \texttt{/video/\{id\}} & Streams \gls{mjpeg} video from a specific camera (board ID). \\
-        \texttt{WebSocket} & \texttt{/moves/\{board\_id\}} & Sends live chess move updates to subscribed WebSocket clients. \\
-        \bottomrule
-    \end{tabular}
+\centering
+\caption[API Test Summary]{Summary of test outcomes for REST and WebSocket endpoints}
+\label{tab:api-test-results}
+\begin{tabular}{L{0.3\linewidth}L{0.3\linewidth}L{0.3\linewidth}}
+\toprule
+\textbf{Endpoint} & \textbf{Test Performed} & \textbf{Result} \\
+\midrule
+\texttt{/reset/\{board\_id\}} & Reset board during simulation & \texttt{200 OK}, board reset confirmed \\
+\texttt{/reset\_all} & Reset multiple boards & \texttt{200 OK}, all boards reset \\
+\texttt{/boards} & Retrieve active board IDs & \texttt{200 OK}, correct IDs listed \\
+\texttt{/video/\{id\}} & Stream board camera video & \texttt{200 OK}, stream rendered \\
+\texttt{/moves/\{board\_id\}} & Receive move updates via WebSocket & Moves delivered and displayed in real time \\
+\bottomrule
+\end{tabular}
 \end{table}
+
+As summarized in Table \ref{tab:api-test-results}, all API endpoints were successfully verified through practical testing and were deemed production-ready.
+
+
+
 
 % \begin{code}[h!]
 % \caption{Reset Specific Board}
