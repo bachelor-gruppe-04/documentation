@@ -130,15 +130,14 @@ In addition to manual code review, automated workflows were implemented using Gi
 \begin{figure}[h!] \centering 
 \includegraphics[width=0.75\linewidth]{figures/results/workflows/latex.png}\caption[Upload LaTeX workflow]{The workflow for update documentation with code.}\label{fig:workflow-latex} \end{figure}
 
+
+
 \section{Technical Achievements}
 
 \subsection{Architecture Overview}
 \label{subsec:diagrams}
 
 To provide a comprehensive understanding of the system architecture and interaction flow, several \gls{uml} diagrams were created. These diagrams model different aspects of the live chess game digitization system, from component interactions and activity flow to user roles and use cases.
-
-
-
 
 
 
@@ -153,10 +152,6 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system�
     \caption[Use-case diagram]{Use-case diagram outlining the system’s main actors and their interactions with key functionalities.}
     \label{fig:use-case}
 \end{figure}  
-
-
-
-
 
 
 
@@ -175,15 +170,6 @@ The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chrono
 
 
 
-
-
-
-
-
-
-
-
-
 \subsubsection*{Class Diagram}
 
 The class diagram in Figure \ref{fig:class} provides a high-level overview of the system’s object-oriented design, detailing the core components involved in the chess digitization process. The central class, \texttt{App}, acts as the main entry point for the application, orchestrating the initialization of system services and user interface components. It interacts with the \texttt{BoardFactory} to generate multiple \texttt{Board} instances, each representing a physical chessboard, and connects to GUI elements such as \texttt{ProgressBarTopLevel} and \texttt{BoardResetSelectorTopLevel}, which support board resets and progress tracking during gameplay. \\
@@ -196,9 +182,6 @@ Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \t
 \caption[Class Diagram]{Class diagram of the chess digitization system.}
 \label{fig:class}
 \end{figure}
-
-
-
 
 
 
@@ -224,11 +207,6 @@ On the frontend, shown in Figure \ref{fig:package-frontend}, the React applicati
 
 
 
-
-
-
-
-
 \begin{figure}[H]
     \subsubsection*{Activity Diagram}
     \label{subsubsec:activity-diagram}
@@ -246,10 +224,6 @@ On the frontend, shown in Figure \ref{fig:package-frontend}, the React applicati
         \label{fig:activity}
     \end{minipage}
 \end{figure}
-
-
-
-
 
 
 
@@ -271,13 +245,6 @@ On the frontend, shown in Figure \ref{fig:package-frontend}, the React applicati
         \label{fig:state-machine}
     \end{minipage}
 \end{figure}
-
-
-
-
-
-
-
 
 
 
