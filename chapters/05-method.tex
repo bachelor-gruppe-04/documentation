@@ -9,7 +9,8 @@
 \section{Machine Learning Models}
 \label{sec:ml-models}
 
-As mentioned in the theory chapter, ChessCam is an open-source tool for digitizing chess games using visual recognition. During the early development phase, this project was revisited in greater depth and ultimately chosen as the foundation for the machine learning component. It employs two \glspl{cnn}, one for detecting chess pieces and another for locating the squares of the chessboard \cite{github:chesscam}. While the documentation was limited, the core logic and structure of the models were accessible in the repository. For any unclear aspects, communication with the developers helped ensure a correct understanding of the models. \\
+As mentioned in the section \ref{sec:literature-review}, 
+ChessCam is an open-source tool for digitizing chess games using visual recognition. During the early development phase, this project was revisited in greater depth and ultimately chosen as the foundation for the machine learning component. It employs two \glspl{cnn}, one for detecting chess pieces and another for locating the squares of the chessboard \cite{github:chesscam}. While the documentation was limited, the core logic and structure of the models were accessible in the repository. For any unclear aspects, communication with the developers helped ensure a correct understanding of the models. \\
 
 The ChessCam repository offered models in multiple formats, including PyTorch and \gls{onnx}. To integrate them into the project, it was first necessary to understand the expected inputs and outputs. Netron was used to inspect and understand the models.
 
@@ -182,29 +183,27 @@ Each frame captured by the camera was processed by the two models. Before infere
 
 After inference, the models produce the prediction outputs: [1, 16, 2835] for pieces and [1, 5, 2835] for intersection points. To identify the most reliable predictions, low-confidence entries are first filtered out. Furthermore, \gls{nms} was applied to further refine the results. This process ensures only the most accurate locations for the pieces and intersections were retained. \\
 
-To identify the board corners of the chessboard, Delaunay triangulation was used. Delaunay triangulation was applied to the intersection points to generate a set of candidate triangles. By iterating over these triangles and examining their shared vertices, the algorithm identifies potential quadrilaterals (four-sided shapes) that represent the four corners of the chessboard. Once a list of candidate quadrilaterals was generated, each was scored based on how well it fit the original intersection points. The quadrilateral with the highest score was then selected as the most likely representation of the board corners.
-\\
+To identify the board corners of the chessboard, Delaunay triangulation was used. Delaunay triangulation was applied to the intersection points to generate a set of candidate triangles. By iterating over these triangles and examining their shared vertices, the algorithm identifies potential quadrilaterals (four-sided shapes) that represent the four corners of the chessboard. Once a list of candidate quadrilaterals was generated, each was scored based on how well it fit the original intersection points. The quadrilateral with the highest score was then selected as the most likely representation of the board corners. \\
 
 With the corners identified, the next step was to correct the distortion caused by the camera angle. When viewed at an angle, the board appears skewed due to varying distances between the camera and different parts of the board. This distortion can be corrected by using a perspective transformation. Specifically, the inverse of the transformation matrix responsible for the distortion is computed. By applying this inverse to the distorted image, the transformation that warped the image is reversed, effectively 'flattening' the distorted chessboard back to its ideal, top-down view. Once the inverse matrix is applied, the resulting coordinates provide the corrected positions of the corners in the distorted image. \\
 
 With the distortion corrected, the board is treated as an 8×8 grid of uniformly sized squares, each occupying a unit-length cell. The center of each square lies midway between its edges, resulting in center coordinates that range from 0.5 to 7.5 in both the x and y axes. The center of the first square is at (0.5, 0.5), the second at (1.5, 0.5), and so on up to (7.5, 7.5). \\
 
 To finalize the board orientation, the average center of all black and white pieces was computed. The board was then rotated in four 90-degree increments. For each rotation, the midpoints of the expected white and black sides were calculated as the average coordinates between pairs of corners. Specifically, the midpoint for the white side was calculated between ‘a1’ and ‘h1’, and for the black side between ‘a8’ and ‘h8’. The rotation minimizing the distance between piece centers and these midpoints was selected as the correct alignment. Based on this orientation, the labels ‘a1’, ‘h1’, ‘a8’, and ‘h8’ were assigned to the corners of the chessboard. A visualization of this process is shown in Figure~\ref{fig:board_label_assignment}.
- 
-% \newpage
+
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.70\linewidth]{figures/methods/ml-models/label_assignment_board.jpg}
-\caption[Assigning labels to chessboard]{The white and black circles represent the average centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides \cite{vectorstock:chessboard-svg}.}
+\caption[Assigning labels to chessboard]{The white and black circles represent the average centers of the white and black pieces. The red circles indicate the midpoints between the corners on the white and black sides. The black arrows show the distances between the midpoints and the corresponding piece centers \cite{vectorstock:chessboard-svg}.}
 \label{fig:board_label_assignment}
 \end{figure}
 
 
 \subsubsection*{Move detection}
-After detecting the chessboard and pieces, the application continuously processes each incoming video frame to determine whether a move has occurred. For every frame, the internal board state is updated based on the observed positions of the chess pieces. \\
+After detecting the chessboard and pieces, the application continuously processes each incoming video frame to determine whether a move has occurred. For every frame, the internal board state is updated based on the observed positions of the chess pieces.
 
-To ensure stability, the system uses a decay-based mechanism that blends the current detections with the previous state. This approach helps smooth out transient errors caused by occlusions or momentary inconsistencies in the video feed. Additionally, updates are throttled to fixed intervals, reducing computational overhead and avoiding unnecessary changes due to minor fluctuations in detection. \\
+To ensure stability, the system uses a decay-based mechanism that blends the current detections with the previous state. This approach helps smooth out transient errors caused by occlusions or momentary inconsistencies in the video feed. Additionally, updates are throttled to fixed intervals, reducing computational overhead and avoiding unnecessary changes due to minor fluctuations in detection.
 
 Once the updated board configuration is determined, it is compared to the set of legal moves for the current state. If a high-confidence legal move is identified, it is registered and applied. The move is then committed to the internal board state and sent to the frontend via the WebSocket connection to support ongoing analysis and visualization.
 
