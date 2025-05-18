@@ -137,19 +137,10 @@ In addition to manual code review, automated workflows were implemented using Gi
 
 To provide a comprehensive understanding of the system architecture and interaction flow, several \gls{uml} diagrams were created. These diagrams model different aspects of the live chess game digitization system, from component interactions and activity flow to user roles and use cases.
 
-\subsubsection*{Sequence Diagram}
-\label{subsubsec:sequence-diagram}
 
-The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
 
-% \newpage
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\linewidth]{figures/results/uml/sequence.png}
-    \caption[Sequence diagram]{Sequence diagram showing the interaction flow between system components.}
-    \label{fig:sequence}
-\end{figure}
+
 
 \subsubsection*{Use-Case Diagram}
 \label{subsubsec:use-case-diagram}
@@ -158,12 +149,87 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the systemâ
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\linewidth]{figures/results/uml/use-case.png}
+    \includegraphics[width=0.75\linewidth]{figures/results/uml/use-case.png}
     \caption[Use-case diagram]{Use-case diagram outlining the systemâ€™s main actors and their interactions with key functionalities.}
     \label{fig:use-case}
 \end{figure}  
 
+
+
+
+
+
+
+\subsubsection*{Sequence Diagram}
+\label{subsubsec:sequence-diagram}
+
+The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
+
+
 \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/results/uml/sequence.png}
+    \caption[Sequence diagram]{Sequence diagram showing the interaction flow between system components.}
+    \label{fig:sequence}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection*{Class Diagram}
+
+The class diagram in Figure \ref{fig:class} provides a high-level overview of the systemâ€™s object-oriented design, detailing the core components involved in the chess digitization process. The central class, \texttt{App}, acts as the main entry point for the application, orchestrating the initialization of system services and user interface components. It interacts with the \texttt{BoardFactory} to generate multiple \texttt{Board} instances, each representing a physical chessboard, and connects to GUI elements such as \texttt{ProgressBarTopLevel} and \texttt{BoardResetSelectorTopLevel}, which support board resets and progress tracking during gameplay. \\
+
+Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \texttt{Detector} for move recognition using computer vision. It maintains a history of moves, manages WebSocket clients, and offers methods for validating and resetting board states. The \texttt{BoardService} class handles the overall control flow, managing boards, processing moves, and starting detector threads. Error handling is supported through a custom \texttt{CameraDoesNotExistError} exception. This structure ensures a clear separation of concerns, supporting modular development and maintainability across the data, control, and interface layers of the system.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/results//uml/class.png}
+\caption[Class Diagram]{Class diagram of the chess digitization system.}
+\label{fig:class}
+\end{figure}
+
+
+
+
+
+
+\subsubsection*{Package Diagram}
+
+Figure \ref{fig:package-backend} illustrates the package structure of the backend system, organized around a modular architecture. The core logic resides in the \texttt{logic} package, which encapsulates domain-specific functionality such as board state detection, computer vision, mathematical operations, and supporting utilities. This modular breakdown, particularly in subpackages like \texttt{machine\_learning}, promotes separation of concerns and enhances reusability and testability. Alongside it, the \texttt{api} package handles external communication through submodules for data entities, service logic, and route definitions using FastAPI. Supporting components include static \texttt{resources} and the application entry point \texttt{main.py}, which binds the service and routing layers. This structure enables clean integration between backend services, data flow, and \gls{api} endpoints. \\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{figures/results/uml/package-backend.png}
+    \caption[Package Diagram for Backend]{Package Diagram for the backend package structure.}
+    \label{fig:package-backend}
+\end{figure}
+
+On the frontend, shown in Figure \ref{fig:package-frontend}, the React application follows a conventional structure under the \texttt{src} directory. Key folders include \texttt{components} for reusable \gls{ui} elements like camera and board displays, \texttt{pages} for route-linked views, and \texttt{layouts} for defining common structural components across pages, such as headers or navigation bars. The \texttt{data} directory supports configuration or mock content during development. Outside \texttt{src}, the \texttt{public} folder holds static assets like \texttt{index.html}, while \texttt{App.tsx} and \texttt{index.css} define the main logic and styling. This organization supports maintainability and scalability by clearly separating visual components, logic, routing, and configuration.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{figures/results/uml/package-frontend.png}
+    \caption[Package Diagram for Frontend]{Package Diagram for the frontend package structure.}
+    \label{fig:package-frontend}
+\end{figure}
+
+
+
+
+
+
+
+
+\begin{figure}[H]
     \subsubsection*{Activity Diagram}
     \label{subsubsec:activity-diagram}
     
@@ -176,106 +242,44 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the systemâ
     \begin{minipage}[t]{0.45\textwidth}
         \vspace{0pt}
         \includegraphics[width=\linewidth]{figures/results/uml/activity-2.png}
-        \caption[Activity Diagram]{Activity diagram showing the operational flow of move detection, validation, and game state updates.}
+        \caption[Activity Diagram]{Activity diagram illustrating the system workflow.}
         \label{fig:activity}
     \end{minipage}
 \end{figure}
 
-\newpage
 
-\subsubsection*{Class Diagram}
 
-The class diagram, shown in Figure~4.12, provides a static structural representation of the systemâ€™s object-oriented design. It outlines the key classes involved in managing the chess digitization process and illustrates their attributes, methods, and inter-class relationships. \\
 
-At the top level, the App class serves as the main entry point for the desktop GUI application. It coordinates system setup and user interactions by instantiating core components such as BoardFactory, BoardService, and GUI elements like ProgressBarTopLevel and BoardResetSelectorTopLevel. These GUI components are responsible for managing camera setup, board resets, and visual feedback during live operation. \\
 
-The BoardFactory class is responsible for creating and storing multiple Board objects, each representing a physical chessboard. Each Board instance aggregates a Camera object that interfaces with a connected webcam and a Detector instance that performs move detection using computer vision techniques. The Board class also maintains a move history and connected WebSocket clients, and exposes functionality for validating moves and resetting board state. \\
 
-The BoardService class serves as the central controller for managing chess game flow. It interacts with Board instances to reset games, send moves to clients, and initiate asynchronous detector threads. The Detector class encapsulates the video processing logic, while CameraDoesNotExistError is a custom exception used to handle invalid hardware initialization. \\
 
-Together, this diagram captures both the architectural hierarchy and the control flow pathways within the backend system. It supports an object-oriented implementation that cleanly separates concerns between data models, control logic, and user-facing components. \\
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\linewidth]{figures/results//uml/class.png}
-    \caption{Class Diagram}
-    \label{fig:class}
-\end{figure}
-
-\begin{figure}[h!]
+\begin{figure}[H]
     \subsubsection*{State Machine Diagram}
     \label{subsubsec:state-machine-diagram}
 
     \centering
-    \begin{minipage}[t]{0.45\textwidth}
-        The state machine diagram, shown in Figure~4.13, models the behavior of the move detection and validation subsystem within the chess digitization process. It depicts the distinct internal states the system transitions through when a player makes a physical move on the chessboard, and how the system responds accordingly. \\
+    \begin{minipage}[t]{0.5\textwidth}
+        Figure \ref{fig:state-machine} illustrates the state machine governing move detection and validation in the chess digitization system. The process begins in a waiting state, idling until a physical move is made. It then enters the detection phase, where the system captures and analyzes images using a machine learning model to identify the move. \\
 
-        The process begins in the WaitingForMove state, where the system idles until a physical move is detected. Once a move is made, the system enters the DetectingMove composite state, which handles the image capture and processing pipeline. Inside this state, the DetectMove substate uses camera input to generate board imagery, and the MoveDetected substate represents the output generated by the machine learning model responsible for move recognition. \\
-
-        Upon detecting a move, the system transitions to the ValidatingMove composite state. Here, the CheckMove substate verifies the legality of the detected move using chess rules. If the move is valid, the system enters the MoveValid state and transitions to DisplayMove, where the move is sent to the user interface for live display. The system then loops back to WaitingForMove to process the next move. If the move is invalid, the system transitions to the MoveInvalid state and terminates the process flow. \\
-
-        This diagram highlights the system's reactive and event-driven nature, emphasizing how it transitions between detection, validation, and feedback states in response to player actions.
+        Once detected, the system transitions to a validation phase, where the move is checked for legality. Valid moves are displayed on the \gls{ui} and the system returns to its waiting state. Invalid moves lead to process termination. This diagram emphasizes the reactive, event-driven flow of the system, moving from detection to validation and feedback in response to user actions.
     \end{minipage}
     \hfill
-    \begin{minipage}[t]{0.5\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
         \vspace{0pt}
         \includegraphics[width=\linewidth]{figures/results/uml/state-machine.png}
-        \caption[State Machine Diagram]{State Machine Diagram}
+        \caption[State Machine Diagram]{State machine for move detection and validation.}
         \label{fig:state-machine}
     \end{minipage}
 \end{figure}
 
-\newpage
 
-\subsubsection*{Package Diagram}
 
-The package diagram in Figure~4.14 presents the structural organization of the backend codebase. It follows a modular design under a primary logic package, which encapsulates the system's domain-specific functionality and separates concerns into smaller, well-defined subpackages. \\
 
-Within logic, the machine_learning package contains submodules such as board_state, detection, maths, utilities, and view, each representing a specialized aspect of the ML pipeline used to analyze and interpret chessboard states. This modular structure facilitates easier testing and code reuse, particularly for board detection and move classification logic. \\
 
-The api package manages routing and external interactions. It is divided into entity, routes, and services: \\
 
-entity defines core data structures used in communication. \\
 
-routes registers FastAPI endpoints. \\
 
-services contains application logic that serves as the bridge between routes and the underlying model or system state. \\
 
-Other components include resources, for static/shared files, and main.py, the central entry point that initializes the application and ties together the service and routing layers. This diagram highlights how the backend is organized around functional domains, enabling clear separation between system logic, API interfaces, and resource management. \\
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\linewidth]{figures/results//uml/package-backend.png}
-    \caption{Package Diagram for Backend}
-    \label{fig:package-backend}
-\end{figure}
-
-Figure~4.15 illustrates the package-level structure of the frontend React application. The system is organized into multiple directories under the src folder, following standard React project conventions. \\
-
-Key subdirectories include: \\
-
-components: reusable UI elements such as camera, chessboard, and pgn display components. \\
-
-pages: complete views like boardView, gamePreview, and tournamentView, each mapping to different routes in the application. \\
-
-hooks: custom React hooks used for shared logic across components. \\
-
-layouts: structural UI wrappers that maintain consistency across views. \\
-
-data: potential mock or config data used to populate or simulate content during development. \\
-
-Additionally, the public directory contains index.html, the static base template, while files like App.tsx and index.css serve as the core application logic and styling entry points, respectively. \\
-
-This package structure reinforces maintainability and reusability by distinguishing between logic layers, reusable components, routing views, and styling/configuration resources. It reflects a scalable frontend architecture tailored to support interactive, live-updating chess content.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\linewidth]{figures/results//uml/package-frontend.png}
-    \caption{Package Diagram for Frontend}
-    \label{fig:package-frontend}
-\end{figure}
-
-\newpage
 
 \section{Testing and Quality Assurance}
 
@@ -371,7 +375,7 @@ Figure \ref{fig:move-failures} shows the number of failed games (i.e., games whe
 \end{figure}
 
 
-Table~\ref{tab:different-errors} categorizes the types of detection failures for each board type. The majority of failures were due to a complete lack of detection within the allotted time window. Incorrect detections (the model detecting a move but interpreting it wrongly) were less frequent but more common on the wooden board, accounting for 8 out of 48 failures, compared to just 1 on the plastic board.  \\
+Table \ref{tab:different-errors} categorizes the types of detection failures for each board type. The majority of failures were due to a complete lack of detection within the allotted time window. Incorrect detections (the model detecting a move but interpreting it wrongly) were less frequent but more common on the wooden board, accounting for 8 out of 48 failures, compared to just 1 on the plastic board.  \\
 
 \begin{table}[htbp]
 \centering
