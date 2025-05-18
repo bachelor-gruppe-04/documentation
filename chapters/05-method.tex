@@ -443,6 +443,7 @@ The webcam was mounted above the board at an angle of approximately 60–70\si{\
     \label{fig:setup}
 \end{figure}
 
+
 \subsection{API}
 
 \subsubsection*{WebSocket Testing (Live Data Simulation)}
@@ -452,9 +453,9 @@ To test the real-time communication via WebSocket, a lightweight simulator was i
 
 \subsubsection*{REST API Testing with Postman}
 
-To ensure the correct functionality of the \gls{rest}ful \gls{api} endpoints, Postman was used as a testing tool. Postman allows manual interaction with \gls{http} endpoints and is well-suited for verifying both request structure and server responses. Each of the implemented endpoints was tested individually, including actions such as resetting individual boards, resetting all boards simultaneously, retrieving the list of active boards, and requesting video streams from specific board cameras. \\
+To ensure the correct functionality of the \gls{rest}ful \gls{api} endpoints, Postman was used as a testing tool. Postman allows manual interaction with \gls{http} endpoints and is well-suited for verifying both request structure and server responses. Each of the implemented endpoints was tested individually, including actions such as resetting individual boards, resetting all boards simultaneously, retrieving the list of active boards, and requesting video streams from specific board cameras.  \\
 
-Figure~\ref{fig:postman-rest-tests} illustrates a sample of the \gls{api} calls tested through Postman, where various \texttt{POST} and \texttt{GET} requests were issued to endpoints such as \texttt{/reset/1}, \texttt{/video/1}, and \texttt{/boards}. These tests confirmed that the backend services responded as expected, including successful status codes, valid response payloads, and the intended effect on the system state. This form of manual \gls{rest} testing provided an effective means of validating \gls{api} correctness before integrating with the frontend interface.
+Figure \ref{fig:postman-rest-tests} illustrates a sample of the \gls{api} calls tested through Postman, where various \texttt{POST} and \texttt{GET} requests were issued to endpoints such as \texttt{/reset/1}, \texttt{/video/1}, and \texttt{/boards}. These tests confirmed that the backend services responded as expected, including successful status codes, valid response payloads, and the intended effect on the system state. This form of manual \gls{rest} testing provided an effective means of validating API correctness before integrating with the frontend interface.
 
 \begin{figure}[h!]
     \centering
@@ -462,6 +463,8 @@ Figure~\ref{fig:postman-rest-tests} illustrates a sample of the \gls{api} calls 
     \caption{Postman REST API Tests}
     \label{fig:postman-rest-tests}
 \end{figure}
+
+
 
 \subsection{Wireframe testing}
 \label{subsubsec:user-centered-design}
