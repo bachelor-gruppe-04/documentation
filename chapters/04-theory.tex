@@ -23,7 +23,7 @@ Advancements in \gls{ai} have also enabled the development of tools that automat
 
 A subfield of \gls{ai} is \gls{ml}, which focuses on enabling computers to learn from data and improve their performance on various tasks without being explicitly programmed. ML techniques are widely used in many AI applications due to their ability to generalize from examples. \\
 
-One area where \gls{ai} and \gls{ml} are commonly applied is \textbf{computer vision}. This field enables machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive and understand visual information, as illustrated in Figure~\ref{fig:computer-vision}.
+One area where \gls{ai} and \gls{ml} are commonly applied is \textbf{computer vision}. This field enables machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive and understand visual information, as illustrated in Figure \ref{fig:computer-vision}.
 
 \begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/computer-vision.png} \caption[Computer vision vs. human vision]{Comparison of computer vision and human vision, illustrating the similarities and differences in processing visual data \cite{turing:computer-vision}.} \label{fig:computer-vision} \end{figure}
 
@@ -41,7 +41,11 @@ Within supervised learning, \textbf{classification} refers to predicting categor
 
 \newpage
 
-\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png} \caption[Supervised learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}.} \label{fig:supervised-learning} \end{figure}
+\begin{figure}[h!] 
+    \centering 
+    \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/supervised-learning.png} \caption[Supervised learning with labeled data]{Supervised learning process using labeled data for classification \cite{tpointtech:supervised-learning}.} 
+    \label{fig:supervised-learning} 
+\end{figure}
 
 
 
@@ -68,7 +72,7 @@ Object detection is a fundamental task in computer vision that involves both ide
 
 \textbf{\gls{leyolo}} is a \gls{cnn}-based architecture designed for real-time object detection. It is a lightweight version of \gls{yolo} where its simplified architecture allows it to achieve faster inference times. This makes it particularly suitable for real-time applications, where quick detection is more important than achieving the highest possible accuracy. Like its predecessor, it divides an image into a grid, and each cell predicts whether an object is present, along with its bounding box coordinates \cite{openreview:leyolo}.\\
 
-Central to object detection is the use of \textbf{bounding boxes}. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. An example of how bounding boxes are used to localize objects within an image is illustrated in Figure~\ref{fig:boundingbox}.
+Central to object detection is the use of \textbf{bounding boxes}. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. An example of how bounding boxes are used to localize objects within an image is illustrated in Figure \ref{fig:boundingbox}.
 
 \begin{figure}[h!]
     \centering
@@ -77,7 +81,7 @@ Central to object detection is the use of \textbf{bounding boxes}. Bounding boxe
     \label{fig:boundingbox}
 \end{figure}
 
-To improve detection accuracy across different object sizes and shapes, models use \textbf{anchor boxes}. Anchor boxes are predefined bounding boxes of various sizes and aspect ratios, used as reference points for object detection. The sizes and aspect ratios of anchor boxes are determined by analyzing the object dimensions in the training dataset. The anchor boxes are placed over the feature map, which represents a transformed version of the input image. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}. An illustration of how anchor boxes are positioned on the feature map is shown in Figure~\ref{fig:anchor-box}.
+To improve detection accuracy across different object sizes and shapes, models use \textbf{anchor boxes}. Anchor boxes are predefined bounding boxes of various sizes and aspect ratios, used as reference points for object detection. The sizes and aspect ratios of anchor boxes are determined by analyzing the object dimensions in the training dataset. The anchor boxes are placed over the feature map, which represents a transformed version of the input image. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}. An illustration of how anchor boxes are positioned on the feature map is shown in Figure \ref{fig:anchor-box}.
 
 \begin{figure}[h!]
     \centering
@@ -94,7 +98,7 @@ To evaluate whether a predicted bounding box is accurate, a metric called \textb
 An IoU value of 1.0 means a perfect match between the prediction and the ground truth, while 0 indicates no overlap. In practice, a prediction is considered correct if the IoU exceeds a certain threshold, commonly 0.5 \cite{ultralytics:iou}. \\
 
  Once multiple bounding box predictions have been made, some of them may overlap. To handle this, a post-processing technique called \textbf{\gls{nms}} is used. \gls{nms} removes redundant or overlapping bounding boxes and keeps only the most confident prediction. It selects the bounding box with the highest confidence score and suppresses all other boxes that have a high \gls{iou} overlap with it. This process repeats iteratively until no overlapping boxes remain above the chosen IoU threshold. By applying \gls{nms}, object detectors produce cleaner and more accurate results, preventing multiple detections of the same object
-\cite{thepythoncode:nms}. The effect of applying \gls{nms} is illustrated in Figure~\ref{fig:nms}.
+\cite{thepythoncode:nms}. The effect of applying \gls{nms} is illustrated in Figure \ref{fig:nms}.
 
 \begin{figure}[h!]
     \centering
@@ -111,7 +115,7 @@ An IoU value of 1.0 means a perfect match between the prediction and the ground 
 \label{subsec:normalization-and-scaling}
 
 Normalization in image processing involves adjusting pixel values to a consistent range, such as [0, 1] or [-1, 1]. This helps improve model performance by making the input data uniform. By adjusting pixel intensities from their original 0–255 range, normalization allows the model to process inputs more consistently, leading to faster and more stable convergence.
-\textbf{Scaling} in image processing and machine learning involves resizing images to the format required by the model, as shown in Figure~\ref{fig:scaling} \cite{brownlee:normalization}. 
+\textbf{Scaling} in image processing and machine learning involves resizing images to the format required by the model, as shown in Figure \ref{fig:scaling} \cite{brownlee:normalization}. 
 
 \begin{figure}[h!]
     \centering
@@ -166,12 +170,25 @@ Client-server architecture is a network model in which multiple clients request 
     \label{fig:client-server-architecture}
 \end{figure}
 
+\subsection*{REST}
+
+A \gls{rest} \gls{api} is a programming interface that adheres to architectural limitations such as stateless communication and cacheable data. It isn’t a standard or a protocol. While REST \glspl{api} can be used via a variety of communication protocols, they are most typically accessed over \glspl{http}. \\
+
+To understand the \gls{rest}, first we need to understand some key, The person or program that uses the \gls{api} is known as a client. The client sends queries to the \gls{api} in order to get information or make changes to the application. Your web browser is a client; it communicates with \glspl{api} on many websites to obtain page content. Your browser receives the required information and displays it on your screen. Any item of information that the \gls{api} may supply to the client is referred to as a resource. The program that receives client requests uses a server, which holds the resources that the client desires. The server has an \gls{api} that allows it to interact with clients without providing them direct access to database content.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/theory/rest.png}
+    \caption{REST API Model}
+    \label{fig:enter-label}
+\end{figure}
+
 \subsection*{WebSocket}
 \label{subsec:websocket}
 
 WebSocket is a standardized communication protocol that enables full-duplex communication over a single \gls{tcp} connection, making it well-suited for real-time web applications. Unlike traditional \gls{http} requests which follow a request-response model, WebSocket establishes a persistent connection that allows both the client and server to send and receive data at any time. This reduces the need for polling or long polling, lowering network traffic and latency. As a result, WebSocket improves the efficiency and responsiveness of data transmission, particularly in applications such as live data feeds and online games. See Figure \ref{fig:websocket-vs-http} for a comparison \cite{nodejs:websocket, apidog:websocket}.
 
-\newpage
+% \newpage
 
 \begin{figure}[h!]
     \centering
@@ -186,7 +203,6 @@ WebSocket is a standardized communication protocol that enables full-duplex comm
 Design is a fundamental aspect of creating digital products, focusing on how users interact with and experience technology. It encompasses various disciplines, including interaction design, which aims to make digital interfaces intuitive and user-friendly. Concepts such as wireframes, accessibility, and the \gls{wcag} are often introduced to emphasize the importance of structure, usability, and universal access. \\
 
 \textbf{Wireframes} are essential tools in the early stages of interface design. They act as simplified blueprints for websites and applications, allowing designers to plan the placement of elements such as buttons, text, and images. Wireframes enable teams to focus on layout, content structure, and user flow before any visual styling or branding is applied \cite{balsamiq:wireframe}. Separating form from function allows designers to prioritize usability and navigation before applying visual design. \\
-
 
 Another essential element in design of digital solutions is \textbf{accessibility}. Universal design ensures that products are usable by as many people as possible, regardless of disabilities \cite{uutilsynet:universellutforming}. This involves considering users with visual, auditory, motor, or cognitive impairments from the beginning of the design process. By planning for accessibility early, designers not only meet legal and ethical standards, but also improve the overall user experience for everyone. Inclusive design benefits a wider audience and reduces the need for costly adaptations later in development. \\
 
@@ -242,7 +258,7 @@ High cohesion and loose coupling are desirable, as they lead to systems that are
 
 Documentation is an essential part of software development, providing written references for developers. It includes materials such as \gls{api} references, build instructions, user guides, and design specifications. Documentation supports understanding, maintenance, and helps preserve knowledge over time. It should be created and maintained alongside the code to stay accurate and useful throughout the project lifecycle \cite{geeksforgeeks:doc}.
 
-\subsection{Software testing}
+\subsection{Software Testing}
 \label{subsec:testing}
 
 Software testing involves evaluating a system or its components to ensure they function correctly and meet user expectations. Two common approaches are unit testing and usability testing. \\

@@ -21,14 +21,14 @@ Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figures/results/machine-learning/piece-metrics.png}
+\includegraphics[width=0.75\textwidth]{figures/results/machine-learning/piece-metrics.png}
 \caption[Performance piece detection (ChessCam)]{Performance metrics for piece detection from ChessCam repository \cite{wandb:piece-detection}.}
 \label{fig:chesscam-piece-metrics}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figures/results/machine-learning/xcorners-metrics.png}
+\includegraphics[width=0.75\textwidth]{figures/results/machine-learning/xcorners-metrics.png}
 \caption[Performance xcorners detection (ChessCam)]{Performance metrics for xcorners detection from ChessCam repository \cite{wandb:xcorner-detection}.}
 \label{fig:chesscam-xcorners-metrics}
 \end{figure}
@@ -58,7 +58,7 @@ Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece
 
 \section{API Testing Results}
 
-All \gls{rest} and WebSocket endpoints were manually tested using Postman and a custom WebSocket simulator. Each endpoint responded with the correct HTTP status codes and performed the expected action. WebSocket connections remained stable, and all transmitted moves were successfully received and rendered in the frontend interface.\\
+All \gls{rest} and WebSocket endpoints were manually tested using Postman and a custom WebSocket simulator. Each endpoint responded with the correct \gls{http} status codes and performed the expected action. WebSocket connections remained stable, and all transmitted moves were successfully received and rendered in the frontend interface.\\
 
 No errors, dropped messages, or unexpected behaviors were observed during testing. These results confirm that the \gls{api} layer is functionally complete and provides reliable backend–frontend communication.
 
@@ -79,7 +79,7 @@ No errors, dropped messages, or unexpected behaviors were observed during testin
 \end{tabular}
 \end{table}
 
-As summarized in Table \ref{tab:api-test-results}, all API endpoints were successfully verified through practical testing and were deemed production-ready.
+As summarized in Table \ref{tab:api-test-results}, all \gls{api} endpoints were successfully verified through practical testing and were deemed production-ready.
 
 
 
@@ -199,7 +199,7 @@ The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chrono
 
 \subsubsection*{Class Diagram}
 
-The class diagram in Figure \ref{fig:class} provides a high-level overview of the system’s object-oriented design, detailing the core components involved in the chess digitization process. The central class, \texttt{App}, acts as the main entry point for the application, orchestrating the initialization of system services and user interface components. It interacts with the \texttt{BoardFactory} to generate multiple \texttt{Board} instances, each representing a physical chessboard, and connects to GUI elements such as \texttt{ProgressBarTopLevel} and \texttt{BoardResetSelectorTopLevel}, which support board resets and progress tracking during gameplay. \\
+The class diagram in Figure \ref{fig:class} provides a high-level overview of the system’s object-oriented design, detailing the core components involved in the chess digitization process. The central class, \texttt{App}, acts as the main entry point for the application, orchestrating the initialization of system services and user interface components. It interacts with the \texttt{BoardFactory} to generate multiple \texttt{Board} instances, each representing a physical chessboard, and connects to \gls{gui} elements such as \texttt{ProgressBarTopLevel} and \texttt{BoardResetSelectorTopLevel}, which support board resets and progress tracking during gameplay. \\
 
 Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \texttt{Detector} for move recognition using computer vision. It maintains a history of moves, manages WebSocket clients, and offers methods for validating and resetting board states. The \texttt{BoardService} class handles the overall control flow, managing boards, processing moves, and starting detector threads. Error handling is supported through a custom \texttt{CameraDoesNotExistError} exception. This structure ensures a clear separation of concerns, supporting modular development and maintainability across the data, control, and interface layers of the system.
 
@@ -210,7 +210,7 @@ Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \t
 \label{fig:class}
 \end{figure}
 
-
+\newpage
 
 \subsubsection*{Package Diagram}
 
@@ -388,8 +388,6 @@ Wooden & 48 & 40 & 8 \\
 \end{table}
 
 For a detailed breakdown of the chess games, including the sequences of moves, failure points, and detection statistics for each board type, see Appendix FILL IN.
-
-\subsection{API}
 
 \subsection{Wireframe}
 \label{subsec:wireframe-results}

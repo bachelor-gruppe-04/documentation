@@ -189,7 +189,7 @@ With the corners identified, the next step was to correct the distortion caused 
 
 With the distortion corrected, the board is treated as an 8×8 grid of uniformly sized squares, each occupying a unit-length cell. The center of each square lies midway between its edges, resulting in center coordinates that range from 0.5 to 7.5 in both the x and y axes. The center of the first square is at (0.5, 0.5), the second at (1.5, 0.5), and so on up to (7.5, 7.5). \\
 
-To finalize the board orientation, the average center of all black and white pieces was computed. The board was then rotated in four 90-degree increments. For each rotation, the midpoints of the expected white and black sides were calculated as the average coordinates between pairs of corners. Specifically, the midpoint for the white side was calculated between ‘a1’ and ‘h1’, and for the black side between ‘a8’ and ‘h8’. The rotation minimizing the distance between piece centers and these midpoints was selected as the correct alignment. Based on this orientation, the labels ‘a1’, ‘h1’, ‘a8’, and ‘h8’ were assigned to the corners of the chessboard. A visualization of this process is shown in Figure~\ref{fig:board_label_assignment}.
+To finalize the board orientation, the average center of all black and white pieces was computed. The board was then rotated in four 90-degree increments. For each rotation, the midpoints of the expected white and black sides were calculated as the average coordinates between pairs of corners. Specifically, the midpoint for the white side was calculated between ‘a1’ and ‘h1’, and for the black side between ‘a8’ and ‘h8’. The rotation minimizing the distance between piece centers and these midpoints was selected as the correct alignment. Based on this orientation, the labels ‘a1’, ‘h1’, ‘a8’, and ‘h8’ were assigned to the corners of the chessboard. A visualization of this process is shown in Figure \ref{fig:board_label_assignment}.
  
 % \newpage
 
@@ -261,16 +261,16 @@ The interface is minimal and task-focused, enabling efficient system setup and m
 \end{figure}
 
 
-The client-side view is implemented as a web-based interface, developed in accordance with the accessibility principles described in Subsection~\ref{subsec:wcag} of Chapter~\ref{chp:theory}. The design prioritizes usability, aiming to offer a clear, intuitive, and accessible experience for users across both desktop and mobile platforms. \\
+The client-side view is implemented as a web-based interface, developed in accordance with the accessibility principles described in Subsection~\ref{subsec:wcag} of Chapter \ref{chp:theory}. The design prioritizes usability, aiming to offer a clear, intuitive, and accessible experience for users across both desktop and mobile platforms. \\
 
 The interface is organized into two primary components: the \textbf{Tournament View} and the \textbf{Board View}. \\
 
-The \textbf{Tournament View} (see Figure~\ref{fig:desktop-tournament-view}) provides a concise overview of all active games in the tournament. Its clean and minimal layout presents key information such as board numbers, player names, and a navigation button for accessing the corresponding Board View. This approach ensures that users can quickly scan through the tournament and access matches with minimal effort. \\
+The \textbf{Tournament View} (see Figure \ref{fig:desktop-tournament-view}) provides a concise overview of all active games in the tournament. Its clean and minimal layout presents key information such as board numbers, player names, and a navigation button for accessing the corresponding Board View. This approach ensures that users can quickly scan through the tournament and access matches with minimal effort. \\
 
-The \textbf{Board View} (see Figure~\ref{fig:desktop-board-view}) is focused on a single game, displaying both the live chessboard and a video stream of the ongoing match. The layout is designed for clarity, minimizing distractions so that users can easily follow the game in progress. \\
+The \textbf{Board View} (see Figure \ref{fig:desktop-board-view}) is focused on a single game, displaying both the live chessboard and a video stream of the ongoing match. The layout is designed for clarity, minimizing distractions so that users can easily follow the game in progress. \\
 
-To ensure compatibility with mobile devices, the interface incorporates responsive design principles. On smaller screens, the \textbf{Tournament View} simplifies its presentation by removing player names and retaining only the board number and navigation button (see Figure~\ref{fig:phone-tournament-view}). This streamlined layout maintains usability without overwhelming the limited screen space.
-Similarly, the \textbf{Board View} adjusts to a vertical layout on mobile devices, stacking the chessboard and video stream one above the other (see Figure~\ref{fig:phone-board-view}). This configuration enhances readability and preserves the overall clarity of the interface, even on compact displays.
+To ensure compatibility with mobile devices, the interface incorporates responsive design principles. On smaller screens, the \textbf{Tournament View} simplifies its presentation by removing player names and retaining only the board number and navigation button (see Figure \ref{fig:phone-tournament-view}). This streamlined layout maintains usability without overwhelming the limited screen space.
+Similarly, the \textbf{Board View} adjusts to a vertical layout on mobile devices, stacking the chessboard and video stream one above the other (see Figure \ref{fig:phone-board-view}). This configuration enhances readability and preserves the overall clarity of the interface, even on compact displays.
 
 
 \begin{figure}[h!]
@@ -433,8 +433,7 @@ The performance of the machine learning model was evaluated through 100 test gam
 
 Each move was logged as either successful or unsuccessful. A 30-second window was provided for the model to detect and transmit each move, starting from the moment the move was made \gls{otb}. If the model failed to detect the move within this time frame, or if it detected the wrong move, it was marked as unsuccessful. The game concluded either when a move was marked unsuccessful or all 15 full moves had been completed. \\
 
-The webcam was mounted above the board at an angle of approximately 60–70\si{\degree}
- relative to the table surface. The white pieces were placed on the left side of the camera's field of view, and the black pieces on the right.
+The webcam was mounted above the board at an angle of approximately 60–70\si{\degree} relative to the table surface. The white pieces were placed on the left side of the camera's field of view, and the black pieces on the right.
 
 \begin{figure}[h!]
     \centering
@@ -458,7 +457,7 @@ To test real-time communication via WebSocket, a lightweight simulator was imple
 
 To verify the correctness of the \gls{rest}ful \gls{api} endpoints, Postman was used as a manual testing tool. Postman enables direct interaction with \gls{http} endpoints, making it well-suited for verifying both request structures and server responses. Each implemented endpoint was tested individually, including operations such as resetting specific boards, resetting all boards simultaneously, retrieving the list of active boards, and streaming video from individual board cameras. \\
 
-Figure~\ref{fig:postman-rest-tests} illustrates sample API calls tested through Postman. Various \texttt{POST} and \texttt{GET} requests were issued to endpoints such as \texttt{/reset/1}, \texttt{/video/1}, and \texttt{/boards}. These tests confirmed that backend services responded as expected, returning successful status codes, valid response payloads, and triggering the intended state changes. This form of manual REST testing ensured \gls{api} correctness prior to frontend integration.
+Figure~\ref{fig:postman-rest-tests} illustrates sample \gls{api} calls tested through Postman. Various \texttt{POST} and \texttt{GET} requests were issued to endpoints such as \texttt{/reset/1}, \texttt{/video/1}, and \texttt{/boards}. These tests confirmed that backend services responded as expected, returning successful status codes, valid response payloads, and triggering the intended state changes. This form of manual \gls{rest} testing ensured \gls{api} correctness prior to frontend integration.
 
 \begin{figure}[h!]
     \centering
