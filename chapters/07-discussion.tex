@@ -37,7 +37,11 @@ Another limitation observed was the model's handling of the en passant. Currentl
 
 
 \section{API}
-The system follows a client-server architecture, where the frontend acts as the client and communicates with a centralized backend server responsible for handling data processing and move validation. This separation ensures a scalable and maintainable structure, allowing each part of the system to operate independently while still interacting efficiently. To enable real-time communication between the components, the WebSocket protocol was used. Unlike traditional HTTP, which relies on a request-response cycle, WebSocket maintains a persistent connection that allows data to be sent and received continuously. This approach reduces latency and network load by eliminating the need for constant polling, ensuring that the frontend receives updates as soon as new moves are processed by the backend.
+
+\subsection{REST}
+
+\subsection{WebSocket}
+The system follows a client-server architecture, where the frontend acts as the client and communicates with a centralized backend server responsible for handling data processing and move validation. This separation ensures a scalable and maintainable structure, allowing each part of the system to operate independently while still interacting efficiently. To enable real-time communication between the components, the WebSocket protocol was used. Unlike traditional \gls{http}, which relies on a request-response cycle, WebSocket maintains a persistent connection that allows data to be sent and received continuously. This approach reduces latency and network load by eliminating the need for constant polling, ensuring that the frontend receives updates as soon as new moves are processed by the backend.
 
 \section{Frontend}
 The frontend was developed based on the initial wireframes but was modified throughout the project in response to feedback from the supervisor, product owner, and user testing. Despite these adjustments, the core components and functionality remained consistent with the original design.
