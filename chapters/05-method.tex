@@ -223,8 +223,10 @@ Once the updated board configuration is determined, it is compared to the set of
 
 The Control Panel is a desktop interface for tournament organizers to manage the digitization of multiple physical chessboards. The interface is minimal and task-focused, enabling efficient system setup and management with little technical effort. It follows a simple three-step workflow:
 
+DISKUTER punkt 1?
+
 \begin{enumerate}
-\item \textbf{Select number of cameras:} Specify the number of boards to monitor, which determines how many camera feeds are initialized (Figure \ref{fig:control-panel-1}).
+\item \textbf{Select number of cameras:} Specify how many cameras are connected. This determines how many boards will be monitored  (Figure \ref{fig:control-panel-1}).
 \item \textbf{Start cameras and digitization:} Starts the camera feeds, board state recognition, and move validation (Figure \ref{fig:control-panel-2}).
 \item \textbf{Restart boards for new round:} Resets all boards at the end of a round, preparing the system for the next games (Figure \ref{fig:control-panel-3}).
 \end{enumerate}
@@ -254,21 +256,19 @@ The Control Panel is a desktop interface for tournament organizers to manage the
         \label{fig:control-panel-3}
     \end{subfigure}
     
-    \caption[Control panel wireframes]{Control Panel wireframes showing sequential interaction steps}
+    \caption[Control panel wireframes]{Control Panel wireframes showing sequential interaction steps.}
     \label{fig:control-panel-group}
 \end{figure}
 
 
-The client-side view is implemented as a web-based interface, developed in accordance with the accessibility principles described in section \ref{sec:design}. The design prioritizes usability, aiming to offer a user-friendly and accessible experience for users across both desktop and mobile platforms. \\
-
-The interface is organized into two primary components: the \textbf{Tournament View} and the \textbf{Board View}. \\
+The client-side view is implemented as a web-based interface, developed in accordance with the accessibility principles described in section \ref{sec:design}. The design prioritizes usability, aiming to offer a user-friendly and accessible experience for users across both desktop and mobile platforms. The interface is organized into two primary components: the Tournament View and the Board View. \\
 
 The \textbf{Tournament View} (see Figure \ref{fig:desktop-tournament-view}) provides a concise overview of all active games in the tournament. Its clean and minimal layout presents key information such as board numbers, player names, and a navigation button for accessing the corresponding Board View. This approach ensures that users can quickly scan through the tournament and access matches with minimal effort. \\
 
 The \textbf{Board View} (see Figure \ref{fig:desktop-board-view}) is focused on a single game, displaying both the live chessboard and a video stream of the ongoing match. The layout is designed for clarity, minimizing distractions so that users can easily follow the game in progress. \\
 
-To ensure compatibility with mobile devices, the interface incorporates responsive design principles. On smaller screens, the \textbf{Tournament View} simplifies its presentation by removing player names and retaining only the board number and navigation button (see Figure \ref{fig:phone-tournament-view}). This streamlined layout maintains usability without overwhelming the limited screen space.
-Similarly, the \textbf{Board View} adjusts to a vertical layout on mobile devices, stacking the chessboard and video stream one above the other (see Figure \ref{fig:phone-board-view}). This configuration enhances readability and preserves the overall clarity of the interface, even on compact displays.
+To ensure compatibility with mobile devices, the interface incorporates responsive design principles. On smaller screens, the Tournament View simplifies its presentation by removing player names and retaining only the board number and navigation button (see Figure \ref{fig:phone-tournament-view}). This streamlined layout maintains usability without overwhelming the limited screen space.
+Similarly, the Board View adjusts to a vertical layout on mobile devices, stacking the chessboard and video stream one above the other (see Figure \ref{fig:phone-board-view}). This configuration enhances readability and preserves the overall clarity of the interface, even on compact displays.
 
 
 \begin{figure}[h!]
@@ -295,7 +295,7 @@ Similarly, the \textbf{Board View} adjusts to a vertical layout on mobile device
         \label{fig:desktop-fullscreen-video}
     \end{subfigure}
     
-    \caption{Desktop client-side wireframes}
+    \caption{Desktop client-side wireframes.}
     \label{fig:desktop-view-group}
 \end{figure}
 
