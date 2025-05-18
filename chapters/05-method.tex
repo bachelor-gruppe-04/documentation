@@ -9,7 +9,7 @@
 \section{Machine Learning Models}
 \label{sec:ml-models}
 
-As mentioned in the theory chapter, ChessCam is an open-source tool for digitizing chess games using visual recognition. During the early development phase, this project was revisited in greater depth and ultimately chosen as the foundation for the machine learning component. It employs two \glspl{cnn}, one for detecting chess pieces and another for locating the squares of the chessboard \cite{github:chesscam}. While the documentation was limited, the core logic and structure of the models were accessible in the repository. For any unclear aspects, communication with the developers helped ensure a correct and thorough understanding of the models. \\
+As mentioned in the theory chapter, ChessCam is an open-source tool for digitizing chess games using visual recognition. During the early development phase, this project was revisited in greater depth and ultimately chosen as the foundation for the machine learning component. It employs two \glspl{cnn}, one for detecting chess pieces and another for locating the squares of the chessboard \cite{github:chesscam}. While the documentation was limited, the core logic and structure of the models were accessible in the repository. For any unclear aspects, communication with the developers helped ensure a correct understanding of the models. \\
 
 The ChessCam repository offered models in multiple formats, including PyTorch and \gls{onnx}. To integrate them into the project, it was first necessary to understand the expected inputs and outputs. Netron was used to inspect and understand the models.
 
@@ -24,7 +24,7 @@ The first 4 values were offset values that adjusted the position and size of eac
 \begin{table}[h]
     \centering
     \caption[Offset values for anchor boxes (chess pieces)]{Example offset coordinates for each anchor box with regard to identifying chess pieces.}  % Caption moved to top
-    \renewcommand{\arraystretch}{1.5} % Increase row height to allow text to be on top
+    \renewcommand{\arraystretch}{1.3} % Increase row height to allow text to be on top
     \begin{tabular}{lcccc}
         \toprule
         \textbf{Anchor box} & \textbf{xcenter} & \textbf{ycenter} & \textbf{width} & \textbf{height} \\
@@ -41,10 +41,13 @@ The first 4 values were offset values that adjusted the position and size of eac
 
 
 The remaining 12 values represented the probabilities for each possible piece type after the offset value had been applied. With 12 different piece types, the model output 12 probabilities for each anchor box. The classification labels are shown in Table \ref{tab:piece-label-table}. Table \ref{tab:piece-probability-table} presents the predicted probabilities for each label across all anchor boxes. \\
+
+\vspace{2mm}
+
 \begin{table}[ht]
-\renewcommand{\arraystretch}{1.2}  % Increase row height slightly
+\renewcommand{\arraystretch}{1.1}  % Increase row height slightly
 \centering
-\caption[Labels for chess piece types]{Classification labels for the 12 chess piece types predicted by the model.}
+\caption[Labels for chess piece types]{List of predefined class labels corresponding to the 12 chess piece types used for model classification.}
 \begin{tabular}{|c|c|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Model Labels}} \\  
@@ -61,11 +64,10 @@ The remaining 12 values represented the probabilities for each possible piece ty
 \end{table}
 
 
-
 \begin{table}[h]
     \centering
     \caption[Predicted chess piece after applying offset]{Predicted class probabilities for each anchor box after applying the offset.}  % Caption moved to top
-    \renewcommand{\arraystretch}{1.5}
+    \renewcommand{\arraystretch}{1.3}
     \begin{tabular}{lcccc}
         \toprule
         \textbf{Anchor box} & \textbf{Black Pawn} & \textbf{White Pawn} & \textbf{Black Knight} & \textbf{...} \\
@@ -80,11 +82,11 @@ The remaining 12 values represented the probabilities for each possible piece ty
     \label{tab:piece-probability-table}
 \end{table}
 
-There were 2835 predefined anchor boxes spread across the image, each serving as a candidate location for detecting a chess piece. During training, the model learned to adjust these anchor boxes to better match the actual pieces on the board. It achieved this by predicting 4 offset values that modified the location and size of each anchor box. At runtime, for each anchor box, the model used these learned offsets and output 12 class probabilities, indicating the likelihood of each chess piece type being present at that location.
-
 \newpage
 
-\subsection{Corner Detection Model}
+There were 2835 predefined anchor boxes spread across the image, each serving as a candidate location for detecting a chess piece. During training, the model learned to adjust these anchor boxes to better match the actual pieces on the board. It achieved this by predicting 4 offset values that modified the location and size of each anchor box. At runtime, for each anchor box, the model used these learned offsets and output 12 class probabilities, indicating the likelihood of each chess piece type being present at that location.
+
+\subsection{XCorners Detection Model}
 The corner detection model identified the points where the edges of the inner squares on the chessboard met, referred to as \textit{intersection points} or \textit{xcorners}. Up to 49 intersection points could be detected in a single image. These points are illustrated in Figure \ref{fig:xcorners-chessboard}.
 
 \begin{figure}[h!]
@@ -94,9 +96,9 @@ The corner detection model identified the points where the edges of the inner sq
     \label{fig:xcorners-chessboard}
 \end{figure}
 
-\newpage
-
 The input for the corner model was the same as the piece model: \textbf{[1, 3, 288, 480]}. The corner model output predictions in the format \textbf{[1, 5, 2835]}. \textbf{1} represented the batch size. \textbf{2835} represented the number of anchor boxes used in the detection and \textbf{5} consisted of two parts: \\
+
+\newpage
 
 The first 4 values were offset values that adjusted the position and size of each anchor box, aligning it more accurately with a potential intersection point. These offsets were relative to the original anchor box coordinates, as shown in Table \ref{tab:corner-offset-table}.
 
@@ -105,7 +107,7 @@ The first 4 values were offset values that adjusted the position and size of eac
 \begin{table}[h]
     \centering
     \caption[Offset values for anchor box (intersection points)]{Example offset coordinates for each anchor box with regard to identifying intersection points.}  % Caption moved to top
-    \renewcommand{\arraystretch}{1.5} % Increase row height to allow text to be on top
+    \renewcommand{\arraystretch}{1.3} % Increase row height to allow text to be on top
     \begin{tabular}{lcccc}
         \toprule
         \textbf{Anchor box} & \textbf{xcenter} & \textbf{ycenter} & \textbf{width} & \textbf{height} \\
@@ -125,7 +127,7 @@ The final value was the probability that the adjusted anchor box corresponded to
 \begin{table}[h]
     \centering
     \caption[Predicted intersection points after applying offset]{Predicted intersection probabilities for each anchor box after applying the offset.}
-    \renewcommand{\arraystretch}{1.5}
+    \renewcommand{\arraystretch}{1.3}
     \begin{tabular}{lc}
         \toprule
         \textbf{Anchor Box} & \textbf{Intersection Probability} \\
@@ -146,7 +148,9 @@ The final value was the probability that the adjusted anchor box corresponded to
 
 \subsection{Combining The Models}
 
-To track chess piece movements, the first step was to identify the individual squares of the chessboard. Once the squares were identified, each detected piece needed to be mapped to its corresponding square. This required determining the outer corners of the chessboard. With the corners identified, the board was divided into an 8x8 grid of equally sized squares. Since the distance between the corners was known and all squares in the grid are of uniform size, the centers of the squares could be precisely calculated. For each square, only the center point would be used for subsequent mapping, as shown in Figure~\ref{fig:chessboard-centers}.
+To track chess piece movements, the process began with identifying the individual squares of the chessboard. Achieving this required first determining the outer corners of the board, which served as reference points for constructing the grid. Once the corners were located, the chessboard could be subdivided into an 8×8 grid of uniformly sized squares. Given the known distances between the corners and the regular structure of the board, the center point of each square could be accurately calculated. These center points were then used as the basis for mapping each detected piece to a specific square, as illustrated in Figure~\ref{fig:chessboard-centers}.
+
+\newpage
 
 
 
@@ -158,7 +162,7 @@ To track chess piece movements, the first step was to identify the individual sq
 \end{figure}
 
 
-The bottom center of each piece’s bounding box was selected as its representative location, as highlighted in Figure~\ref{fig:bbox-black-pawn}. Each detected piece was then mapped to the nearest square center based on the minimum euclidean distance.  This approach made it possible to accurately assign each piece to a specific square on the chessboard.
+The bottom center of each piece’s bounding box was selected as its representative location, as highlighted in Figure~\ref{fig:bbox-black-pawn}. Each detected piece was then mapped to the nearest square center based on the minimum Euclidean distance.  This approach made it possible to accurately assign each piece to a specific square on the chessboard.
 
 
 % \newpage
@@ -167,7 +171,7 @@ The bottom center of each piece’s bounding box was selected as its representat
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.25\linewidth]{figures/methods/ml-models/black-pawn.png}
-    \caption[Detected chess piece and its bounding box]{Example of a detected chess piece with its classification confidence. The bottom center of the bounding box was used as the reference point for mapping the piece to its corresponding square \cite{svgrepo:black-pawn-svg}.}
+    \caption[Detected chess piece and its bounding box]{Example of a detected chess piece with its classification confidence score. The bottom center of the bounding box was used as the reference point for mapping the piece to its corresponding square \cite{svgrepo:black-pawn-svg}.}
     \label{fig:bbox-black-pawn}
 \end{figure}
 
@@ -176,7 +180,7 @@ The bottom center of each piece’s bounding box was selected as its representat
 
 Each frame captured by the camera was processed by the two models. Before inference, the frame needs to match the models’ expected input dimensions [1, 3, 288, 480]. This process includes scaling the frame, normalizing the pixel values to fall within the range [0, 1] and converting the image to the appropriate data type. \\
 
-After inference, the models produce the prediction outputs: [1, 16, 2835] for pieces and [1, 5, 2835] for intersection points. These outputs represent 2835 potential locations for both chess pieces and intersection points. To identify the most reliable predictions, low-confidence entries are first filtered out. Furthermore, NMS was applied to further refine the results. This process ensures only the most accurate locations for the pieces and intersections were retained. \\
+After inference, the models produce the prediction outputs: [1, 16, 2835] for pieces and [1, 5, 2835] for intersection points. To identify the most reliable predictions, low-confidence entries are first filtered out. Furthermore, \gls{nms} was applied to further refine the results. This process ensures only the most accurate locations for the pieces and intersections were retained. \\
 
 To identify the board corners of the chessboard, Delaunay triangulation was used. Delaunay triangulation was applied to the intersection points to generate a set of candidate triangles. By iterating over these triangles and examining their shared vertices, the algorithm identifies potential quadrilaterals (four-sided shapes) that represent the four corners of the chessboard. Once a list of candidate quadrilaterals was generated, each was scored based on how well it fit the original intersection points. The quadrilateral with the highest score was then selected as the most likely representation of the board corners.
 \\
@@ -197,14 +201,13 @@ To finalize the board orientation, the average center of all black and white pie
 \end{figure}
 
 
-
 \subsubsection*{Move detection}
+After detecting the chessboard and pieces, the application continuously processes each incoming video frame to determine whether a move has occurred. For every frame, the internal board state is updated based on the observed positions of the chess pieces. \\
 
-After the chessboard and pieces have been detected, the application continuously processes each incoming video frame to detect whether a move has occurred. For every frame, the internal representation of the board state is updated based on the observed positions of the chess pieces. \\
+To ensure stability, the system uses a decay-based mechanism that blends the current detections with the previous state. This approach helps smooth out transient errors caused by occlusions or momentary inconsistencies in the video feed. Additionally, updates are throttled to fixed intervals, reducing computational overhead and avoiding unnecessary changes due to minor fluctuations in detection. \\
 
-To ensure stability, the system updates its internal state using a decay-based mechanism that blends previous and current detections. This approach smooths out transient errors due to occlusions or momentary inconsistencies in the video feed. State updates are throttled to occur at fixed intervals, which reduces the frequency of updates and helps maintain performance while avoiding unnecessary processing during minor fluctuations in detection. \\
+Once the updated board configuration is determined, it is compared to the set of legal moves for the current state. If a high-confidence legal move is identified, it is registered and applied. The move is then committed to the internal board state and sent to the frontend via the WebSocket connection to support ongoing analysis and visualization.
 
-Once the updated configuration is established, the system compares it against the legal move set of the current game state. If a high-confidence match is found, the move is registered and applied. Upon confirming a move it is committed to the internal chess engine and sent to the websocket for it to send to the frontend. The game state is updated accordingly for continued analysis and visualization.\\
 
 \begin{figure}[h!]
     \centering
@@ -214,8 +217,6 @@ Once the updated configuration is established, the system compares it against th
 \end{figure}
 
 \section{Design}
-
-\subsection{Wireframes}
 \label{subsec:wireframe}
 
 \subsubsection*{Control Panel}
