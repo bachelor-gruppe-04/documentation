@@ -261,7 +261,7 @@ As described in Section~\ref{subsec:model-testing}, the model was evaluated usin
 \end{table}
 
 
-Table \ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board performed slightly better than the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference may indicate a slightly more stable detection environment on the wooden surface. \\
+Table \ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board performed slightly better than the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference may indicate a more stable detection environment on the wooden surface. \\
 
 
 \begin{table}[htbp]
@@ -279,7 +279,7 @@ Wooden  & 558 & 509 & 91.2\% \\
 \end{table}
 
 
-Figure \ref{fig:move-failures} shows the number of failed games (i.e., games where detection failed) grouped by the move number at which failure occurred. Bars are color-coded by board type. The majority of failures occurred within the first five moves, particularly at moves 2, 4, and 5. This trend suggests that the early game presents the greatest challenge for detection, potentially due to rapid development or ambiguity in piece positions. Notably, failures after move 9 were rare. \\
+Figure \ref{fig:move-failures} shows the number of failed games (i.e., games where detection failed) grouped by the move number at which failure occurred. Bars are color-coded by board type. The majority of failures occurred within the first five moves, particularly at moves 2, 4, and 5. Failures after move 9 were rare. \\
 
 
 \begin{figure}[h!]
@@ -318,7 +318,7 @@ Figure \ref{fig:move-failures} shows the number of failed games (i.e., games whe
 \end{figure}
 
 
-Table \ref{tab:different-errors} categorizes the types of detection failures for each board type. The majority of failures were due to a complete lack of detection within the allotted time window. Incorrect detections were less frequent but more common on the wooden board, accounting for 8 out of 48 failures, compared to just 1 on the plastic board. For a detailed breakdown of the chess games, including the sequences of moves, failure points, and detection statistics for each board type, see Appendix \ref{app:move-data-testing}.  \\
+Table \ref{tab:different-errors} categorizes the types of detection failures for each board type. Almost all failures were due to a lack of detection within the  time window. Incorrect detections were less frequent but more common on the wooden board, accounting for 8 out of 48 failures, compared to just 1 on the plastic board. For a detailed breakdown of the chess games, including the sequences of moves, failure points, and detection statistics for each board type, see Appendix \ref{app:move-data-testing}.  \\
 
 \begin{table}[htbp]
 \centering
