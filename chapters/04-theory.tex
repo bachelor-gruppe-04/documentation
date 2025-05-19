@@ -107,7 +107,7 @@ Central to object detection is the use of bounding boxes. Bounding boxes are rec
 
 \subsection{Anchor Boxes}
 
-To improve detection accuracy across different object sizes and shapes, models use anchor boxes. Anchor boxes are predefined bounding boxes of various sizes and aspect ratios, used as reference points for object detection. The sizes and aspect ratios of anchor boxes are determined by analyzing the object dimensions in the training dataset. The anchor boxes are placed over the feature map, which represents a transformed version of the input image. Rather than directly predicting bounding boxes, the model predicts offsets (shifts) relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}. An illustration of how anchor boxes are positioned on the feature map is shown in Figure \ref{fig:anchor-box}.
+To improve detection accuracy across different object sizes and shapes, models use anchor boxes. Anchor boxes are predefined bounding boxes of various sizes and aspect ratios, used as reference points for object detection. The sizes and aspect ratios of anchor boxes are determined by analyzing the object dimensions in the training dataset. The anchor boxes are placed over the feature map, which represents a transformed version of the input image. Rather than directly predicting bounding boxes, the model predicts offsets relative to these anchor boxes, allowing it to adjust the box's position and size to fit the object. The model also predicts a confidence score indicating the likelihood that an object is present \cite{thinkautonomous:anchorboxes}. An illustration of how anchor boxes are positioned on the feature map is shown in Figure \ref{fig:anchor-box}.
 
 \begin{figure}[h!]
     \centering
@@ -148,7 +148,7 @@ An \gls{iou} value of 1.0 means a perfect match between the prediction and the g
 \label{subsec:normalization-and-scaling}
 
 Normalization in image processing involves adjusting pixel values to a consistent range, such as [0, 1] or [-1, 1]. This helps improve model performance by making the input data uniform. By adjusting pixel intensities from their original 0–255 range, normalization allows the model to process inputs more consistently, leading to faster and more stable convergence.
-\textbf{Scaling} in image processing and \gls{ml} involves resizing images to the format required by the model, as shown in Figure \ref{fig:scaling} \cite{brownlee:normalization}. 
+Scaling in image processing and \gls{ml} involves resizing images to the format required by the model, as shown in Figure \ref{fig:scaling} \cite{brownlee:normalization}. 
 
 \begin{figure}[h!]
     \centering
@@ -313,6 +313,8 @@ Software testing involves evaluating a system or its components to ensure they f
 \subsubsection*{Unit Testing}
 
 Unit testing focuses on verifying individual components of a software application, such as functions, methods, or classes in isolation. The goal is to confirm that each unit performs as intended under various conditions, improving reliability and simplifying debugging \cite{geeksforgeeks:unit-test}. \\
+
+\newpage
 
 \subsubsection*{Usability Testing}
 
