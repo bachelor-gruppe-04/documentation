@@ -241,15 +241,24 @@ To support accessibility in practice, the \gls{wcag} offer a detailed framework 
 \section{Project Management}
 \label{sec:project-management}
 
-\textbf{Agile} is a flexible, iterative approach to managing projects, especially in software development. It emphasizes collaboration, continuous customer feedback, and the ability to quickly adapt to changing requirements throughout the project lifecycle. Agile breaks work into small, manageable increments, enabling teams to deliver value continuously and respond effectively to new information or challenges. One of the most widely used agile frameworks is \textbf{\gls{scrum}}, which organizes work into short, repeatable cycles called sprints \cite{scrumguides:scrum}. \\
+\textbf{Agile} is a flexible, iterative approach to managing projects, especially in software development. It emphasizes collaboration, continuous customer feedback, and the ability to quickly adapt to changing requirements throughout the project lifecycle, as illustrated in Figure \ref{fig:agile-methodology}. Agile breaks work into small, manageable increments, enabling teams to deliver value continuously and respond effectively to new information or challenges. One of the most widely used agile frameworks is \textbf{\gls{scrum}}, which organizes work into short, repeatable cycles called sprints \cite{scrumguides:scrum}. \\
 
 \textbf{Sprints} are short time periods, usually between two and four weeks. At the start of each sprint, a meeting is held to decide the goals and how to achieve them. The objective is to complete a working piece of the product by the end of the sprint. During the sprint, a short \textbf{daily \gls{scrum} meeting} is held each day to share progress and plan the next steps. At the end of the sprint, a \textbf{sprint review} is conducted to present the completed work and gather feedback. Additionally, a \textbf{sprint retrospective} is held to reflect on what went well, identify areas for improvement, and define actions to enhance the workflow for the next sprint. \\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/theory/agile-methodology.png}
+    \caption{Agile Methodology}
+    \label{fig:agile-methodology}
+\end{figure}
+
+\newpage
 
 \gls{scrum} uses three main artifacts to organize and manage the work process. The \textit{product backlog} is a list of all features, enhancements, and fixes planned for the product. The \textit{sprint backlog} contains the specific tasks selected for implementation during the current sprint. Finally, the \textit{increment} is the completed, usable product delivered at the end of the sprint. Together, these artifacts promote transparency, align team efforts, and ensure consistent progress throughout the development cycle \cite{scrumguides:scrum}. \\
 
 \gls{scrum} has three primary roles. The \textbf{product owner} is responsible for deciding what the team should work on and in what order. The \textbf{development team} builds the product and takes ownership of organizing and completing the work. The \textbf{\gls{scrum} master} facilitates the process by supporting the team, removing obstacles, and ensuring that \gls{scrum} practices are followed effectively.\\
 
-\newpage
+% \newpage
 
 \section{Software Engineering Principles}
 \label{sec:software-engineering-principles}
@@ -280,6 +289,8 @@ Modern version control systems often use pull requests to facilitate code review
     \caption[Cohesion and coupling]{Cohesion shows internal module connectivity while coupling illustrates interdependence between modules \cite{geeksforgeeks:c&c}.}
     \label{fig:cohesion-coupling}
 \end{figure}
+
+\newpage
 
 Cohesion and coupling impact the quality and maintainability of a system.
 High cohesion and loose coupling are desirable, as they lead to systems that are easier to test, modify, and extend. This relationship is illustrated in Figure \ref{fig:cohesion-coupling} 
