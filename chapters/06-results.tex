@@ -98,7 +98,7 @@ In addition to manual code review, automated workflows were implemented using Gi
 \begin{figure}[h!] \centering 
 \includegraphics[width=0.75\linewidth]{figures/results/workflows/latex.png}\caption[Upload LaTeX workflow]{The workflow for update documentation with code.}\label{fig:workflow-latex} \end{figure}
 
-
+\newpage
 
 \section{Technical Achievements}
 
@@ -121,8 +121,6 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the systemâ
     \label{fig:use-case}
 \end{figure}  
 
-\newpage
-
 \subsubsection*{Sequence Diagram}
 \label{subsubsec:sequence-diagram}
 
@@ -136,13 +134,11 @@ The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chrono
     \label{fig:sequence}
 \end{figure}
 
-
+\newpage
 
 \subsubsection*{Class Diagram}
 
 The class diagram in Figure \ref{fig:class} provides a high-level overview of the systemâ€™s object-oriented design, detailing the core components involved in the chess digitization process. The central class, \texttt{App}, acts as the main entry point for the application, orchestrating the initialization of system services and user interface components. It interacts with the \texttt{BoardFactory} to generate multiple \texttt{Board} instances, each representing a physical chessboard, and connects to \gls{gui} elements such as \texttt{ProgressBarTopLevel} and \texttt{BoardResetSelectorTopLevel}, which support board resets and progress tracking during gameplay. \\
-
-\newpage
 
 Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \texttt{Detector} for move recognition using computer vision. It maintains a history of moves, manages WebSocket clients, and offers methods for validating and resetting board states. The \texttt{BoardService} class handles the overall control flow, managing boards, processing moves, and starting detector threads. Error handling is supported through a custom \texttt{CameraDoesNotExistError} exception. This structure ensures a clear separation of concerns, supporting modular development and maintainability across the data, control, and interface layers of the system.
 
@@ -152,6 +148,8 @@ Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \t
 \caption[Class Diagram]{Class diagram of the chess digitization system.}
 \label{fig:class}
 \end{figure}
+
+\newpage
 
 \subsubsection*{Package Diagram}
 
