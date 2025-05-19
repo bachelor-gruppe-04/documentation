@@ -47,7 +47,7 @@ A key component of \glspl{cnn} is their ability to generate \textbf{feature maps
 
 \subsection{Supervised Learning}
 
-Another fundamental concept in machine learning is supervised learning, where models are trained on labeled datasets. Each example in the dataset includes both an input and the correct output, allowing the model to learn how the input relates to the expected output. After training, the model can generalize this learned relationship to make predictions on new, unseen data \cite{geeksforgeeks:supervised-learning, google:supervised-learning}. \\
+Another fundamental concept in \gls{ml} is supervised learning, where models are trained on labeled datasets. Each example in the dataset includes both an input and the correct output, allowing the model to learn how the input relates to the expected output. After training, the model can generalize this learned relationship to make predictions on new, unseen data \cite{geeksforgeeks:supervised-learning, google:supervised-learning}. \\
 
 \subsection{Classification}
 
@@ -59,11 +59,11 @@ Within supervised learning, classification refers to predicting categorical outc
     \label{fig:supervised-learning} 
 \end{figure}
 
-By combining supervised learning with powerful models such as \glspl{cnn}, machine learning systems have achieved remarkable success in tasks that require human-like perception and decision-making \cite{chengyi:cnn}. As these models become more accurate and versatile, deploying them efficiently to real-world applications becomes increasingly important.  \\
+By combining supervised learning with powerful models such as \glspl{cnn}, \gls{ml} systems have achieved remarkable success in tasks that require human-like perception and decision-making \cite{chengyi:cnn}. As these models become more accurate and versatile, deploying them to real-world applications becomes increasingly important.  \\
 
 \subsection{Open Neural Network Exchange}
 
-To facilitate deployment across diverse environments and platforms, \gls{onnx} provides an open-source format for representing machine learning models. It enables seamless transfer and interoperability between different frameworks, including TensorFlow and PyTorch. This open format allows developers to switch between different tools depending on their specific needs during training, deployment, or optimization \cite{roboflow:onnx}.\\
+To facilitate deployment across diverse environments and platforms, \gls{onnx} provides an open-source format for representing \gls{ml} models. It enables seamless transfer and interoperability between different frameworks, including TensorFlow and PyTorch. This open format allows developers to switch between different tools depending on their specific needs during training, deployment, or optimization \cite{roboflow:onnx}.\\
 
 \subsection{Inference}
 
@@ -94,7 +94,7 @@ Object detection is a fundamental task in computer vision that involves both ide
 
 \subsection{Bounding Boxes}
 
-Central to object detection is the use of bounding boxes. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. An example of how bounding boxes are used to localize objects within an image is illustrated in Figure \ref{fig:boundingbox}.
+Central to object detection is the use of bounding boxes. Bounding boxes are rectangular regions used to indicate the location of an object within an image. It is typically represented by four values: the center coordinates \((x_c, y_c)\), which define the center of the box, and the width \((w)\) and height \((h)\), which define the dimensions of the box. In object detection tasks, models predict these coordinates to both localize and classify objects within an image \cite{peopleforai:boundingbox}. An example of how bounding boxes are used to localize objects within an image is illustrated in Figure~\ref{fig:boundingbox}.
 
 \begin{figure}[h!]
     \centering
@@ -148,7 +148,7 @@ An \gls{iou} value of 1.0 means a perfect match between the prediction and the g
 \label{subsec:normalization-and-scaling}
 
 Normalization in image processing involves adjusting pixel values to a consistent range, such as [0, 1] or [-1, 1]. This helps improve model performance by making the input data uniform. By adjusting pixel intensities from their original 0–255 range, normalization allows the model to process inputs more consistently, leading to faster and more stable convergence.
-\textbf{Scaling} in image processing and machine learning involves resizing images to the format required by the model, as shown in Figure \ref{fig:scaling} \cite{brownlee:normalization}. 
+\textbf{Scaling} in image processing and \gls{ml} involves resizing images to the format required by the model, as shown in Figure \ref{fig:scaling} \cite{brownlee:normalization}. 
 
 \begin{figure}[h!]
     \centering
