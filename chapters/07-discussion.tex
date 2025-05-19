@@ -44,12 +44,12 @@ To facilitate real-time interaction between these components, the system primari
 \section{Frontend}
 The frontend was developed based on the initial wireframes but was modified throughout the project in response to feedback from the supervisor, product owner, and user testing. Despite these adjustments, the core components and functionality remained consistent with the original design.
 
-\subsection{Game preview}
+\subsection{Game Preview}
 The Game Preview page was not part of the initial wireframe, as described in Section \ref{subsec:wireframe}. However, following a suggestion from the product owner, this feature was added to provide a better overall overview of all ongoing games. One scenario for this functionality is when a spectator wishes to follow multiple games simultaneously. \\
 
 Since the application architecture was already based on individual chessboard instances, implementing this feature was relatively straightforward. By reusing existing chessboard components identified by unique IDs, the Game Preview page was able to display all active games dynamically. Only minor code modifications were necessary to make the component more flexible and support this functionality.
 
-\subsection{Download PGN file}
+\subsection{Download PGN File}
 One project requirement was to digitize chess games into \gls{pgn} files, enabling players and spectators to download and analyze them using external tools such as Lichess’ analysis feature. As described in Section \ref{subsec:results-frontend}, the application provides access to \gls{pgn} files containing technical metadata. \\
 
 The \gls{pgn} format is widely supported, and tools such as Lichess can interpret both the complete file or just the move list. This flexibility allows users to gain insights into various aspects of the game, such as identifying the opening played, evaluating move accuracy, and understanding the overall game progression. Figure \ref{fig:downloaded-pgn-analysis} shows how the downloaded \gls{pgn} can be used in an external analysis tool. \\
@@ -72,7 +72,7 @@ Initial accessibility scores ranged from 80 to 90 across the various pages. To i
 
 To address these issues, slightly modified color variants were chosen for each theme. This led to the adoption of a more customized color palette for both light and dark modes. As a result, the application now achieves a 100 accessibility scores throughout all pages, with both light and dark mode. 
 
-\section{Project management}
+\section{Project Management}
 \label{sec:discussion-project-management}
 
 The application of a \gls{scrum} inspired methodology proved to be an effective project management strategy, particularly given the composition and size of the team. While the team followed core \gls{scrum} practices such as sprint planning, reviews, and retrospectives, the absence of a dedicated \gls{scrum} Master led to a more lightweight and adaptive implementation. Responsibilities typically associated with the \gls{scrum} Master role, such as facilitating meetings and managing the sprint process, were informally distributed among team members. This approach enabled greater flexibility and autonomy, which aligned well with the needs of a smaller team. \\
@@ -103,7 +103,7 @@ During development and testing, the front-end application occasionally initializ
 
 This issue was traced back to a cached or “ghost” device entry in the Windows Device Manager. A ghost device refers to a previously connected hardware device that is no longer physically attached to the system but whose configuration and driver information remain cached by the operating system. These leftover entries can lead to conflicts or incorrect device indexing when similar hardware is reconnected, especially when multiple identical devices are used. In this case, the system appeared to retain prior camera associations, which caused the application to misidentify or incorrectly assign the camera index. \\
 
-\subsection{Highlighting moves}
+\subsection{Highlighting Moves}
 When a move is made, the frontend highlights the previous and current tiles of the moved piece. User testing with different color palettes resulted in the selection of a bright contrast color relative to the main design scheme to ensure good visibility. \\
 
 The chessboard component manages the rules of chess, while the frontend is responsible only for storing tile positions and applying styling. In standard moves, highlighting the starting and ending tiles is sufficient. However, special moves such as \gls{castling}, pawn \gls{promotion}, and \gls{en-passant} capture require additional handling. \\
