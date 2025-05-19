@@ -265,7 +265,7 @@ The Control Panel is a desktop interface for tournament organizers to manage the
 \end{figure}
 
 
-The client-side view is implemented as a web-based interface, developed in accordance with the accessibility principles described in section \ref{sec:design}. The design prioritizes usability, aiming to offer a user-friendly and accessible experience for users across both desktop and mobile platforms. The interface is organized into two primary components: the Tournament View and the Board View. \\
+The client-side view is implemented as a web-based interface, developed in accordance with the accessibility principles described in Section \ref{sec:design}. The design prioritizes usability, aiming to offer a user-friendly and accessible experience for users across both desktop and mobile platforms. The interface is organized into two primary components: the Tournament View and the Board View. \\
 
 The \textbf{Tournament View} (see Figure \ref{fig:desktop-tournament-view}) provides a concise overview of all active games in the tournament. Its clean and minimal layout presents key information such as board numbers, player names, and a navigation button for accessing the corresponding Board View. This approach ensures that users can quickly scan through the tournament and access matches with minimal effort. \\
 
@@ -408,7 +408,7 @@ Python was selected for the project’s backend because of its simple and user-f
 
 \subsection*{Frontend}
 
-TypeScript was selected for the project's frontend language due to it's type-safety, as discussed in section \ref{subsec:type-safety}.
+TypeScript was selected for the project's frontend language due to it's type-safety, as discussed in Section \ref{subsec:type-safety}.
 
 \subsubsection*{TypeScript Dependencies}
 
@@ -454,7 +454,7 @@ The webcam was mounted above the board at an angle of approximately 60–70\si{\
 \subsubsection*{WebSocket Testing (Live Data Simulation)}
 \label{subsubsec:websocket-methods}
 
-To test real-time communication via WebSocket, a lightweight simulator was implemented. This simulator sequentially sent hard-coded chess moves to connected clients, emulating live gameplay data. The frontend application was connected to the WebSocket endpoint during testing, enabling it to receive and display incoming data. This setup allowed for effective verification of the WebSocket functionality and ensured that the frontend was capable of handling and rendering live move updates as intended.
+To test real-time communication via WebSocket, a lightweight simulator was implemented. The simulator sequentially sent hard-coded chess moves to connected clients, emulating live gameplay data. The frontend application was connected to the WebSocket endpoint during testing, enabling it to receive and display incoming data. This setup allowed for effective verification of the WebSocket functionality and ensured that the frontend was capable of handling and rendering live move updates as intended.
 
 \subsubsection*{REST API Testing with Postman}
 \label{subsubsec:rest-api-methods}
@@ -475,7 +475,7 @@ Figure~\ref{fig:postman-rest-tests} illustrates sample \gls{api} calls tested th
 \subsection{Wireframe testing}
 \label{subsubsec:user-centered-design}
 
-The usability testing process followed principles discussed in Subsection \ref{subsec:usability-testing}, as outlined in Chapter \ref{chp:theory}. At the early stage of the design process, wireframe testing was conducted with a small but diverse group of users. The aim was to evaluate whether the interface was intuitive, and whether the sizing and layout were appropriate for a range of users. \\
+The usability testing process followed principles discussed in Section \ref{subsec:usability-testing}, as outlined in Chapter \ref{chp:theory}. At the early stage of the design process, wireframe testing was conducted with a small but diverse group of users. The aim was to evaluate whether the interface was intuitive, and whether the sizing and layout were appropriate for a range of users. \\
 
 Participants included individuals from various age groups (ranging from 18 to 55) and backgrounds, including both experienced chess players and those unfamiliar with the game. Their technical experience also varied, from computer science students to non-technical individuals such as stay-at-home parents. In total, eight participants were involved in this test, excluding the developers and stakeholders of the project. \\
 
