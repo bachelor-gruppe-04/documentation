@@ -45,12 +45,12 @@ To facilitate real-time interaction between these components, the system primari
 The frontend was developed based on the initial wireframes but was modified throughout the project in response to feedback from the supervisor, product owner, and user testing. Despite these adjustments, the core components and functionality remained consistent with the original design.
 
 \subsection{Game Preview}
-The Game Preview page was not part of the initial wireframe, as described in Section \ref{subsec:wireframe}. However, following a suggestion from the product owner, this feature was added to provide a better overall overview of all ongoing games. One scenario for this functionality is when a spectator wishes to follow multiple games simultaneously. \\
+The game preview page was not part of the initial wireframe, as described in Section \ref{subsec:wireframe}. However, following a suggestion from the product owner, this feature was added to provide a better overall overview of all ongoing games. One scenario for this functionality is when a spectator wishes to follow multiple games simultaneously. \\
 
-Since the application architecture was already based on individual chessboard instances, implementing this feature was relatively straightforward. By reusing existing chessboard components identified by unique IDs, the Game Preview page was able to display all active games dynamically. Only minor code modifications were necessary to make the component more flexible and support this functionality.
+Since the application architecture was already based on individual chessboard instances, implementing this feature was relatively straightforward. By reusing existing chessboard components identified by unique IDs, the game preview page was able to display all active games dynamically. Only minor code modifications were necessary to make the component more flexible and support this functionality.
 
 \subsection{Download PGN File}
-One project requirement was to digitize chess games into \gls{pgn} files, enabling players and spectators to download and analyze them using external tools such as Lichess’ analysis feature. As described in Section \ref{subsec:results-frontend}, the application provides access to \gls{pgn} files containing technical metadata. \\
+One project requirement was to generate \gls{pgn} files, enabling players and spectators to download and analyze games using external tools such as Lichess’ analysis feature. As described in Section \ref{subsec:results-frontend}, the application provides access to \gls{pgn} files containing technical metadata. \\
 
 The \gls{pgn} format is widely supported, and tools such as Lichess can interpret both the complete file or just the move list. This flexibility allows users to gain insights into various aspects of the game, such as identifying the opening played, evaluating move accuracy, and understanding the overall game progression. Figure \ref{fig:downloaded-pgn-analysis} shows how the downloaded \gls{pgn} can be used in an external analysis tool. \\
 
@@ -72,7 +72,7 @@ The frontend application was developed based on wireframes, team discussions, an
 
 Initial accessibility scores ranged from 80 to 90 across the various pages. To improve these scores, minor adjustments were required, primarily involving color contrast. As shown in \ref{subsec:results-color-palette}, a specific color palette was selected for the application. However, issues were identified with the contrast between the primary blue color and the white background in light mode, as well as between the secondary blue (used for buttons) and the black background in dark mode. \\
 
-To address these issues, slightly modified color variants were chosen for each theme. This led to the adoption of a more customized color palette for both light and dark modes. As a result, the application now achieves a 100 accessibility scores throughout all pages, with both light and dark mode. 
+To address these issues, slightly modified color variants were chosen for each theme. This led to the adoption of a more customized color palette for both light and dark modes. As a result, the application achieves a 100 accessibility score throughout all pages, with both light and dark mode. 
 
 \section{Project Management}
 \label{sec:discussion-project-management}
@@ -99,7 +99,7 @@ Overall, the project management approach successfully balanced structure and fle
 \newpage
 
 \section{Challenges}
-In addition to ideas for future development, there were also a few challenges encountered during development. These challenges were addressed as they occurred, and solutions were implemented as part of the final application. \\
+During development, several challenges were encountered. These issues were addressed as they arose, and solutions were incorporated into the final application.
 
 \subsection{Camera}
 
@@ -110,52 +110,40 @@ This issue was traced back to a cached or “ghost” device entry in the Window
 \subsection{Highlighting Moves}
 When a move is made, the frontend highlights the previous and current tiles of the moved piece. User testing with different color palettes resulted in the selection of a bright contrast color relative to the main design scheme to ensure good visibility. \\
 
-The chessboard component manages the rules of chess, while the frontend is responsible only for storing tile positions and applying styling. In standard moves, highlighting the starting and ending tiles is sufficient. However, special moves such as \gls{castling}, pawn \gls{promotion}, and \gls{en-passant} capture require additional handling. \\
+The chessboard component manages the rules of chess, while the frontend is responsible only for storing tile positions and applying styling. In standard moves, highlighting the starting and ending tiles is sufficient. However, special moves such as \gls{castling} and \gls{en-passant} require additional handling. \\
 
-In \gls{castling}, both the king and a rook move simultaneously. Since the default highlight logic tracks only one piece, it does not correctly represent \gls{castling} moves. Additional logic was implemented to highlight the movements of both the king and rook during \gls{castling}, ensuring consistency and clarity for the user.
+In \gls{castling}, both the king and a rook move simultaneously. Since the default highlight tracks only one piece, it does not correctly represent \gls{castling} moves. Additional logic was implemented to highlight the movements of both the king and rook during \gls{castling}, ensuring consistency and clarity for the user.
 
-
-% Ting som nevnes andre steder i dokumentet som er flyttet hit fordi det funker bedre i diskusjon
-
-
-%The ONNX format was chosen because it was framework-agnostic, making integration into different deployment environments easier.
-
-%(Metode, User-Centered Design)
-
-%This encouraged honest, unfiltered responses, reducing the likelihood of social desirability bias.
+\newpage
 
 \section{Further Development}
-Throughout the project, various development ideas emerged from the team, the product owner, and external contributors. Due to time constraints, these were not implemented and were instead noted as "Further development." At the product owner's request, the focus was on achieving accurate piece recognition over additional features.
+Throughout the project, various development ideas emerged from the team, the product owner, and external contributors. Due to time constraints, these were not implemented and were instead noted as "further development." At the product owner's request, the focus was on achieving accurate piece recognition over additional features.
 
 \subsection{Independent Application}
-During a meeting at Aalesund Schaklag, the product owner and club leader discussed deploying a finalized version of the application with ceiling-mounted cameras. Since the club maintains a standard table layout, the cameras could remain fixed and connected to a computer running the application continuously. A physical switch would allow easy power control. \\
+During a meeting at Aalesunds Schaklag, the product owner and club leader discussed deploying a finalized version of the application with ceiling-mounted cameras. Since the club maintains a standard table layout, the cameras could remain fixed and connected to a computer running the application continuously. A physical switch would allow easy power control. \\
 
-In a typical use case, the organizer could start an unofficial tournament by turning on the switch, prompting the system to begin tracking games automatically. Once games were finished, the organizer would reset the returned to their initial position would be recognized as reset. The system would be user-friendly, requiring no technical knowledge and would also protect equipment by having cameras out of reach.
+In a typical scenario, the players could initiate an unofficial tournament by simply turning on the switch, which would automatically activate game tracking. At the end of each game, players would reset the board by placing all pieces in their starting positions, which the system would recognize as a reset signal. This setup would require no technical expertise from users and would also help protect the equipment, as the cameras would be safely mounted out of reach.
 
 \subsection{Information About Participants}
 Currently, all tournament participants are hardcoded into the system. This approach limits scalability and increases the complexity of system maintenance. A more sustainable solution would involve integrating the system with established platforms such as TournamentService, a widely used tool for managing player registration in chess tournaments. \\
 
-TournamentService retrieves player data from both the \gls{nsf} and the international \gls{fide} database, ensuring that participant information is accurate and up-to-date. By implementing such an integration, participants would be able to register by simply searching for their name. The system could then automatically retrieve and populate essential details, such as chess rating, club affiliation, and other relevant metadata. This would significantly streamline the registration process and reduce the likelihood of manual entry errors. \\
-
-\subsection{Time Control}
-For spectators watching live chess games on a screen, it can be difficult to follow the pace of the game, as the current version of the application does not display any information about time control. Chess games are typically played with varying time formats, including \gls{classical}, \gls{blitz}, and \gls{bullet}, each of which allocates different amounts of time per player. Tournaments generally specify a single time control variant, which could be included in the tournament description. Displaying the time control format and countdown timer could overall enhance the spectator experience. \\
+TournamentService retrieves player data from both the \gls{nsf} and the international \gls{fide} database. By implementing such an integration, participants would be able to register by simply searching for their name. The system could then automatically retrieve and populate essential details, such as chess rating, club affiliation, and other relevant metadata. This would significantly streamline the registration process and reduce the likelihood of manual entry errors. \\
 
 \newpage
+
+\subsection{Time Control}
+For spectators watching live chess games on a screen, it can be difficult to follow the pace of the game, as the current version of the application does not display any information about time control. Chess games are typically played with varying time formats, including \gls{classical}, \gls{blitz}, and \gls{bullet}, each of which allocates different amounts of time. Tournaments generally specify a single time control variant, which could be included in the tournament description. Displaying the time control format and countdown timer could overall enhance the spectator experience. \\
 
 One potential solution is to estimate the remaining time based on move detection. When the \gls{ml} model registers a move, it assumes the player has pressed the clock and that the opponent’s time has begun. However, this method is unreliable due to potential delays in move detection which can lead to inaccurate time tracking. \\
 
 Another solution is using digital clocks with \gls{usb} connectivity. This method ensures precise and accurate time tracking, as the clock is directly connected to the PC. Digital clocks with \gls{usb}-support such as the DGT3000 offer reliable tracking as the connection ensures the time matches the actual clock. However, these clocks are costly, priced approximately 1000 NOK each \cite{sjakkbutikken:dgt-clock}. Given that Aalesunds Schaklag aims to minimize expenses, this option may not be ideal despite the accuracy it provides. \\
 
-A more affordable but challenging solution is using cameras to visually read physical clocks through a \gls{ml} model. Challenges such as occlusion, poor lighting, and camera resolution make this difficult, especially for faster time controls. \\
-
-Therefore, time control features were not prioritized in the current version but remain an area for future improvement.
+A more affordable but challenging solution is using cameras to visually read physical clocks through a \gls{ml} model. Challenges such as occlusion, poor lighting, and camera resolution make this difficult, especially for faster time controls. Therefore, time control features were not prioritized in the current version but remain an area for future improvement.
 
 \subsection{Multi-Board Detection Capability}
-The current system architecture supports a one-to-one mapping between cameras and chessboards, each board requires a dedicated camera. While this setup is functional, it introduces scalability and logistical challenges, particularly in larger tournament settings where numerous boards are involved. \\
+The current system architecture supports a one-to-one mapping between cameras and chessboards. While this setup is functional, it introduces scalability and logistical challenges, particularly in larger tournament settings where numerous boards are involved. Further development could focus on enabling a single camera to detect and track multiple boards simultaneously. This enhancement would reduce the hardware requirements and simplify the setup process. Feedback from external collaborators has indicated strong interest in this feature, suggesting it would increase the system's appeal and usability. 
 
-Further development could focus on enabling a single camera to detect and track multiple boards simultaneously. This enhancement would significantly reduce the hardware requirements and simplify the setup process, addressing common issues such as cable clutter. \\
-
-Feedback from external collaborators has indicated strong interest in this feature, suggesting it would increase the system's appeal and usability. Implementing multi-board detection would require advances in computer vision algorithms, potentially leveraging techniques such as object detection, perspective correction, and spatial segmentation to reliably differentiate and monitor several boards within a single frame.
+\newpage
 
 \subsection{Variant Selection}
 While both the backend and frontend are capable of handling non-standard setups, users must manually modify the code to change the game mode. This involves locating the desired variant, copying its \gls{fen} string, and updating it in both the backend and frontend separately, an approach that is not practical for general users. \\
@@ -163,8 +151,6 @@ While both the backend and frontend are capable of handling non-standard setups,
 To improve usability, one idea is to implement a user interface that allows players to select from a list of predefined chess variants, each linked to its corresponding \gls{fen} string. This would eliminate the need for manual code changes and make variant selection accessible to all users, enabling broader support for formats such as \textit{\gls{chess960}}, \textit{\gls{horde}}, and \textit{\gls{racing-kings}}.
 
 \subsection{Internationalization}
-Currently, the application supports only English. Feedback from the usability testing revealed a demand for multilingual support, particularly for Norwegian. Several participants noted that not all users are fluent or comfortable with English, which may hinder accessibility and user experience, especially among elders or those less familiar with technical environments. \\
+Currently, the application supports only English. Feedback from the usability testing revealed a demand for multilingual support, particularly for Norwegian. Several participants noted that not all users are fluent or comfortable with English, which may hinder accessibility and user experience, especially among elders and those less familiar with technical environments. \\
 
-Introducing \gls{i18n} would make the application more inclusive and accessible to a broader audience. This would involve implementing a localization framework to support multiple language files, enabling dynamic language switching, and ensuring that all \gls{ui} text elements are properly translatable. \\
-
-As the system is intended for public and possibly international use in tournament settings, multilingual support would be a valuable enhancement. Future development should prioritize adding language selection functionality, starting with Norwegian, and designing the system architecture to support additional languages as needed.
+Introducing \gls{i18n} would make the application more inclusive and accessible to a broader audience. This would involve implementing a localization framework to support multiple language files, enabling dynamic language switching, and ensuring that all \gls{ui} text elements are properly translatable. As the system is intended for public and possibly international use in tournament settings, multilingual support would be a valuable enhancement.

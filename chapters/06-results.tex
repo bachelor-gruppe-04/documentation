@@ -11,11 +11,11 @@ The project is developed using open and freely available technologies. The code 
 
 The delivered product is the final version of the application developed as part of this Bachelor’s thesis. It was created at the product owner's request, based on general requirements rather than detailed specifications. Design, architecture, and technology decisions were made by the development team and regularly reviewed with the product owner throughout the development process.
 
+\newpage
+
 \section{Detection Performance Models}
 \label{chesscam-metrics}
-As a baseline for evaluating detection performance, results from the ChessCam repository were first considered \cite{github:chesscam}. These metrics represented the upper-bound performance of the models under ideal conditions. \\
-
-Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece detection model, which consistently showed high precision and recall throughout training. Both metrics quickly converged above 0.95, indicating stable and reliable detection performance \cite{wandb:piece-detection}. In contrast, Figure~\ref{fig:chesscam-xcorners-metrics} shows the results for xcorners detection, which demonstrated moderately lower performance. Precision and recall steadily improved over time and stabilized at approximately 0.8 and 0.75, respectively \cite{wandb:xcorner-detection}.
+As a baseline for evaluating detection performance, results from the ChessCam repository were first considered \cite{github:chesscam}. Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece detection model, which consistently showed high precision and recall throughout training. Both metrics quickly converged above 0.95, indicating stable and reliable detection performance \cite{wandb:piece-detection}. In contrast, Figure~\ref{fig:chesscam-xcorners-metrics} shows the results for xcorners detection, which demonstrated moderately lower performance. Precision and recall steadily improved over time and stabilized at approximately 0.8 and 0.75, respectively \cite{wandb:xcorner-detection}.
 
 \begin{figure}[H]
 \centering
@@ -54,6 +54,7 @@ No errors, dropped messages, or unexpected behaviors were observed during testin
 \end{tabular}
 \end{table}
 
+\newpage
 
 \section{Frontend}
 \label{subsec:results-frontend}
@@ -263,7 +264,7 @@ As described in Section~\ref{subsec:model-testing}, the model was evaluated usin
 \end{table}
 
 
-Table \ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board performed slightly better than the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference indicates a more stable detection environment on the wooden surface. \\
+Table \ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board performed slightly better than the plastic board, with a 91.2\% success rate compared to 89.9\%. \\
 
 
 \begin{table}[htbp]
