@@ -23,7 +23,7 @@ One consistent source of error was tied to specific move numbers within certain 
 
 Another common issue involved the model misclassifying castling moves. The model selects the move with the highest predicted probability, but during castling, it often assigned a higher probability to the rook’s move from its original square rather than to the king’s two-square move. As a result, castling was frequently mistaken for a rook move. Of the 9 total misclassifications, 8 were caused by this specific error. One potential solution is to delay the rook’s movement by moving the king two squares first. This would give the model only one valid move to detect, reducing the likelihood of misclassification. \\
 
-There was also observed reduced accuracy along the edges of the board, affecting both piece detection and the localization of square centers. Several factors contribute to this. The board-warping algorithm depends heavily on precise corner detection, which is more error-prone near the edges. The steep camera angle causes pieces closer to the camera to appear larger and obscure important details. Meanwhile, pieces farther away appear smaller and are more difficult to detect. Figure \ref{fig:bbox-centers-incorrect} illustrates this issue, showing bounding boxes near the edges that are frequently misaligned and square centers that are noticeably offset. In contrast, detection accuracy and alignment improve significantly toward the center of the board.
+There was also observed reduced accuracy along the edges of the board, affecting both piece detection and the localization of square centers. Several factors contribute to this. The board-warping algorithm depends heavily on precise corner detection, which is more error-prone near the edges. The steep camera angle causes pieces closer to the camera to appear larger and obscure important details. Meanwhile, pieces farther away appear smaller and are more difficult to detect. Figure \ref{fig:bbox-centers-incorrect} illustrates this issue, showing bounding boxes near the edges that are frequently misaligned and square centers that are noticeably offset. In contrast, detection accuracy and alignment improve significantly toward the center of the board. \\
 
 Another limitation observed was the model's handling of the en passant. Currently, the model does not support recognition of en passant moves. When the board state includes the possibility for such a move, the model fails to handle it correctly and crashes.
 
@@ -52,7 +52,7 @@ Since the application architecture was already based on individual chessboard in
 \subsection{Download PGN file}
 One project requirement was to digitize chess games into \gls{pgn} files, enabling players and spectators to download and analyze them using external tools such as lichess’ analysis feature. As described in Section \ref{subsec:results-frontend}, the application provides access to PGN files containing technical metadata. \\
 
-The \gls{pgn} format is widely supported, and tools such as lichess can interpret both the complete file or just the move list. This flexibility allows users to gain insights into various aspects of the game, such as identifying the opening played, evaluating move accuracy, and understanding the overall game progression. Figure \ref{fig:downloaded-pgn-analysis} shows how the downloaded \gls{pgn} can be used in an external analysis tool. \\
+The \gls{pgn} format is widely supported, and tools such as Lichess can interpret both the complete file or just the move list. This flexibility allows users to gain insights into various aspects of the game, such as identifying the opening played, evaluating move accuracy, and understanding the overall game progression. Figure \ref{fig:downloaded-pgn-analysis} shows how the downloaded \gls{pgn} can be used in an external analysis tool. \\
 
 \begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/lichess-analysis.png}}\caption[Lichess analysis tool]{A demonstration of importing a PGN file into Lichess' analysis tool}\label{fig:downloaded-pgn-analysis} \end{figure}
 
@@ -63,7 +63,7 @@ However, one limitation is that users must leave the application to analyze the 
 \subsection{Lighthouse Tests}
 The frontend application was developed based on wireframes, team discussions, and user testing. To evaluate the quality of the user interface, Lighthouse tests were conducted on every page, with particular focus on the accessibility score. \\
 
-Initial accessibility scores ranged from 80 to 90 across the various pages. To improve these scores, several adjustments were required, primarily involving color contrast. As shown in \ref{subsec:results-color-palette}, a specific color palette was selected for the application. However, issues were identified with the contrast between the primary blue color and the white background in light mode, as well as between the secondary blue (used for buttons) and the black background in dark mode. \\
+Initial accessibility scores ranged from 80 to 90 across the various pages. To improve these scores, minor adjustments were required, primarily involving color contrast. As shown in \ref{subsec:results-color-palette}, a specific color palette was selected for the application. However, issues were identified with the contrast between the primary blue color and the white background in light mode, as well as between the secondary blue (used for buttons) and the black background in dark mode. \\
 
 To address these issues, slightly modified color variants were chosen for each theme. This led to the adoption of a more customized color palette for both light and dark modes. As a result, the application now achieves a 100 accessibility scores throughout all pages, with both light and dark mode. 
 
@@ -76,7 +76,7 @@ The communication within the team functioned efficiently throughout the project.
 
 Version control and task management were handled using Git, which provided a robust framework for organizing and reviewing code. Each task was implemented in a dedicated branch and linked to a corresponding GitHub issue. All changes were integrated into the main branch exclusively through pull requests, with peer review enforced for every contribution. This workflow contributed to maintaining code quality, minimizing integration issues, and ensuring transparency in the development process. \\
 
-GitHub Actions was used to automate the development process, including running Python unit tests and updating LaTeX documentation. This improved efficiency and helped catch issues early. However, the test workflow consistently failed in the \gls{ci} environment due to its dependence on camera hardware (see Figure \ref{fig:workflow-test}). Since this hardware was unavailable during automated runs, the failures were expected and did not impact the final delivery. This highlighted the need to separate hardware-dependent tests from those suitable for standard test environments.\\
+GitHub Actions was used to automate the development process, including running Python unit tests and updating LaTeX documentation. This improved efficiency and helped catch issues early. However, the test workflow consistently failed in the \gls{ci} environment due to its dependence on camera hardware, as shown in Figure \ref{fig:workflow-test}. Since this hardware was unavailable during automated runs, the failures were expected and did not impact the final delivery. This highlighted the need to separate hardware-dependent tests from those suitable for standard test environments.\\
 
 \begin{figure}[h!] \centering 
 \includegraphics[width=0.75\linewidth]{figures/results/workflows/tests.png}\caption[Python tests workflow]{The workflow for Python unit tests}\label{fig:workflow-test} \end{figure}
@@ -84,7 +84,7 @@ GitHub Actions was used to automate the development process, including running P
 Overall, the project management approach successfully balanced structure and flexibility. The adapted \gls{scrum} practices, supported by reliable tooling, effective peer review, and strong communication, created a productive environment well-suited to the team's working style. 
 
 \section{Challenges}
-In addition to ideas for future development, there were also a few obstacles encountered during development. These challenges were addressed as they occurred, and solutions were implemented as part of the final application. \\
+In addition to ideas for future development, there were also a few challenges encountered during development. These challenges were addressed as they occurred, and solutions were implemented as part of the final application. \\
 
 \subsection{Camera}
 
