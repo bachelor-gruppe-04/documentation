@@ -37,11 +37,9 @@ Another limitation observed was the model's handling of the en passant. Currentl
 
 
 \section{API}
+The system is based on a client-server architecture, in which the frontend operates as the client and communicates with a centralized backend server. The backend is responsible for core functionalities such as data processing and move validation. This architectural separation promotes scalability and maintainability by allowing the frontend and backend to evolve independently while maintaining efficient communication. \\
 
-\subsection{REST}
-
-\subsection{WebSocket}
-The system follows a client-server architecture, where the frontend acts as the client and communicates with a centralized backend server responsible for handling data processing and move validation. This separation ensures a scalable and maintainable structure, allowing each part of the system to operate independently while still interacting efficiently. To enable real-time communication between the components, the WebSocket protocol was used. Unlike traditional \gls{http}, which relies on a request-response cycle, WebSocket maintains a persistent connection that allows data to be sent and received continuously. This approach reduces latency and network load by eliminating the need for constant polling, ensuring that the frontend receives updates as soon as new moves are processed by the backend.
+To facilitate real-time interaction between these components, the system primarily employs the WebSocket protocol. In contrast to traditional \gls{http}, which operates on a request-response model, WebSocket establishes a persistent, full-duplex connection. This allows both the client and server to continuously exchange data without the overhead of repeated \gls{http} requests. As a result, the system significantly reduces latency and network load, ensuring that the frontend is promptly updated whenever new moves are processed by the backend.
 
 \section{Frontend}
 The frontend was developed based on the initial wireframes but was modified throughout the project in response to feedback from the supervisor, product owner, and user testing. Despite these adjustments, the core components and functionality remained consistent with the original design.
@@ -92,15 +90,6 @@ In addition to ideas for future development, there were also a few obstacles enc
 
 During development, the application occasionally selected the system’s built-in front camera instead of the intended external USB cameras. The root cause was identified as cached “ghost” devices in the Windows Device Manager. These are records of previously connected hardware that remain stored even after the devices are disconnected. Such ghost entries can cause conflicts and incorrect device indexing, especially when multiple identical cameras are involved, leading to the misassignment of camera IDs. Temporarily, disconnecting the external cameras and restarting the system forced ID reassignment and resolved the problem, though this is not an ideal solution. \\
 
-
-
-
-
-
-
-
-
-
 \subsection{Highlighting moves}
 When a move is made, the frontend highlights the previous and current tiles of the moved piece. User testing with different color palettes resulted in the selection of a bright contrast color relative to the main design scheme to ensure good visibility. \\
 
@@ -131,7 +120,6 @@ Currently, all tournament participants are hardcoded into the system. This appro
 
 TournamentService retrieves player data from both the Norwegian Chess Federation (NSF) and the international \gls{fide} database, ensuring that participant information is accurate and up-to-date.
 By implementing such an integration, participants would be able to register by simply searching for their name. The system could then automatically retrieve and populate essential details, such as chess rating, club affiliation, and other relevant metadata. This would significantly streamline the registration process and reduce the likelihood of manual entry errors. \\
-
 
 \subsection{Time Control}
 In chess tournaments, different time formats such as \gls{classical}, \gls{rapid}, and \gls{blitz} are commonly used. The current application does not show time control information, making it harder for spectators to follow the games. Displaying the time control format and countdown timer could enhance the spectator experience. \\
