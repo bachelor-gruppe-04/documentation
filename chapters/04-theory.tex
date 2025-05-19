@@ -172,7 +172,7 @@ Client-server architecture is a network model in which multiple clients request 
 
 \subsection*{REST}
 
-\gls{rest} is an architectural style for designing networked applications, commonly implemented using \gls{rest}ful \glspl{api}. Unlike protocols such as WebSocket that maintain a persistent connection, \gls{rest} operates over the stateless \gls{http} protocol, where each client-server interaction is independent. Clients initiate \gls{http} requests, such as \texttt{GET}, \texttt{POST}, \texttt{PUT}, or \texttt{DELETE}, to access or modify resources on the server, which responds with structured data, typically in JSON or XML format. This separation of concerns enhances scalability and modularity in web applications. \gls{rest} is widely used due to its simplicity, compatibility with web standards, and ease of integration. See Figure \ref{fig:rest-api-model} for an illustration of the \gls{rest} \gls{api} communication model \cite{medium:rest}.
+\gls{rest} is an architectural style for designing networked applications, commonly implemented using \gls{rest}ful \glspl{api}. Unlike protocols such as WebSocket that maintain a persistent connection, \gls{rest} operates over the stateless \gls{http}, where each client-server interaction is independent. Clients initiate \gls{http} requests, such as \texttt{GET}, \texttt{POST}, \texttt{PUT}, or \texttt{DELETE}, to access or modify resources on the server, which responds with structured data, typically in JSON or XML format. This separation of concerns enhances scalability and modularity in web applications. \gls{rest} is widely used due to its simplicity, compatibility with web standards, and ease of integration. See Figure \ref{fig:rest-api-model} for an illustration of the \gls{rest} \gls{api} communication model \cite{medium:rest}.
 
 \begin{figure}[h!]
 \centering
@@ -180,6 +180,8 @@ Client-server architecture is a network model in which multiple clients request 
 \caption[REST API Model]{\gls{rest} \gls{api} Model}
 \label{fig:rest-api-model}
 \end{figure}
+
+\newpage
 
 \subsection*{WebSocket}
 \label{subsec:websocket}
