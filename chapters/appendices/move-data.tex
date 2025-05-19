@@ -1,0 +1,299 @@
+\chapter{Move-Data Testing}
+\label{app:move-data-testing}
+
+
+\par\scriptsize
+\textit{Explanation:} The numbers (e.g., \textbf{1x}) indicate the current test game being played and where an error occurred. A hyphen (\textbf{-}) means no move was detected within 30 seconds after the move was made. If a move was detected but incorrect (for example \texttt{c3} instead of the expected \texttt{Nc3}), it is shown explicitly (for example \textbf{7x(c3)}). If all moves were correctly recognized, the note "All" appears.
+
+\begin{center}
+\textbf{Plastic board:}
+\end{center}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{B90 Sicilian Defense, Najdorf Variation, English Attack}
+\begin{tabular}{|c|l|p{5cm}|l|p{5cm}|}
+\hline
+\textbf{Move \#} & \textbf{White} & \textbf{White Notes} & \textbf{Black} & \textbf{Black Notes} \\
+\hline
+1  & e4    &                     & c5    &                        \\
+2  & Nf3   &                     & d6    &                        \\
+3  & d4    &                     & cxd4  &                        \\
+4  & Nxd4  & 5x(-), 6x(-)        & Nf6   &                        \\
+5  & Nc3   & 1x(c3)              & a6    &                        \\
+6  & Be3   & 2x(-), 4x(-), 7x(-), 8x(-) & e5    &                        \\
+7  & Nb3   &                     & Be6   &                        \\
+8  & f3    &                     & h5    &                        \\
+9  & Nd5   &                     & Bxd5  & 9x(-)                  \\
+10 & exd5  &                     & Nbd7  & 10x(-)                 \\
+11 & Qd2   &                     & g6    &                        \\
+12 & Be2   &                     & Bg7   &                        \\
+13 & O-O   &                     & b6    &                        \\
+14 & c4    &                     & O-O   &                        \\
+15 & Rae1  &                     & Re8   &                        \\
+\hline
+\multicolumn{5}{|l|}{3x(All)} \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{E15 Queen's Indian Defense, Fianchetto Variation}
+\begin{tabular}{|c|l|p{5cm}|l|p{5cm}|}
+\hline
+\textbf{Move \#} & \textbf{White} & \textbf{White Notes} & \textbf{Black} & \textbf{Black Notes} \\
+\hline
+1  & d4    &         & Nf6   &         \\
+2  & c4    &         & e6    &         \\
+3  & Nf3   &         & b6    &         \\
+4  & g3    &         & Ba6   & 1x(-), 2x(-), 3x(-), 4x(-), 5x(-), 6x(-) \\
+5  & b3    &         & Bb4+  & 10x(-)  \\
+6  & Bd2   &         & Be7   &         \\
+7  & Bg2   &         & c6    &         \\
+8  & Bc3   &         & d5    &         \\
+9  & Ne5   &         & Nfd7  &         \\
+10 & Nxd7  & 8x(-), 9x(-) & Nxd7  &         \\
+11 & Nd2   &         & O-O   &         \\
+12 & O-O   &         & Rc8   &         \\
+13 & e4    &         & b5    &         \\
+14 & Re1   &         & dxc4  &         \\
+15 & bxc4  &         & bxc4  &         \\
+\hline
+\multicolumn{5}{|l|}{7x(All)} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{A40 Englund Gambit: Main Line}
+\begin{tabular}{|c|l|p{5cm}|l|p{5cm}|}
+\hline
+\textbf{Move \#} & \textbf{White} & \textbf{White Notes} & \textbf{Black} & \textbf{Black Notes} \\
+\hline
+1  & d4    &                     & e5    &                        \\
+2  & dxe5  &                     & Nc6   &                        \\
+3  & Nf3   &                     & Qe7   &                        \\
+4  & Bf4   &                     & Qb4+  &                        \\
+5  & Bd2   & 1x(-), 2x(-), 3x(-), 4x(-), 5x(-), 6x(-), 8x(-), 9x(-), 10x(-) & Qxb2  & 7x(-) \\
+6  & Nc3   &                     & Bb4   &                        \\
+7  & Rb1   &                     & Qa3   &                        \\
+8  & Nd5   &                     & Ba5   &                        \\
+9  & Rb5   &                     & Bxd2+ &                        \\
+10 & Qxd2  &                     & Kd8   &                        \\
+11 & e4    &                     & Qxa2  &                        \\
+12 & Qc3   &                     & a6    &                        \\
+13 & Bc4   &                     & Qa4   &                        \\
+14 & Rc5   &                     & b6    &                        \\
+15 & e6    &                     & Nf6   &                        \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{A00 Kádas Opening}
+\begin{tabular}{|c|l|p{5cm}|l|p{5cm}|}
+\hline
+\textbf{Move \#} & \textbf{White} & \textbf{White Notes} & \textbf{Black} & \textbf{Black Notes} \\
+\hline
+1  & h4    &                     & h5    &                        \\
+2  & Rh3   &                     & Rh6   & 1x(-), 2x(-), 3x(-), 4x(-), 5x(-), 6x(-), 7x(-), 8x(-), 9x(-), 10x(-) \\
+3  & Rd3   &                     & Rd6   &                        \\
+4  & e4    &                     & e5    &                        \\
+5  & Qf3   &                     & Qf6   &                        \\
+6  & Ke2   &                     & Ke7   &                        \\
+7  & Qxf6+ &                     & Kxf6  &                        \\
+8  & Kf3   &                     & Re6   &                        \\
+9  & Re3   &                     & Kg6   &                        \\
+10 & Kg3   &                     & Rd6   &                        \\
+11 & Rd3   &                     & Rxd3+ &                        \\
+12 & cxd3  &                     & Kf6   &                        \\
+13 & Kf3   &                     & g5    &                        \\
+14 & hxg5+ &                     & Kxg5  &                        \\
+15 & Kg3   &                     & Kg6   &                        \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{A00 Barnes Opening}
+\begin{tabular}{|c|l|p{5cm}|l|p{5cm}|}
+\hline
+\textbf{Move \#} & \textbf{White} & \textbf{White Notes} & \textbf{Black} & \textbf{Black Notes} \\
+\hline
+1  & f3    &                     & f6    &                        \\
+2  & e4    & 2x(-), 7x(-)        & e5    &                        \\
+3  & Qe2   &                     & Qe7   & 3x(-), 10x(-)           \\
+4  & Qc4   & 8x(-)               & Qd6   & 6x(-)                   \\
+5  & d3    &                     & Qd4   & 1x(-), 9x(-)            \\
+6  & Nd2   &                     & d6    &                        \\
+7  & b3    &                     & Be7   &                        \\
+8  & Ba3   &                     & Nh6   &                        \\
+9  & O-O-O &                     & a6    & 4x(-), 5x(-)            \\
+10 & h3    &                     & Qa1+  &                        \\
+11 & Nb1   &                     & d5    &                        \\
+12 & Qxc7  &                     & O-O   &                        \\
+13 & Qxc8  &                     & Bc5   &                        \\
+14 & exd5  &                     & Be3+  &                        \\
+15 & Rd2   &                     & Bxd2+ &                        \\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+
+\begin{center}
+\textbf{Wooden board:}
+\end{center}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{B90 Sicilian Defense, Najdorf Variation, English Attack (Wooden Board)}
+\begin{tabular}{|c|l|p{5cm}|l|p{5cm}|}
+\hline
+\textbf{Move \#} & \textbf{White} & \textbf{White Notes} & \textbf{Black} & \textbf{Black Notes} \\
+\hline
+1  & e4    &                     & c5    &                        \\
+2  & Nf3   &                     & d6    &                        \\
+3  & d4    &                     & cxd4  &                        \\
+4  & Nxd4  & 1x(-), 3x(-), 5x(-), 7x(-) & Nf6   & 10x(-)                 \\
+5  & Nc3   &                     & a6    &                        \\
+6  & Be3   &                     & e5    &                        \\
+7  & Nb3   &                     & Be6   &                        \\
+8  & f3    &                     & h5    &                        \\
+9  & Nd5   &                     & Bxd5  &                        \\
+10 & exd5  &                     & Nbd7  &                        \\
+11 & Qd2   &                     & g6    &                        \\
+12 & Be2   & 2x(-)               & Bg7   &                        \\
+13 & O-O   & 4x(Rf1), 6x(Rf1), 8x(Rf1) & b6    &                        \\
+14 & c4    &                     & O-O   & 9x(Rf8)                  \\
+15 & Rae1  &                     & Re8   &                        \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{E15 Queen's Indian Defense, Fianchetto Variation, Check Variation, Intermezzo Line}
+\begin{tabular}{|c|l|p{5cm}|l|p{5cm}|}
+\hline
+\textbf{Move \#} & \textbf{White} & \textbf{White Notes} & \textbf{Black} & \textbf{Black Notes} \\
+\hline
+1  & d4    &                     & Nf6    &                        \\
+2  & c4    &                     & e6     &                        \\
+3  & Nf3   &                     & b6     &                        \\
+4  & g3    &                     & Ba6    & 2x(-), 4x(-), 5x(-), 6x(-), 7x(-), 8x(-), 9x(-) \\
+5  & b3    &                     & Bb4+   &                        \\
+6  & Bd2   &                     & Be7    & 1x(-)                  \\
+7  & Bg2   &                     & c6     &                        \\
+8  & Bc3   &                     & d5     &                        \\
+9  & Ne5   &                     & Nfd7   &                        \\
+10 & Nxd7  &                     & Nxd7   &                        \\
+11 & Nd2   &                     & O-O    &                        \\
+12 & O-O   &                     & Rc8    &                        \\
+13 & e4    &                     & b5     &                        \\
+14 & Re1   &                     & dxc4   &                        \\
+15 & bxc4  &                     & bxc4   &                        \\
+\hline
+\multicolumn{5}{|l|}{3x(All), 10x(All)} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{A40 Englund Gambit: Main Line}
+\begin{tabular}{|c|l|p{5cm}|l|p{5cm}|}
+\hline
+\textbf{Move \#} & \textbf{White} & \textbf{White Notes} & \textbf{Black} & \textbf{Black Notes} \\
+\hline
+1  & d4    &                     & e5    &                        \\
+2  & dxe5  &                     & Nc6   & 9x(-)                  \\
+3  & Nf3   & 3x(-)               & Qe7   &                        \\
+4  & Bf4   & 1x(-), 8x(-), 10x(-) & Qb4+  &                        \\
+5  & Bd2   & 4x(-), 6x(-), 7x(-) & Qxb2  & 5x(-)                  \\
+6  & Nc3   &                     & Bb4   & 2x(-)                  \\
+7  & Rb1   &                     & Qa3   &                        \\
+8  & Nd5   &                     & Ba5   &                        \\
+9  & Rb5   &                     & Bxd2+ &                        \\
+10 & Qxd2  &                     & Kd8   &                        \\
+11 & e4    &                     & Qxa2  &                        \\
+12 & Qc3   &                     & a6    &                        \\
+13 & Bc4   &                     & Qa4   &                        \\
+14 & Rc5   &                     & b6    &                        \\
+15 & e6    &                     & Nf6   &                        \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{A00 Kádas Opening}
+\begin{tabular}{|c|l|p{5cm}|l|p{5cm}|}
+\hline
+\textbf{Move \#} & \textbf{White} & \textbf{White Notes} & \textbf{Black} & \textbf{Black Notes} \\
+\hline
+1  & h4      &                   & h5      &                        \\
+2  & Rh3     &                   & Rh6     & 2x(-), 5x(-), 6x(-), 7x(-), 9x(-) \\
+3  & Rd3     & 1x(-), 3x(-), 8x(-), 10x(-) & Rd6     & 4x(-)                  \\
+4  & e4      &                   & e5      &                        \\
+5  & Qf3     &                   & Qf6     &                        \\
+6  & Ke2     &                   & Ke7     &                        \\
+7  & Qxf6+   &                   & Kxf6    &                        \\
+8  & Kf3     &                   & Re6     &                        \\
+9  & Re3     &                   & Kg6     &                        \\
+10 & Kg3     &                   & Rd6     &                        \\
+11 & Rd3     &                   & Rxd3+   &                        \\
+12 & cxd3    &                   & Kf6     &                        \\
+13 & Kf3     &                   & g5      &                        \\
+14 & hxg5+   &                   & Kxg5    &                        \\
+15 & Kg3     &                   & Kg6     &                        \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{A00 Barnes Opening}
+\begin{tabular}{|c|l|p{5cm}|l|p{5cm}|}
+\hline
+\textbf{Move \#} & \textbf{White} & \textbf{White Notes} & \textbf{Black} & \textbf{Black Notes} \\
+\hline
+1  & f3      &                   & f6      &                        \\
+2  & e4      &                   & e5      &                        \\
+3  & Qe2     &                   & Qe7     &                        \\
+4  & Qc4     & 3x(-)             & Qd6     &                        \\
+5  & d3      &                   & Qd4     & 9x(-)                  \\
+6  & Nd2     & 2x(-)             & d6      &                        \\
+7  & b3      &                   & Be7     & 10x(-)                 \\
+8  & Ba3     &                   & Nh6     &                        \\
+9  & O-O-O   & 1x(Rd1), 4x(Rd1), 5x(Rd1), 6x(Rd1) & a6      & 7x(-), 8x(-)           \\
+10 & h3      &                   & Qa1+    &                        \\
+11 & Nb1     &                   & d5      &                        \\
+12 & Qxc7    &                   & O-O     &                        \\
+13 & Qxc8    &                   & Bc5     &                        \\
+14 & exd5    &                   & Be3+    &                        \\
+15 & Rd2     &                   & Bxd2+   &                        \\
+\hline
+\end{tabular}
+\end{table}
