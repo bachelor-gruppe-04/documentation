@@ -356,7 +356,7 @@ GitHub was used for both version control and task management. Issues in GitHub w
 \item \textbf{Postman} was employed for testing and validating \acrshort{rest}ful \glspl{api}, utilizing built-in JavaScript-based test snippets.
 \item \textbf{Netron.app} was used to visualize neural network architectures during the evaluation phase.
 \item \textbf{Git} facilitated version control and collaboration throughout the development process.
-\item \textbf{\glspl{llm}} (e.g., ChatGPT) were consulted to review code and provide suggestions, functioning as a collaborative assistant.
+\item \textbf{\glspl{llm}} (for example ChatGPT) were consulted to review code and provide suggestions, functioning as a collaborative assistant.
 \item \textbf{Lighthouse} was used to evaluate and improve the performance and accessibility of the developed web interface.
 \end{itemize}.
 
@@ -364,7 +364,9 @@ GitHub was used for both version control and task management. Issues in GitHub w
 \label{subsec:collaboration-and-design-tools}
 
 \begin{itemize}
-    \item \textbf{GitHub} was used for its built-in project management tool, which allowed the team to create an Issue Board for easy issue tracking. It was also used for code reviews and version control management.
+    \item \textbf{GitHub} was used for its integrated project management features, enabling the team to create an Issue Board for efficient tracking of tasks. It was also used for code reviews and version control.
+
+    
     
     \item \textbf{Figma} was used as a tool for sketching and creating wireframes.
     
@@ -373,6 +375,7 @@ GitHub was used for both version control and task management. Issues in GitHub w
     \item \textbf{Overleaf} was used as the platform for writing the report, utilizing its LaTeX support to efficiently compose and format the thesis.
 \end{itemize}
 
+\newpage
 
 \section{Technology Stack}
 \label{sec:technology-stack}
@@ -413,28 +416,30 @@ TypeScript was selected for the project's frontend language due to it's type-sef
     \item \textbf{react-dom} serves as the entry point to the DOM and server renderers for React. \cite{ts:react-dom}
 \end{itemize}
 
+\newpage
+
 \section{Testing}
 \label{sec:testing}
 
 \subsection{Model testing}
 \label{subsec:model-testing}
 
-\subsubsection*{Development}
-To streamline the development and testing of the machine learning model, a prerecorded video was utilized in place of a live camera feed. This approach enabled the simulation of a consistent and controlled environment where a chess game was played in video format. By using a static video instead of physically setting up the chessboard and camera for each iteration, the development cycle was significantly accelerated. This method allowed for rapid evaluation of the model's ability to detect both the board and the chess pieces under reproducible conditions.
+To streamline the development and testing of the machine learning model, a prerecorded video was utilized in place of a live camera feed. This approach enabled the simulation of a consistent and controlled environment where a chess game was played in video format. By using a static video instead of physically setting up the chessboard and camera for each iteration, the development cycle was significantly accelerated. This method allowed for rapid evaluation of the model's ability to detect both the board and the chess pieces under reproducible conditions. \\
 
-\subsubsection*{performance}
 The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were selected, with 10 games played per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves, corresponding to 15 moves by white and 15 moves by black. \\
 
 Each move was logged as either successful or unsuccessful. A 30-second window was provided for the model to detect and transmit each move, starting from the moment the move was made \gls{otb}. If the model failed to detect the move within this time frame, or if it detected the wrong move, it was marked as unsuccessful. The game concluded either when a move was marked unsuccessful or all 15 full moves had been completed. \\
 
-The webcam was mounted above the board at an angle of approximately 60–70\si{\degree} relative to the table surface. The white pieces were placed on the left side of the camera's field of view, and the black pieces on the right.
+The webcam was mounted above the board at an angle approximately 60–70\si{\degree} relative to the table surface. The white pieces were placed on the left side of the camera's field of view, and the black pieces on the right.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures/methods/testing/setup.png}
+    \includegraphics[width=0.55\linewidth]{figures/methods/testing/setup.png}
     \caption[Setup during testing]{Physical setup during testing, showing the board, camera position, and piece orientation.}
     \label{fig:setup}
 \end{figure}
+
+\newpage
 
 
 
