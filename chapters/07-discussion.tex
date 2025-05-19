@@ -21,11 +21,11 @@ While the ChessCam models used in this project demonstrate high precision and re
 
 One consistent source of error was tied to specific move numbers within certain openings. In some test sets, all 10 games of a particular opening failed at the same move, suggesting that specific board states challenge the model. This caused some piece types, especially the black rook, to receive unusually low scores (23.8\%). Since black rooks had relatively few moves overall and repeatedly failed at the same point in the games, their scores were artificially suppressed. \\
 
-Another common issue involved the model misclassifying castling moves. The model selects the move with the highest predicted probability, but during castling, it often assigned a higher probability to the rook’s move from its original square rather than to the king’s two-square move. As a result, castling was frequently mistaken for a rook move. Of the 9 total misclassifications, 8 were caused by this specific error. One potential solution is to delay the rook’s movement by moving the king two squares first. This would give the model only one valid move to detect, reducing the likelihood of misclassification. \\
+Another common issue involved the model misclassifying \gls{castling} moves. The model selects the move with the highest predicted probability, but during \gls{castling}, it often assigned a higher probability to the rook’s move from its original square rather than to the king’s two-square move. As a result, \gls{castling} was frequently mistaken for a rook move. Of the 9 total misclassifications, 8 were caused by this specific error. One potential solution is to delay the rook’s movement by moving the king two squares first. This would give the model only one valid move to detect, reducing the likelihood of misclassification. \\
 
 There was also observed reduced accuracy along the edges of the board, affecting both piece detection and the localization of square centers. Several factors contribute to this. The board-warping algorithm depends heavily on precise corner detection, which is more error-prone near the edges. The steep camera angle causes pieces closer to the camera to appear larger and obscure important details. Meanwhile, pieces farther away appear smaller and are more difficult to detect. Figure \ref{fig:bbox-centers-incorrect} illustrates this issue, showing bounding boxes near the edges that are frequently misaligned and square centers that are noticeably offset. In contrast, detection accuracy and alignment improve significantly toward the center of the board. \\
 
-Another limitation observed was the model's handling of the en passant. Currently, the model does not support recognition of en passant moves. When the board state includes the possibility for such a move, the model fails to handle it correctly and crashes.
+Another limitation observed was the model's handling of the \gls{en-passant}. Currently, the model does not support recognition of \gls{en-passant} moves. When the board state includes the possibility for such a move, the model fails to handle it correctly and crashes.
 
 
 \begin{figure}[h!]
@@ -50,7 +50,7 @@ The Game Preview page was not part of the initial wireframe, as described in Sec
 Since the application architecture was already based on individual chessboard instances, implementing this feature was relatively straightforward. By reusing existing chessboard components identified by unique IDs, the Game Preview page was able to display all active games dynamically. Only minor code modifications were necessary to make the component more flexible and support this functionality.
 
 \subsection{Download PGN file}
-One project requirement was to digitize chess games into \gls{pgn} files, enabling players and spectators to download and analyze them using external tools such as lichess’ analysis feature. As described in Section \ref{subsec:results-frontend}, the application provides access to PGN files containing technical metadata. \\
+One project requirement was to digitize chess games into \gls{pgn} files, enabling players and spectators to download and analyze them using external tools such as Lichess’ analysis feature. As described in Section \ref{subsec:results-frontend}, the application provides access to \gls{pgn} files containing technical metadata. \\
 
 The \gls{pgn} format is widely supported, and tools such as Lichess can interpret both the complete file or just the move list. This flexibility allows users to gain insights into various aspects of the game, such as identifying the opening played, evaluating move accuracy, and understanding the overall game progression. Figure \ref{fig:downloaded-pgn-analysis} shows how the downloaded \gls{pgn} can be used in an external analysis tool. \\
 
@@ -88,7 +88,7 @@ In addition to ideas for future development, there were also a few challenges en
 
 \subsection{Camera}
 
-During development and testing, the front-end application occasionally initialized the system’s built-in front camera instead of the intended external USB cameras. The application is designed to access external cameras by specifying a camera ID other than 0, since ID 0 typically corresponds to the system’s default device. \\
+During development and testing, the front-end application occasionally initialized the system’s built-in front camera instead of the intended external \gls{usb} cameras. The application is designed to access external cameras by specifying a camera ID other than 0, since ID 0 typically corresponds to the system’s default device. \\
 
 This issue was traced back to a cached or “ghost” device entry in the Windows Device Manager. A ghost device refers to a previously connected hardware device that is no longer physically attached to the system but whose configuration and driver information remain cached by the operating system. These leftover entries can lead to conflicts or incorrect device indexing when similar hardware is reconnected, especially when multiple identical devices are used. In this case, the system appeared to retain prior camera associations, which caused the application to misidentify or incorrectly assign the camera index. \\
 
