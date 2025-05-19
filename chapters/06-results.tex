@@ -7,7 +7,7 @@
 \section{Overview of Delivered Product}
 The application is an open-source, local, camera-based system designed to digitize \gls{otb} chess games in real time. It detects piece movements on a physical chessboard using image recognition and converts them into a \gls{pgn} file for digital viewing and analysis. The system runs entirely on common hardware,  such as a camera connected to a local machine running either Windows or Ubuntu, without relying on licensed software or cloud services. \\
 
-The project is developed using open and freely available technologies. It follows clear coding standards and best practices, ensuring the code is easy to understand, maintain, and extend. Comprehensive documentation supports future enhancements such as adding new chess variants, integrating additional hardware, or improving recognition models. The source code is published in a public Git repository with no restrictions on reuse or adaptation. \\
+The project is developed using open and freely available technologies. It follows  coding standards and best practices, ensuring the code is easy to understand, maintain, and extend. Comprehensive documentation supports future enhancements such as adding new chess variants, integrating additional hardware, or improving recognition models. The source code is published in a public Git repository with no restrictions on reuse or adaptation. \\
 
 The delivered product is the final version of the application developed as part of this Bachelor’s thesis. It was created at the product owner's request, based on general requirements rather than detailed specifications. Design, architecture, and technology decisions were made by the development team and regularly reviewed with the product owner throughout the development process.
 
@@ -99,11 +99,11 @@ Although the project was initially structured according to the \gls{scrum} frame
 
 Meeting routines were adapted according to team availability and project needs. Internal meetings were held as needed rather than on a fixed schedule, with most collaboration taking place informally during shared office hours. Nevertheless, short stand-up meetings were prioritized on a daily basis to maintain effective communication and ensure alignment. Biweekly meetings with the supervisor were consistently maintained, functioning as checkpoints for academic progress and clarification of requirements. Meetings with the product owner were arranged approximately once or twice per month and typically focused on feature validation, feedback, and adjustments. \\
 
-GitHub was used consistently throughout the project for both task management and version control. Issues were linked to corresponding branches and categorized by type (e.g., feature, enhancement, documentation). All code changes were submitted via pull requests, and no changes were pushed directly to the main branch. Peer review was strictly enforced as part of the workflow, with every pull request reviewed by at least one team member before merging. \\
+GitHub was used consistently throughout the project for both task management and version control. Issues were linked to corresponding branches and categorized by type for example feature, enhancement, documentation. All code changes were submitted via pull requests, and no changes were pushed directly to the main branch. Peer review was strictly enforced as part of the workflow, with every pull request reviewed by at least one team member before merging. \\
 
 Tasks were assigned to individual team members and tracked using GitHub Issues. Issues were labeled and moved through the workflow stages: \textit{No Status}, \textit{To Do}, \textit{In Progress}, and \textit{Done}. This workflow was followed consistently for larger development tasks. However, some minor items, particularly quick fixes and small adjustments, were occasionally completed outside of the issue board during periods of intensive development, resulting in slightly reduced traceability for those changes.\\
 
-In addition to manual code review, automated workflows were implemented using GitHub Actions to support continuous integration and reduce human error. One workflow was configured to run Python unit tests on every push, ensuring code stability throughout development. Another workflow was responsible for automatically updating LaTeX-based documentation by cloning the relevant repository and pushing changes after each update, as shown in Figure~\ref{fig:workflow-latex}. These pipelines contributed to improved reliability, automation of repetitive tasks, and early detection of breaking changes during development. \\
+In addition to manual code review, automated workflows were implemented using GitHub Actions to support continuous integration and reduce human error. One workflow was configured to run Python unit tests on every push, ensuring code stability throughout development. Another workflow was responsible for automatically updating LaTeX-based documentation by cloning the relevant repository and pushing changes after each update, as shown in Figure~\ref{fig:workflow-latex}. These pipelines contributed to improved reliability, automation of repetitive tasks, and early detection of errors during development. \\
 
 \begin{figure}[h!] \centering 
 \includegraphics[width=0.75\linewidth]{figures/results/workflows/latex.png}\caption[Upload LaTeX workflow]{The workflow for update documentation with code.}\label{fig:workflow-latex} \end{figure}
@@ -117,12 +117,10 @@ In addition to manual code review, automated workflows were implemented using Gi
 
 To provide a comprehensive understanding of the system architecture and interaction flow, several \gls{uml} diagrams were created. These diagrams model different aspects of the live chess game digitization system, from component interactions and activity flow to user roles and use cases.
 
-
-
 \subsubsection*{Use-Case Diagram}
 \label{subsubsec:use-case-diagram}
 
-The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primary functionalities they interact with. Admins are responsible for hardware setup and initiating the game recording process. The system autonomously handles move detection, validation, and \gls{ui} updates. Users, on the otherhand, access the game remotely to spectate or download \gls{pgn} files. This diagram provides a clear overview of who interacts with the system and what capabilities are exposed, forming the basis for understanding system requirements and user expectations.
+The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primary functionalities they interact with. Admins are responsible for hardware setup and initiating the game recording process. Users, on the otherhand, access the game remotely to spectate. This diagram provides an overview of who interacts with the system and what capabilities are exposed, forming the basis for understanding system requirements and user expectations.
 
 \begin{figure}[h!]
     \centering
@@ -134,7 +132,7 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system�
 \subsubsection*{Sequence Diagram}
 \label{subsubsec:sequence-diagram}
 
-The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. This unit continuously detects and validates moves, updating the user interface accordingly. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}, highlighting how physical chess games are digitized and broadcasted.
+The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chronological flow of interactions between the system components and external actors. It begins with the admin initiating the game recording by setting up the camera, which captures and streams the board state to a local processing unit. The diagram emphasizes the communication between hardware (camera and local machine) and the \gls{ui}.
 
 
 \begin{figure}[h!]
@@ -148,9 +146,9 @@ The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chrono
 
 \subsubsection*{Class Diagram}
 
-The class diagram in Figure \ref{fig:class} provides a high-level overview of the system’s object-oriented design, detailing the core components involved in the chess digitization process. The central class, \texttt{App}, acts as the main entry point for the application, orchestrating the initialization of system services and user interface components. It interacts with the \texttt{BoardFactory} to generate multiple \texttt{Board} instances, each representing a physical chessboard, and connects to \gls{gui} elements such as \texttt{ProgressBarTopLevel} and \texttt{BoardResetSelectorTopLevel}, which support board resets and progress tracking during gameplay. \\
+The class diagram in Figure \ref{fig:class} provides a high-level overview of the system’s object-oriented design, detailing the core components involved in the chess digitization process. The central class, \texttt{App}, acts as the main entry point for the application, orchestrating the initialization of system services and user interface components. It interacts with the \texttt{BoardFactory} to generate multiple \texttt{Board} instances, each representing a physical chessboard, and connects to \gls{gui} elements such as \texttt{ProgressBarTopLevel} and \texttt{BoardResetSelectorTopLevel}, which support board resets and progress tracking. \\
 
-Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \texttt{Detector} for move recognition using computer vision. It maintains a history of moves, manages WebSocket clients, and offers methods for validating and resetting board states. The \texttt{BoardService} class handles the overall control flow, managing boards, processing moves, and starting detector threads. Error handling is supported through a custom \texttt{CameraDoesNotExistError} exception. This structure ensures a clear separation of concerns, supporting modular development and maintainability across the data, control, and interface layers of the system.
+Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \texttt{Detector} for move recognition using computer vision. It maintains a history of moves, manages WebSocket clients, and offers methods for validating and resetting board states. The \texttt{BoardService} class handles the overall control flow, managing boards, processing moves, and starting detector threads. Error handling is supported through a custom \texttt{CameraDoesNotExistError} exception. This structure ensures a separation of concerns, supporting modular development and maintainability across the data, control, and interface layers of the system.
 
 \begin{figure}[h!]
 \centering
@@ -168,18 +166,18 @@ Figure \ref{fig:package-backend} illustrates the package structure of the backen
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{figures/results/uml/package-backend.png}
-    \caption[Package Diagram for Backend]{Package Diagram for the backend package structure.}
+    \caption[Package Diagram for Backend]{Package diagram for the backend package structure.}
     \label{fig:package-backend}
 \end{figure}
 
 \newpage
 
-On the frontend, shown in Figure \ref{fig:package-frontend}, the React application follows a conventional structure under the \texttt{src} directory. Key folders include \texttt{components} for reusable \gls{ui} elements like camera and board displays, \texttt{pages} for route-linked views, and \texttt{layouts} for defining common structural components across pages, such as headers or navigation bars. The \texttt{data} directory supports configuration or mock content during development. Outside \texttt{src}, the \texttt{public} folder holds static assets like \texttt{index.html}, while \texttt{App.tsx} and \texttt{index.css} define the main logic and styling. This organization supports maintainability and scalability by clearly separating visual components, logic, routing, and configuration.
+On the frontend, shown in Figure \ref{fig:package-frontend}, the React application follows a conventional structure under the \texttt{src} directory. Key folders include \texttt{components} for reusable \gls{ui} elements like camera and board displays, \texttt{pages} for route-linked views, and \texttt{layouts} for defining common structural components across pages, such as headers or navigation bars. The \texttt{data} directory supports configuration or mock content during development. Outside \texttt{src}, the \texttt{public} folder holds static assets like \texttt{index.html}, while \texttt{App.tsx} and \texttt{index.css} define the main logic and styling. This organization supports maintainability and scalability by separating visual components, logic, routing, and configuration.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{figures/results/uml/package-frontend.png}
-    \caption[Package Diagram for Frontend]{Package Diagram for the frontend package structure.}
+    \caption[Package Diagram for Frontend]{Package diagram for the frontend package structure.}
     \label{fig:package-frontend}
 \end{figure}
 
@@ -263,7 +261,7 @@ As described in Section~\ref{subsec:model-testing}, the model was evaluated usin
 \end{table}
 
 
-Table \ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board slightly outperformed the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference may indicate a slightly more stable detection environment on the wooden surface. \\
+Table \ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board performed slightly better than the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference may indicate a slightly more stable detection environment on the wooden surface. \\
 
 
 \begin{table}[htbp]
@@ -320,7 +318,7 @@ Figure \ref{fig:move-failures} shows the number of failed games (i.e., games whe
 \end{figure}
 
 
-Table \ref{tab:different-errors} categorizes the types of detection failures for each board type. The majority of failures were due to a complete lack of detection within the allotted time window. Incorrect detections (the model detecting a move but interpreting it wrongly) were less frequent but more common on the wooden board, accounting for 8 out of 48 failures, compared to just 1 on the plastic board.  \\
+Table \ref{tab:different-errors} categorizes the types of detection failures for each board type. The majority of failures were due to a complete lack of detection within the allotted time window. Incorrect detections were less frequent but more common on the wooden board, accounting for 8 out of 48 failures, compared to just 1 on the plastic board. For a detailed breakdown of the chess games, including the sequences of moves, failure points, and detection statistics for each board type, see Appendix \ref{app:move-data-testing}.  \\
 
 \begin{table}[htbp]
 \centering
@@ -337,8 +335,6 @@ Wooden & 40 & 8 & 48 \\
 \bottomrule
 \end{tabular}
 \end{table}
-
-For a detailed breakdown of the chess games, including the sequences of moves, failure points, and detection statistics for each board type, see Appendix FILL IN.
 
 \subsection{Wireframe}
 \label{subsec:wireframe-results}
