@@ -91,13 +91,15 @@ The downloaded file included a header containing key information such as the tou
 \begin{figure}[h!] 
     \centering 
     \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/downloaded-pgn.png}}
-    \caption[PGN file and metadata]{The downloaded \gls{pgn} file to a specific game, opened in a code editor.}
+    \caption[PGN file and metadata]{The downloaded \gls{pgn} file for a specific game, opened in a code editor.}
     \label{fig:downloaded-pgn} 
 \end{figure}
 
 \section{Project Management}
 \label{sec:results-project-management}
 Although the project was initially structured according to the \gls{scrum} framework, its practical execution became more \gls{scrum}-inspired due to the absence of a dedicated \gls{scrum} Master and certain deviations from the full methodology. Each sprint began with a planning session in which tasks were selected from the product backlog based on priority and available team capacity. Sprint reviews were conducted at the end of each sprint to assess completed work and record outcomes. In addition, sprint retrospectives were held and documented, including reflections on workload distribution, communication challenges, and opportunities for process improvement. \\
+
+\newpage
 
 Meeting routines were adapted according to team availability and project needs. Internal meetings were held as needed rather than on a fixed schedule, with most collaboration taking place informally during shared office hours. Nevertheless, short stand-up meetings were prioritized on a daily basis to maintain effective communication and ensure alignment. Biweekly meetings with the supervisor were consistently maintained, functioning as checkpoints for academic progress and clarification of requirements. Meetings with the product owner were arranged approximately once or twice per month and typically focused on feature validation, feedback, and adjustments. \\
 
@@ -108,19 +110,19 @@ Tasks were assigned to individual team members and tracked using GitHub Issues. 
 In addition to manual code review, automated workflows were implemented using GitHub Actions to support continuous integration and reduce human error. One workflow was configured to run Python unit tests on every push, ensuring code stability throughout development. Another workflow was responsible for automatically updating LaTeX-based documentation by cloning the relevant repository and pushing changes after each update, as shown in Figure~\ref{fig:workflow-latex}. These pipelines contributed to improved reliability, automation of repetitive tasks, and early detection of errors during development. \\
 
 \begin{figure}[h!] \centering 
-\includegraphics[width=0.75\linewidth]{figures/results/workflows/latex.png}\caption[Upload LaTeX workflow]{The workflow for update documentation with code.}\label{fig:workflow-latex} \end{figure}
+\includegraphics[width=0.80\linewidth]{figures/results/workflows/latex.png}\caption[Upload LaTeX workflow]{The workflow for update documentation with code.}\label{fig:workflow-latex} \end{figure}
 
 \newpage
 
 \section{Architecture Overview}
 \label{subsec:diagrams}
 
-To provide a comprehensive understanding of the system architecture and interaction flow, several \gls{uml} diagrams were created. These diagrams model different aspects of the live chess game digitization system, from component interactions and activity flow to user roles and use cases.
+To provide a comprehensive understanding of the system architecture and interaction flow, several \gls{uml} diagrams were created. These diagrams capture different aspects of the live chess game digitization system, from component interactions and activity flow to user roles and use cases.
 
 \subsubsection*{Use Case Diagram}
 \label{subsubsec:use-case-diagram}
 
-The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primary functionalities they interact with. Admins are responsible for hardware setup and initiating the game recording process. Users, on the otherhand, access the game remotely to spectate. This diagram provides an overview of who interacts with the system and what capabilities are exposed, forming the basis for understanding system requirements and user expectations.
+The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primary functionalities they interact with. Admins are responsible for hardware setup and initiating the game recording process. Users, on the other hand, access the game remotely to spectate. This diagram provides a high-level summary of the system’s functional scope, forming the basis for understanding system requirements and user expectations.
 
 \begin{figure}[h!]
     \centering
@@ -146,7 +148,7 @@ The sequence diagram, shown in Figure \ref{fig:sequence}, illustrates the chrono
 
 \subsubsection*{Class Diagram}
 
-The class diagram in Figure \ref{fig:class} provides a high-level overview of the system’s object-oriented design, detailing the core components involved in the chess digitization process. The central class, \texttt{App}, acts as the main entry point for the application, orchestrating the initialization of system services and user interface components. It interacts with the \texttt{BoardFactory} to generate multiple \texttt{Board} instances, each representing a physical chessboard, and connects to \gls{gui} elements such as \texttt{ProgressBarTopLevel} and \texttt{BoardResetSelectorTopLevel}, which support board resets and progress tracking. \\
+The class diagram in Figure \ref{fig:class} provides a high-level overview of the system’s object-oriented design, detailing the core components involved in the chess digitization process. The central class, \texttt{App}, acts as the entry point for the application, orchestrating the initialization of system services and user interface components. It interacts with the \texttt{BoardFactory} to generate multiple \texttt{Board} instances, each representing a physical chessboard, and connects to \gls{gui} elements such as \texttt{ProgressBarTopLevel} and \texttt{BoardResetSelectorTopLevel}, which support board resets and progress tracking. \\
 
 Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \texttt{Detector} for move recognition using computer vision. It maintains a history of moves, manages WebSocket clients, and offers methods for validating and resetting board states. The \texttt{BoardService} class handles the overall control flow, managing boards, processing moves, and starting detector threads. Error handling is supported through a custom \texttt{CameraDoesNotExistError} exception. This structure ensures a separation of concerns, supporting modular development and maintainability across the data, control, and interface layers of the system.
 
@@ -161,7 +163,7 @@ Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \t
 
 \subsubsection*{Package Diagram}
 
-Figure \ref{fig:package-backend} illustrates the package structure of the backend system, organized around a modular architecture. The core logic resides in the \texttt{logic} package, which encapsulates domain-specific functionality such as board state detection, computer vision, mathematical operations, and supporting utilities. This modular breakdown, particularly in subpackages like \texttt{machine\_learning}, promotes separation of concerns and enhances reusability and testability. Alongside it, the \texttt{api} package handles external communication through submodules for data entities, service logic, and route definitions using FastAPI. Supporting components include static \texttt{resources} and the application entry point \texttt{main.py}, which binds the service and routing layers. This structure enables clean integration between backend services, data flow, and \gls{api} endpoints. \\
+Figure \ref{fig:package-backend} illustrates the package structure of the backend system, organized around a modular architecture. The core logic resides in the \texttt{logic} package, which encapsulates domain-specific functionality such as board state detection, computer vision, mathematical operations, and supporting utilities. This modular breakdown, particularly in subpackages such as \texttt{machine\_learning}, promotes separation of concerns and enhances reusability and testability. Alongside it, the \texttt{api} package handles external communication through submodules for data entities, service logic, and route definitions using FastAPI. Supporting components include static \texttt{resources} and the application entry point \texttt{main.py}, which binds the service and routing layers. This structure enables clean integration between backend services and \gls{api} endpoints. \\
 
 \begin{figure}[h!]
     \centering
@@ -172,7 +174,7 @@ Figure \ref{fig:package-backend} illustrates the package structure of the backen
 
 \newpage
 
-On the frontend, shown in Figure \ref{fig:package-frontend}, the React application follows a conventional structure under the \texttt{src} directory. Key folders include \texttt{components} for reusable \gls{ui} elements like camera and board displays, \texttt{pages} for route-linked views, and \texttt{layouts} for defining common structural components across pages, such as headers or navigation bars. The \texttt{data} directory supports configuration or mock content during development. Outside \texttt{src}, the \texttt{public} folder holds static assets like \texttt{index.html}, while \texttt{App.tsx} and \texttt{index.css} define the main logic and styling. This organization supports maintainability and scalability by separating visual components, logic, routing, and configuration.
+On the frontend, shown in Figure \ref{fig:package-frontend}, the React application follows a conventional structure under the \texttt{src} directory. Key folders include \texttt{components} for reusable \gls{ui} elements such as camera and board displays, \texttt{pages} for route-linked views, and \texttt{layouts} for defining common structural components across pages, such as headers or navigation bars. The \texttt{data} directory supports configuration or mock content during development. Outside \texttt{src}, the \texttt{public} folder holds static assets such as \texttt{index.html}, while \texttt{App.tsx} and \texttt{index.css} define the main logic and styling. This structure supports maintainability and scalability by separating visual components, logic, routing, and configuration.
 
 \begin{figure}[h!]
     \centering
