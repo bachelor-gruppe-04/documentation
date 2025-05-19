@@ -27,11 +27,13 @@ A subfield of \gls{ai} is \gls{ml}, which focuses on enabling computers to learn
 
 One area where \gls{ai} and \gls{ml} are commonly applied is computer vision. This field enables machines to interpret, analyze, and extract meaningful information from visual data, such as digital images and videos. The primary goal of computer vision is to replicate the human ability to perceive and understand visual information, as illustrated in Figure \ref{fig:computer-vision}.
 
-\begin{figure}[h!] \centering \includegraphics[width=0.75\linewidth]{figures/theory/machine-learning/computer-vision.png} \caption[Computer vision vs. human vision]{Comparison of computer vision and human vision, illustrating the similarities and differences in processing visual data \cite{turing:computer-vision}.} \label{fig:computer-vision} \end{figure}
+\begin{figure}[h!] \centering \includegraphics[width=0.85\linewidth]{figures/theory/machine-learning/computer-vision.png} \caption[Computer vision vs. human vision]{Comparison of computer vision and human vision, illustrating the similarities and differences in processing visual data \cite{turing:computer-vision}.} \label{fig:computer-vision} \end{figure}
 
 \subsection{Artificial Neural Network}
 
 One of the most influential technologies in modern \gls{ml} is the \gls{ann}. These networks excel at handling a wide range of data types, including images, audio, and text. Different neural network architectures are suited for specific tasks. For instance, \glspl{rnn}, especially those incorporating \gls{lstm}, are effective for sequential data such as text. \\
+
+\newpage
 
 In contrast, \glspl{cnn} are particularly effective in processing image data. Their architecture leverages convolutional layers to extract spatial features. \textbf{Spatial features} refer to patterns related to the position and arrangement of pixels in an image, making \glspl{cnn} highly efficient in image classification and object detection. An example of such a network applied to handwritten digit classification is shown in Figure~\ref{fig:convolutional-neural-network}.  \\
 
@@ -39,7 +41,7 @@ In contrast, \glspl{cnn} are particularly effective in processing image data. Th
 
 A key component of \glspl{cnn} is their ability to generate \textbf{feature maps}, which are the result of detecting spatial features at different locations in the image. These feature maps transform the input into a representation that highlights important visual patterns. As the image moves through the layers of the network, these feature maps capture crucial details such as edges, textures, and more complex shapes. Each feature map is the output of a convolutional layer, where filters are applied to extract relevant features. By emphasizing the most significant aspects of the image, these maps enable the network to learn and recognize patterns. This hierarchical approach to learning visual data has made \glspl{cnn} essential in a wide range of computer vision applications, from medical diagnostics to autonomous driving \cite{encord:cnn}. \\
 
-\subsection{Supervised Learning}
+\subsection{Supervised Learning and Classifcation}
 
 Another fundamental concept in machine learning is supervised learning, where models are trained on labeled datasets. Each example in the dataset includes both an input and the correct output, allowing the model to learn how the input relates to the expected output. After training, the model can generalize this learned relationship to make predictions on new, unseen data \cite{geeksforgeeks:supervised-learning, google:supervised-learning}. \\
 
@@ -62,6 +64,8 @@ To facilitate deployment across diverse environments and platforms, \gls{onnx} p
 \subsection{Inference}
 
 Once a model is trained, inference is the process of using the trained model to make predictions on new, unseen data. In the context of object detection, inference involves feeding an input image into the model, which processes the image and outputs predictions, usually in the form of object classes, bounding box coordinates, and confidence scores \cite{nvidia:inference}. \\
+
+\newpage
 
 \subsection{Model Performance}
 
@@ -90,10 +94,12 @@ Central to object detection is the use of bounding boxes. Bounding boxes are rec
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures/theory/image-recognition/bbox-example.png}
+    \includegraphics[width=0.60\linewidth]{figures/theory/image-recognition/bbox-example.png}
     \caption[Bounding box in object detection]{Example of a bounding boxes used in object detection to localize objects within an image \cite{peopleforai:boundingbox}.}
     \label{fig:boundingbox}
 \end{figure}
+
+\newpage
 
 \subsection{Anchor Boxes}
 
@@ -101,10 +107,12 @@ To improve detection accuracy across different object sizes and shapes, models u
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{figures/theory/image-recognition/anchor-boxes.png}
+    \includegraphics[width=0.56\linewidth]{figures/theory/image-recognition/anchor-boxes.png}
     \caption[Anchor boxes in object detection]{Illustration of anchor boxes on the feature map. These serve as initial reference boxes from which the model adjusts to better fit the actual objects in the image \cite{thinkautonomous:anchorboxes}.}
     \label{fig:anchor-box}
 \end{figure}
+
+\newpage
 
 \subsection{Intersection Over Union}
 
@@ -127,13 +135,15 @@ An IoU value of 1.0 means a perfect match between the prediction and the ground 
     \label{fig:nms}
 \end{figure}
 
+\newpage
+
 \section{Geometric Methods in Image Processing}
 \label{sec:geometric-methods}
 
-\subsection*{Normalization and Scaling}
+\subsection{Normalization and Scaling}
 \label{subsec:normalization-and-scaling}
 
-\textbf{Normalization} in image processing involves adjusting pixel values to a consistent range, such as [0, 1] or [-1, 1]. This helps improve model performance by making the input data uniform. By adjusting pixel intensities from their original 0–255 range, normalization allows the model to process inputs more consistently, leading to faster and more stable convergence.
+Normalization in image processing involves adjusting pixel values to a consistent range, such as [0, 1] or [-1, 1]. This helps improve model performance by making the input data uniform. By adjusting pixel intensities from their original 0–255 range, normalization allows the model to process inputs more consistently, leading to faster and more stable convergence.
 \textbf{Scaling} in image processing and machine learning involves resizing images to the format required by the model, as shown in Figure \ref{fig:scaling} \cite{brownlee:normalization}. 
 
 \begin{figure}[h!]
