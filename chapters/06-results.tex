@@ -39,7 +39,7 @@ No errors, dropped messages, or unexpected behaviors were observed during testin
 
 \begin{table}[h!]
 \centering
-\caption[API Test Summary]{Summary of test outcomes for REST and WebSocket endpoints.}
+\caption[API Test Summary]{Summary of test outcomes for \gls{rest} and WebSocket endpoints.}
 \label{tab:api-test-results}
 \begin{tabular}{L{0.3\linewidth}L{0.3\linewidth}L{0.3\linewidth}}
 \toprule
@@ -77,11 +77,21 @@ The game preview page displayed miniature boards of all ongoing games, providing
 
 One of the main pages in the web application was the board view, which presented a detailed display of a single game. It included a digital chessboard, move list, live camera feed, and evaluation bar, all updating in real time to create an engaging experience (Figure~\ref{fig:download-pgn}). Users could also download the current game's \gls{pgn} file via a dedicated button that saved it locally. \\
 
-\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/download-pgn.png}}\caption[Display of board view]{A demonstration of downloading a PGN file to a specific game}\label{fig:download-pgn} \end{figure}
+\begin{figure}[h!] 
+    \centering 
+    \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/download-pgn.png}}
+    \caption[Display of board view]{A demonstration of downloading a \gls{pgn} file to a specific game.}
+    \label{fig:download-pgn} 
+\end{figure}
 
 The downloaded file included a header containing key information such as the tournament name, date, and player names, followed by the recorded moves. It also indicated whether the game was still in progress. Upon completion, the result field displayed 1-0, 0-1, or $\frac{1}{2}$–$\frac{1}{2}$. Figure~\ref{fig:downloaded-pgn} shows an example of the file. \\
 
-\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/downloaded-pgn.png}}\caption[PGN file and metadata]{The downloaded PGN file to a specific game, opened in a code editor.}\label{fig:downloaded-pgn} \end{figure}
+\begin{figure}[h!] 
+    \centering 
+    \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/downloaded-pgn.png}}
+    \caption[PGN file and metadata]{The downloaded \gls{pgn} file to a specific game, opened in a code editor.}
+    \label{fig:downloaded-pgn} 
+\end{figure}
 
 \section{Project Management}
 \label{sec:results-project-management}
@@ -225,7 +235,7 @@ As described in Section~\ref{subsec:model-testing}, the model was evaluated usin
 
 \begin{table}[htbp]
 \centering
-\caption{Move detection accuracy total}
+\caption[Move detection accuracy total]{Move detection accuracy total.}
 \label{tab:accuracy-total}
 \begin{tabular}{lccc}
 \toprule
@@ -258,7 +268,7 @@ Table \ref{tab:board-type-accuracy} compares the success rates between the two p
 
 \begin{table}[htbp]
 \centering
-\caption[Move detection accuracy board type]{Summary of total moves and success rate by board type}
+\caption[Move detection accuracy board type]{Summary of total moves and success rate by board type.}
 \label{tab:board-type-accuracy}
 \begin{tabular}{lccc}
 \toprule
@@ -314,7 +324,7 @@ Table \ref{tab:different-errors} categorizes the types of detection failures for
 
 \begin{table}[htbp]
 \centering
-\caption[Different detection errors]{Frequencies of Different Detection Errors}
+\caption[Different detection errors]{Frequencies of Different Detection Errors.}
 \label{tab:different-errors}
 \begin{tabular}{lccc}
 \toprule
@@ -436,6 +446,6 @@ Rather than selecting a single predefined palette, the final color scheme was as
 };
 \end{axis}
 \end{tikzpicture}
-\caption[Votes per color palette]{Distribution of Votes Across Different Color Palettes}
+\caption[Votes per color palette]{Distribution of Votes Across Different Color Palettes.}
 \label{fig:color-palette-results}
 \end{figure}

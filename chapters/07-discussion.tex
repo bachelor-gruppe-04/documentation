@@ -54,7 +54,12 @@ One project requirement was to digitize chess games into \gls{pgn} files, enabli
 
 The \gls{pgn} format is widely supported, and tools such as Lichess can interpret both the complete file or just the move list. This flexibility allows users to gain insights into various aspects of the game, such as identifying the opening played, evaluating move accuracy, and understanding the overall game progression. Figure \ref{fig:downloaded-pgn-analysis} shows how the downloaded \gls{pgn} can be used in an external analysis tool. \\
 
-\begin{figure}[h!] \centering \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/lichess-analysis.png}}\caption[Lichess analysis tool]{A demonstration of importing a PGN file into Lichess' analysis tool}\label{fig:downloaded-pgn-analysis} \end{figure}
+\begin{figure}[h!] 
+    \centering 
+    \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/lichess-analysis.png}}
+    \caption[Lichess analysis tool]{A demonstration of importing a \gls{pgn} file into Lichess' analysis tool.}
+    \label{fig:downloaded-pgn-analysis} 
+\end{figure}
 
 By enabling \gls{pgn} downloads, the system provides users with a convenient way to review games and improve their understanding of chess. Instead of building a custom in-app analysis feature, this solution leverages existing, well-established services that offer robust and detailed feedback. This decision reduces development complexity while still providing users with valuable insights. \\
 
@@ -78,8 +83,12 @@ Version control and task management were handled using Git, which provided a rob
 
 GitHub Actions was used to automate the development process, including running Python unit tests and updating LaTeX documentation. This improved efficiency and helped catch issues early. However, the test workflow consistently failed in the \gls{ci} environment due to its dependence on camera hardware, as shown in Figure \ref{fig:workflow-test}. Since this hardware was unavailable during automated runs, the failures were expected and did not impact the final delivery. This highlighted the need to separate hardware-dependent tests from those suitable for standard test environments.\\
 
-\begin{figure}[h!] \centering 
-\includegraphics[width=0.75\linewidth]{figures/results/workflows/tests.png}\caption[Python tests workflow]{The workflow for Python unit tests}\label{fig:workflow-test} \end{figure}
+\begin{figure}[h!] 
+    \centering 
+    \includegraphics[width=0.75\linewidth]{figures/results/workflows/tests.png}
+    \caption[Python tests workflow]{The workflow for Python unit tests.}
+    \label{fig:workflow-test}
+\end{figure}
 
 Overall, the project management approach successfully balanced structure and flexibility. The adapted \gls{scrum} practices, supported by reliable tooling, effective peer review, and strong communication, created a productive environment well-suited to the team's working style. 
 
