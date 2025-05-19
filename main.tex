@@ -27,7 +27,10 @@
 
 \newpage
 
-\renewcommand{\acronymname}{ABBREVIATIONS}
+\renewcommand{\acronymname}{Abbreviations}
+\renewcommand*{\glossarymark}[1]{
+  \markboth{ABBREVIATIONS}{ABBREVIATIONS}
+}
 \printglossary[type=\acronymtype]
 
 \printglossary
