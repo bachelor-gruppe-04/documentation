@@ -99,7 +99,7 @@ In addition to ideas for future development, there were also a few challenges en
 
 \subsection{Camera}
 
-During development and testing, the front-end application occasionally initialized the system’s built-in front camera instead of the intended external \gls{usb} cameras. The application is designed to access external cameras by specifying a camera ID other than 0, since ID 0 typically corresponds to the system’s default device. \\
+During development and testing, the frontend application occasionally initialized the system’s built-in front camera instead of the intended external \gls{usb} cameras. The application is designed to access external cameras by specifying a camera ID other than 0, since ID 0 typically corresponds to the system’s default device. \\
 
 This issue was traced back to a cached or “ghost” device entry in the Windows Device Manager. A ghost device refers to a previously connected hardware device that is no longer physically attached to the system but whose configuration and driver information remain cached by the operating system. These leftover entries can lead to conflicts or incorrect device indexing when similar hardware is reconnected, especially when multiple identical devices are used. In this case, the system appeared to retain prior camera associations, which caused the application to misidentify or incorrectly assign the camera index. \\
 
