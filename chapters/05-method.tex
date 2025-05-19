@@ -198,14 +198,16 @@ To finalize the board orientation, the average center of all black and white pie
 \end{figure}
 
 
+
 \subsubsection*{Move detection}
 
-After detecting the chessboard and pieces, the application continuously processed each incoming video frame to determine whether a move had occurred. For every frame, the internal board state was updated based on the observed positions of the chess pieces. \
+After detecting the chessboard and pieces, the application continuously processed each incoming video frame to determine whether a move had occurred. For every frame, the internal board state was updated based on the observed positions of the chess pieces. \\
 
-To ensure stability, the system used a decay-based mechanism that blended the current detections with the previous state. This approach helped smooth out transient errors caused by occlusions or momentary inconsistencies in the video feed. Additionally, updates were throttled to fixed intervals, reducing computational overhead and avoiding unnecessary changes due to minor fluctuations in detection. \
+To ensure stability, the system used a decay-based mechanism that blended the current detections with the previous state. This approach helped smooth out transient errors caused by occlusions or momentary inconsistencies in the video feed. Additionally, updates were throttled to fixed intervals, reducing computational overhead and avoiding unnecessary changes due to minor fluctuations in detection. \\
 
 Once the updated board configuration was determined, it was compared to the set of legal moves for the current state. If a high-confidence legal move was identified, it was registered and applied. The move was then committed to the internal board state and sent to the frontend via the WebSocket connection to support ongoing analysis and visualization.
 
+\newpage
 
 \begin{figure}[h!]
     \centering
@@ -213,6 +215,8 @@ Once the updated board configuration was determined, it was compared to the set 
     \caption[Visualization of piece model and corner model]{Visualization of the detected pieces and centers of the squares.}
     \label{fig:websocket-vs-http}
 \end{figure}
+
+\bigskip
 
 \section{Design}
 \label{subsec:wireframe}
@@ -335,7 +339,7 @@ Similarly, the Board View adjusts to a vertical layout on mobile devices, stacki
 
 \section{Project management}
 \label{sec:methods-project-management}
-The team adopted the Scrum framework to organize the project and coordinate tasks effectively. Work was divided into biweekly sprints, each beginning with a planning session where prioritized items were selected from the product backlog. Tasks were then broken down into manageable units and assigned to individual team members. The sprint goals guided the development process, culminating in a sprint review and retrospective at the end of each cycle to assess outcomes and reflect on team performance. \\
+The team adopted the \gls{scrum} framework to organize the project and coordinate tasks effectively. Work was divided into biweekly sprints, each beginning with a planning session where prioritized items were selected from the product backlog. Tasks were then broken down into manageable units and assigned to individual team members. The sprint goals guided the development process, culminating in a sprint review and retrospective at the end of each cycle to assess outcomes and reflect on team performance. \\
 
 To support this workflow, a meeting routine was established. Internal team meetings were held as needed to discuss progress, resolve blockers, and coordinate efforts. Additionally, brief informal stand-up meetings took place during office hours to maintain shared awareness of current tasks and priorities. Biweekly meetings with the supervisor ensured ongoing guidance and alignment with academic requirements. Meetings with the product owner occurred approximately once or twice per month, providing opportunities to present progress and gather valuable feedback. \\
 
