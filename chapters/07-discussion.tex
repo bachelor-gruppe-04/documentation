@@ -88,7 +88,9 @@ In addition to ideas for future development, there were also a few challenges en
 
 \subsection{Camera}
 
-During development, the application occasionally selected the system’s built-in front camera instead of the intended external USB cameras. The root cause was identified as cached “ghost” devices in the Windows Device Manager. These are records of previously connected hardware that remain stored even after the devices are disconnected. Such ghost entries can cause conflicts and incorrect device indexing, especially when multiple identical cameras are involved, leading to the misassignment of camera IDs. Temporarily, disconnecting the external cameras and restarting the system forced ID reassignment and resolved the problem, though this is not an ideal solution. \\
+During development and testing, the front-end application occasionally initialized the system’s built-in front camera instead of the intended external USB cameras. The application is designed to access external cameras by specifying a camera ID other than 0, since ID 0 typically corresponds to the system’s default device. \\
+
+This issue was traced back to a cached or “ghost” device entry in the Windows Device Manager. A ghost device refers to a previously connected hardware device that is no longer physically attached to the system but whose configuration and driver information remain cached by the operating system. These leftover entries can lead to conflicts or incorrect device indexing when similar hardware is reconnected, especially when multiple identical devices are used. In this case, the system appeared to retain prior camera associations, which caused the application to misidentify or incorrectly assign the camera index. \\
 
 \subsection{Highlighting moves}
 When a move is made, the frontend highlights the previous and current tiles of the moved piece. User testing with different color palettes resulted in the selection of a bright contrast color relative to the main design scheme to ensure good visibility. \\
