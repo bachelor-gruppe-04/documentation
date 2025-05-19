@@ -20,14 +20,14 @@ Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/results/machine-learning/piece-metrics.png}
-\caption[Performance piece detection (ChessCam)]{Performance metrics for piece detection from the ChessCam repository \cite{wandb:piece-detection}.}
+\caption[Performance piece detection]{Performance metrics for piece detection from the ChessCam repository \cite{wandb:piece-detection}.}
 \label{fig:chesscam-piece-metrics}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/results/machine-learning/xcorners-metrics.png}
-\caption[Performance xcorners detection (ChessCam)]{Performance metrics for xcorners detection from the ChessCam repository \cite{wandb:xcorner-detection}.}
+\caption[Performance xcorners detection]{Performance metrics for xcorners detection from the ChessCam repository \cite{wandb:xcorner-detection}.}
 \label{fig:chesscam-xcorners-metrics}
 \end{figure}
 
@@ -39,7 +39,7 @@ No errors, dropped messages, or unexpected behaviors were observed during testin
 
 \begin{table}[h!]
 \centering
-\caption[API Test Summary]{Summary of test outcomes for \gls{rest} and WebSocket endpoints.}
+\caption[API test summary]{Summary of test outcomes for \gls{rest} and WebSocket endpoints.}
 \label{tab:api-test-results}
 \begin{tabular}{L{0.3\linewidth}L{0.3\linewidth}L{0.3\linewidth}}
 \toprule
@@ -117,7 +117,7 @@ In addition to manual code review, automated workflows were implemented using Gi
 
 To provide a comprehensive understanding of the system architecture and interaction flow, several \gls{uml} diagrams were created. These diagrams model different aspects of the live chess game digitization system, from component interactions and activity flow to user roles and use cases.
 
-\subsubsection*{Use-Case Diagram}
+\subsubsection*{Use Case Diagram}
 \label{subsubsec:use-case-diagram}
 
 The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system’s main actors and the primary functionalities they interact with. Admins are responsible for hardware setup and initiating the game recording process. Users, on the otherhand, access the game remotely to spectate. This diagram provides an overview of who interacts with the system and what capabilities are exposed, forming the basis for understanding system requirements and user expectations.
@@ -125,7 +125,7 @@ The use-case diagram, shown in Figure \ref{fig:use-case}, identifies the system�
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/results/uml/use-case.png}
-    \caption[Use-case diagram]{Use-case diagram outlining the system’s main actors and their interactions with key functionalities.}
+    \caption[Use case diagram]{Use case diagram outlining the system’s main actors and their interactions with key functionalities.}
     \label{fig:use-case}
 \end{figure}  
 
@@ -153,7 +153,7 @@ Each \texttt{Board} object aggregates a \texttt{Camera} for video input and a \t
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.75\linewidth]{figures/results//uml/class.png}
-\caption[Class Diagram]{Class diagram of the chess digitization system.}
+\caption[Class diagram]{Class diagram of the chess digitization system.}
 \label{fig:class}
 \end{figure}
 
@@ -166,7 +166,7 @@ Figure \ref{fig:package-backend} illustrates the package structure of the backen
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{figures/results/uml/package-backend.png}
-    \caption[Package Diagram for Backend]{Package diagram for the backend package structure.}
+    \caption[Package diagram for backend]{Package diagram for the backend package structure.}
     \label{fig:package-backend}
 \end{figure}
 
@@ -177,7 +177,7 @@ On the frontend, shown in Figure \ref{fig:package-frontend}, the React applicati
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{figures/results/uml/package-frontend.png}
-    \caption[Package Diagram for Frontend]{Package diagram for the frontend package structure.}
+    \caption[Package diagram for frontend]{Package diagram for the frontend package structure.}
     \label{fig:package-frontend}
 \end{figure}
 
@@ -196,7 +196,7 @@ On the frontend, shown in Figure \ref{fig:package-frontend}, the React applicati
     \begin{minipage}[t]{0.45\textwidth}
         \vspace{0pt}
         \includegraphics[width=\linewidth]{figures/results/uml/activity-2.png}
-        \caption[Activity Diagram]{Activity diagram illustrating the system workflow.}
+        \caption[Activity diagram]{Activity diagram illustrating the system's workflow.}
         \label{fig:activity}
     \end{minipage}
 \end{figure}
@@ -217,7 +217,7 @@ On the frontend, shown in Figure \ref{fig:package-frontend}, the React applicati
     \begin{minipage}[t]{0.45\textwidth}
         \vspace{0pt}
         \includegraphics[width=\linewidth]{figures/results/uml/state-machine.png}
-        \caption[State Machine Diagram]{State machine for move detection and validation.}
+        \caption[State machine diagram]{State machine for move detection and validation.}
         \label{fig:state-machine}
     \end{minipage}
 \end{figure}
@@ -322,7 +322,7 @@ Table \ref{tab:different-errors} categorizes the types of detection failures for
 
 \begin{table}[htbp]
 \centering
-\caption[Different detection errors]{Frequencies of Different Detection Errors.}
+\caption[Different detection errors]{Frequencies of different detection errors.}
 \label{tab:different-errors}
 \begin{tabular}{lccc}
 \toprule
@@ -442,6 +442,6 @@ Rather than selecting a single predefined palette, the final color scheme was as
 };
 \end{axis}
 \end{tikzpicture}
-\caption[Votes per color palette]{Distribution of Votes Across Different Color Palettes.}
+\caption[Votes per color palette]{Distribution of votes across different color palettes.}
 \label{fig:color-palette-results}
 \end{figure}
