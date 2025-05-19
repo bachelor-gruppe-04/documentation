@@ -178,20 +178,17 @@ The bottom center of each piece’s bounding box was selected as its representat
 
 \subsubsection*{Board Detection}
 
-Each frame captured by the camera was processed by the two models. Before inference, the frame needs to match the models’ expected input dimensions [1, 3, 288, 480]. This process includes scaling the frame, normalizing the pixel values to fall within the range [0, 1] and converting the image to the appropriate data type. \\
+Each frame captured by the camera was processed by the two models. Before inference, the frame had to match the models’ expected input dimensions [1, 3, 288, 480]. This process included scaling the frame, normalizing the pixel values to fall within the range [0, 1], and converting the image to the appropriate data type. \\
 
-After inference, the models produce the prediction outputs: [1, 16, 2835] for pieces and [1, 5, 2835] for intersection points. To identify the most reliable predictions, low-confidence entries are first filtered out. Furthermore, \gls{nms} was applied to further refine the results. This process ensures only the most accurate locations for the pieces and intersections were retained. \\
+After inference, the models produced the prediction outputs: [1, 16, 2835] for pieces and [1, 5, 2835] for intersection points. To identify the most reliable predictions, low-confidence entries were first filtered out. Furthermore, \gls{nms} was applied to further refine the results. This process ensured only the most accurate locations for the pieces and intersections were retained. \\
 
-To identify the board corners of the chessboard, Delaunay triangulation was used. Delaunay triangulation was applied to the intersection points to generate a set of candidate triangles. By iterating over these triangles and examining their shared vertices, the algorithm identifies potential quadrilaterals (four-sided shapes) that represent the four corners of the chessboard. Once a list of candidate quadrilaterals was generated, each was scored based on how well it fit the original intersection points. The quadrilateral with the highest score was then selected as the most likely representation of the board corners.
-\\
+To identify the board corners of the chessboard, Delaunay triangulation was used. Delaunay triangulation was applied to the intersection points to generate a set of candidate triangles. By iterating over these triangles and examining their shared vertices, the algorithm identified potential quadrilaterals (four-sided shapes) that represented the four corners of the chessboard. Once a list of candidate quadrilaterals was generated, each was scored based on how well it fit the original intersection points. The quadrilateral with the highest score was then selected as the most likely representation of the board corners. \\
 
-With the corners identified, the next step was to correct the distortion caused by the camera angle. When viewed at an angle, the board appears skewed due to varying distances between the camera and different parts of the board. This distortion can be corrected by using a perspective transformation. Specifically, the inverse of the transformation matrix responsible for the distortion is computed. By applying this inverse to the distorted image, the transformation that warped the image is reversed, effectively 'flattening' the distorted chessboard back to its ideal, top-down view. Once the inverse matrix is applied, the resulting coordinates provide the corrected positions of the corners in the distorted image. \\
+With the corners identified, the next step was to correct the distortion caused by the camera angle. When viewed at an angle, the board appeared skewed due to varying distances between the camera and different parts of the board. This distortion was corrected by using a perspective transformation. Specifically, the inverse of the transformation matrix responsible for the distortion was computed. By applying this inverse to the distorted image, the transformation that warped the image was reversed, effectively 'flattening' the distorted chessboard back to its ideal, top-down view. Once the inverse matrix was applied, the resulting coordinates provided the corrected positions of the corners in the distorted image. \\
 
-With the distortion corrected, the board is treated as an 8×8 grid of uniformly sized squares, each occupying a unit-length cell. The center of each square lies midway between its edges, resulting in center coordinates that range from 0.5 to 7.5 in both the x and y axes. The center of the first square is at (0.5, 0.5), the second at (1.5, 0.5), and so on up to (7.5, 7.5). \\
+With the distortion corrected, the board was treated as an 8×8 grid of uniformly sized squares, each occupying a unit-length cell. The center of each square lies midway between its edges, resulting in center coordinates that ranged from 0.5 to 7.5 in both the x and y axes. The center of the first square was at (0.5, 0.5), the second at (1.5, 0.5), and so on up to (7.5, 7.5). \\
 
-To finalize the board orientation, the average center of all black and white pieces was computed. The board was then rotated in four 90-degree increments. For each rotation, the midpoints of the expected white and black sides were calculated as the average coordinates between pairs of corners. Specifically, the midpoint for the white side was calculated between ‘a1’ and ‘h1’, and for the black side between ‘a8’ and ‘h8’. The rotation minimizing the distance between piece centers and these midpoints was selected as the correct alignment. Based on this orientation, the labels ‘a1’, ‘h1’, ‘a8’, and ‘h8’ were assigned to the corners of the chessboard. A visualization of this process is shown in Figure \ref{fig:board_label_assignment}.
- 
-% \newpage
+To finalize the board orientation, the average center of all black and white pieces was computed. The board was then rotated in four 90-degree increments. For each rotation, the midpoints of the expected white and black sides were calculated as the average coordinates between pairs of corners. Specifically, the midpoint for the white side was calculated between ‘a1’ and ‘h1’, and for the black side between ‘a8’ and ‘h8’. The rotation that minimized the distance between piece centers and these midpoints was selected as the correct alignment. Based on this orientation, the labels ‘a1’, ‘h1’, ‘a8’, and ‘h8’ were assigned to the corners of the chessboard. A visualization of this process is shown in Figure \ref{fig:board_label_assignment}.
 
 \begin{figure}[h!]
 \centering
@@ -202,11 +199,12 @@ To finalize the board orientation, the average center of all black and white pie
 
 
 \subsubsection*{Move detection}
-After detecting the chessboard and pieces, the application continuously processes each incoming video frame to determine whether a move has occurred. For every frame, the internal board state is updated based on the observed positions of the chess pieces. \\
 
-To ensure stability, the system uses a decay-based mechanism that blends the current detections with the previous state. This approach helps smooth out transient errors caused by occlusions or momentary inconsistencies in the video feed. Additionally, updates are throttled to fixed intervals, reducing computational overhead and avoiding unnecessary changes due to minor fluctuations in detection. \\
+After detecting the chessboard and pieces, the application continuously processed each incoming video frame to determine whether a move had occurred. For every frame, the internal board state was updated based on the observed positions of the chess pieces. \
 
-Once the updated board configuration is determined, it is compared to the set of legal moves for the current state. If a high-confidence legal move is identified, it is registered and applied. The move is then committed to the internal board state and sent to the frontend via the WebSocket connection to support ongoing analysis and visualization.
+To ensure stability, the system used a decay-based mechanism that blended the current detections with the previous state. This approach helped smooth out transient errors caused by occlusions or momentary inconsistencies in the video feed. Additionally, updates were throttled to fixed intervals, reducing computational overhead and avoiding unnecessary changes due to minor fluctuations in detection. \
+
+Once the updated board configuration was determined, it was compared to the set of legal moves for the current state. If a high-confidence legal move was identified, it was registered and applied. The move was then committed to the internal board state and sent to the frontend via the WebSocket connection to support ongoing analysis and visualization.
 
 
 \begin{figure}[h!]
@@ -222,8 +220,6 @@ Once the updated board configuration is determined, it is compared to the set of
 \subsubsection*{Control Panel}
 
 The Control Panel is a desktop interface for tournament organizers to manage the digitization of multiple physical chessboards. The interface is minimal and task-focused, enabling efficient system setup and management with little technical effort. It follows a simple three-step workflow:
-
-DISKUTER punkt 1?
 
 \begin{enumerate}
 \item \textbf{Select number of cameras:} Specify how many cameras are connected. This determines how many boards will be monitored  (Figure \ref{fig:control-panel-1}).
@@ -339,9 +335,9 @@ Similarly, the Board View adjusts to a vertical layout on mobile devices, stacki
 
 \section{Project management}
 \label{sec:methods-project-management}
-The team applied the Scrum framework as the basis for project organization and task coordination. Work was structured into biweekly sprints, each beginning with a planning session where items were selected from the product backlog based on current priorities. Tasks were broken down into manageable units and assigned to individual team members. Sprint goals were defined to guide development, followed by a sprint review and retrospective at the end of each cycle to evaluate outcomes and reflect on team performance. \\
+The team adopted the Scrum framework to organize the project and coordinate tasks effectively. Work was divided into biweekly sprints, each beginning with a planning session where prioritized items were selected from the product backlog. Tasks were then broken down into manageable units and assigned to individual team members. The sprint goals guided the development process, culminating in a sprint review and retrospective at the end of each cycle to assess outcomes and reflect on team performance. \\
 
-Meeting routines were structured to support this process. Internal team meetings were held as needed to discuss progress, address blockers, and coordinate development efforts. In addition, short informal stand-up meetings were held during office hours to maintain shared awareness of ongoing tasks and priorities. Biweekly meetings were held with the supervisor to provide guidance and ensure alignment with academic expectations. Meetings with the product owner were arranged when needed, approximately once or twice per month, to present progress and gather feedback and suggestions. \\
+To support this workflow, a meeting routine was established. Internal team meetings were held as needed to discuss progress, resolve blockers, and coordinate efforts. Additionally, brief informal stand-up meetings took place during office hours to maintain shared awareness of current tasks and priorities. Biweekly meetings with the supervisor ensured ongoing guidance and alignment with academic requirements. Meetings with the product owner occurred approximately once or twice per month, providing opportunities to present progress and gather valuable feedback. \\
 
 To support effective collaboration, responsibilities were divided among team members. Roles included communication lead, meeting minute writer, and documentation manager. The role distribution helped maintain a consistent workflow and ensured accountability across different project areas. All meeting minutes were documented and stored in the project repository alongside the main report. Sprint reviews, retrospectives, and other supplementary documentation, including the project timetable, testing data, and contact log, were maintained in a shared OneDrive folder. \\
 
