@@ -92,6 +92,8 @@ GitHub Actions was used to automate the development process, including running P
 
 Overall, the project management approach successfully balanced structure and flexibility. The adapted \gls{scrum} practices, supported by reliable tooling, effective peer review, and strong communication, created a productive environment well-suited to the team's working style. 
 
+\newpage
+
 \section{Challenges}
 In addition to ideas for future development, there were also a few challenges encountered during development. These challenges were addressed as they occurred, and solutions were implemented as part of the final application. \\
 
@@ -134,6 +136,8 @@ By implementing such an integration, participants would be able to register by s
 
 \subsection{Time Control}
 For spectators watching live chess games on a screen, it can be difficult to follow the pace of the game, as the current version of the application does not display any information about time control. Chess games are typically played with varying time formats, including \gls{classical}, \gls{blitz}, and \gls{bullet}, each of which allocates different amounts of time per player. Tournaments generally specify a single time control variant, which could be included in the tournament description. Displaying the time control format and countdown timer could overall enhance the spectator experience. \\
+
+\newpage
 
 One potential solution is to estimate the remaining time based on move detection. When the machine learning model registers a move, it assumes the player has pressed the clock and that the opponent’s time has begun. However, this method is unreliable due to potential delays in move detection which can lead to inaccurate time tracking. \\
 
