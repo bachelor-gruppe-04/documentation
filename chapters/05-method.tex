@@ -413,13 +413,13 @@ TypeScript was selected for the project's frontend language due to it's type-saf
 \subsubsection*{TypeScript Dependencies}
 
 \begin{itemize}
-    \item \textbf{Vite} - A fast frontend build tool of web applications \cite{ts:vite}.
+    \item \textbf{Vite} - A fast frontend build tool for web applications \cite{ts:vite}.
     
-    \item \textbf{React} - Builds user interfaces out of individual pieces called components \cite{ts:react}.
+    \item \textbf{React} - Builds user interfaces from individual pieces called components \cite{ts:react}.
     
     \item \textbf{\acrshort{swc}} - Speeds up the Vite development server \cite{ts:swc}.
     
-    \item \textbf{chess.ts} - A Typescript chess library for chess move generation/validation, piece placement/movement, and check/checkmate/draw detection \cite{ts:chess}.
+    \item \textbf{chess.ts} - A TypeScript chess library for handling game logic including move validation and piece management \cite{ts:chess}.
     
     \item \textbf{react-dom} - Serves as the entry point to the DOM and server renderers for React \cite{ts:react-dom}.
 \end{itemize}
@@ -431,15 +431,15 @@ TypeScript was selected for the project's frontend language due to it's type-saf
 
 \subsection{Model testing}
 \label{subsec:model-testing}
-The performance of the machine learning model was evaluated through 100 test games. Five distinct chess openings were selected, with 10 games played per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves, corresponding to 15 moves by white and 15 moves by black. \\
+The performance of the machine learning model was evaluated through 100 test  games. Five distinct chess openings were selected, with 10 games played per opening on each of two board types: plastic and wooden. This resulted in 50 games per board type. Each game consisted of 15 full moves, corresponding to 15 moves by white and 15 moves by black. \\
 
 Each move was logged as either successful or unsuccessful. A 30-second window was provided for the model to detect and transmit each move, starting from the moment the move was made \gls{otb}. If the model failed to detect the move within this time frame, or if it detected the wrong move, it was marked as unsuccessful. The game concluded either when a move was marked unsuccessful or all 15 full moves had been completed. \\
 
-The webcam was mounted above the board at an angle approximately 60–70\si{\degree} relative to the table surface. The white pieces were placed on the left side of the camera's field of view, and the black pieces on the right.
+The webcam was mounted above the board at an angle of approximately 60–70\si{\degree} relative to the table surface. The white pieces were placed on the left side of the camera's field of view, and the black pieces on the right.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.55\linewidth]{figures/methods/testing/setup.png}
+    \includegraphics[width=0.75\linewidth]{figures/methods/testing/setup.png}
     \caption[Setup during testing]{Physical setup during testing, showing the board, camera position, and piece orientation.}
     \label{fig:setup}
 \end{figure}
