@@ -235,7 +235,7 @@ As described in Section~\ref{subsec:model-testing}, the model was evaluated usin
 
 \begin{table}[htbp]
 \centering
-\caption[Move detection accuracy total]{Move detection accuracy total.}
+\caption[Move detection accuracy total]{Move detection accuracy by piece type and color.}
 \label{tab:accuracy-total}
 \begin{tabular}{lccc}
 \toprule
@@ -263,7 +263,7 @@ As described in Section~\ref{subsec:model-testing}, the model was evaluated usin
 \end{table}
 
 
-Table \ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board performed slightly better than the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference may indicate a more stable detection environment on the wooden surface. \\
+Table \ref{tab:board-type-accuracy} compares the success rates between the two physical board types used during testing. The wooden board performed slightly better than the plastic board, with a 91.2\% success rate compared to 89.9\%. This marginal difference indicates a more stable detection environment on the wooden surface. \\
 
 
 \begin{table}[htbp]
@@ -320,7 +320,7 @@ Figure \ref{fig:move-failures} shows the number of failed games (i.e., games whe
 \end{figure}
 
 
-Table \ref{tab:different-errors} categorizes the types of detection failures for each board type. Almost all failures were due to a lack of detection within the  time window. Incorrect detections were less frequent but more common on the wooden board, accounting for 8 out of 48 failures, compared to just 1 on the plastic board. For a detailed breakdown of the chess games, including the sequences of moves, failure points, and detection statistics for each board type, see Appendix \ref{app:move-data-testing}.  \\
+Table \ref{tab:different-errors} summarizes the types of detection failures observed for each board type. The vast majority of failures resulted from no detection within the designated time window. Incorrect detections were less common, accounting for 8 out of 48 failures on the wooden board, compared to only 1 on the plastic board. For a comprehensive breakdown of the chess games-including the openings played and specific points of failure, refer to Appendix \ref{app:move-data-testing}.
 
 \begin{table}[htbp]
 \centering
@@ -343,6 +343,8 @@ Wooden & 40 & 8 & 48 \\
 
 A total of eight individuals participated in the wireframe usability test, excluding project developers and stakeholders. While the sample size was limited, participants were intentionally selected to represent a broad range of ages, technical backgrounds, and familiarity with chess. \\
 
+\newpage
+
 Overall, the feedback was generally positive. Participants were asked to rate their satisfaction on a 1–5 Likert scale. Figure \ref{fig:wireframe-test-results} shows the distribution of the ratings. The average scores from the feedback form were as follows:
 
 \begin{itemize}
@@ -361,7 +363,7 @@ However, participants also suggested a few areas for improvement:
     \item Supporting multiple languages for users who do not speak English.
 \end{itemize}
 
-While these findings are based on a small participant group, they offer early indications that the interface is both accessible and functional for a wide range of users. These insights will guide further development and refinement of the user interface.
+While these findings are based on a small participant group, it indicates that the interface is both accessible and functional for a wide range of users. These insights will guide further development and refinement of the user interface.
 
 \begin{figure}[h!]
 \centering
