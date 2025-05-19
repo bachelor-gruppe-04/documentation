@@ -7,7 +7,7 @@
 \section{Overview of Delivered Product}
 The application is an open-source, local, camera-based system designed to digitize \gls{otb} chess games in real time. It detects piece movements on a physical chessboard using image recognition and converts them into a \gls{pgn} file for digital viewing and analysis. The system runs entirely on common hardware,  such as a camera connected to a local machine running either Windows or Ubuntu, without relying on licensed software or cloud services. \\
 
-The project is developed using open and freely available technologies. It follows  coding standards and best practices, ensuring the code is easy to understand, maintain, and extend. Comprehensive documentation supports future enhancements such as adding new chess variants, integrating additional hardware, or improving recognition models. The source code is published in a public Git repository with no restrictions on reuse or adaptation. \\
+The project is developed using open and freely available technologies. The code adheres to established coding standards and best practices, ensuring it is easy to understand, maintain, and extend. Comprehensive documentation supports future enhancements such as adding new chess variants, integrating additional hardware, or improving recognition models. The source code is published in a public Git repository with no restrictions on reuse or adaptation. \\
 
 The delivered product is the final version of the application developed as part of this Bachelor’s thesis. It was created at the product owner's request, based on general requirements rather than detailed specifications. Design, architecture, and technology decisions were made by the development team and regularly reviewed with the product owner throughout the development process.
 
@@ -15,7 +15,7 @@ The delivered product is the final version of the application developed as part 
 \label{chesscam-metrics}
 As a baseline for evaluating detection performance, results from the ChessCam repository were first considered \cite{github:chesscam}. These metrics represented the upper-bound performance of the models under ideal conditions. \\
 
-Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece detection model, which consistently shows high precision and recall throughout training. Both metrics quickly converged above 0.95, indicating stable and reliable detection performance \cite{wandb:piece-detection}. In contrast, Figure~\ref{fig:chesscam-xcorners-metrics} shows the results for xcorners detection, which demonstrated moderately lower performance. Precision and recall steadily improved over time and stabilized at approximately 0.8 and 0.75, respectively \cite{wandb:xcorner-detection}.
+Figure~\ref{fig:chesscam-piece-metrics} illustrates the performance of the piece detection model, which consistently showed high precision and recall throughout training. Both metrics quickly converged above 0.95, indicating stable and reliable detection performance \cite{wandb:piece-detection}. In contrast, Figure~\ref{fig:chesscam-xcorners-metrics} shows the results for xcorners detection, which demonstrated moderately lower performance. Precision and recall steadily improved over time and stabilized at approximately 0.8 and 0.75, respectively \cite{wandb:xcorner-detection}.
 
 \begin{figure}[H]
 \centering
@@ -59,11 +59,11 @@ No errors, dropped messages, or unexpected behaviors were observed during testin
 \label{subsec:results-frontend}
 The frontend of the application served as the user interface. It included a control panel for tournament organizers and a web application for spectators. The application was responsible for visualizing the chessboard and displaying ongoing moves. The frontend communicated with the backend via WebSocket to ensure real-time updates. \\
 
-The control panel was a standalone administrative interface used by tournament organizers to configure and manage the tournament setup. It allowed the organizer to select the number of cameras, initiate the tournament, and reset boards between rounds, as shown in Figure~\ref{fig:control-panel}. This interface ensured centralized management of tournament operations. \\
+The control panel was a standalone administrative interface used by tournament organizers to configure and manage the tournament setup. It allowed the organizer to select the number of cameras, initiate the tournament, and reset boards between rounds, as shown in Figure~\ref{fig:control-panel}. This interface ensured centralized management of tournament operations. Once the organizer had configured the tournament through the control panel, the web interface became accessible to spectators. It allowed users to follow live games across desktop and mobile devices.
 
 \begin{figure}[h!] \centering \includegraphics[width=0.65\linewidth]{figures/results/frontend/control-panel/control-panel.png} \caption[Display of control panel]{The control panel used by the tournament organizers.}\label{fig:control-panel} \end{figure}
 
-Once the organizer had configured the tournament through the control panel, the web interface became accessible to spectators. It allowed users to follow live games, switch views, and access system information across desktop and mobile devices via a responsive design. \\
+\newpage
 
 The landing page was the tournament view, presenting an overview of all ongoing games. Each entry showed the board number, the players' names and ratings, and a link to follow the game live, as shown in Figure~\ref{fig:tournament-view-mocked}. \\
 
@@ -80,11 +80,13 @@ One of the main pages in the web application was the board view, which presented
 \begin{figure}[h!] 
     \centering 
     \fbox{\includegraphics[width=0.75\linewidth]{figures/results/frontend/download-pgn/download-pgn.png}}
-    \caption[Display of board view]{A demonstration of downloading a \gls{pgn} file to a specific game.}
+    \caption[Display of board view]{The board view interface, showing the digital chessboard, move list, and the option to download a \gls{pgn} file for the current game.}
     \label{fig:download-pgn} 
 \end{figure}
 
-The downloaded file included a header containing key information such as the tournament name, date, and player names, followed by the recorded moves. It also indicated whether the game was still in progress. Upon completion, the result field displayed 1-0, 0-1, or $\frac{1}{2}$–$\frac{1}{2}$. Figure~\ref{fig:downloaded-pgn} shows an example of the file. \\
+
+
+The downloaded file included a header containing key information such as the tournament name, date, and player names, followed by the recorded moves. It also indicated whether the game was still in progress. Upon completion, the result field displayed 1-0, 0-1, or $\frac{1}{2}$–$\frac{1}{2}$, representing a win for white, a win for black, or a draw. Figure~\ref{fig:downloaded-pgn} shows an example of the file. \\
 
 \begin{figure}[h!] 
     \centering 
